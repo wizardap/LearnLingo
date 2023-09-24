@@ -44,6 +44,10 @@
     -fx-background-color: #6a78a8;
 }
 
+#change {
+    -fx-background-color: #1d2a57;
+}
+
 #menu:hover, #change:hover {
     -fx-background-color: #FEC400;
 }

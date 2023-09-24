@@ -63,7 +63,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="history" mnemonicParsing="false" onAction="#translateE_to_V" prefHeight="21.0" prefWidth="33.0" stylesheets="@../../../vu.css">
+            <Button fx:id="history" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -145,7 +145,7 @@
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@image/changeLanguage.png" />
+                              <Image url="@image/change.png" />
                            </image>
                         </ImageView>
                      </graphic>
