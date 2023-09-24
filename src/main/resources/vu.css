@@ -1,0 +1,53 @@
+#top {
+    -fx-background-color: #dddddd;
+}
+
+#center_left {
+    -fx-background-color: #eeeeee;
+}
+
+#find {
+    -fx-background-radius: 999;
+    /*-fx-background-color: #FEC400;*/
+    -fx-background-color: #6a78a8;
+}
+
+#find:hover {
+    -fx-background-color: #FEC400;
+}
+
+#function {
+    -fx-background-color: #1d2a57;
+}
+
+#function .button {
+    -fx-font-weight: bold;
+}
+
+#left {
+    -fx-background-color: #dddddd;
+}
+
+#search, #history, #game, #add, #minus, #settings, #change {
+    -fx-background-color: #cccccc;
+}
+
+#menu {
+    -fx-background-color: #6a78a8;
+}
+
+.button:hover {
+    -fx-cursor: hand; /* Sử dụng kiểu con trỏ "hand" (bàn tay) */
+}
+
+#search:hover, #history:hover, #game:hover, #add:hover, #minus:hover, #settings:hover{
+    -fx-background-color: #6a78a8;
+}
+
+#menu:hover, #change:hover {
+    -fx-background-color: #FEC400;
+}
+
+#tudien:hover, #dich:hover, #synonym:hover, #antonym:hover {
+    -fx-background-color: #FEC400;
+}
