@@ -112,7 +112,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.application.learnlingo/com.application.learnlingo.HelloApplication
+                            <mainClass>com.application.learnlingo/com.application.learnlingo.DictionaryApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
