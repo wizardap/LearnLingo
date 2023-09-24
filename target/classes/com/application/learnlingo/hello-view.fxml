@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.DictionaryController">
+<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.DictionaryController">
    <left>
       <VBox fx:id="left" prefHeight="497.0" prefWidth="51.0" spacing="10.0" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
          <children>
@@ -18,7 +19,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/find.png" />
+                        <Image url="@image/home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -62,7 +63,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="history" mnemonicParsing="false" prefHeight="21.0" prefWidth="33.0" stylesheets="@../../../vu.css">
+            <Button fx:id="history" mnemonicParsing="false" onAction="#translateE_to_V" prefHeight="21.0" prefWidth="33.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -162,24 +163,24 @@
                   <Insets bottom="10.0" top="10.0" />
                </HBox.margin>
             </HBox>
-            <HBox fx:id="function" prefHeight="47.0" prefWidth="525.0" spacing="20.0" stylesheets="@../../../vu.css">
+            <HBox fx:id="function" prefHeight="47.0" prefWidth="548.0" spacing="20.0" stylesheets="@../../../vu.css">
                <children>
-                  <Button fx:id="tudien" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" stylesheets="@../../../vu.css" text="Từ điển">
+                  <Button fx:id="tudien" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" stylesheets="@../../../vu.css" text="Dictionary">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="dich" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" stylesheets="@../../../vu.css" text="Dịch câu">
+                  <Button fx:id="dich" mnemonicParsing="false" onAction="#setTranslationMode" prefHeight="25.0" prefWidth="83.0" stylesheets="@../../../vu.css" text="Translation">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="synonym" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" stylesheets="@../../../vu.css" text="Từ đồng nghĩa">
+                  <Button fx:id="synonym" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" stylesheets="@../../../vu.css" text="Synonyms">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="antonym" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../../../vu.css" text="Từ trái nghĩa">
+                  <Button fx:id="antonym" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../../../vu.css" text="Antonyms">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -199,7 +200,7 @@
       <HBox prefHeight="100.0" prefWidth="539.0" BorderPane.alignment="CENTER">
          <children>
             <VBox fx:id="center_left" maxWidth="339.0" minHeight="357.0" minWidth="189.0" prefHeight="487.0" prefWidth="189.0" stylesheets="@../../../vu.css" />
-            <VBox prefHeight="357.0" prefWidth="339.0" />
+            <TextArea prefHeight="485.0" prefWidth="637.0" />
          </children>
       </HBox>
    </center>
