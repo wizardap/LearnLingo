@@ -11,10 +11,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +21,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class DictionaryController {
+    static Boolean b = true;
     @FXML
     static TextArea tx1 = new TextArea();
     @FXML
@@ -77,6 +75,7 @@ public class DictionaryController {
     }
     @FXML
     public void setTranslationMode() {
+        b = false;
         VBox left = new VBox(10);
         VBox right = new VBox(10);
         VBox center = new VBox();
@@ -139,6 +138,7 @@ public class DictionaryController {
         ImageView speech1 = new ImageView(new Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\volume.png"));
         speech1.setFitWidth(40);
         speech1.setFitHeight(40);
+        speech1.setOnMouseClicked(e -> text_to_speech());
         speech1.setOnMouseEntered(e -> {
             speech1.setStyle("-fx-cursor: hand; -fx-opacity: 0.7");
         });
@@ -163,17 +163,40 @@ public class DictionaryController {
         space1.setMinWidth(290);
         btn.setFitWidth(70);
         btn.setFitHeight(40);
-        HBox left_bottom = new HBox(speech1,space1, btn);
+        Label warning = new Label("Vui lòng nhập không quá 150 ký tự!!!");
+        warning.setStyle("-fx-background-color: #1d2a57; -fx-text-fill: #ffffff;" +
+                " -fx-font-weight: bold; -fx-font-size: 15;" +
+                "-fx-padding: 10, 10, 10, 10; -fx-background-radius: 20;");
+        HBox left_bottom = new HBox(speech1, warning , btn);
+        left_bottom.setSpacing(3);
         HBox right_bottom = new HBox();
-        tx1.setMinHeight(400);
+        tx1.setMinHeight(250);
         tx1.setMaxWidth(400);
-        tx2.setMinHeight(400);
+        tx2.setMinHeight(250);
         tx2.setMaxWidth(400);
         left.getChildren().addAll(lang1, tx1, left_bottom);
         right.getChildren().addAll(lang2, tx2, right_bottom);
         HBox hbox = new HBox(left, center, right);
-        container.setCenter(hbox);
-        BorderPane.setMargin(container.getCenter(), new Insets(20, 0, 0, 10));
+        ImageView img1 = new ImageView("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\img1.png");
+        img1.setFitWidth(275);
+        img1.setFitHeight(140);
+        ImageView img2 = new ImageView("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\img2.png");
+        img2.setFitWidth(275);
+        img2.setFitHeight(140);
+        ImageView img3 = new ImageView("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\img3.png");
+        img3.setFitWidth(275);
+        img3.setFitHeight(140);
+
+        img2.setStyle("-fx-background-radius: 20");
+        img3.setStyle("-fx-background-radius: 20");
+        HBox img_container = new HBox(img1, img2, img3);
+        img_container.setSpacing(10);
+        VBox main_container = new VBox(hbox, img_container);
+        main_container.setSpacing(20);
+        if(b == false) {
+            container.setCenter(main_container);
+            BorderPane.setMargin(container.getCenter(), new Insets(20, 0, 0, 10));
+        }
     }
     @FXML
     public String translate(String langFrom, String langTo, String text) throws IOException {
@@ -201,5 +224,18 @@ public class DictionaryController {
             tx2.setText(translate("vi", "en", text));
         else
             tx2.setText(translate("en", "vi", text));
+    }
+
+    public void text_to_speech() {
+        TextToSpeech pronouce = new TextToSpeech(tx1.getText());
+    }
+
+    public void dictionaryMode() {
+        VBox vbox = new VBox();
+        vbox.setMinWidth(190);
+        TextArea txt = new TextArea();
+        txt.setMinWidth(640);
+        HBox hBox = new HBox(vbox, txt);
+        container.setCenter(hBox);
     }
 }

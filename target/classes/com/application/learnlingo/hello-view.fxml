@@ -165,7 +165,7 @@
             </HBox>
             <HBox fx:id="function" prefHeight="47.0" prefWidth="548.0" spacing="20.0" stylesheets="@../../../vu.css">
                <children>
-                  <Button fx:id="tudien" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" stylesheets="@../../../vu.css" text="Dictionary">
+                  <Button fx:id="tudien" mnemonicParsing="false" onAction="#dictionaryMode" prefHeight="25.0" prefWidth="81.0" stylesheets="@../../../vu.css" text="Dictionary">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
