@@ -1,17 +1,19 @@
 package com.application.learnlingo;
 
+import com.jfoenix.controls.JFXButton;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,8 +21,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class DictionaryController {
+public class DictionaryController implements Initializable {
+    @FXML
+    private ListView<String> listWord;
     static Boolean b = true;
     @FXML
     static TextArea tx1 = new TextArea();
@@ -33,7 +39,7 @@ public class DictionaryController {
     @FXML
     private Button history;
     @FXML
-    private Button change;
+    private JFXButton change;
     @FXML
     private ImageView british;
     @FXML
@@ -43,13 +49,13 @@ public class DictionaryController {
     @FXML
     private boolean isUKFlagVisible = true;
     @FXML
-    private Button tudien;
+    private JFXButton tudien;
     @FXML
-    private Button dich;
+    private JFXButton dich;
     @FXML
-    private Button synonym;
+    private JFXButton synonym;
     @FXML
-    private Button antonym;
+    private JFXButton antonym;
     @FXML
     private BorderPane container;
     @FXML
@@ -73,8 +79,47 @@ public class DictionaryController {
         }
         isUKFlagVisible = !isUKFlagVisible;
     }
+
+    @FXML
+    public void handleButtonClick() {
+        makeFadeOut();
+    }
+
+    private void makeFadeOut() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(500));
+        fadeTransition.setNode(container.getCenter());
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(e -> {
+            setTranslation();
+        });
+        fadeTransition.play();
+    }
+
+    private void setTranslation() {
+        try {
+            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("TranslationController.fxml")));
+            Scene newScene = new Scene(secondView, 910, 600);
+            FadeTransition fadeTransition1 = new FadeTransition();
+            fadeTransition1.setDuration(Duration.millis(500));
+            fadeTransition1.setNode(secondView.getCenter());
+            fadeTransition1.setFromValue(0.0);
+            fadeTransition1.setToValue(1.0);
+            fadeTransition1.play();
+            Stage curStage = (Stage) container.getScene().getWindow();
+            curStage.setScene(newScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void setTranslationMode() {
+        FadeTransition animation3 = new FadeTransition(Duration.seconds(2), dich);
+        animation3.setFromValue(0.0);
+        animation3.setToValue(1.0);
+        animation3.play();
         b = false;
         VBox left = new VBox(10);
         VBox right = new VBox(10);
@@ -230,12 +275,8 @@ public class DictionaryController {
         TextToSpeech pronouce = new TextToSpeech(tx1.getText());
     }
 
-    public void dictionaryMode() {
-        VBox vbox = new VBox();
-        vbox.setMinWidth(190);
-        TextArea txt = new TextArea();
-        txt.setMinWidth(640);
-        HBox hBox = new HBox(vbox, txt);
-        container.setCenter(hBox);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        listWord.getItems().add("Heheheh");
     }
 }

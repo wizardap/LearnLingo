@@ -37,7 +37,7 @@
 }
 
 .button:hover {
-    -fx-cursor: hand; /* Sử dụng kiểu con trỏ "hand" (bàn tay) */
+    -fx-cursor: hand;
 }
 
 #search:hover, #history:hover, #game:hover, #add:hover, #minus:hover, #settings:hover{
@@ -48,10 +48,35 @@
     -fx-background-color: #1d2a57;
 }
 
-#menu:hover, #change:hover {
+
+.list-cell {
+    /*-fx-background-color: #6a78a8;*/
+    /*-fx-cell-border-color: transparent transparent #ffffff transparent;*/
+    -fx-text-fill: #ffffff;
+    /*-fx-border-color: #ffffff;*/
+    /*-fx-border-width: 1;*/
+}
+
+.list-cell:hover {
+    -fx-cursor: hand;
+}
+
+#menu:hover {
     -fx-background-color: #FEC400;
 }
 
-#tudien:hover, #dich:hover, #synonym:hover, #antonym:hover {
+#change:hover {
+    -fx-opacity: 0.8;
+}
+
+#tudien:hover, #dich:hover, #synonym:hover, #antonym:hover, #holly:hover {
     -fx-background-color: #FEC400;
+}
+
+#dich, #tudien, #synonym, #antonym {
+    -fx-background-color: #ffffff;
+}
+
+#change:hover {
+    -fx-text-fill: #FEC400;
 }

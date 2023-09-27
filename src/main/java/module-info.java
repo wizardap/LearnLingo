@@ -9,6 +9,7 @@ module com.application.learnlingo {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires freetts;
+    requires com.jfoenix;
     opens com.application.learnlingo to javafx.fxml;
     exports com.application.learnlingo;
 }

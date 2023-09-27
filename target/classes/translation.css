@@ -1,4 +1,13 @@
-.label {
-    -fx-font-size: 18px;
-    -fx-text-fill: blue;
+#changeMode {
+    -fx-background-color: #1d2a57;
+}
+
+#changeMode:hover, #translate:hover {
+    -fx-opacity: 0.8;
+    -fx-cursor: hand;
+}
+
+#speech:hover {
+    -fx-opacity: 0.7;
+    -fx-cursor: hand;
 }
