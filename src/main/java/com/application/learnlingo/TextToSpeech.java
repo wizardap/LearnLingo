@@ -11,6 +11,7 @@ public class TextToSpeech {
         voice = VoiceManager.getInstance().getVoice("kevin16");
         if (voice != null) {
             voice.allocate();
+            voice.setPitch(85);
             try {
                 SpeakText(words);
             } catch (Exception e1) {

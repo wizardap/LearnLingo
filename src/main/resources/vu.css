@@ -2,74 +2,82 @@
     -fx-background-color: #dddddd;
 }
 
-#center_left {
-    -fx-background-color: #eeeeee;
+.button {
+    -fx-background-insets: 0;
 }
 
 #find {
     -fx-background-radius: 999;
-    /*-fx-background-color: #FEC400;*/
-    -fx-background-color: #6a78a8;
+    -fx-background-color: white;
 }
 
 #find:hover {
     -fx-background-color: #FEC400;
 }
 
-#function {
-    -fx-background-color: #1d2a57;
-}
 
 #function .button {
     -fx-font-weight: bold;
 }
 
+#function {
+    -fx-border-color: white;
+    -fx-border-width: 0 0 0 1;
+}
+
 #left {
+    -fx-border-color: #cccccc;
+    -fx-border-width: 0 1 0 0;
     -fx-background-color: #dddddd;
 }
 
-#search, #history, #game, #add, #minus, #settings, #change {
+#search, #history, #game, #add, #settings, #change {
     -fx-background-color: #cccccc;
+    -fx-background-insets: 0;
 }
 
 #menu {
-    -fx-background-color: #6a78a8;
+    -fx-background-insets: 0;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 0 1 0 0;
+    -fx-background-color: #1d2a57;
 }
 
 .button:hover {
     -fx-cursor: hand;
 }
 
-#search:hover, #history:hover, #game:hover, #add:hover, #minus:hover, #settings:hover{
-    -fx-background-color: #6a78a8;
+#search:hover, #history:hover, #game:hover, #add:hover, #settings:hover, #change:hover{
+    -fx-background-color: #FEC400;;
 }
 
-#change {
-    -fx-background-color: #1d2a57;
+.list-view {
+    -fx-background-color: -fx-background;
+    -fx-background-insets: 0;
 }
-
 
 .list-cell {
-    /*-fx-background-color: #6a78a8;*/
-    /*-fx-cell-border-color: transparent transparent #ffffff transparent;*/
+    -fx-background-color: #1d2a57;
+    -fx-background-insets: 0;
     -fx-text-fill: #ffffff;
-    /*-fx-border-color: #ffffff;*/
-    /*-fx-border-width: 1;*/
+    -fx-border-color: #ffffff;
+    -fx-border-width: 0 0 1 0;
 }
 
 .list-cell:hover {
     -fx-cursor: hand;
+    -fx-opacity: 0.8;
 }
 
 #menu:hover {
     -fx-background-color: #FEC400;
 }
 
-#change:hover {
-    -fx-opacity: 0.8;
+#change {
+    -fx-background-color: white;
 }
 
-#tudien:hover, #dich:hover, #synonym:hover, #antonym:hover, #holly:hover {
+#tudien:hover, #dich:hover, #synonym:hover, #antonym:hover, #holly:hover , #change:hover{
     -fx-background-color: #FEC400;
 }
 
@@ -77,6 +85,28 @@
     -fx-background-color: #ffffff;
 }
 
-#change:hover {
-    -fx-text-fill: #FEC400;
+
+#findWord {
+    -fx-background-radius: 20 0 0 20;
 }
+
+#textfield {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 20 0 0 20;
+}
+
+#textfield:focused {
+    -fx-border-color: none;
+}
+
+.list-cell:selected {
+    -fx-background-color: #6a78a8;;
+}
+
+#deleteWord {
+    -fx-background-color: -fx-background;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0 20 20 0;
+}
+

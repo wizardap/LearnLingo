@@ -1,5 +1,6 @@
 package com.application.learnlingo;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,9 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,16 +26,30 @@ import java.util.ResourceBundle;
 public class TranslationController implements Initializable{
 
     @FXML
+    private VBox left;
+
+    @FXML
+    private VBox center;
+
+    @FXML
+    private HBox function;
+
+    @FXML
+    private Button deleteWord;
+    @FXML
+    private TextField textfield;
+
+    @FXML
     private ImageView translate;
 
     @FXML
     private ImageView speech;
 
     @FXML
-    private Button lang1;
+    private JFXButton lang1;
 
     @FXML
-    private Button lang2;
+    private JFXButton lang2;
 
     @FXML
     private Button changeMode;
@@ -49,6 +64,9 @@ public class TranslationController implements Initializable{
     private TextArea tx2;
 
     @FXML
+    private Button search;
+
+    @FXML
     private BorderPane container;
     @FXML
     public void handleButtonClick() {
@@ -61,20 +79,24 @@ public class TranslationController implements Initializable{
         fadeTransition.setNode(container.getCenter());
         fadeTransition.setFromValue(1.0);
         fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setTranslation());
+        fadeTransition.setOnFinished(e -> setDictonaryMode());
         fadeTransition.play();
     }
 
-    private void setTranslation() {
+//    @FXML
+//    public void makeFadeIn() {
+//        FadeTransition f = new FadeTransition();
+//        f.setNode(container.getCenter());
+//        f.setDuration(Duration.millis(300));
+//        f.setFromValue(0.0);
+//        f.setToValue(1.0);
+//        f.play();
+//    }
+
+    private void setDictonaryMode() {
         try {
             BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("hello-view.fxml")));
             Scene newScene = new Scene(secondView, 910, 600);
-            FadeTransition fadeTransition1 = new FadeTransition();
-            fadeTransition1.setDuration(Duration.millis(500));
-            fadeTransition1.setNode(secondView.getCenter());
-            fadeTransition1.setFromValue(0.0);
-            fadeTransition1.setToValue(1.0);
-            fadeTransition1.play();
             Stage curStage = (Stage) container.getScene().getWindow();
             curStage.setScene(newScene);
         } catch (Exception e) {
@@ -117,10 +139,12 @@ public class TranslationController implements Initializable{
     @FXML
     public void translateMini() throws IOException {
         String text = tx1.getText();
-        if(!changeL)
+        if(!changeL) {
             tx2.setText(translate("vi", "en", text));
-        else
+        } else {
             tx2.setText(translate("en", "vi", text));
+            TextToSpeech pronouce = new TextToSpeech("Translate successfully");
+        }
     }
 
     @FXML
@@ -133,11 +157,24 @@ public class TranslationController implements Initializable{
     }
 
     public void text_to_speech() {
-        TextToSpeech pronouce = new TextToSpeech(tx1.getText());
+        if(changeL) {
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText());
+        } else {
+            //to do voice VietNamese
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        makeFadeIn();
+        BackgroundImage backgroundImage = new BackgroundImage(
+                new javafx.scene.image.Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+
+        // Tạo Background từ BackgroundImage
+        Background background = new Background(backgroundImage);
+        center.setBackground(background);
         tx1.setWrapText(true);
         tx2.setWrapText(true);
     }
