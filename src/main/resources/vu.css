@@ -6,12 +6,12 @@
     -fx-background-insets: 0;
 }
 
-#find {
+#find, #find1 {
     -fx-background-radius: 999;
     -fx-background-color: white;
 }
 
-#find:hover {
+#find:hover, #find:hover {
     -fx-background-color: #FEC400;
 }
 
@@ -90,13 +90,13 @@
     -fx-background-radius: 20 0 0 20;
 }
 
-#textfield {
+#textfield, #textfield1 {
     -fx-background-color: white;
     -fx-background-insets: 0;
     -fx-background-radius: 20 0 0 20;
 }
 
-#textfield:focused {
+#textfield:focused, #textfield1:focused{
     -fx-border-color: none;
 }
 
@@ -104,9 +104,16 @@
     -fx-background-color: #6a78a8;;
 }
 
-#deleteWord {
+#deleteWord, #deleteWord1 {
     -fx-background-color: -fx-background;
     -fx-background-insets: 0;
     -fx-background-radius: 0 20 20 0;
 }
+
+#bookmark:hover {
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-background-color: #FEC400;
+}
+
 

@@ -31,7 +31,7 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="add" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
+            <Button fx:id="add" mnemonicParsing="false" onAction="#handleButtonClickChangeWord" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -55,7 +55,7 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="history" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
+            <Button fx:id="history" mnemonicParsing="false" onAction="#handleButtonClickBookMark" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -268,26 +268,13 @@
                   <Insets left="10.0" top="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="195.0" prefWidth="891.0" spacing="40.0">
+            <AnchorPane prefHeight="237.0" prefWidth="858.0">
                <children>
-                  <ImageView fitHeight="203.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/img2.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="204.0" fitWidth="354.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/img.jpg" />
-                     </image>
-                  </ImageView>
+                  <JFXButton fx:id="b1" layoutX="79.0" layoutY="-10.0" prefHeight="61.0" prefWidth="61.0" style="-fx-background-radius: 999; -fx-background-color: red; -fx-text-fill: white;" stylesheets="@../../../changeWord.css" text="Click Me" />
+                  <JFXButton fx:id="b2" layoutX="360.0" layoutY="135.0" prefHeight="61.0" prefWidth="61.0" style="-fx-background-radius: 999; -fx-background-color: green; -fx-text-fill: white;" stylesheets="@../../../changeWord.css" text="Click Me" />
+                  <JFXButton fx:id="b3" layoutX="654.0" layoutY="-10.0" prefHeight="61.0" prefWidth="61.0" style="-fx-background-radius: 999; -fx-background-color: yellow; -fx-text-fill: blue;" stylesheets="@../../../changeWord.css" text="Click Me" />
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </HBox>
+            </AnchorPane>
          </children>
       </VBox>
    </center>

@@ -30,6 +30,12 @@ import java.util.ResourceBundle;
 public class DictionaryController implements Initializable {
 
     @FXML
+    private Button bookmark;
+
+    @FXML
+    private Button add;
+
+    @FXML
     private VBox left;
 
     @FXML
@@ -100,10 +106,10 @@ public class DictionaryController implements Initializable {
 
     @FXML
     public void handleButtonClick() {
-        makeFadeOut();
+        makeFadeOutToTranslation();
     }
 
-    private void makeFadeOut() {
+    private void makeFadeOutToTranslation() {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(500));
         fadeTransition.setNode(container.getCenter());
@@ -122,6 +128,68 @@ public class DictionaryController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void makeFadeOutToChangeWord() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(500));
+        fadeTransition.setNode(container.getCenter());
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(e -> setChangeWord());
+        fadeTransition.play();
+    }
+
+    @FXML
+    public void handleButtonClickChangeWord() {
+        makeFadeOutToChangeWord();
+    }
+
+    private void setChangeWord() {
+        try {
+            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("changeWordController.fxml")));
+            Scene newScene = new Scene(secondView, 910, 600);
+            Stage curStage = (Stage) container.getScene().getWindow();
+            curStage.setScene(newScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void makeFadeOutToBookMark() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(500));
+        fadeTransition.setNode(container.getCenter());
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(e -> setBookMark());
+        fadeTransition.play();
+    }
+
+    @FXML
+    public void handleButtonClickBookMark() {
+        makeFadeOutToBookMark();
+    }
+
+    private void setBookMark() {
+        try {
+            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("BookMark.fxml")));
+            Scene newScene = new Scene(secondView, 910, 600);
+            Stage curStage = (Stage) container.getScene().getWindow();
+            curStage.setScene(newScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void deleteSearch() {
+        textfield.setText("");
+    }
+
+    @FXML
+    public void saveWordInBookMark() {
+
     }
 
     @Override

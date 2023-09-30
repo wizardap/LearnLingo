@@ -2,10 +2,12 @@ package com.application.learnlingo;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -23,7 +25,17 @@ import java.net.URLEncoder;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
 public class TranslationController implements Initializable{
+
+    @FXML
+    private JFXButton b1;
+
+    @FXML
+    private JFXButton b2;
+
+    @FXML
+    private JFXButton b3;
 
     @FXML
     private VBox left;
@@ -68,6 +80,59 @@ public class TranslationController implements Initializable{
 
     @FXML
     private BorderPane container;
+
+    private void makeFadeOutToBookMark() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(500));
+        fadeTransition.setNode(container.getCenter());
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(e -> setBookMark());
+        fadeTransition.play();
+    }
+
+    @FXML
+    public void handleButtonClickBookMark() {
+        makeFadeOutToBookMark();
+    }
+
+    private void setBookMark() {
+        try {
+            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("BookMark.fxml")));
+            Scene newScene = new Scene(secondView, 910, 600);
+            Stage curStage = (Stage) container.getScene().getWindow();
+            curStage.setScene(newScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void makeFadeOutToChangeWord() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(500));
+        fadeTransition.setNode(container.getCenter());
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(e -> setChangeWord());
+        fadeTransition.play();
+    }
+
+    @FXML
+    public void handleButtonClickChangeWord() {
+        makeFadeOutToChangeWord();
+    }
+
+    private void setChangeWord() {
+        try {
+            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("changeWordController.fxml")));
+            Scene newScene = new Scene(secondView, 910, 600);
+            Stage curStage = (Stage) container.getScene().getWindow();
+            curStage.setScene(newScene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void handleButtonClick() {
         makeFadeOut();
@@ -82,16 +147,6 @@ public class TranslationController implements Initializable{
         fadeTransition.setOnFinished(e -> setDictonaryMode());
         fadeTransition.play();
     }
-
-//    @FXML
-//    public void makeFadeIn() {
-//        FadeTransition f = new FadeTransition();
-//        f.setNode(container.getCenter());
-//        f.setDuration(Duration.millis(300));
-//        f.setFromValue(0.0);
-//        f.setToValue(1.0);
-//        f.play();
-//    }
 
     private void setDictonaryMode() {
         try {
@@ -164,16 +219,32 @@ public class TranslationController implements Initializable{
         }
     }
 
+    private static void animation(JFXButton button, int x, int time, String message) {
+        TranslateTransition transition = new TranslateTransition();
+        transition.setDuration(Duration.seconds(time));
+        transition.setNode(button);
+        transition.setToY(x);
+        transition.setAutoReverse(true);
+        transition.setCycleCount(TranslateTransition.INDEFINITE);
+        transition.play();
+        button.setOnAction(e -> {
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setHeaderText(message);
+            alert1.show();
+        });
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        makeFadeIn();
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
-        // Tạo Background từ BackgroundImage
         Background background = new Background(backgroundImage);
+        animation(b1, 150, 1, "Have a good day <3");
+        animation(b2, -150, 1, "You are so amazing <3");
+        animation(b3, 150, 1, "Wish you everything <3");
         center.setBackground(background);
         tx1.setWrapText(true);
         tx2.setWrapText(true);
