@@ -2,62 +2,58 @@ package com.application.learnlingo;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
-import javafx.animation.*;
-import javafx.event.ActionEvent;
+import javafx.animation.FadeTransition;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
+import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class DictionaryController implements Initializable {
+public class DictionaryController extends GeneralController implements Initializable {
 
+    static Boolean b = true;
+    @FXML
+    static boolean changeL = true;
     @FXML
     private Button bookmark;
-
     @FXML
     private Button add;
-
     @FXML
     private VBox left;
-
     @FXML
-    private WebView wv;
-
+    private WebView webView;
+    @FXML
+    private WebEngine webEngine;
     @FXML
     private AnchorPane center;
-
     @FXML
     private Button find;
-
     @FXML
     private JFXListView<String> listWords;
-
     @FXML
     private HBox function;
-
     @FXML
     private Button deleteWord;
     @FXML
     private TextField textfield;
-    static Boolean b = true;
     @FXML
     private Button history;
     @FXML
@@ -81,9 +77,8 @@ public class DictionaryController implements Initializable {
     @FXML
     private BorderPane container;
     @FXML
-    static boolean changeL = true;
-    @FXML
     private Button search;
+
     @FXML
     public void changeMode() {
         if (isUKFlagVisible) {
@@ -93,6 +88,7 @@ public class DictionaryController implements Initializable {
             dich.setText("Dịch câu");
             synonym.setText("Đồng nghĩa");
             antonym.setText("Trái nghĩa");
+            listWords.getItems().clear();
         } else {
             changeDictionary.getChildren().removeAll(vn, british, change);
             changeDictionary.getChildren().addAll(british, change, vn);
@@ -100,6 +96,7 @@ public class DictionaryController implements Initializable {
             dich.setText("Translation");
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
+            listWords.getItems().clear();
         }
         isUKFlagVisible = !isUKFlagVisible;
     }
@@ -184,6 +181,7 @@ public class DictionaryController implements Initializable {
 
     @FXML
     private void deleteSearch() {
+        listWords.getItems().clear();
         textfield.setText("");
     }
 
@@ -194,6 +192,39 @@ public class DictionaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listWords.getItems().addAll("Hello", "World","Hello", "World","Hello", "World","Hello", "World","Hello", "World");
+        webEngine = webView.getEngine();
+        listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+    private ObservableList<String> suggestionSearchList(String text) {
+        if (isUKFlagVisible) {
+            return evDict.exportSuggestionList(text);
+        }
+        return veDict.exportSuggestionList(text);
+    }
+
+    @FXML
+    public void handleKeyTyped(KeyEvent keyEvent) {
+        listWords.getItems().clear();
+        if (!textfield.getText().isEmpty()) {
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+        }
+    }
+
+    @FXML
+    public void handleKeyPressed(KeyEvent keyEvent) {
+
+    }
+
+    @FXML
+    public void handleMouseClicked(MouseEvent mouseEvent) {
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            String meaningHTMLString = "";
+            if (isUKFlagVisible) {
+                meaningHTMLString = evDict.getWordInformation(selectedWord).getHtml();
+            } else meaningHTMLString = veDict.getWordInformation(selectedWord).getHtml();
+            webEngine.loadContent(meaningHTMLString);
+        }
     }
 }
