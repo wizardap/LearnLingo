@@ -10,6 +10,7 @@ module com.application.learnlingo {
     requires com.almasb.fxgl.all;
     requires freetts;
     requires com.jfoenix;
+    requires java.sql;
     opens com.application.learnlingo to javafx.fxml;
     exports com.application.learnlingo;
 }
