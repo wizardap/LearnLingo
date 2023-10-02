@@ -1,30 +1,60 @@
 package com.application.learnlingo;
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
+
+import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class TextToSpeech {
-    VoiceManager freeVM;
-    Voice voice;
+    String WordToSpeech;
+    String language;
+    public TextToSpeech(String Word, String language) {
+        this.WordToSpeech = Word;
+        this.language = language;
+        speak();
+    }
 
-    public TextToSpeech(String words) {
-        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-        voice = VoiceManager.getInstance().getVoice("kevin16");
-        if (voice != null) {
-            voice.allocate();
-            voice.setPitch(85);
-            try {
-                SpeakText(words);
-            } catch (Exception e1) {
-                e1.printStackTrace();
+    public void speak() {
+        String apiKey = "f9bbafb560a64ab78feda826087cc584";
+
+        String wordToRead = WordToSpeech;
+
+        try {
+            String apiUrl = "http://api.voicerss.org/?";
+            String apiKeyParam = "key=" + URLEncoder.encode(apiKey, "UTF-8");
+            String textParam = "src=" + URLEncoder.encode(wordToRead, "UTF-8");
+            String langParam = language;
+
+            URL url = new URL(apiUrl + apiKeyParam + "&" + textParam + "&" + langParam);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            int responseCode = conn.getResponseCode();
+
+            if (responseCode == 200) {
+                InputStream inputStream = conn.getInputStream();
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedInputStream);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+
+                audioInputStream.close();
+                bufferedInputStream.close();
+                inputStream.close();
+            } else {
+                System.out.println("Error: " + responseCode);
             }
 
-        } else {
-            throw new IllegalStateException("Cannot find voice: kevin16");
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException | InterruptedException e) {
+            e.printStackTrace();
         }
     }
-
-    public void SpeakText(String words) {
-        voice.speak(words);
-    }
-
 }

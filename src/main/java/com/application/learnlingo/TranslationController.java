@@ -69,7 +69,6 @@ public class TranslationController implements Initializable{
     static Boolean changeL = true;
     @FXML
     static Boolean b = true;
-
     @FXML
     private TextArea tx1;
     @FXML
@@ -198,7 +197,6 @@ public class TranslationController implements Initializable{
             tx2.setText(translate("vi", "en", text));
         } else {
             tx2.setText(translate("en", "vi", text));
-            TextToSpeech pronouce = new TextToSpeech("Translate successfully");
         }
     }
 
@@ -211,11 +209,18 @@ public class TranslationController implements Initializable{
         }
     }
 
-    public void text_to_speech() {
+    public void text_to_speech1() {
         if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText());
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us");
         } else {
-            //to do voice VietNamese
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn");
+        }
+    }
+    public void text_to_speech2() {
+        if(changeL) {
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn");
+        } else {
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us");
         }
     }
 
@@ -237,7 +242,7 @@ public class TranslationController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage backgroundImage = new BackgroundImage(
-                new javafx.scene.image.Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
+                new javafx.scene.image.Image("C:\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
