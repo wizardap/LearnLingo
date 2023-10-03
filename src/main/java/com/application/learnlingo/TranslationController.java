@@ -173,6 +173,24 @@ public class TranslationController implements Initializable{
 
 
     @FXML
+    public void text_to_speech1() {
+        if(changeL) {
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us");
+        } else {
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn");
+        }
+    }
+
+    @FXML
+    public void text_to_speech2() {
+        if(changeL) {
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn");
+        } else {
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us");
+        }
+    }
+
+    @FXML
     public String translate(String langFrom, String langTo, String text) throws IOException {
         // INSERT YOU URL HERE
         String urlStr = "https://script.google.com/macros/s/AKfycbzF2OvXi2Ka9v4aBMt-7L_TL9fCGfLpAaCqrFfibjNKi6baRPl7Qrlt_zakZH6Y3KE9ew/exec" +
@@ -198,7 +216,6 @@ public class TranslationController implements Initializable{
             tx2.setText(translate("vi", "en", text));
         } else {
             tx2.setText(translate("en", "vi", text));
-            TextToSpeech pronouce = new TextToSpeech("Translate successfully");
         }
     }
 
@@ -211,13 +228,6 @@ public class TranslationController implements Initializable{
         }
     }
 
-    public void text_to_speech() {
-        if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText());
-        } else {
-            //to do voice VietNamese
-        }
-    }
 
     private static void animation(JFXButton button, int x, int time, String message) {
         TranslateTransition transition = new TranslateTransition();
@@ -242,9 +252,9 @@ public class TranslationController implements Initializable{
                 BackgroundSize.DEFAULT);
 
         Background background = new Background(backgroundImage);
-        animation(b1, 150, 1, "Have a good day <3");
-        animation(b2, -150, 1, "You are so amazing <3");
-        animation(b3, 150, 1, "Wish you everything <3");
+//        animation(b1, 150, 1, "Have a good day <3");
+//        animation(b2, -150, 1, "You are so amazing <3");
+//        animation(b3, 150, 1, "Wish you everything <3");
         center.setBackground(background);
         tx1.setWrapText(true);
         tx2.setWrapText(true);

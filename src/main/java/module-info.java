@@ -11,6 +11,7 @@ module com.application.learnlingo {
     requires freetts;
     requires com.jfoenix;
     requires java.sql;
+    requires java.desktop;
     opens com.application.learnlingo to javafx.fxml;
     exports com.application.learnlingo;
 }

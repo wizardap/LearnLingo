@@ -8,9 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -190,8 +189,44 @@ public class DictionaryController extends GeneralController implements Initializ
 
     }
 
+    private static class IconAndFontListCell extends ListCell<String> {
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item == null || empty) {
+                setGraphic(null);
+            } else {
+                String[] lines = item.split("\n");
+
+                HBox hbox = new HBox();
+                ImageView iconImageView = new ImageView(new Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\clock.png")); // Đường dẫn đến biểu tượng
+                iconImageView.setFitHeight(16); // Thiết lập kích thước cho biểu tượng
+                iconImageView.setFitWidth(16);
+                hbox.getChildren().add(iconImageView);
+
+                VBox vBox = new VBox();
+                for (int i = 0; i < 3; i++) {
+                    Label text = new Label(lines[i]);
+                    if (i == 1) {
+                        text.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;");
+                    } else {
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
+
+                    }
+                    vBox.getChildren().add(text);
+                }
+                hbox.setSpacing(5);
+                hbox.getChildren().add(vBox);
+                setGraphic(hbox);
+            }
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        listWords.getItems().addAll("Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào");
+//        listWords.setCellFactory(param -> new IconAndFontListCell());
         webEngine = webView.getEngine();
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
