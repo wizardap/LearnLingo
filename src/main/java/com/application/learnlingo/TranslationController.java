@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -247,7 +248,7 @@ public class TranslationController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage backgroundImage = new BackgroundImage(
-                new javafx.scene.image.Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
+                new Image(getClass().getResource("image/bg3.png").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
