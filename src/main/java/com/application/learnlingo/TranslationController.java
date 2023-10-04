@@ -248,7 +248,7 @@ public class TranslationController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage backgroundImage = new BackgroundImage(
-                new Image(getClass().getResource("image/bg3.png").toString(), 910, 600, false, true),
+                new Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
