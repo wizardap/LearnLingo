@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -21,28 +21,10 @@ import java.util.ResourceBundle;
 public class ChangeWordController implements Initializable {
 
     @FXML
-    private JFXButton b1;
-
-    @FXML
-    private JFXButton b2;
-
-    @FXML
-    private JFXButton b3;
-
-    @FXML
-    private JFXButton b4;
-
-    @FXML
-    private JFXButton b5;
-
-    @FXML
-    private JFXButton b6;
-
-    @FXML
-    private Button add;
-
-    @FXML
     private BorderPane container;
+
+    @FXML
+    private AnchorPane center;
 
     private static void animation(JFXButton button, int x, int time, String message) {
         TranslateTransition transition = new TranslateTransition();
@@ -137,11 +119,12 @@ public class ChangeWordController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        animation(b1, -200, 2, "Have a good day <3");
-        animation(b2, 200, 2, "You are so amazing <3");
-        animation(b3, -200, 2, "Wish you everything <3");
-        animation(b4, -200, 2, "Thank for using our app <3");
-        animation(b5, 200, 2, "You are so beautiful <3");
-        animation(b6, 200, 2, "Hope you feel happy <3");
+        BackgroundImage backgroundImage = new BackgroundImage(
+                new javafx.scene.image.Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+
+        Background background = new Background(backgroundImage);
+        center.setBackground(background);
     }
 }

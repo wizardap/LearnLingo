@@ -11,8 +11,16 @@
     -fx-background-color: white;
 }
 
-#find:hover, #find:hover {
+#find1 {
+    -fx-background-color: #eeeeee;
+}
+
+#find:hover {
     -fx-background-color: #FEC400;
+}
+
+#find1:hover {
+    -fx-opacity: 0.8;
 }
 
 
@@ -90,7 +98,7 @@
     -fx-background-radius: 20 0 0 20;
 }
 
-#textfield, #textfield1 {
+#textfield {
     -fx-background-color: white;
     -fx-background-insets: 0;
     -fx-background-radius: 20 0 0 20;
@@ -104,10 +112,30 @@
     -fx-background-color: #6a78a8;;
 }
 
-#deleteWord, #deleteWord1 {
+#deleteWord {
     -fx-background-color: -fx-background;
     -fx-background-insets: 0;
     -fx-background-radius: 0 20 20 0;
+}
+
+#textfield1 {
+    -fx-background-insets: 0;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1 0 1 1;
+}
+
+#textfield1:focused {
+    -fx-background-insets: 0;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1 0 1 1;
+}
+
+#deleteWord1 {
+    -fx-background-radius: 0 20 20 0;
+    -fx-background-color: white;
+    -fx-border-width: 1 1 1 0;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 0 20 20 0;
 }
 
 #bookmark:hover {
@@ -116,4 +144,35 @@
     -fx-background-color: #FEC400;
 }
 
+#send {
+    -fx-background-insets: 0;
+    -fx-background-color: #1d2a57;
+}
 
+#send:hover {
+    -fx-opacity: 0.8;
+}
+
+#changed, #reset {
+    -fx-background-color: white;
+}
+
+#changed:hover, #reset:hover {
+    -fx-background-color: #cccccc;
+}
+
+#d1:hover, #d2:hover {
+    -fx-cursor: hand;
+}
+
+#addw, #delw {
+    -fx-border-insets: 0;
+    -fx-background-color: #1d2a57;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+#addw:hover, #delw:hover {
+    -fx-opacity: 0.8;
+}
