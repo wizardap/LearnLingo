@@ -1,32 +1,32 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class BookMarkController implements Initializable {
+public class Game implements Initializable {
 
     @FXML
-    private TextField textfield1;
+    private AnchorPane center;
 
     @FXML
     private BorderPane container;
 
     @FXML
-    private JFXListView listWords;
+    private Label timerLabel;
+
+    private int seconds = 120;
 
     @FXML
     private Button search;
@@ -46,23 +46,35 @@ public class BookMarkController implements Initializable {
     @FXML
     private Button dich;
 
-    @FXML
-    private Button game;
 
-    @FXML
-    private void deleteWord() {
-        textfield1.setText("");
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        BackgroundImage backgroundImage = new BackgroundImage(
+                new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+
+        Background background = new Background(backgroundImage);
+        center.setBackground(background);
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        seconds--;
+                        timerLabel.setText("TIME                " + seconds);
+                    }
+                })
+        );
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+
+        timeline.play();
+
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
-        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
-        listWords.getItems().addAll("Hello", "World","Hello", "World","Hello", "World","Hello", "World","Hello", "World");
-
     }
 }

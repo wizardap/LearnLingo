@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -21,110 +22,63 @@ import java.util.ResourceBundle;
 public class ChangeWordController implements Initializable {
 
     @FXML
+    private Button search;
+
+    @FXML
+    private Button dich;
+
+    @FXML
+    private Button history;
+
+    @FXML
+    private Button settings;
+
+    @FXML
+    private Button tudien;
+
+    @FXML
     private BorderPane container;
 
     @FXML
     private AnchorPane center;
 
-    private static void animation(JFXButton button, int x, int time, String message) {
-        TranslateTransition transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(time));
-        transition.setNode(button);
-        transition.setToY(x);
-        transition.setAutoReverse(true);
-        transition.setCycleCount(TranslateTransition.INDEFINITE);
-        transition.play();
-        button.setOnAction(e -> {
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-            alert1.setHeaderText(message);
-            alert1.show();
-        });
-    }
-
-    private void makeFadeOutToBookMark() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setBookMark());
-        fadeTransition.play();
-    }
+    @FXML
+    private Button deleteWord1;
 
     @FXML
-    public void handleButtonClickBookMark() {
-        makeFadeOutToBookMark();
-    }
-
-    private void setBookMark() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("BookMark.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    public void handleButtonClick() {
-        makeFadeOut();
-    }
-
-    private void makeFadeOut() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setDictonaryMode());
-        fadeTransition.play();
-    }
-
-    private void setDictonaryMode() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("hello-view.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private TextField textfield1;
 
     @FXML
-    public void handleButtonClickSetTranslation() {
-        makeFadeOutToTranslation();
-    }
+    private Button game;
 
-    private void makeFadeOutToTranslation() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setTranslation());
-        fadeTransition.play();
-    }
-
-    private void setTranslation() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("TranslationController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage backgroundImage = new BackgroundImage(
-                new javafx.scene.image.Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
+                new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
-
+        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
+        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
+        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         Background background = new Background(backgroundImage);
         center.setBackground(background);
+    }
+
+    @FXML
+    public void delete() {
+        textfield1.setText("");
+    }
+
+    @FXML
+    public void addWord() {
+        //To do
+    }
+
+    @FXML
+    public void deleteWord() {
+        //To do
     }
 }

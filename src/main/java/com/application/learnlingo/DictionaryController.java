@@ -28,6 +28,9 @@ import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController implements Initializable {
 
+    @FXML
+    private Button settings;
+
     static Boolean b = true;
     @FXML
     static boolean changeL = true;
@@ -79,6 +82,9 @@ public class DictionaryController extends GeneralController implements Initializ
     private Button search;
 
     @FXML
+    private Button game;
+
+    @FXML
     public void changeMode() {
         if (isUKFlagVisible) {
             changeDictionary.getChildren().removeAll(british, vn, change);
@@ -98,84 +104,6 @@ public class DictionaryController extends GeneralController implements Initializ
             listWords.getItems().clear();
         }
         isUKFlagVisible = !isUKFlagVisible;
-    }
-
-    @FXML
-    public void handleButtonClick() {
-        makeFadeOutToTranslation();
-    }
-
-    private void makeFadeOutToTranslation() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setTranslation());
-        fadeTransition.play();
-    }
-
-    private void setTranslation() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("TranslationController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void makeFadeOutToChangeWord() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setChangeWord());
-        fadeTransition.play();
-    }
-
-    @FXML
-    public void handleButtonClickChangeWord() {
-        makeFadeOutToChangeWord();
-    }
-
-    private void setChangeWord() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("changeWordController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void makeFadeOutToBookMark() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setBookMark());
-        fadeTransition.play();
-    }
-
-    @FXML
-    public void handleButtonClickBookMark() {
-        makeFadeOutToBookMark();
-    }
-
-    private void setBookMark() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("BookMark.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
@@ -227,6 +155,11 @@ public class DictionaryController extends GeneralController implements Initializ
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        listWords.getItems().addAll("Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào");
 //        listWords.setCellFactory(param -> new IconAndFontListCell());
+        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
+        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
+        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
+        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         webEngine = webView.getEngine();
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }

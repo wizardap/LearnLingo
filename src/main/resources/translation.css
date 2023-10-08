@@ -17,4 +17,19 @@
 }
 
 
+.jfx-slider .thumb {
+    -fx-background-color: #1d2a57;
+}
+
+.jfx-slider .colored-track {
+    -fx-background-color: #1d2a57;
+}
+
+.jfx-slider .animated-thumb {
+    -fx-background-color: #1d2a57;
+}
+
+#slider:hover {
+    -fx-cursor: hand;
+}
 

@@ -60,8 +60,6 @@ public class DictDMBS {
                 String word = rs.getString("word");
                 filterList.add(word);
             }
-           // System.out.println("End.");
-
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
