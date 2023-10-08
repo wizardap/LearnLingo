@@ -72,7 +72,7 @@
                   <Insets />
                </VBox.margin>
             </Region>
-            <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
+            <Button fx:id="settings" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -294,6 +294,13 @@
             <ImageView fitHeight="70.0" fitWidth="114.0" layoutX="12.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/gamelogo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="703.0" layoutY="494.0" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="MENU" />
+            <Label alignment="CENTER" layoutX="657.0" layoutY="494.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <ImageView fitHeight="53.0" fitWidth="60.0" layoutX="651.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/volumegame.png" />
                </image>
             </ImageView>
          </children>

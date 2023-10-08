@@ -28,6 +28,25 @@ public class Game implements Initializable {
 
     private int seconds = 120;
 
+    @FXML
+    private Button search;
+
+    @FXML
+    private Button add;
+
+    @FXML
+    private Button history;
+
+    @FXML
+    private Button settings;
+
+    @FXML
+    private Button tudien;
+
+    @FXML
+    private Button dich;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -50,5 +69,12 @@ public class Game implements Initializable {
         timeline.setCycleCount(Timeline.INDEFINITE);
 
         timeline.play();
+
+        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
+        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
+        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
+        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
     }
 }

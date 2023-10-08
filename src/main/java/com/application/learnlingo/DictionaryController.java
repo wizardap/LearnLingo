@@ -82,6 +82,9 @@ public class DictionaryController extends GeneralController implements Initializ
     private Button search;
 
     @FXML
+    private Button game;
+
+    @FXML
     public void changeMode() {
         if (isUKFlagVisible) {
             changeDictionary.getChildren().removeAll(british, vn, change);
@@ -156,6 +159,7 @@ public class DictionaryController extends GeneralController implements Initializ
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         webEngine = webView.getEngine();
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }

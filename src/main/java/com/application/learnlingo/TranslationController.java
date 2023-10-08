@@ -91,6 +91,9 @@ public class TranslationController implements Initializable{
     private TextArea tx2;
 
     @FXML
+    private Button game;
+
+    @FXML
     private BorderPane container;
 
     public void changeLanguage() {
@@ -177,7 +180,7 @@ public class TranslationController implements Initializable{
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         tx1.setWrapText(true);
         tx2.setWrapText(true);
     }

@@ -51,6 +51,9 @@ public class SettingsController implements Initializable {
     @FXML
     private BorderPane container;
 
+    @FXML
+    private Button game;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -64,6 +67,7 @@ public class SettingsController implements Initializable {
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         center.setBackground(background);
         feedback.setWrapText(true);
 

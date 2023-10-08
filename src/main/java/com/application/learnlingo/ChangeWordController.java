@@ -48,6 +48,9 @@ public class ChangeWordController implements Initializable {
     @FXML
     private TextField textfield1;
 
+    @FXML
+    private Button game;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -59,6 +62,7 @@ public class ChangeWordController implements Initializable {
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         Background background = new Background(backgroundImage);
         center.setBackground(background);
     }

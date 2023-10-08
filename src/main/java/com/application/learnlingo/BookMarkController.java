@@ -47,6 +47,9 @@ public class BookMarkController implements Initializable {
     private Button dich;
 
     @FXML
+    private Button game;
+
+    @FXML
     private void deleteWord() {
         textfield1.setText("");
     }
@@ -58,6 +61,7 @@ public class BookMarkController implements Initializable {
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         listWords.getItems().addAll("Hello", "World","Hello", "World","Hello", "World","Hello", "World","Hello", "World");
 
     }
