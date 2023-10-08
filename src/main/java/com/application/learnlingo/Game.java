@@ -49,6 +49,9 @@ public class Game implements Initializable {
     @FXML
     private Button dich;
 
+    @FXML
+    private Button start;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,24 +69,8 @@ public class Game implements Initializable {
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
-
-        showConfirmationDialog();
-
-    }
-
-    private void showConfirmationDialog() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("CONFIRMATION");
-        alert.setHeaderText("Do you want to play game right now?");
-        ButtonType yesButtonType = new ButtonType("Yes");
-        ButtonType noButtonType = new ButtonType("No");
-        alert.getButtonTypes().setAll(yesButtonType, noButtonType);
-
-        Button yesButton = (Button) alert.getDialogPane().lookupButton(yesButtonType);
-        Button noButton = (Button) alert.getDialogPane().lookupButton(noButtonType);
-
-        yesButton.setOnAction(event -> {
+        start.setOnAction(e -> {
+            start.setVisible(false);
             Timeline timeline = new Timeline(
                     new KeyFrame(Duration.seconds(1), event1 -> {
                         seconds--;
@@ -94,15 +81,7 @@ public class Game implements Initializable {
             timeline.setCycleCount(Timeline.INDEFINITE);
 
             timeline.play();
-            alert.close();
         });
-
-        noButton.setOnAction(event -> {
-            AnimationChangeScene.handleButtonClick("hello-view.fxml", container);
-            alert.close();
-        });
-
-        alert.show();
     }
 
 }

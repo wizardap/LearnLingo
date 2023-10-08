@@ -208,7 +208,7 @@
          <children>
             <Label fx:id="l1" layoutX="181.0" layoutY="281.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
             <Label fx:id="l2" layoutX="185.0" layoutY="285.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" />
-            <JFXButton layoutX="250.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" text="O">
+            <JFXButton layoutX="250.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" stylesheets="@../../../game.css" text="O">
                <effect>
                   <DropShadow>
                      <color>
@@ -227,7 +227,7 @@
             <Label fx:id="l21111" layoutX="444.0" layoutY="284.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" />
             <Label fx:id="l1211" layoutX="571.0" layoutY="281.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
             <Label fx:id="l211111" layoutX="574.0" layoutY="284.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" />
-            <JFXButton layoutX="315.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" text="U">
+            <JFXButton layoutX="315.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" stylesheets="@../../../game.css" text="U">
                <effect>
                   <DropShadow>
                      <color>
@@ -236,7 +236,7 @@
                   </DropShadow>
                </effect>
             </JFXButton>
-            <JFXButton layoutX="380.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" text="N">
+            <JFXButton layoutX="380.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" stylesheets="@../../../game.css" text="N">
                <effect>
                   <DropShadow>
                      <color>
@@ -245,7 +245,7 @@
                   </DropShadow>
                </effect>
             </JFXButton>
-            <JFXButton layoutX="445.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" text="T">
+            <JFXButton layoutX="445.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" stylesheets="@../../../game.css" text="T">
                <effect>
                   <DropShadow>
                      <color>
@@ -254,7 +254,7 @@
                   </DropShadow>
                </effect>
             </JFXButton>
-            <JFXButton layoutX="510.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" text="R">
+            <JFXButton layoutX="510.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" stylesheets="@../../../game.css" text="R">
                <effect>
                   <DropShadow>
                      <color>
@@ -263,7 +263,7 @@
                   </DropShadow>
                </effect>
             </JFXButton>
-            <JFXButton layoutX="185.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" text="C">
+            <JFXButton layoutX="185.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" stylesheets="@../../../game.css" text="C">
                <effect>
                   <DropShadow>
                      <color>
@@ -274,7 +274,7 @@
             </JFXButton>
             <Label fx:id="l12111" layoutX="506.0" layoutY="281.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
             <Label fx:id="l2111111" layoutX="509.0" layoutY="284.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" />
-            <JFXButton layoutX="575.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" text="Y">
+            <JFXButton layoutX="575.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999;" stylesheets="@../../../game.css" text="Y">
                <effect>
                   <DropShadow>
                      <color>
@@ -284,10 +284,10 @@
                </effect>
             </JFXButton>
             <HBox layoutX="206.0" layoutY="65.0" prefHeight="189.0" prefWidth="401.0" style="-fx-background-color: #1189BE;" />
-            <JFXButton layoutX="140.0" layoutY="449.0" prefHeight="37.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" text="TWIST" />
-            <JFXButton layoutX="281.0" layoutY="449.0" prefHeight="37.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" text="CLEAR" />
-            <JFXButton layoutX="565.0" layoutY="449.0" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" text="ENTER" />
-            <JFXButton layoutX="421.0" layoutY="449.0" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" text="LAST" />
+            <JFXButton layoutX="140.0" layoutY="449.0" prefHeight="37.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" stylesheets="@../../../game.css" text="TWIST" />
+            <JFXButton layoutX="281.0" layoutY="449.0" prefHeight="37.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" stylesheets="@../../../game.css" text="CLEAR" />
+            <JFXButton layoutX="565.0" layoutY="449.0" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" stylesheets="@../../../game.css" text="ENTER" />
+            <JFXButton layoutX="421.0" layoutY="449.0" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" stylesheets="@../../../game.css" text="LAST" />
             <Label alignment="CENTER" layoutX="206.0" layoutY="10.0" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="SCORE                0" />
             <Label fx:id="timerLabel" alignment="CENTER" layoutX="425.0" layoutY="11.0" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="TIME                120" />
             <Label alignment="CENTER" layoutX="647.0" layoutY="11.0" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="ROUND                1" />
@@ -296,13 +296,14 @@
                   <Image url="@image/gamelogo.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="703.0" layoutY="494.0" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="MENU" />
             <Label alignment="CENTER" layoutX="657.0" layoutY="494.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" />
             <ImageView fitHeight="53.0" fitWidth="60.0" layoutX="651.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/volumegame.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="start" layoutX="26.0" layoutY="492.0" prefHeight="40.0" prefWidth="113.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-text-fill: white; -fx-font-weight: bold;" stylesheets="@../../../game.css" text="START HERE" />
+            <JFXButton fx:id="start1" layoutX="704.0" layoutY="494.0" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-text-fill: white; -fx-font-weight: bold;" stylesheets="@../../../game.css" text="MENU" />
          </children>
       </AnchorPane>
    </center>

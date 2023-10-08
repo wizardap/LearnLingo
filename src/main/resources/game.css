@@ -1,0 +1,4 @@
+.button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.9;
+}
