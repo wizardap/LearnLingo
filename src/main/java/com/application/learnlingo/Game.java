@@ -7,9 +7,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -56,19 +59,6 @@ public class Game implements Initializable {
 
         Background background = new Background(backgroundImage);
         center.setBackground(background);
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        seconds--;
-                        timerLabel.setText("TIME                " + seconds);
-                    }
-                })
-        );
-
-        timeline.setCycleCount(Timeline.INDEFINITE);
-
-        timeline.play();
 
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
@@ -76,5 +66,43 @@ public class Game implements Initializable {
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+
+        showConfirmationDialog();
+
     }
+
+    private void showConfirmationDialog() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("CONFIRMATION");
+        alert.setHeaderText("Do you want to play game right now?");
+        ButtonType yesButtonType = new ButtonType("Yes");
+        ButtonType noButtonType = new ButtonType("No");
+        alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+        Button yesButton = (Button) alert.getDialogPane().lookupButton(yesButtonType);
+        Button noButton = (Button) alert.getDialogPane().lookupButton(noButtonType);
+
+        yesButton.setOnAction(event -> {
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(1), event1 -> {
+                        seconds--;
+                        timerLabel.setText("TIME                " + seconds);
+                    })
+            );
+
+            timeline.setCycleCount(Timeline.INDEFINITE);
+
+            timeline.play();
+            alert.close();
+        });
+
+        noButton.setOnAction(event -> {
+            AnimationChangeScene.handleButtonClick("hello-view.fxml", container);
+            alert.close();
+        });
+
+        alert.show();
+    }
+
 }
