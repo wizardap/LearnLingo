@@ -13,7 +13,7 @@ import java.io.IOException;
 public class DictionaryApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(DictionaryApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DictionaryApplication.class.getResource("gameController.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 910, 600);
         stage.setTitle("LearnLingo");
         stage.setScene(scene);

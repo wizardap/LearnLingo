@@ -167,12 +167,18 @@
 
 #addw, #delw {
     -fx-border-insets: 0;
-    -fx-background-color: #1d2a57;
+    -fx-background-color: #eeeeee;
     -fx-font-size: 13;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: #1d2a57;
 }
 
 #addw:hover, #delw:hover {
-    -fx-opacity: 0.8;
+    -fx-background-color: #1d2a57;
+    -fx-text-fill: white;
+}
+
+#addw:focused, #delw:focused {
+    -fx-background-color: #1d2a57;
+    -fx-text-fill: white;
 }

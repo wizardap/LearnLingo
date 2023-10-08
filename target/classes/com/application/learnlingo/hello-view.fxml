@@ -30,7 +30,7 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="add" mnemonicParsing="false" onAction="#handleButtonClickChangeWord" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
+            <Button fx:id="add" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,7 +54,7 @@
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="history" mnemonicParsing="false" onAction="#handleButtonClickBookMark" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
+            <Button fx:id="history" mnemonicParsing="false" prefHeight="24.0" prefWidth="32.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -92,7 +92,7 @@
    <top>
       <HBox fx:id="top" prefHeight="23.0" prefWidth="942.0" spacing="10.0" style="-fx-background-color: #1d2a57;" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="menu" mnemonicParsing="false" prefHeight="56.0" prefWidth="39.0" stylesheets="@../../../vu.css">
+            <Button fx:id="menu" mnemonicParsing="false" prefHeight="56.0" prefWidth="39.0" style="-fx-hgrow: always;" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -175,7 +175,7 @@
                      <HBox.margin>
                         <Insets left="20.0" top="11.0" />
                      </HBox.margin></JFXButton>
-                  <JFXButton fx:id="dich" onAction="#handleButtonClick" style="-fx-min-width: 85;" text="Translation">
+                  <JFXButton fx:id="dich" style="-fx-min-width: 85;" text="Translation">
                      <HBox.margin>
                         <Insets top="11.0" />
                      </HBox.margin>
