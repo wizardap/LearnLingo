@@ -30,7 +30,10 @@ public class DictionaryController extends GeneralController implements Initializ
 
     @FXML
     private Button settings;
-
+    @FXML
+    private Button speakUS;
+    @FXML
+    private Button speakUK;
     static Boolean b = true;
     @FXML
     static boolean changeL = true;
@@ -145,6 +148,9 @@ public class DictionaryController extends GeneralController implements Initializ
                     vBox.getChildren().add(text);
                 }
                 hbox.setSpacing(5);
+
+                hbox.setSpacing(15);
+
                 hbox.getChildren().add(vBox);
                 setGraphic(hbox);
             }
@@ -155,6 +161,9 @@ public class DictionaryController extends GeneralController implements Initializ
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        listWords.getItems().addAll("Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào");
 //        listWords.setCellFactory(param -> new IconAndFontListCell());
+        bookmark.setVisible(false);
+        speakUK.setVisible(false);
+        speakUS.setVisible(false);
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
@@ -193,6 +202,19 @@ public class DictionaryController extends GeneralController implements Initializ
                 meaningHTMLString = evDict.getWordInformation(selectedWord).getHtml();
             } else meaningHTMLString = veDict.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
+            speakUS.setVisible(true);
+            speakUK.setVisible(true);
+            bookmark.setVisible(true);
         }
+    }
+    @FXML
+    public void speakWordUS(){
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-us");
+    }
+    @FXML
+    public void speakWordUK(){
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-gb");
     }
 }
