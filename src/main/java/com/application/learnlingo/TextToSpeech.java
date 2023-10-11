@@ -18,7 +18,7 @@ public class TextToSpeech {
     }
 
     public void speak() {
-        String apiKey = "f9bbafb560a64ab78feda826087cc584";
+        String apiKey = "ec3d616154994f4a891ce5d297175493";
 
         String wordToRead = WordToSpeech;
 
