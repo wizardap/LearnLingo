@@ -3,6 +3,7 @@ package com.application.learnlingo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -86,6 +84,11 @@ public class DictionaryController extends GeneralController implements Initializ
 
     @FXML
     private Button game;
+
+    @FXML
+    private Button menu;
+
+    private boolean checkMenuBar = false;
 
     @FXML
     public void changeMode() {
@@ -159,8 +162,9 @@ public class DictionaryController extends GeneralController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        listWords.getItems().addAll("Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào","Hello\nĐộng từ\nXin chào");
-//        listWords.setCellFactory(param -> new IconAndFontListCell());
+        center.setStyle("-fx-background-color: #F4F4F4");
+        left.setVisible(false);
+        left.setTranslateX(-100);
         bookmark.setVisible(false);
         speakUK.setVisible(false);
         speakUS.setVisible(false);
@@ -216,5 +220,22 @@ public class DictionaryController extends GeneralController implements Initializ
     public void speakWordUK(){
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-gb");
+    }
+
+    @FXML
+    public void setMenu() {
+        checkMenuBar = !checkMenuBar;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(left);
+        if (checkMenuBar) {
+            left.setVisible(true);
+            left.setPrefWidth(100);
+            slide.setToX(0);
+            slide.play();
+        } else {
+            slide.setToX(-100);
+            slide.play();
+        }
     }
 }

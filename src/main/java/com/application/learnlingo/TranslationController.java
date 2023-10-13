@@ -96,6 +96,11 @@ public class TranslationController implements Initializable{
     @FXML
     private BorderPane container;
 
+    @FXML
+    private Button menu;
+
+    private boolean checkMenuBar = false;
+
     public void changeLanguage() {
         if(changeL == true) {
             lang1.setText("Vietnamese");
@@ -168,6 +173,8 @@ public class TranslationController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        left.setVisible(false);
+        left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -183,5 +190,22 @@ public class TranslationController implements Initializable{
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         tx1.setWrapText(true);
         tx2.setWrapText(true);
+    }
+
+    @FXML
+    public void setMenu() {
+        checkMenuBar = !checkMenuBar;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(left);
+        if (checkMenuBar) {
+            left.setVisible(true);
+            left.setPrefWidth(100);
+            slide.setToX(0);
+            slide.play();
+        } else {
+            slide.setToX(-100);
+            slide.play();
+        }
     }
 }

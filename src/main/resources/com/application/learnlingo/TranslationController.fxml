@@ -93,7 +93,7 @@
     <top>
         <HBox fx:id="top" prefHeight="23.0" prefWidth="942.0" spacing="10.0" style="-fx-background-color: #1d2a57;" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="menu" mnemonicParsing="false" prefHeight="56.0" prefWidth="39.0" stylesheets="@../../../vu.css">
+                <Button fx:id="menu" mnemonicParsing="false" onAction="#setMenu" prefHeight="56.0" prefWidth="39.0" stylesheets="@../../../vu.css">
                     <graphic>
                         <ImageView fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                             <image>

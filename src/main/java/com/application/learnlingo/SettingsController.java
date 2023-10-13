@@ -3,6 +3,7 @@ package com.application.learnlingo;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXSlider;
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -54,8 +55,18 @@ public class SettingsController implements Initializable {
     @FXML
     private Button game;
 
+    @FXML
+    private VBox left;
+
+    @FXML
+    private Button menu;
+
+    private boolean checkMenuBar = false;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        left.setVisible(false);
+        left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -71,5 +82,22 @@ public class SettingsController implements Initializable {
         center.setBackground(background);
         feedback.setWrapText(true);
 
+    }
+
+    @FXML
+    public void setMenu() {
+        checkMenuBar = !checkMenuBar;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(left);
+        if (checkMenuBar) {
+            left.setVisible(true);
+            left.setPrefWidth(100);
+            slide.setToX(0);
+            slide.play();
+        } else {
+            slide.setToX(-100);
+            slide.play();
+        }
     }
 }

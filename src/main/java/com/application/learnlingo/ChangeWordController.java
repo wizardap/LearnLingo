@@ -60,20 +60,30 @@ public class ChangeWordController implements Initializable {
     @FXML
     private JFXCheckBox d2;
 
+    @FXML
+    private VBox left;
+
+    @FXML
+    private Button menu;
+
+    private boolean checkMenuBar = false;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        left.setVisible(false);
+        left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundImage);
+        center.setBackground(background);
         search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
-        Background background = new Background(backgroundImage);
-        center.setBackground(background);
         d1.setOnAction(event -> {
             if (d1.isSelected()) {
                 d2.setSelected(false);
@@ -100,5 +110,22 @@ public class ChangeWordController implements Initializable {
     @FXML
     public void deleteWord() {
         //To do
+    }
+
+    @FXML
+    public void setMenu() {
+        checkMenuBar = !checkMenuBar;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(left);
+        if (checkMenuBar) {
+            left.setVisible(true);
+            left.setPrefWidth(100);
+            slide.setToX(0);
+            slide.play();
+        } else {
+            slide.setToX(-100);
+            slide.play();
+        }
     }
 }
