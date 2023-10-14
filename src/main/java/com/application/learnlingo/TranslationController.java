@@ -198,14 +198,21 @@ public class TranslationController implements Initializable{
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
         slide.setNode(left);
+        TranslateTransition slide2 = new TranslateTransition();
+        slide2.setDuration(Duration.seconds(0.4));
+        slide2.setNode(center);
         if (checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
+            slide2.setToX(40);
+            slide2.play();
         } else {
             slide.setToX(-100);
             slide.play();
+            slide2.setToX(0);
+            slide2.play();
         }
     }
 }

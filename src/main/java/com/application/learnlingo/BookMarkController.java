@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -64,6 +65,12 @@ public class BookMarkController implements Initializable {
     private AnchorPane center;
 
     @FXML
+    private AnchorPane subcenter;
+
+    @FXML
+    private WebView wv;
+
+    @FXML
     private void deleteWord() {
         textfield1.setText("");
     }
@@ -89,14 +96,23 @@ public class BookMarkController implements Initializable {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
         slide.setNode(left);
+        TranslateTransition slide2 = new TranslateTransition();
+        slide2.setDuration(Duration.seconds(0.4));
+        slide2.setNode(subcenter);
         if (checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
+            subcenter.setPrefWidth(559);
             slide.setToX(0);
             slide.play();
+            slide2.setToX(50);
+            slide2.play();
         } else {
+            wv.setPrefWidth(659);
             slide.setToX(-100);
             slide.play();
+            slide2.setToX(0);
+            slide2.play();
         }
     }
 }

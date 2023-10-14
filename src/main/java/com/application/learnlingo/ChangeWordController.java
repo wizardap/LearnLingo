@@ -71,7 +71,7 @@ public class ChangeWordController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         left.setVisible(false);
-        left.setTranslateX(-100);
+        left.setTranslateX(-50);
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,

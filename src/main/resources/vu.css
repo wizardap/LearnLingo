@@ -104,6 +104,13 @@
     -fx-background-radius: 20 0 0 20;
 }
 
+#textfield1 {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 20 0 0 20;
+}
+
+
 #textfield:focused, #textfield1:focused{
     -fx-border-color: none;
 }
@@ -112,30 +119,10 @@
     -fx-background-color: #6a78a8;;
 }
 
-#deleteWord {
+#deleteWord, #deleteWord1 {
     -fx-background-color: -fx-background;
     -fx-background-insets: 0;
     -fx-background-radius: 0 20 20 0;
-}
-
-#textfield1 {
-    -fx-background-insets: 0;
-    -fx-border-color: #cccccc;
-    -fx-border-width: 1 0 1 1;
-}
-
-#textfield1:focused {
-    -fx-background-insets: 0;
-    -fx-border-color: #cccccc;
-    -fx-border-width: 1 0 1 1;
-}
-
-#deleteWord1 {
-    -fx-background-radius: 0 20 20 0;
-    -fx-background-color: white;
-    -fx-border-width: 1 1 1 0;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 0 20 20 0;
 }
 
 #bookmark:hover {

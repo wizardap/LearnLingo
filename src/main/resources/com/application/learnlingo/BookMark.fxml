@@ -132,34 +132,12 @@
    <center>
       <AnchorPane fx:id="center" prefHeight="552.0" prefWidth="765.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listWords" layoutX="109.0" layoutY="80.0" prefHeight="471.0" prefWidth="190.0" stylesheets="@../../../vu.css" />
-            <WebView fx:id="wv" layoutX="298.0" layoutY="80.0" prefHeight="470.0" prefWidth="612.0" />
-            <Label alignment="CENTER" layoutX="109.0" layoutY="6.0" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-background-radius: 20; -fx-font-size: 14; -fx-font-weight: bold;" text="Saved words" />
-            <HBox layoutX="109.0" layoutY="39.0" prefHeight="33.0" prefWidth="203.0">
-               <children>
-                  <TextField fx:id="textfield1" prefHeight="28.0" prefWidth="151.0" promptText="Search in BookMark" stylesheets="@../../../vu.css">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
-                  <Button fx:id="deleteWord1" mnemonicParsing="false" onAction="#deleteWord" prefHeight="31.0" prefWidth="39.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../vu.css">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/deleteWord.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-               </children>
+            <HBox layoutX="62.0" layoutY="39.0" prefHeight="33.0" prefWidth="203.0">
                <padding>
                   <Insets top="7.0" />
                </padding>
             </HBox>
-            <VBox fx:id="left" prefHeight="541.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
+            <VBox fx:id="left" prefHeight="541.0" prefWidth="52.0" spacing="10.0" stylesheets="@../../../vu.css">
                <children>
                   <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
                      <graphic>
@@ -228,6 +206,23 @@
                   </Button>
                </children>
             </VBox>
+            <AnchorPane fx:id="subcenter" layoutX="52.0" prefHeight="551.0" prefWidth="811.0">
+               <children>
+                  <JFXListView fx:id="listWords" layoutX="11.0" layoutY="80.0" prefHeight="470.0" prefWidth="187.0" stylesheets="@../../../vu.css" />
+                  <WebView fx:id="wv" layoutX="198.0" layoutY="80.0" prefHeight="471.0" prefWidth="659.0" />
+                  <Label alignment="CENTER" layoutX="11.0" layoutY="10.0" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-background-radius: 20; -fx-font-size: 14; -fx-font-weight: bold;" text="Saved words" />
+                  <TextField fx:id="textfield1" layoutX="11.0" layoutY="52.0" prefHeight="25.0" prefWidth="156.0" promptText="Search here" stylesheets="@../../../vu.css" />
+                  <Button fx:id="deleteWord1" layoutX="166.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../vu.css">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deleteWord.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>

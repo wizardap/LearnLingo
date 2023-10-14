@@ -227,6 +227,7 @@ public class Game implements Initializable {
         });
 
         twist.setOnAction(e -> {
+            System.out.println(listButtonToClick.size());
             List<Button> copyList = new ArrayList<>(listButtonToClick);
             Collections.shuffle(copyList);
             String[] a = new String[copyList.size()];
