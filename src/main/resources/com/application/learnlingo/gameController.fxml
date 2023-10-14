@@ -164,7 +164,7 @@
             </JFXButton>
             <Label fx:id="l12111" layoutX="495.0" layoutY="281.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
             <Label fx:id="s6" alignment="CENTER" layoutX="498.0" layoutY="284.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <HBox layoutX="195.0" layoutY="65.0" prefHeight="189.0" prefWidth="401.0" style="-fx-background-color: #1189BE;" />
+            <HBox layoutX="195.0" layoutY="65.0" prefHeight="189.0" prefWidth="401.0" style="-fx-background-color: #1CC2F4 #1CC2F4;" />
             <JFXButton fx:id="twist" buttonType="RAISED" layoutX="129.0" layoutY="449.0" prefHeight="37.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" stylesheets="@../../../game.css" text="TWIST" />
             <JFXButton fx:id="clear" buttonType="RAISED" layoutX="270.0" layoutY="449.0" prefHeight="37.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" stylesheets="@../../../game.css" text="CLEAR" />
             <JFXButton fx:id="enter" buttonType="RAISED" layoutX="554.0" layoutY="449.0" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: white; -fx-background-color: #0EC7FF; -fx-font-size: 15; -fx-font-weight: bold; -fx-border-color: #cccccc; -fx-border-width: 3;" stylesheets="@../../../game.css" text="ENTER" />
@@ -184,7 +184,7 @@
                </image>
             </ImageView>
             <JFXButton fx:id="start" buttonType="RAISED" layoutX="16.0" layoutY="492.0" onAction="#startGame" prefHeight="40.0" prefWidth="113.0" stylesheets="@../../../game.css" text="START HERE" />
-            <JFXButton fx:id="menu" buttonType="RAISED" layoutX="693.0" layoutY="493.0" prefHeight="40.0" prefWidth="95.0" stylesheets="@../../../game.css" text="MENU" />
+            <JFXButton fx:id="menuButton" buttonType="RAISED" layoutX="693.0" layoutY="493.0" onAction="#setMenuGame" prefHeight="40.0" prefWidth="95.0" stylesheets="@../../../game.css" text="MENU" />
             <JFXButton fx:id="l3" buttonType="RAISED" layoutX="304.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999; -fx-text-fill: white; -fx-font-size: 25; -fx-font-weight: bold;" stylesheets="@../../../game.css" text="U">
                <effect>
                   <DropShadow>
@@ -297,6 +297,66 @@
                         <Insets bottom="10.0" left="4.0" />
                      </VBox.margin>
                   </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="menuGame" layoutX="691.0" layoutY="132.0" prefHeight="347.0" prefWidth="201.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <JFXButton prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HOW TO PLAY">
+                     <VBox.margin>
+                        <Insets left="14.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="171.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="MAIN MENU">
+                     <VBox.margin>
+                        <Insets left="14.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="24.0" layoutY="20.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="DIFFICULTY">
+                     <VBox.margin>
+                        <Insets left="14.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="213.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CREDITS">
+                     <VBox.margin>
+                        <Insets left="14.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/volumegame.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="30.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/music.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="35.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <JFXButton layoutX="24.0" layoutY="174.0" prefHeight="40.0" prefWidth="77.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="BACK">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="60.0" />
+                     </VBox.margin>
+                  </JFXButton>
                </children>
             </VBox>
          </children>

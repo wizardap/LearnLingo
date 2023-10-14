@@ -7,6 +7,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -74,6 +75,7 @@ public class BookMarkController implements Initializable {
     private void deleteWord() {
         textfield1.setText("");
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         center.setStyle("-fx-background-color: #F4F4F4");
@@ -86,7 +88,7 @@ public class BookMarkController implements Initializable {
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
-        listWords.getItems().addAll("Hello", "World","Hello", "World","Hello", "World","Hello", "World","Hello", "World");
+        listWords.getItems().addAll("Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World");
 
     }
 
@@ -107,12 +109,22 @@ public class BookMarkController implements Initializable {
             slide.play();
             slide2.setToX(50);
             slide2.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("left")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
         } else {
             wv.setPrefWidth(659);
             slide.setToX(-100);
             slide.play();
             slide2.setToX(0);
             slide2.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -95,9 +96,19 @@ public class SettingsController implements Initializable {
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("left")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
         } else {
             slide.setToX(-100);
             slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
         }
     }
 }

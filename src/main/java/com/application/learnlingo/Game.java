@@ -5,9 +5,12 @@ import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -113,8 +116,18 @@ public class Game implements Initializable {
 
     private boolean checkMenuBar = false;
 
+    private boolean checkMenuGame = false;
+
+    @FXML
+    private VBox menuGame;
+
+    @FXML
+    private Button menuButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        menuGame.setVisible(false);
+        menuGame.setTranslateX(220);
         left.setVisible(false);
         left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -144,14 +157,54 @@ public class Game implements Initializable {
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("left")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
         } else {
             slide.setToX(-100);
             slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
+        }
+    }
+
+    @FXML
+    public void setMenuGame() {
+        checkMenuGame = !checkMenuGame;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(menuGame);
+        if (checkMenuGame) {
+            menuGame.setVisible(true);
+            slide.setToX(0);
+            slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("menuGame")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
+        } else {
+            slide.setToX(220);
+            slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
         }
     }
 
     @FXML
     public void startGame() {
+        Media sound = new Media(getClass().getResource("audio/soundGame.mp3").toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+        mediaPlayer.play();
         start.setVisible(false);
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event1 -> {

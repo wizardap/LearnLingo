@@ -6,6 +6,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -26,7 +27,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class TranslationController implements Initializable{
+public class TranslationController implements Initializable {
 
     @FXML
     private Button search;
@@ -102,7 +103,7 @@ public class TranslationController implements Initializable{
     private boolean checkMenuBar = false;
 
     public void changeLanguage() {
-        if(changeL == true) {
+        if (changeL == true) {
             lang1.setText("Vietnamese");
             lang2.setText("English");
             changeL = false;
@@ -116,19 +117,19 @@ public class TranslationController implements Initializable{
 
     @FXML
     public void text_to_speech1() {
-        if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us");
+        if (changeL) {
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(), "hl=en-us");
         } else {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn");
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(), "hl=vi-vn");
         }
     }
 
     @FXML
     public void text_to_speech2() {
-        if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn");
+        if (changeL) {
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(), "hl=vi-vn");
         } else {
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us");
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(), "hl=en-us");
         }
     }
 
@@ -151,10 +152,11 @@ public class TranslationController implements Initializable{
         in.close();
         return response.toString();
     }
+
     @FXML
     public void translateMini() throws IOException {
         String text = tx1.getText();
-        if(!changeL) {
+        if (!changeL) {
             tx2.setText(translate("vi", "en", text));
         } else {
             tx2.setText(translate("en", "vi", text));
@@ -208,11 +210,21 @@ public class TranslationController implements Initializable{
             slide.play();
             slide2.setToX(40);
             slide2.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("left")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
         } else {
             slide.setToX(-100);
             slide.play();
             slide2.setToX(0);
             slide2.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
         }
     }
 }

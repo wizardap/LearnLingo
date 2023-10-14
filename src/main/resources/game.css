@@ -3,7 +3,7 @@
     -fx-opacity: 0.9;
 }
 
-#menu, #start {
+#menuButton, #start {
     -fx-background-color: #074B9C;
     -fx-border-color: #cccccc;
     -fx-font-size: 15;
