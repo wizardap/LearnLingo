@@ -5,9 +5,12 @@ import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -105,8 +108,6 @@ public class Game implements Initializable {
     @FXML
     private Button enter;
 
-    private static boolean checkTwist = false;
-
     @FXML
     private VBox left;
 
@@ -115,8 +116,18 @@ public class Game implements Initializable {
 
     private boolean checkMenuBar = false;
 
+    private boolean checkMenuGame = false;
+
+    @FXML
+    private VBox menuGame;
+
+    @FXML
+    private Button menuButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        menuGame.setVisible(false);
+        menuGame.setTranslateX(220);
         left.setVisible(false);
         left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -146,14 +157,54 @@ public class Game implements Initializable {
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("left")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
         } else {
             slide.setToX(-100);
             slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
+        }
+    }
+
+    @FXML
+    public void setMenuGame() {
+        checkMenuGame = !checkMenuGame;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(menuGame);
+        if (checkMenuGame) {
+            menuGame.setVisible(true);
+            slide.setToX(0);
+            slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("menuGame")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
+        } else {
+            slide.setToX(220);
+            slide.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
         }
     }
 
     @FXML
     public void startGame() {
+        Media sound = new Media(getClass().getResource("audio/soundGame.mp3").toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+        mediaPlayer.play();
         start.setVisible(false);
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event1 -> {
@@ -166,7 +217,7 @@ public class Game implements Initializable {
         List<Label> listLabelLastAgain = new ArrayList<>();
         List<Button> listButtonToClick = new ArrayList<>();
         List<Button> listButtonToVisibleAgain = new ArrayList<>();
-        List<Button> listButtonToLastAgain = new ArrayList<>();;
+
         listLabelToSet.add(s1);
         listLabelToSet.add(s2);
         listLabelToSet.add(s3);
@@ -191,9 +242,7 @@ public class Game implements Initializable {
                         btn.setVisible(false);
                         listButtonToClick.remove(btn);
                         listLabelLastAgain.add(label);
-                        checkTwist = true;
                         listButtonToVisibleAgain.add(btn);
-                        listButtonToLastAgain.add(btn);
                         break;
                     }
                 }
@@ -205,19 +254,22 @@ public class Game implements Initializable {
             for (Label label : listLabelToSet) {
                 if (!label.getText().equals("")) {
                     label.setText("");
-                    for (Button button : listButtonToVisibleAgain) {
-                        button.setVisible(true);
-                        listButtonToClick.add(button);
+                    for (int i = 0; i < listButtonToVisibleAgain.size(); i++) {
+                        listButtonToVisibleAgain.get(i).setVisible(true);
+                        listButtonToClick.add(listButtonToVisibleAgain.get(i));
+                        listButtonToVisibleAgain.remove(i);
+                        i--;
                     }
                 }
             }
+            listButtonToVisibleAgain.clear();
         });
 
         last.setOnAction(e -> {
-            if (listButtonToLastAgain.size() >= 1) {
-                listButtonToLastAgain.get(listButtonToLastAgain.size() - 1).setVisible(true);
-                listButtonToClick.add(listButtonToLastAgain.get(listButtonToLastAgain.size() - 1));
-                listButtonToLastAgain.remove(listButtonToLastAgain.size() - 1);
+            if (listButtonToVisibleAgain.size() >= 1) {
+                listButtonToVisibleAgain.get(listButtonToVisibleAgain.size() - 1).setVisible(true);
+                listButtonToClick.add(listButtonToVisibleAgain.get(listButtonToVisibleAgain.size() - 1));
+                listButtonToVisibleAgain.remove(listButtonToVisibleAgain.size() - 1);
             }
 
             if (listLabelLastAgain.size() >= 1) {
@@ -227,7 +279,6 @@ public class Game implements Initializable {
         });
 
         twist.setOnAction(e -> {
-            System.out.println(listButtonToClick.size());
             List<Button> copyList = new ArrayList<>(listButtonToClick);
             Collections.shuffle(copyList);
             String[] a = new String[copyList.size()];

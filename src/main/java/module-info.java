@@ -12,6 +12,7 @@ module com.application.learnlingo {
     requires com.jfoenix;
     requires java.sql;
     requires java.desktop;
+    requires javafx.media;
     opens com.application.learnlingo to javafx.fxml;
     exports com.application.learnlingo;
 }
