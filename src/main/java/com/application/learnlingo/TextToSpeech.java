@@ -7,13 +7,18 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class TextToSpeech {
     String WordToSpeech;
     String language;
-    public TextToSpeech(String Word, String language) {
+    String voiceName;
+    String speedRate;
+    public TextToSpeech(String Word, String language, String voiceName, String speedRate ) {
         this.WordToSpeech = Word;
         this.language = language;
+        this.voiceName=voiceName;
+        this.speedRate=speedRate;
         speak();
     }
 
@@ -24,11 +29,13 @@ public class TextToSpeech {
 
         try {
             String apiUrl = "http://api.voicerss.org/?";
-            String apiKeyParam = "key=" + URLEncoder.encode(apiKey, "UTF-8");
-            String textParam = "src=" + URLEncoder.encode(wordToRead, "UTF-8");
+            String apiKeyParam = "key=" + URLEncoder.encode(apiKey, StandardCharsets.UTF_8);
+            String textParam = "src=" + URLEncoder.encode(wordToRead, StandardCharsets.UTF_8);
             String langParam = language;
+            String voiceParam = "v=" + voiceName;
+            String speedParam = "r=" + speedRate;
 
-            URL url = new URL(apiUrl + apiKeyParam + "&" + textParam + "&" + langParam);
+            URL url = new URL(apiUrl + apiKeyParam + "&" + textParam + "&" + langParam + "&" + voiceParam + "&" + speedParam);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");

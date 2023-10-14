@@ -89,7 +89,7 @@ public class DictionaryController extends GeneralController implements Initializ
     private Button menu;
 
     private boolean checkMenuBar = false;
-
+    public static int speedRate;
     @FXML
     public void changeMode() {
         if (isUKFlagVisible) {
@@ -214,12 +214,12 @@ public class DictionaryController extends GeneralController implements Initializ
     @FXML
     public void speakWordUS(){
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-us");
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-us","Mike",Integer.toString(speedRate));
     }
     @FXML
     public void speakWordUK(){
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-gb");
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-gb","LiLy",Integer.toString(speedRate));
     }
 
     @FXML

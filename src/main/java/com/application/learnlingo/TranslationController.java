@@ -117,18 +117,20 @@ public class TranslationController implements Initializable{
     @FXML
     public void text_to_speech1() {
         if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us");
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us","Mike","0");
         } else {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn");
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn","Chi","0");
         }
     }
 
     @FXML
     public void text_to_speech2() {
         if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn");
+            SettingsController set = new SettingsController();
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn","Chi","0");
         } else {
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us");
+            SettingsController set = new SettingsController();
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us","Mike","0");
         }
     }
 
