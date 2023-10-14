@@ -183,7 +183,7 @@
                   <Image url="@image/volumegame.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="start" buttonType="RAISED" layoutX="108.0" layoutY="492.0" onAction="#startGame" prefHeight="40.0" prefWidth="113.0" stylesheets="@../../../game.css" text="START HERE" />
+            <JFXButton fx:id="start" buttonType="RAISED" layoutX="16.0" layoutY="492.0" onAction="#startGame" prefHeight="40.0" prefWidth="113.0" stylesheets="@../../../game.css" text="START HERE" />
             <JFXButton fx:id="menu" buttonType="RAISED" layoutX="693.0" layoutY="493.0" prefHeight="40.0" prefWidth="95.0" stylesheets="@../../../game.css" text="MENU" />
             <JFXButton fx:id="l3" buttonType="RAISED" layoutX="304.0" layoutY="355.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 999; -fx-text-fill: white; -fx-font-size: 25; -fx-font-weight: bold;" stylesheets="@../../../game.css" text="U">
                <effect>

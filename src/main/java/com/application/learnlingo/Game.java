@@ -105,8 +105,6 @@ public class Game implements Initializable {
     @FXML
     private Button enter;
 
-    private static boolean checkTwist = false;
-
     @FXML
     private VBox left;
 
@@ -166,7 +164,7 @@ public class Game implements Initializable {
         List<Label> listLabelLastAgain = new ArrayList<>();
         List<Button> listButtonToClick = new ArrayList<>();
         List<Button> listButtonToVisibleAgain = new ArrayList<>();
-        List<Button> listButtonToLastAgain = new ArrayList<>();;
+
         listLabelToSet.add(s1);
         listLabelToSet.add(s2);
         listLabelToSet.add(s3);
@@ -191,9 +189,7 @@ public class Game implements Initializable {
                         btn.setVisible(false);
                         listButtonToClick.remove(btn);
                         listLabelLastAgain.add(label);
-                        checkTwist = true;
                         listButtonToVisibleAgain.add(btn);
-                        listButtonToLastAgain.add(btn);
                         break;
                     }
                 }
@@ -205,19 +201,22 @@ public class Game implements Initializable {
             for (Label label : listLabelToSet) {
                 if (!label.getText().equals("")) {
                     label.setText("");
-                    for (Button button : listButtonToVisibleAgain) {
-                        button.setVisible(true);
-                        listButtonToClick.add(button);
+                    for (int i = 0; i < listButtonToVisibleAgain.size(); i++) {
+                        listButtonToVisibleAgain.get(i).setVisible(true);
+                        listButtonToClick.add(listButtonToVisibleAgain.get(i));
+                        listButtonToVisibleAgain.remove(i);
+                        i--;
                     }
                 }
             }
+            listButtonToVisibleAgain.clear();
         });
 
         last.setOnAction(e -> {
-            if (listButtonToLastAgain.size() >= 1) {
-                listButtonToLastAgain.get(listButtonToLastAgain.size() - 1).setVisible(true);
-                listButtonToClick.add(listButtonToLastAgain.get(listButtonToLastAgain.size() - 1));
-                listButtonToLastAgain.remove(listButtonToLastAgain.size() - 1);
+            if (listButtonToVisibleAgain.size() >= 1) {
+                listButtonToVisibleAgain.get(listButtonToVisibleAgain.size() - 1).setVisible(true);
+                listButtonToClick.add(listButtonToVisibleAgain.get(listButtonToVisibleAgain.size() - 1));
+                listButtonToVisibleAgain.remove(listButtonToVisibleAgain.size() - 1);
             }
 
             if (listLabelLastAgain.size() >= 1) {
@@ -227,7 +226,6 @@ public class Game implements Initializable {
         });
 
         twist.setOnAction(e -> {
-            System.out.println(listButtonToClick.size());
             List<Button> copyList = new ArrayList<>(listButtonToClick);
             Collections.shuffle(copyList);
             String[] a = new String[copyList.size()];
