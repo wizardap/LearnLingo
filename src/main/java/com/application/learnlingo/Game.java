@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -124,10 +126,51 @@ public class Game implements Initializable {
     @FXML
     private Button menuButton;
 
+    private MediaPlayer mediaPlayer;
+
+    private Media sound;
+
+    @FXML
+    private ImageView music;
+
+    @FXML
+    private Button btnmusic;
+
+    @FXML
+    private ImageView volume;
+
+    @FXML
+    private Button btnvolume;
+
+    private boolean checkAudio = true;
+
+    private boolean checkVolume = true;
+
+    @FXML
+    private VBox htp;
+
+    @FXML
+    private VBox credit;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        credit.setVisible(false);
+        htp.setVisible(false);
+        Image image = new Image(getClass().getResource("image/music.png").toString());
+        music = new ImageView(image);
+        music.setFitWidth(21);
+        music.setFitHeight(21);
+        btnmusic.setGraphic(music);
+        Image image2 = new Image(getClass().getResource("image/volumegame.png").toString());
+        volume = new ImageView(image2);
+        volume.setFitWidth(23);
+        volume.setFitHeight(23);
+        btnvolume.setGraphic(volume);
+        sound = new Media(getClass().getResource("audio/soundGame3.mp3").toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         menuGame.setVisible(false);
-        menuGame.setTranslateX(220);
+        menuGame.setTranslateX(600);
         left.setVisible(false);
         left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -191,7 +234,7 @@ public class Game implements Initializable {
                 }
             }
         } else {
-            slide.setToX(220);
+            slide.setToX(600);
             slide.play();
             for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
                 child.setOpacity(1);
@@ -200,10 +243,52 @@ public class Game implements Initializable {
     }
 
     @FXML
-    public void startGame() {
-        Media sound = new Media(getClass().getResource("audio/soundGame.mp3").toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+    public void stopVolume() {
+        if (checkVolume) {
+            Image image = new Image(getClass().getResource("image/stopvolumegame.png").toString());
+            volume = new ImageView(image);
+            volume.setFitWidth(23);
+            volume.setFitHeight(23);
+            btnvolume.setGraphic(volume);
+        } else {
+            Image image = new Image(getClass().getResource("image/volumegame.png").toString());
+            volume = new ImageView(image);
+            volume.setFitWidth(23);
+            volume.setFitHeight(23);
+            btnvolume.setGraphic(volume);
+        }
+        checkVolume = !checkVolume;
+    }
 
+    @FXML
+    public void stopMusic() {
+        if (checkAudio) {
+            mediaPlayer.stop();
+            Image image = new Image(getClass().getResource("image/stopmusic.png").toString());
+            music = new ImageView(image);
+            music.setFitWidth(21);
+            music.setFitHeight(21);
+            btnmusic.setGraphic(music);
+        } else {
+            mediaPlayer.play();
+            Image image = new Image(getClass().getResource("image/music.png").toString());
+            music = new ImageView(image);
+            music.setFitWidth(21);
+            music.setFitHeight(21);
+            btnmusic.setGraphic(music);
+        }
+        checkAudio = !checkAudio;
+    }
+
+    @FXML
+    public void setClick() {
+        Media soundClick = new Media(getClass().getResource("audio/audio_button_click_sound.wav").toString());
+        MediaPlayer click = new MediaPlayer(soundClick);
+        click.play();
+    }
+
+    @FXML
+    public void startGame() {
         mediaPlayer.play();
         start.setVisible(false);
         Timeline timeline = new Timeline(
@@ -301,6 +386,32 @@ public class Game implements Initializable {
 
         timeline.play();
 
+    }
+
+    @FXML
+    public void setHowToPlay() {
+        htp.setOpacity(1);
+        htp.setVisible(true);
+        menuGame.setVisible(false);
+    }
+
+    @FXML
+    public void setCredit() {
+        credit.setOpacity(1);
+        credit.setVisible(true);
+        menuGame.setVisible(false);
+    }
+
+    @FXML
+    public void setAgainMenu() {
+        htp.setVisible(false);
+        menuGame.setVisible(true);
+    }
+
+    @FXML
+    public void setAgainMenu1() {
+        credit.setVisible(false);
+        menuGame.setVisible(true);
     }
 
 

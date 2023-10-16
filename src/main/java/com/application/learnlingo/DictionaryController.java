@@ -69,7 +69,7 @@ public class DictionaryController extends GeneralController implements Initializ
     @FXML
     private HBox changeDictionary;
     @FXML
-    private boolean isUKFlagVisible = true;
+    static boolean isUKFlagVisible = true;
     @FXML
     private JFXButton tudien;
     @FXML
@@ -100,7 +100,6 @@ public class DictionaryController extends GeneralController implements Initializ
             dich.setText("Dịch câu");
             synonym.setText("Đồng nghĩa");
             antonym.setText("Trái nghĩa");
-            listWords.getItems().clear();
         } else {
             changeDictionary.getChildren().removeAll(vn, british, change);
             changeDictionary.getChildren().addAll(british, change, vn);
@@ -108,7 +107,6 @@ public class DictionaryController extends GeneralController implements Initializ
             dich.setText("Translation");
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
-            listWords.getItems().clear();
         }
         isUKFlagVisible = !isUKFlagVisible;
     }
@@ -135,8 +133,9 @@ public class DictionaryController extends GeneralController implements Initializ
                 String[] lines = item.split("\n");
 
                 HBox hbox = new HBox();
-                ImageView iconImageView = new ImageView(new Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\clock.png")); // Đường dẫn đến biểu tượng
-                iconImageView.setFitHeight(16); // Thiết lập kích thước cho biểu tượng
+
+                ImageView iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
+                iconImageView.setFitHeight(16);
                 iconImageView.setFitWidth(16);
                 hbox.getChildren().add(iconImageView);
 
@@ -163,6 +162,21 @@ public class DictionaryController extends GeneralController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (!SettingsController.changeL) {
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+        } else {
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+        }
         center.setStyle("-fx-background-color: #F4F4F4");
         left.setVisible(false);
         left.setTranslateX(-100);

@@ -12,9 +12,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -66,6 +68,26 @@ public class SettingsController implements Initializable {
     private Button menu;
 
     private boolean checkMenuBar = false;
+
+    private double speedVoice = 0;
+
+    @FXML
+    private Button change;
+
+    static boolean changeL = true;
+
+    @FXML
+    private Label lb1, lb2, lb3, lb4, lb5;
+
+    @FXML
+    private HBox changeDictionary;
+
+    @FXML
+    private ImageView vn, british;
+
+    @FXML
+    private Button synonym, antonym;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         left.setVisible(false);
@@ -85,7 +107,13 @@ public class SettingsController implements Initializable {
             int newSliderValue = newValue.intValue();
             DictionaryController.speedRate = calculateSpeedRate(newSliderValue);
             slider.setValue((double) newValue);
+            AnimationChangeScene.lst.add((double) newValue);
         });
+        if (!AnimationChangeScene.lst.isEmpty()) {
+            slider.setValue(AnimationChangeScene.lst.get(AnimationChangeScene.lst.size() - 1));
+        } else {
+            slider.setValue(50);
+        }
         center.setBackground(background);
         feedback.setWrapText(true);
     }
@@ -125,4 +153,5 @@ public class SettingsController implements Initializable {
             return (int) ((sliderValue - 50) / 5);
         }
     }
+
 }

@@ -8,9 +8,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class AnimationChangeScene {
+
+    public static List<Double> lst = new ArrayList<>();
 
     private static void makeFadeOutToScene(String scene, BorderPane container) {
         FadeTransition fadeTransition = new FadeTransition();
