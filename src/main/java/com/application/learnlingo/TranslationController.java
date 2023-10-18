@@ -11,10 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -71,10 +75,10 @@ public class TranslationController implements Initializable {
     private ImageView speech;
 
     @FXML
-    private JFXButton lang1;
+    private Button lang1;
 
     @FXML
-    private JFXButton lang2;
+    private Button lang2;
 
     @FXML
     private Button changeMode;
@@ -102,15 +106,20 @@ public class TranslationController implements Initializable {
     @FXML
     private Label warning;
 
+    @FXML
+    private Button chooseFile;
+
     public void changeLanguage() {
         if (changeL == true) {
-            lang1.setText("Vietnamese");
-            lang2.setText("English");
+            lang1.setText("Tiếng Việt");
+            lang2.setText("Tiếng Anh");
+            chooseFile.setText("Chọn ảnh");
             warning.setText("Vui lòng nhập không quá 150 ký tự");
             changeL = false;
         } else {
             lang1.setText("English");
             lang2.setText("Vietnamese");
+            chooseFile.setText("Choose image");
             warning.setText("Enter no more than 150 characters");
             changeL = true;
         }
@@ -228,6 +237,32 @@ public class TranslationController implements Initializable {
             slide2.play();
             for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
                 child.setOpacity(1);
+            }
+        }
+    }
+
+    @FXML
+    public void chooseFileToTranslate() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.jpg"));
+        File initialDirectory = new File("imageToChoose");
+        fileChooser.setInitialDirectory(initialDirectory);
+        fileChooser.setTitle("Open Resource File");
+        java.io.File file = fileChooser.showOpenDialog(center.getScene().getWindow());
+        if (file != null) {
+            Tesseract tesseract = new Tesseract();
+            tesseract.setTessVariable("debug_file", "/dev/null");
+            if (!changeL) {
+                tesseract.setLanguage("vie");
+            } else {
+                tesseract.setLanguage("eng");
+            }
+            try {
+                tesseract.setDatapath("Tess4J/tessdata");
+                String text = tesseract.doOCR(new File(file.getAbsolutePath())).replaceAll("\n", " ").replaceAll("\r", "");
+                tx1.setText(text);
+            } catch (TesseractException e) {
+                e.printStackTrace();
             }
         }
     }

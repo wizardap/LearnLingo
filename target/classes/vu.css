@@ -169,3 +169,7 @@
     -fx-background-color: #1d2a57;
     -fx-text-fill: white;
 }
+
+#chooseFile:hover {
+    -fx-opacity: 0.8;
+}

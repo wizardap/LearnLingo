@@ -414,10 +414,4 @@ public class Game implements Initializable {
         menuGame.setVisible(true);
     }
 
-
-    // Function to check user's answer
-//    @FXML
-//    public void userClickEnter() {
-//
-//    }
 }

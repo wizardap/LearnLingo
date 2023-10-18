@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.TranslationController">
     <top>
@@ -134,12 +133,13 @@
                      <children>
                         <VBox prefHeight="289.0" prefWidth="354.0" spacing="10.0">
                            <children>
-                              <JFXButton fx:id="lang1" style="-fx-background-color: #1d2a57; -fx-font-size: 18; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 20; -fx-min-width: 130;" stylesheets="@../../../vu.css" text="English" />
-                              <TextArea fx:id="tx1" prefHeight="251.0" prefWidth="354.0" promptText="Fill words here." stylesheets="@../../../translation.css">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </TextArea>
+                              <HBox prefHeight="29.0" prefWidth="354.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="lang1" mnemonicParsing="false" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-background-radius: 20; -fx-min-width: 130;" stylesheets="@../../../vu.css" text="EngLish" />
+                                    <Button fx:id="chooseFile" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#chooseFileToTranslate" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-background-radius: 20; -fx-min-width: 145;" stylesheets="@../../../vu.css" text="Choose image" />
+                                 </children>
+                              </HBox>
+                              <TextArea fx:id="tx1" prefHeight="251.0" prefWidth="354.0" promptText="Fill words here." stylesheets="@../../../translation.css" />
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                  <children>
                                     <ImageView fx:id="speech" fitHeight="40.0" fitWidth="42.0" onMouseClicked="#text_to_speech1" pickOnBounds="true" preserveRatio="true">
@@ -179,7 +179,7 @@
                         </AnchorPane>
                         <VBox prefHeight="333.0" prefWidth="354.0" spacing="10.0">
                            <children>
-                              <JFXButton fx:id="lang2" style="-fx-background-color: #1d2a57; -fx-font-size: 18; -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-background-radius: 20; -fx-min-width: 130;" stylesheets="@../../../vu.css" text="Vietnamese" />
+                              <Button fx:id="lang2" mnemonicParsing="false" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-background-radius: 20; -fx-min-width: 130;" stylesheets="@../../../vu.css" text="Vietnamese" />
                               <TextArea fx:id="tx2" prefHeight="249.0" prefWidth="383.0" stylesheets="@../../../translation.css" />
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
