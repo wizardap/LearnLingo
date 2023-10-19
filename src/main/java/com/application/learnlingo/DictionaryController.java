@@ -162,6 +162,7 @@ public class DictionaryController extends GeneralController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tudien.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
         if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
@@ -188,6 +189,8 @@ public class DictionaryController extends GeneralController implements Initializ
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         webEngine = webView.getEngine();
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }

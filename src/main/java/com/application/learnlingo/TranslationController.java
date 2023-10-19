@@ -109,6 +109,15 @@ public class TranslationController implements Initializable {
     @FXML
     private Button chooseFile;
 
+    @FXML
+    private Button dich;
+
+    @FXML
+    private Button synonym;
+
+    @FXML
+    private Button antonym;
+
     public void changeLanguage() {
         if (changeL == true) {
             lang1.setText("Tiếng Việt");
@@ -188,6 +197,7 @@ public class TranslationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        dich.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
         left.setVisible(false);
         left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -203,6 +213,8 @@ public class TranslationController implements Initializable {
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         tx1.setWrapText(true);
         tx2.setWrapText(true);
     }

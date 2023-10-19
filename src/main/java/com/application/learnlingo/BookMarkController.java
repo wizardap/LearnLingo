@@ -72,6 +72,12 @@ public class BookMarkController implements Initializable {
     private WebView wv;
 
     @FXML
+    private Button antonym;
+
+    @FXML
+    private Button synonym;
+
+    @FXML
     private void deleteWord() {
         textfield1.setText("");
     }
@@ -88,6 +94,8 @@ public class BookMarkController implements Initializable {
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         listWords.getItems().addAll("Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World");
 
     }

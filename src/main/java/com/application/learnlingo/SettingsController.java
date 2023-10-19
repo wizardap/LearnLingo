@@ -103,6 +103,8 @@ public class SettingsController implements Initializable {
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
             int newSliderValue = newValue.intValue();
             DictionaryController.speedRate = calculateSpeedRate(newSliderValue);

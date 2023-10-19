@@ -67,6 +67,12 @@ public class ChangeWordController implements Initializable {
     @FXML
     private Button menu;
 
+    @FXML
+    private Button synonym;
+
+    @FXML
+    private Button antonym;
+
     private boolean checkMenuBar = false;
 
     @Override
@@ -85,6 +91,8 @@ public class ChangeWordController implements Initializable {
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         d1.setOnAction(event -> {
             if (d1.isSelected()) {
                 d2.setSelected(false);
