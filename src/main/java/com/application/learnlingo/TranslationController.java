@@ -6,17 +6,19 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -26,43 +28,20 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class TranslationController implements Initializable{
+public class TranslationController extends GeneralController {
 
     @FXML
-    private Button search;
+    private Button b1;
 
     @FXML
-    private Button add;
+    private Button b2;
 
     @FXML
-    private Button history;
-
-    @FXML
-    private Button settings;
-
-    @FXML
-    private Button tudien;
-
-    @FXML
-    private JFXButton b1;
-
-    @FXML
-    private JFXButton b2;
-
-    @FXML
-    private JFXButton b3;
-
-    @FXML
-    private VBox left;
-
-    @FXML
-    private VBox center;
-
-    @FXML
-    private HBox function;
+    private Button b3;
 
     @FXML
     private Button deleteWord;
+
     @FXML
     private TextField textfield;
 
@@ -73,37 +52,39 @@ public class TranslationController implements Initializable{
     private ImageView speech;
 
     @FXML
-    private JFXButton lang1;
+    private Button lang1;
 
     @FXML
-    private JFXButton lang2;
+    private Button lang2;
 
     @FXML
     private Button changeMode;
-    @FXML
-    static Boolean changeL = true;
-    @FXML
-    static Boolean b = true;
 
     @FXML
     private TextArea tx1;
     @FXML
     private TextArea tx2;
 
-    @FXML
-    private Button game;
+    private boolean checkMenuBar = false;
 
     @FXML
-    private BorderPane container;
+    private Label warning;
+
+    @FXML
+    private Button chooseFile;
 
     public void changeLanguage() {
-        if(changeL == true) {
-            lang1.setText("Vietnamese");
-            lang2.setText("English");
+        if (changeL == true) {
+            lang1.setText("Tiếng Việt");
+            lang2.setText("Tiếng Anh");
+            chooseFile.setText("Chọn ảnh");
+            warning.setText("Vui lòng nhập không quá 150 ký tự");
             changeL = false;
         } else {
             lang1.setText("English");
             lang2.setText("Vietnamese");
+            chooseFile.setText("Choose image");
+            warning.setText("Enter no more than 150 characters");
             changeL = true;
         }
     }
@@ -112,18 +93,20 @@ public class TranslationController implements Initializable{
     @FXML
     public void text_to_speech1() {
         if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us");
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us","Mike","0");
         } else {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn");
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn","Chi","0");
         }
     }
 
     @FXML
     public void text_to_speech2() {
         if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn");
+            SettingsController set = new SettingsController();
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn","Chi","0");
         } else {
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us");
+            SettingsController set = new SettingsController();
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us","Mike","0");
         }
     }
 
@@ -146,10 +129,11 @@ public class TranslationController implements Initializable{
         in.close();
         return response.toString();
     }
+
     @FXML
     public void translateMini() throws IOException {
         String text = tx1.getText();
-        if(!changeL) {
+        if (!changeL) {
             tx2.setText(translate("vi", "en", text));
         } else {
             tx2.setText(translate("en", "vi", text));
@@ -168,6 +152,9 @@ public class TranslationController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        left.setVisible(false);
+        left.setTranslateX(-100);
+        dich.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -181,7 +168,69 @@ public class TranslationController implements Initializable{
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         tx1.setWrapText(true);
         tx2.setWrapText(true);
+    }
+
+    @FXML
+    public void setMenu() {
+        checkMenuBar = !checkMenuBar;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(left);
+        TranslateTransition slide2 = new TranslateTransition();
+        slide2.setDuration(Duration.seconds(0.4));
+        slide2.setNode(center);
+        if (checkMenuBar) {
+            left.setVisible(true);
+            left.setPrefWidth(100);
+            slide.setToX(-40);
+            slide.play();
+            slide2.setToX(40);
+            slide2.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                if (child.getId() == null || !child.getId().equals("left")) {
+                    child.setOpacity(0.8);
+                } else {
+                    child.setOpacity(1);
+                }
+            }
+        } else {
+            slide.setToX(-100);
+            slide.play();
+            slide2.setToX(0);
+            slide2.play();
+            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
+                child.setOpacity(1);
+            }
+        }
+    }
+
+    @FXML
+    public void chooseFileToTranslate() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.jpg"));
+        File initialDirectory = new File("imageToChoose");
+        fileChooser.setInitialDirectory(initialDirectory);
+        fileChooser.setTitle("Open Resource File");
+        java.io.File file = fileChooser.showOpenDialog(center.getScene().getWindow());
+        if (file != null) {
+            Tesseract tesseract = new Tesseract();
+            tesseract.setTessVariable("debug_file", "/dev/null");
+            if (!changeL) {
+                tesseract.setLanguage("vie");
+            } else {
+                tesseract.setLanguage("eng");
+            }
+            try {
+                tesseract.setDatapath("Tess4J/tessdata");
+                String text = tesseract.doOCR(new File(file.getAbsolutePath())).replaceAll("\n", " ").replaceAll("\r", "");
+                tx1.setText(text);
+            } catch (TesseractException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

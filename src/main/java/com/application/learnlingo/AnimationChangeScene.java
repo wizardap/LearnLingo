@@ -8,9 +8,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class AnimationChangeScene {
+
+    public static List<Double> lst = new ArrayList<>();
 
     private static void makeFadeOutToScene(String scene, BorderPane container) {
         FadeTransition fadeTransition = new FadeTransition();
@@ -30,7 +34,7 @@ public class AnimationChangeScene {
     private static void loadScene(String scene, BorderPane container) {
         try {
             BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource(scene)));
-            Scene newScene = new Scene(secondView, 910, 600);
+            Scene newScene = new Scene(secondView, 910, 590);
             Stage curStage = (Stage) container.getScene().getWindow();
             curStage.setScene(newScene);
         } catch (Exception e) {
