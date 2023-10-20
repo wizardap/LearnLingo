@@ -22,60 +22,16 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class BookMarkController implements Initializable {
-
-    @FXML
-    private TextField textfield1;
-
-    @FXML
-    private BorderPane container;
-
-    @FXML
-    private JFXListView listWords;
-
-    @FXML
-    private Button search;
-
-    @FXML
-    private Button add;
-
-    @FXML
-    private Button history;
-
-    @FXML
-    private Button settings;
-
-    @FXML
-    private Button tudien;
-
-    @FXML
-    private Button dich;
-
-    @FXML
-    private Button game;
-
-    @FXML
-    private VBox left;
-
-    @FXML
-    private Button menu;
-
-    private boolean checkMenuBar = false;
-
-    @FXML
-    private AnchorPane center;
-
-    @FXML
-    private AnchorPane subcenter;
+public class BookMarkController extends GeneralController {
 
     @FXML
     private WebView wv;
 
     @FXML
-    private Button antonym;
+    private TextField textfield1;
 
     @FXML
-    private Button synonym;
+    private AnchorPane subcenter;
 
     @FXML
     private void deleteWord() {
@@ -84,9 +40,9 @@ public class BookMarkController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        center.setStyle("-fx-background-color: #F4F4F4");
         left.setVisible(false);
         left.setTranslateX(-100);
+        center.setStyle("-fx-background-color: #F4F4F4");
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));

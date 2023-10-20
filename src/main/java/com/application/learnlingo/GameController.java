@@ -21,39 +21,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GameController implements Initializable {
-
-    @FXML
-    private AnchorPane center;
-
-    @FXML
-    private BorderPane container;
+public class GameController extends GeneralController {
 
     @FXML
     private Label timerLabel;
 
     private int seconds = 120;
 
-    @FXML
-    private Button search;
-
-    @FXML
-    private Button add;
-
-    @FXML
-    private Button history;
-
-    @FXML
-    private Button settings;
-
-    @FXML
-    private Button tudien;
-
-    @FXML
-    private Button dich;
-
-    @FXML
-    private Button start;
 
     @FXML
     private Label s1;
@@ -109,14 +83,6 @@ public class GameController implements Initializable {
     @FXML
     private Button enter;
 
-    @FXML
-    private VBox left;
-
-    @FXML
-    private Button menu;
-
-    private boolean checkMenuBar = false;
-
     private boolean checkMenuGame = false;
 
     @FXML
@@ -152,10 +118,8 @@ public class GameController implements Initializable {
     private VBox credit;
 
     @FXML
-    private Button antonym;
+    private Button start;
 
-    @FXML
-    private Button synonym;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

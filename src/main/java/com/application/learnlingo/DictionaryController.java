@@ -25,71 +25,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class DictionaryController extends GeneralController implements Initializable {
-
-    @FXML
-    private Button settings;
-    @FXML
-    private Button speakUS;
-    @FXML
-    private Button speakUK;
-    static Boolean b = true;
-    @FXML
-    static boolean changeL = true;
-    @FXML
-    private Button bookmark;
-    @FXML
-    private Button add;
-    @FXML
-    private VBox left;
-    @FXML
-    private WebView webView;
-    @FXML
-    private WebEngine webEngine;
-    @FXML
-    private AnchorPane center;
-    @FXML
-    private Button find;
-    @FXML
-    private JFXListView<String> listWords;
-    @FXML
-    private HBox function;
-    @FXML
-    private Button deleteWord;
-    @FXML
-    private TextField textfield;
-    @FXML
-    private Button history;
-    @FXML
-    private Button change;
-    @FXML
-    private ImageView british;
-    @FXML
-    private ImageView vn;
-    @FXML
-    private HBox changeDictionary;
-    @FXML
-    static boolean isUKFlagVisible = true;
-    @FXML
-    private JFXButton tudien;
-    @FXML
-    private JFXButton dich;
-    @FXML
-    private JFXButton synonym;
-    @FXML
-    private JFXButton antonym;
-    @FXML
-    private BorderPane container;
-    @FXML
-    private Button search;
-
-    @FXML
-    private Button game;
-
-    @FXML
-    private Button menu;
-
-    private boolean checkMenuBar = false;
+public class DictionaryController extends GeneralController {
     public static int speedRate;
     @FXML
     public void changeMode() {

@@ -28,43 +28,20 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class TranslationController implements Initializable {
+public class TranslationController extends GeneralController {
 
     @FXML
-    private Button search;
+    private Button b1;
 
     @FXML
-    private Button add;
+    private Button b2;
 
     @FXML
-    private Button history;
-
-    @FXML
-    private Button settings;
-
-    @FXML
-    private Button tudien;
-
-    @FXML
-    private JFXButton b1;
-
-    @FXML
-    private JFXButton b2;
-
-    @FXML
-    private JFXButton b3;
-
-    @FXML
-    private VBox left;
-
-    @FXML
-    private VBox center;
-
-    @FXML
-    private HBox function;
+    private Button b3;
 
     @FXML
     private Button deleteWord;
+
     @FXML
     private TextField textfield;
 
@@ -82,24 +59,11 @@ public class TranslationController implements Initializable {
 
     @FXML
     private Button changeMode;
-    @FXML
-    static Boolean changeL = true;
-    @FXML
-    static Boolean b = true;
 
     @FXML
     private TextArea tx1;
     @FXML
     private TextArea tx2;
-
-    @FXML
-    private Button game;
-
-    @FXML
-    private BorderPane container;
-
-    @FXML
-    private Button menu;
 
     private boolean checkMenuBar = false;
 
@@ -108,15 +72,6 @@ public class TranslationController implements Initializable {
 
     @FXML
     private Button chooseFile;
-
-    @FXML
-    private Button dich;
-
-    @FXML
-    private Button synonym;
-
-    @FXML
-    private Button antonym;
 
     public void changeLanguage() {
         if (changeL == true) {
@@ -197,9 +152,9 @@ public class TranslationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dich.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
         left.setVisible(false);
         left.setTranslateX(-100);
+        dich.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -231,7 +186,7 @@ public class TranslationController implements Initializable {
         if (checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
-            slide.setToX(0);
+            slide.setToX(-40);
             slide.play();
             slide2.setToX(40);
             slide2.play();

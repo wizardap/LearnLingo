@@ -26,25 +26,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SettingsController implements Initializable {
-
-    @FXML
-    private Button search;
-
-    @FXML
-    private Button add;
-
-    @FXML
-    private Button history;
-
-    @FXML
-    private Button settings;
-
-    @FXML
-    private Button tudien;
-
-    @FXML
-    private Button dich;
+public class SettingsController extends GeneralController {
 
     @FXML
     private TextArea feedback;
@@ -52,41 +34,12 @@ public class SettingsController implements Initializable {
     @FXML
     private JFXSlider slider;
 
-    @FXML
-    private AnchorPane center;
-
-    @FXML
-    private BorderPane container;
-
-    @FXML
-    private Button game;
-
-    @FXML
-    private VBox left;
-
-    @FXML
-    private Button menu;
-
     private boolean checkMenuBar = false;
 
     private double speedVoice = 0;
 
     @FXML
-    private Button change;
-
-    static boolean changeL = true;
-
-    @FXML
     private Label lb1, lb2, lb3, lb4, lb5;
-
-    @FXML
-    private HBox changeDictionary;
-
-    @FXML
-    private ImageView vn, british;
-
-    @FXML
-    private Button synonym, antonym;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -11,49 +11,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SynonymAndAntonym implements Initializable {
-
-    @FXML
-    protected BorderPane container;
-
-    @FXML
-    protected AnchorPane center;
-
-    @FXML
-    protected Button menu;
-
-    protected boolean checkMenuBar = true;
-
-    @FXML
-    protected VBox left;
-
-    @FXML
-    protected Button search;
-
-    @FXML
-    protected Button add;
-
-    @FXML
-    protected Button history;
-
-    @FXML
-    protected Button settings;
-
-    @FXML
-    protected Button tudien;
-
-    @FXML
-    protected Button dich;
-
-    @FXML
-    protected Button game;
-
-    @FXML
-    protected Button antonym;
-
-    @FXML
-    protected Button synonym;
-
+public class SynonymAndAntonym extends GeneralController {
     @FXML
     public void setMenu() {
         checkMenuBar = !checkMenuBar;
@@ -98,6 +56,7 @@ public class SynonymAndAntonym implements Initializable {
         tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
     }
 
 }

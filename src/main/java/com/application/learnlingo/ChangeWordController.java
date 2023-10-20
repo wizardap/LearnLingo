@@ -23,28 +23,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class ChangeWordController implements Initializable {
-
-    @FXML
-    private Button search;
-
-    @FXML
-    private Button dich;
-
-    @FXML
-    private Button history;
-
-    @FXML
-    private Button settings;
-
-    @FXML
-    private Button tudien;
-
-    @FXML
-    private BorderPane container;
-
-    @FXML
-    private AnchorPane center;
+public class ChangeWordController extends GeneralController {
 
     @FXML
     private Button deleteWord1;
@@ -53,27 +32,10 @@ public class ChangeWordController implements Initializable {
     private TextField textfield1;
 
     @FXML
-    private Button game;
-
-    @FXML
     private JFXCheckBox d1;
 
     @FXML
     private JFXCheckBox d2;
-
-    @FXML
-    private VBox left;
-
-    @FXML
-    private Button menu;
-
-    @FXML
-    private Button synonym;
-
-    @FXML
-    private Button antonym;
-
-    private boolean checkMenuBar = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
