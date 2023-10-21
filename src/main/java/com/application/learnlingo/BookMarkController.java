@@ -10,9 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -24,18 +29,46 @@ import java.util.ResourceBundle;
 
 public class BookMarkController extends GeneralController {
 
-    @FXML
-    private WebView wv;
+    private static class IconAndFontListCell extends ListCell<String> {
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
 
-    @FXML
-    private TextField textfield1;
+            if (item == null || empty) {
+                setGraphic(null);
+            } else {
+                String[] lines = item.split("\n");
 
-    @FXML
-    private AnchorPane subcenter;
+                HBox hbox = new HBox();
+
+                ImageView iconImageView = new ImageView(new Image(getClass().getResource("image/deleteWordBM.png").toString()));
+                iconImageView.setFitHeight(16);
+                iconImageView.setFitWidth(16);
+
+                VBox vBox = new VBox();
+                vBox.setPrefWidth(170);
+                for (int i = 0; i < 1; i++) {
+                    Label text = new Label(lines[i]);
+                    if (i == 0) {
+                        text.setStyle("-fx-font-size: 14; -fx-text-fill: white;");
+                    } else {
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
+                    }
+                    vBox.getChildren().add(text);
+                }
+                hbox.setSpacing(5);
+
+                hbox.setSpacing(15);
+
+                hbox.getChildren().addAll(vBox, iconImageView);
+                setGraphic(hbox);
+            }
+        }
+    }
 
     @FXML
     private void deleteWord() {
-        textfield1.setText("");
+        textfield.setText("");
     }
 
     @Override
@@ -52,8 +85,8 @@ public class BookMarkController extends GeneralController {
         game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
         synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
+        listWords.setCellFactory(param -> new IconAndFontListCell());
         listWords.getItems().addAll("Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World");
-
     }
 
     @FXML
@@ -62,17 +95,11 @@ public class BookMarkController extends GeneralController {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
         slide.setNode(left);
-        TranslateTransition slide2 = new TranslateTransition();
-        slide2.setDuration(Duration.seconds(0.4));
-        slide2.setNode(subcenter);
         if (checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
-            subcenter.setPrefWidth(559);
             slide.setToX(0);
             slide.play();
-            slide2.setToX(50);
-            slide2.play();
             for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
                 if (child.getId() == null || !child.getId().equals("left")) {
                     child.setOpacity(0.8);
@@ -80,12 +107,10 @@ public class BookMarkController extends GeneralController {
                     child.setOpacity(1);
                 }
             }
+            left.setOpacity(1);
         } else {
-            wv.setPrefWidth(659);
             slide.setToX(-100);
             slide.play();
-            slide2.setToX(0);
-            slide2.play();
             for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
                 child.setOpacity(1);
             }

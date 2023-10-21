@@ -22,7 +22,7 @@
                <graphic>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="35.0" fitWidth="37.0" onDragDetected="#setMenu" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/menu.png" />
                            </image>
@@ -145,8 +145,8 @@
    <center>
       <AnchorPane fx:id="center" prefHeight="552.0" prefWidth="765.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listWords" layoutX="98.0" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="201.0" stylesheets="@../../../vu.css" />
-            <WebView fx:id="webView" layoutX="299.0" layoutY="76.0" prefHeight="475.0" prefWidth="609.0" />
+            <JFXListView fx:id="listWords" layoutX="98.0" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
+            <WebView fx:id="webView" layoutX="322.0" layoutY="76.0" prefHeight="475.0" prefWidth="586.0" />
             <Button fx:id="bookmark" layoutX="603.0" layoutY="36.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="29.0" stylesheets="@../../../vu.css">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
@@ -156,7 +156,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="speakUS" alignment="BASELINE_LEFT" layoutX="302.0" layoutY="39.5" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="55.0" style="-fx-background-color: white; -fx-cursor: hand;" text="US">
+            <Button fx:id="speakUS" alignment="BASELINE_LEFT" layoutX="330.0" layoutY="39.5" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="55.0" style="-fx-background-color: white; -fx-cursor: hand;" text="US">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -164,7 +164,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="speakUK" alignment="BASELINE_LEFT" layoutX="399.0" layoutY="39.5" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="55.0" style="-fx-background-color: white; -fx-cursor: hand;" text="UK">
+            <Button fx:id="speakUK" alignment="BASELINE_LEFT" layoutX="414.0" layoutY="39.5" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="55.0" style="-fx-background-color: white; -fx-cursor: hand;" text="UK">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>

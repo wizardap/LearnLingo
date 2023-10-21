@@ -31,7 +31,7 @@
                   <Image url="@image/resetDF.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="speak" fitHeight="20.0" fitWidth="23.0" layoutX="525.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+            <ImageView fx:id="speak" fitHeight="20.0" fitWidth="23.0" layoutX="525.0" layoutY="278.0" onMouseClicked="#testVoiceSpeed" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@image/speak.png" />
                </image>

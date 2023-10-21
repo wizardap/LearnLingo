@@ -76,9 +76,9 @@ public class DictionaryController extends GeneralController {
                 hbox.getChildren().add(iconImageView);
 
                 VBox vBox = new VBox();
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 2; i++) {
                     Label text = new Label(lines[i]);
-                    if (i == 1) {
+                    if (i == 0) {
                         text.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;");
                     } else {
                         text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
@@ -98,7 +98,9 @@ public class DictionaryController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tudien.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
+        listWords.getItems().addAll("Hello\nXin chào", "World\nThế giới", "Hello\nXin chào", "World\nThế giới","Hello\nXin chào", "World\nThế giới","Hello\nXin chào", "World\nThế giới");
+//        listWords.setCellFactory(param -> new IconAndFontListCell());
+        tudien.setStyle("-fx-background-color: #1d2a57; -fx-min-width: 85; -fx-text-fill: white");
         if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
