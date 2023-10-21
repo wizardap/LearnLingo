@@ -76,7 +76,7 @@ public class DictionaryController extends GeneralController {
                 hbox.getChildren().add(iconImageView);
 
                 VBox vBox = new VBox();
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 1; i++) {
                     Label text = new Label(lines[i]);
                     if (i == 0) {
                         text.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;");
@@ -98,9 +98,9 @@ public class DictionaryController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listWords.getItems().addAll("Hello\nXin chào", "World\nThế giới", "Hello\nXin chào", "World\nThế giới","Hello\nXin chào", "World\nThế giới","Hello\nXin chào", "World\nThế giới");
-//        listWords.setCellFactory(param -> new IconAndFontListCell());
-        tudien.setStyle("-fx-background-color: #1d2a57; -fx-min-width: 85; -fx-text-fill: white");
+        listWords.getItems().addAll("Hello", "World", "Hello", "World","Hello");
+        listWords.setCellFactory(param -> new IconAndFontListCell());
+        tudien.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
@@ -116,9 +116,7 @@ public class DictionaryController extends GeneralController {
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
         }
-        center.setStyle("-fx-background-color: #F4F4F4");
-        left.setVisible(false);
-        left.setTranslateX(-100);
+//        center.setStyle("-fx-background-color: #1d2a57");
         bookmark.setVisible(false);
         speakUK.setVisible(false);
         speakUS.setVisible(false);
@@ -184,24 +182,14 @@ public class DictionaryController extends GeneralController {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
         slide.setNode(left);
-        if (checkMenuBar) {
+        if (!checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                if (child.getId() == null || !child.getId().equals("left")) {
-                    child.setOpacity(0.8);
-                } else {
-                    child.setOpacity(1);
-                }
-            }
         } else {
             slide.setToX(-100);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                child.setOpacity(1);
-            }
         }
     }
 }

@@ -73,8 +73,6 @@ public class BookMarkController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        left.setVisible(false);
-        left.setTranslateX(-100);
         center.setStyle("-fx-background-color: #F4F4F4");
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
@@ -95,25 +93,34 @@ public class BookMarkController extends GeneralController {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
         slide.setNode(left);
-        if (checkMenuBar) {
+        if (!checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                if (child.getId() == null || !child.getId().equals("left")) {
-                    child.setOpacity(0.8);
-                } else {
-                    child.setOpacity(1);
-                }
-            }
-            left.setOpacity(1);
         } else {
             slide.setToX(-100);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                child.setOpacity(1);
-            }
         }
+    }
+
+    @FXML
+    public void changeMode() {
+        if (isUKFlagVisible) {
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+        } else {
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+        }
+        isUKFlagVisible = !isUKFlagVisible;
     }
 }

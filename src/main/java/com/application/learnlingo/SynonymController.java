@@ -8,7 +8,7 @@ public class SynonymController extends SynonymAndAntonym {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
-        synonym.setStyle("-fx-background-color: #1d2a57; -fx-min-width: 85; -fx-text-fill: white");
+        synonym.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
     }
 }

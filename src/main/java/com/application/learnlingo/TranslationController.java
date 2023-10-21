@@ -153,7 +153,7 @@ public class TranslationController extends GeneralController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         left.setVisible(false);
         left.setTranslateX(-100);
-        dich.setStyle("-fx-background-color: #1d2a57; -fx-min-width: 85; -fx-text-fill: white");
+        dich.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
