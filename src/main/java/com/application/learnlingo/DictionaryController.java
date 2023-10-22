@@ -58,7 +58,7 @@ public class DictionaryController extends GeneralController {
 
     }
 
-    private static class IconAndFontListCell extends ListCell<String> {
+    public static class IconAndFontListCell extends ListCell<String> {
         @Override
         protected void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
@@ -69,27 +69,22 @@ public class DictionaryController extends GeneralController {
                 String[] lines = item.split("\n");
 
                 HBox hbox = new HBox();
-
                 ImageView iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
-                iconImageView.setFitHeight(16);
-                iconImageView.setFitWidth(16);
+                iconImageView.setFitHeight(15);
+                iconImageView.setFitWidth(15);
                 hbox.getChildren().add(iconImageView);
 
                 VBox vBox = new VBox();
                 for (int i = 0; i < 1; i++) {
                     Label text = new Label(lines[i]);
                     if (i == 0) {
-                        text.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;");
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
                     } else {
                         text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
-
                     }
                     vBox.getChildren().add(text);
                 }
                 hbox.setSpacing(5);
-
-                hbox.setSpacing(15);
-
                 hbox.getChildren().add(vBox);
                 setGraphic(hbox);
             }
@@ -98,8 +93,8 @@ public class DictionaryController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listWords.getItems().addAll("Hello", "World", "Hello", "World","Hello");
         listWords.setCellFactory(param -> new IconAndFontListCell());
+        listWords.setVisible(false);
         tudien.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
@@ -129,41 +124,6 @@ public class DictionaryController extends GeneralController {
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         webEngine = webView.getEngine();
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    }
-
-    private ObservableList<String> suggestionSearchList(String text) {
-        if (isUKFlagVisible) {
-            return evDict.exportSuggestionList(text);
-        }
-        return veDict.exportSuggestionList(text);
-    }
-
-    @FXML
-    public void handleKeyTyped(KeyEvent keyEvent) {
-        listWords.getItems().clear();
-        if (!textfield.getText().isEmpty()) {
-            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
-        }
-    }
-
-    @FXML
-    public void handleKeyPressed(KeyEvent keyEvent) {
-
-    }
-
-    @FXML
-    public void handleMouseClicked(MouseEvent mouseEvent) {
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        if (selectedWord != null) {
-            String meaningHTMLString = "";
-            if (isUKFlagVisible) {
-                meaningHTMLString = evDict.getWordInformation(selectedWord).getHtml();
-            } else meaningHTMLString = veDict.getWordInformation(selectedWord).getHtml();
-            webEngine.loadContent(meaningHTMLString);
-            speakUS.setVisible(true);
-            speakUK.setVisible(true);
-            bookmark.setVisible(true);
-        }
     }
     @FXML
     public void speakWordUS(){

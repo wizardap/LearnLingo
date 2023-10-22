@@ -230,17 +230,17 @@
          <children>
             <Button fx:id="menu" mnemonicParsing="false" onAction="#setMenu" prefHeight="48.0" prefWidth="99.0" style="-fx-hgrow: always;" stylesheets="@../../../vu.css">
                <graphic>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="29.0" prefWidth="51.0" spacing="4.0">
                      <children>
-                        <ImageView fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/menu.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="5.0" top="2.0" />
+                              <Insets top="4.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets top="7.0" />
                            </HBox.margin>

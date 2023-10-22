@@ -34,7 +34,7 @@ public class AnimationChangeScene {
     private static void loadScene(String scene, BorderPane container) {
         try {
             BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource(scene)));
-            Scene newScene = new Scene(secondView, 910, 590);
+            Scene newScene = new Scene(secondView, 910, 600);
             Stage curStage = (Stage) container.getScene().getWindow();
             curStage.setScene(newScene);
         } catch (Exception e) {

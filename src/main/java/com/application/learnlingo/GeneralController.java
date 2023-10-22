@@ -2,11 +2,14 @@ package com.application.learnlingo;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -17,7 +20,7 @@ import javafx.scene.web.WebView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GeneralController implements Initializable  {
+public class GeneralController implements Initializable {
 
     @FXML
     protected Button settings;
@@ -85,10 +88,53 @@ public class GeneralController implements Initializable  {
 
     protected boolean checkMenuBar = false;
     private final static String DEFAULT_DICT_DBMS_PATH
-            ="./src/main/resources/com/application/learnlingo/database/dict_hh.db";
+            = "./src/main/resources/com/application/learnlingo/database/dict_hh.db";
 
-    protected static DictDMBS evDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH,"av");
-    protected static DictDMBS veDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH,"va");
+    protected static DictDMBS evDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH, "av");
+    protected static DictDMBS veDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH, "va");
+
+    @FXML
+    public void handleKeyTyped(KeyEvent keyEvent) {
+        listWords.getItems().clear();
+        if (!textfield.getText().isEmpty()) {
+            listWords.setVisible(true);
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+            int s = listWords.getItems().size();
+            if (s < 23)
+                listWords.setPrefHeight(3 + 24 * s);
+            else
+                listWords.setPrefHeight(550);
+        } else {
+            listWords.setVisible(false);
+        }
+    }
+
+    public ObservableList<String> suggestionSearchList(String text) {
+        if (isUKFlagVisible) {
+            return evDict.exportSuggestionList(text);
+        }
+        return veDict.exportSuggestionList(text);
+    }
+
+    @FXML
+    public void handleKeyPressed(KeyEvent keyEvent) {
+
+    }
+
+    @FXML
+    public void handleMouseClicked(MouseEvent mouseEvent) {
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            String meaningHTMLString = "";
+            if (isUKFlagVisible) {
+                meaningHTMLString = evDict.getWordInformation(selectedWord).getHtml();
+            } else meaningHTMLString = veDict.getWordInformation(selectedWord).getHtml();
+            webEngine.loadContent(meaningHTMLString);
+            speakUS.setVisible(true);
+            speakUK.setVisible(true);
+            bookmark.setVisible(true);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

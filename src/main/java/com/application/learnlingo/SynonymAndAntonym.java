@@ -1,10 +1,18 @@
 package com.application.learnlingo;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 
@@ -12,6 +20,25 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SynonymAndAntonym extends GeneralController {
+
+    public void changeMode() {
+        if (isUKFlagVisible) {
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+        } else {
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+        }
+        isUKFlagVisible = !isUKFlagVisible;
+    }
     @FXML
     public void setMenu() {
         checkMenuBar = !checkMenuBar;
@@ -39,8 +66,15 @@ public class SynonymAndAntonym extends GeneralController {
         }
     }
 
+    public void handleMouseClicked(MouseEvent mouseEvent) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        listWords.setVisible(false);
+        listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
         left.setVisible(false);
         left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
