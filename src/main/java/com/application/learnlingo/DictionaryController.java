@@ -1,27 +1,30 @@
 package com.application.learnlingo;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
@@ -48,9 +51,60 @@ public class DictionaryController extends GeneralController {
         isUKFlagVisible = !isUKFlagVisible;
     }
 
+    @FXML
+    private void deleteSearch() {
+        listWords.getItems().clear();
+        textfield.setText("");
+    }
+
+    @FXML
+    public void saveWordInBookMark() {
+
+    }
+
+    private static class IconAndFontListCell extends ListCell<String> {
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item == null || empty) {
+                setGraphic(null);
+            } else {
+                String[] lines = item.split("\n");
+
+                HBox hbox = new HBox();
+
+                ImageView iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
+                iconImageView.setFitHeight(16);
+                iconImageView.setFitWidth(16);
+                hbox.getChildren().add(iconImageView);
+
+                VBox vBox = new VBox();
+                for (int i = 0; i < 1; i++) {
+                    Label text = new Label(lines[i]);
+                    if (i == 0) {
+                        text.setStyle("-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;");
+                    } else {
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
+
+                    }
+                    vBox.getChildren().add(text);
+                }
+                hbox.setSpacing(5);
+
+                hbox.setSpacing(15);
+
+                hbox.getChildren().add(vBox);
+                setGraphic(hbox);
+            }
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tudien.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
+        listWords.getItems().addAll("Hello", "World", "Hello", "World","Hello");
+        listWords.setCellFactory(param -> new IconAndFontListCell());
+        tudien.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
@@ -66,9 +120,7 @@ public class DictionaryController extends GeneralController {
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
         }
-        center.setStyle("-fx-background-color: #F4F4F4");
-        left.setVisible(false);
-        left.setTranslateX(-100);
+//        center.setStyle("-fx-background-color: #1d2a57");
         bookmark.setVisible(false);
         speakUK.setVisible(false);
         speakUS.setVisible(false);
@@ -119,24 +171,14 @@ public class DictionaryController extends GeneralController {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
         slide.setNode(left);
-        if (checkMenuBar) {
+        if (!checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                if (child.getId() == null || !child.getId().equals("left")) {
-                    child.setOpacity(0.8);
-                } else {
-                    child.setOpacity(1);
-                }
-            }
         } else {
             slide.setToX(-100);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                child.setOpacity(1);
-            }
         }
     }
 

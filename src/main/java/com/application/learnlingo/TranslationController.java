@@ -112,7 +112,6 @@ public class TranslationController extends GeneralController {
 
     @FXML
     public String translate(String langFrom, String langTo, String text) throws IOException {
-        // INSERT YOU URL HERE
         String urlStr = "https://script.google.com/macros/s/AKfycbzF2OvXi2Ka9v4aBMt-7L_TL9fCGfLpAaCqrFfibjNKi6baRPl7Qrlt_zakZH6Y3KE9ew/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
                 "&target=" + langTo +
@@ -154,7 +153,7 @@ public class TranslationController extends GeneralController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         left.setVisible(false);
         left.setTranslateX(-100);
-        dich.setStyle("-fx-background-color: #FEC400; -fx-min-width: 85;");
+        dich.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,

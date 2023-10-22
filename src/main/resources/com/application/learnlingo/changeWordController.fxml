@@ -24,12 +24,12 @@
             <JFXCheckBox fx:id="d2" checkedColor="#1d2a57" layoutX="296.0" layoutY="116.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="VI-EN" />
             <HBox fx:id="h" layoutX="386.0" layoutY="110.0" prefHeight="40.0" prefWidth="300.0">
                <children>
-                  <TextField fx:id="textfield1" prefHeight="28.5" prefWidth="180.0" promptText="Search here" stylesheets="@../../../vu.css">
+                  <TextField fx:id="textfield1" prefHeight="28.5" prefWidth="180.0" promptText="Add or Delete here" stylesheets="@../../../vu.css">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="deleteWord1" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="27.0" stylesheets="@../../../vu.css">
+                  <Button fx:id="deleteWord1" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../vu.css">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>

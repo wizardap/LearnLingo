@@ -39,7 +39,7 @@ public class SettingsController extends GeneralController {
     private double speedVoice = 0;
 
     @FXML
-    private Label lb1, lb2, lb3, lb4, lb5;
+    private ImageView speak;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -107,6 +107,12 @@ public class SettingsController extends GeneralController {
         } else {
             return (int) ((sliderValue - 50) / 5);
         }
+    }
+
+    @FXML
+    public void testVoiceSpeed() {
+        String selectedWord = "Contribution";
+        TextToSpeech pronouce = new TextToSpeech(selectedWord,"hl=en-us","Mike", Integer.toString(DictionaryController.speedRate));
     }
 
 }
