@@ -24,7 +24,6 @@
         </dependency>
 
 
-
         <!-- https://mvnrepository.com/artifact/net.sf.sociaal/freetts -->
         <dependency>
             <groupId>net.sf.sociaal</groupId>

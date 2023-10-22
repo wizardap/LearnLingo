@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,12 +22,17 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
     public static int speedRate;
+    private DictionaryCache searchCache = new DictionaryCache();
+
     @FXML
     public void changeMode() {
         if (isUKFlagVisible) {
@@ -45,17 +51,6 @@ public class DictionaryController extends GeneralController {
             antonym.setText("Antonyms");
         }
         isUKFlagVisible = !isUKFlagVisible;
-    }
-
-    @FXML
-    private void deleteSearch() {
-        listWords.getItems().clear();
-        textfield.setText("");
-    }
-
-    @FXML
-    public void saveWordInBookMark() {
-
     }
 
     public static class IconAndFontListCell extends ListCell<String> {
@@ -111,7 +106,6 @@ public class DictionaryController extends GeneralController {
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
         }
-//        center.setStyle("-fx-background-color: #1d2a57");
         bookmark.setVisible(false);
         speakUK.setVisible(false);
         speakUS.setVisible(false);
@@ -125,15 +119,35 @@ public class DictionaryController extends GeneralController {
         webEngine = webView.getEngine();
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
-    @FXML
-    public void speakWordUS(){
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-us","Mike",Integer.toString(speedRate));
+
+
+    private ObservableList<String> recentlySearchList() {
+        List<String> historyList = new ArrayList<>();
+        try {
+            FileReader fr = new FileReader(historyTxt);
+            BufferedReader input = new BufferedReader(fr);
+            String line;
+            while ((line = input.readLine()) != null) {
+                historyList.add(line);
+            }
+            input.close();
+            fr.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return FXCollections.observableList(historyList);
     }
+
     @FXML
-    public void speakWordUK(){
+    public void speakWordUS() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(),"hl=en-gb","LiLy",Integer.toString(speedRate));
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(), "hl=en-us", "Mike", Integer.toString(speedRate));
+    }
+
+    @FXML
+    public void speakWordUK() {
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(), "hl=en-gb", "LiLy", Integer.toString(speedRate));
     }
 
     @FXML
@@ -152,4 +166,113 @@ public class DictionaryController extends GeneralController {
             slide.play();
         }
     }
+
+    @FXML
+    private void deleteSearch() {
+        listWords.getItems().clear();
+        textfield.setText("");
+        listWords.getItems().addAll(recentlySearchList());
+    }
+
+    @FXML
+    public void saveWordInBookMark() {
+        try {
+            List<String> bookmarkList = new ArrayList<>();
+            boolean isBookmarked = false;
+            String selectedWord = listWords.getSelectionModel().getSelectedItem();
+            FileReader fr = new FileReader(bookmarkTxt);
+            BufferedReader input = new BufferedReader(fr);
+            String line;
+            while ((line = input.readLine()) != null) {
+                if (line.equals(selectedWord)) {
+                    isBookmarked = true;
+                }
+                bookmarkList.add(line);
+            }
+            input.close();
+            fr.close();
+            FileWriter fw = new FileWriter(bookmarkTxt);
+            BufferedWriter output = new BufferedWriter(fw);
+            if (!isBookmarked) {
+                output.write(selectedWord);
+                output.newLine();
+            }
+            for (String bookmarkedWord : bookmarkList) {
+                output.write(bookmarkedWord);
+                output.newLine();
+            }
+            output.close();
+            fw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    @FXML
+    public void handleKeyTyped(KeyEvent keyEvent) {
+        listWords.getItems().clear();
+        if (!textfield.getText().isEmpty()) {
+            listWords.setVisible(true);
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+            int s = listWords.getItems().size();
+            if (s < 23)
+                listWords.setPrefHeight(3 + 24 * s);
+            else
+                listWords.setPrefHeight(550);
+        }
+        else {
+            listWords.getItems().addAll(recentlySearchList());
+        }
+    }
+
+    @FXML
+    public void handleSearchMouseClicked(MouseEvent mouseEvent) {
+        if (textfield.getText().isEmpty()) {
+            listWords.getItems().addAll(recentlySearchList());
+        }
+    }
+
+    @FXML
+    public void handleMouseClicked(MouseEvent mouseEvent) {
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            String meaningHTMLString = "";
+            meaningHTMLString = searchCache.getWordInformation(selectedWord).getHtml();
+            webEngine.loadContent(meaningHTMLString);
+            //
+            try {
+                List<String> historyList = new ArrayList<>();
+                FileReader fr = new FileReader(historyTxt);
+                BufferedReader input = new BufferedReader(fr);
+                String line;
+                while ((line = input.readLine()) != null) {
+                    historyList.add(line);
+                }
+                input.close();
+                fr.close();
+                FileWriter fw = new FileWriter(historyTxt);
+                BufferedWriter output = new BufferedWriter(fw);
+                output.write(selectedWord);
+                output.newLine();
+
+                for (String historyWord : historyList) {
+                    if (!historyWord.equals(selectedWord)) {
+                        output.write(historyWord);
+                        output.newLine();
+                    }
+                }
+                output.close();
+                fw.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            speakUS.setVisible(true);
+            speakUK.setVisible(true);
+            bookmark.setVisible(true);
+        }
+    }
+
 }

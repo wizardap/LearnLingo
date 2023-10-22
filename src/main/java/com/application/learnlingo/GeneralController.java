@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,7 +29,6 @@ public class GeneralController implements Initializable {
     protected Button speakUS;
     @FXML
     protected Button speakUK;
-    static Boolean b = true;
     @FXML
     protected static boolean changeL = true;
     @FXML
@@ -87,8 +87,7 @@ public class GeneralController implements Initializable {
     protected Button menu;
 
     protected boolean checkMenuBar = false;
-    private final static String DEFAULT_DICT_DBMS_PATH
-            = "./src/main/resources/com/application/learnlingo/database/dict_hh.db";
+    private final static String DEFAULT_DICT_DBMS_PATH = "./src/main/resources/com/application/learnlingo/database/dict_hh.db";
 
     protected static DictDMBS evDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH, "av");
     protected static DictDMBS veDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH, "va");
@@ -135,9 +134,17 @@ public class GeneralController implements Initializable {
             bookmark.setVisible(true);
         }
     }
+    private static final String BOOKMARK_TXT_PATH
+            = "./src/main/resources/com/application/learnlingo/database/bookmark.txt";
+    private static final String HISTORY_TXT_PATH
+            ="./src/main/resources/com/application/learnlingo/database/history.txt";
+
+    protected static File bookmarkTxt = new File(BOOKMARK_TXT_PATH);
+    protected static File historyTxt = new File(HISTORY_TXT_PATH);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }
+
