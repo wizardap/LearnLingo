@@ -1,17 +1,8 @@
 package com.application.learnlingo;
 
 import javafx.animation.TranslateTransition;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
@@ -45,24 +36,14 @@ public class SynonymAndAntonym extends GeneralController {
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
         slide.setNode(left);
-        if (checkMenuBar) {
+        if (!checkMenuBar) {
             left.setVisible(true);
             left.setPrefWidth(100);
             slide.setToX(0);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                if (child.getId() == null || !child.getId().equals("left")) {
-                    child.setOpacity(0.8);
-                } else {
-                    child.setOpacity(1);
-                }
-            }
         } else {
             slide.setToX(-100);
             slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                child.setOpacity(1);
-            }
         }
     }
 
@@ -75,8 +56,6 @@ public class SynonymAndAntonym extends GeneralController {
         listWords.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        left.setVisible(false);
-        left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,

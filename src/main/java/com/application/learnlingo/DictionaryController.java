@@ -1,32 +1,24 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
@@ -140,14 +132,34 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void speakWordUS() {
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(), "hl=en-us", "Mike", Integer.toString(speedRate));
+        try {
+            FileReader fileReader = new FileReader(historyTxt);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-us", "Mike", Integer.toString(speedRate));
+                break;
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void speakWordUK() {
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(selectedWord).getWord(), "hl=en-gb", "LiLy", Integer.toString(speedRate));
+        try {
+            FileReader fileReader = new FileReader(historyTxt);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-gb", "LiLy", Integer.toString(speedRate));
+                break;
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -224,6 +236,11 @@ public class DictionaryController extends GeneralController {
         }
         else {
             listWords.getItems().addAll(recentlySearchList());
+            int k = listWords.getItems().size();
+            if (k < 23)
+                listWords.setPrefHeight(3 + 24 * k);
+            else
+                listWords.setPrefHeight(550);
         }
     }
 
