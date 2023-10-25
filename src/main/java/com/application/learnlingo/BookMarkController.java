@@ -1,30 +1,16 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class BookMarkController extends GeneralController {
@@ -73,6 +59,10 @@ public class BookMarkController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkMode1.setVisible(false);
+        checkMode2.setVisible(false);
+        checkMode3.setVisible(false);
+        checkMode4.setVisible(false);
         center.setStyle("-fx-background-color: #F4F4F4");
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));

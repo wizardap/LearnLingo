@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -123,6 +122,10 @@ public class GameController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkMode1.setVisible(false);
+        checkMode2.setVisible(false);
+        checkMode3.setVisible(false);
+        checkMode4.setVisible(false);
         credit.setVisible(false);
         htp.setVisible(false);
         Image image = new Image(getClass().getResource("image/music.png").toString());

@@ -1,26 +1,16 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
-import javafx.animation.Animation;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChangeWordController extends GeneralController {
@@ -39,6 +29,10 @@ public class ChangeWordController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkMode1.setVisible(false);
+        checkMode2.setVisible(false);
+        checkMode3.setVisible(false);
+        checkMode4.setVisible(false);
         left.setVisible(false);
         left.setTranslateX(-50);
         BackgroundImage backgroundImage = new BackgroundImage(

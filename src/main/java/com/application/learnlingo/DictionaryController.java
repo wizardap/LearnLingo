@@ -82,7 +82,10 @@ public class DictionaryController extends GeneralController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listWords.setCellFactory(param -> new IconAndFontListCell());
         listWords.setVisible(false);
-        tudien.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
+        checkMode1.setVisible(true);
+        checkMode2.setVisible(false);
+        checkMode3.setVisible(false);
+        checkMode4.setVisible(false);
         if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
@@ -258,7 +261,6 @@ public class DictionaryController extends GeneralController {
             String meaningHTMLString = "";
             meaningHTMLString = searchCache.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
-            //
             try {
                 List<String> historyList = new ArrayList<>();
                 FileReader fr = new FileReader(historyTxt);
@@ -285,7 +287,6 @@ public class DictionaryController extends GeneralController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
             speakUS.setVisible(true);
             speakUK.setVisible(true);
             bookmark.setVisible(true);

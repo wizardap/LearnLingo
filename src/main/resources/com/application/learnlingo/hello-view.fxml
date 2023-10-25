@@ -15,133 +15,6 @@
 <?import javafx.scene.web.WebView?>
 
 <BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style=";" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.DictionaryController">
-   <top>
-      <HBox fx:id="top" prefHeight="23.0" prefWidth="942.0" spacing="5.0" style="-fx-background-color: #1d2a57;" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="menu" mnemonicParsing="false" onAction="#setMenu" prefHeight="48.0" prefWidth="99.0" style="-fx-hgrow: always;" stylesheets="@../../../vu.css">
-               <graphic>
-                  <HBox prefHeight="29.0" prefWidth="51.0" spacing="4.0">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/menu.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets top="7.0" />
-                           </HBox.margin>
-                           <image>
-                              <Image url="@image/logo.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-               </graphic>
-            </Button>
-            <HBox prefHeight="23.0" prefWidth="239.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <TextField fx:id="textfield" onKeyTyped="#handleKeyTyped" onMouseClicked="#handleSearchMouseClicked" prefHeight="25.0" prefWidth="180.0" promptText="Search here" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
-                  <Button fx:id="deleteWord" mnemonicParsing="false" onAction="#deleteSearch" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/deleteWord.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="find" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
-                     <graphic>
-                        <ImageView fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/find.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="2.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </HBox>
-            <HBox fx:id="changeDictionary" prefHeight="28.0" prefWidth="107.0" spacing="5.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <ImageView fx:id="british" fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                     <image>
-                        <Image url="@image/English.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets top="1.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Button fx:id="change" mnemonicParsing="false" onAction="#changeMode" prefHeight="27.0" prefWidth="25.0" stylesheets="@../../../vu.css">
-                     <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/image.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-                  <ImageView fx:id="vn" fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                     <image>
-                        <Image url="@image/Vietnamese.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets top="1.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-               <HBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </HBox.margin>
-            </HBox>
-            <HBox fx:id="function" prefHeight="48.0" prefWidth="410.0" spacing="10.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
-               <children>
-                  <JFXButton fx:id="tudien" style="-fx-min-width: 85;" text="Dictionary" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="20.0" top="11.0" />
-                     </HBox.margin></JFXButton>
-                  <JFXButton fx:id="dich" style="-fx-min-width: 85;" text="Translation" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets top="11.0" />
-                     </HBox.margin>
-                  </JFXButton>
-                  <JFXButton fx:id="synonym" style="-fx-min-width: 85;" text="Synonyms" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets top="11.0" />
-                     </HBox.margin>
-                  </JFXButton>
-                  <JFXButton fx:id="antonym" style="-fx-min-width: 85;" text="Antonyms" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets top="11.0" />
-                     </HBox.margin>
-                  </JFXButton>
-               </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </HBox>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </HBox>
-   </top>
    <center>
       <AnchorPane fx:id="center" prefHeight="552.0" prefWidth="765.0" BorderPane.alignment="CENTER">
          <children>
@@ -244,4 +117,169 @@
          </children>
       </AnchorPane>
    </center>
+   <top>
+      <HBox fx:id="top" prefHeight="23.0" prefWidth="942.0" spacing="5.0" style="-fx-background-color: #1d2a57;" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="menu" mnemonicParsing="false" onAction="#setMenu" prefHeight="48.0" prefWidth="99.0" style="-fx-hgrow: always;" stylesheets="@../../../vu.css">
+               <graphic>
+                  <HBox prefHeight="29.0" prefWidth="51.0" spacing="4.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/menu.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="7.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@image/logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <HBox prefHeight="23.0" prefWidth="239.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="textfield" onKeyTyped="#handleKeyTyped" prefHeight="25.0" prefWidth="180.0" promptText="Search here" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="deleteWord" mnemonicParsing="false" onAction="#deleteSearch" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deleteWord.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="find" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/find.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="changeDictionary" prefHeight="28.0" prefWidth="93.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fx:id="british" fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@image/English.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="1.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Button fx:id="change" mnemonicParsing="false" onAction="#changeMode" prefHeight="27.0" prefWidth="25.0" stylesheets="@../../../vu.css">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/image.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <ImageView fx:id="vn" fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@image/Vietnamese.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="1.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="function" prefHeight="48.0" prefWidth="410.0" spacing="7.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXButton fx:id="tudien" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Dictionary" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="10.0" top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode1" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="dich" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="98.0" style="-fx-min-width: 98;" text="Translation" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode2" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="synonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Synonyms" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode3" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="17.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="antonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Antonyms" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode4" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="17.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

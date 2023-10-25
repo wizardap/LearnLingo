@@ -1,29 +1,16 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXSlider;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SettingsController extends GeneralController {
@@ -43,6 +30,10 @@ public class SettingsController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkMode1.setVisible(false);
+        checkMode2.setVisible(false);
+        checkMode3.setVisible(false);
+        checkMode4.setVisible(false);
         left.setVisible(false);
         left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(

@@ -1,18 +1,17 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
@@ -24,7 +23,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -73,18 +71,21 @@ public class TranslationController extends GeneralController {
     @FXML
     private Button chooseFile;
 
+    @FXML
+    private Label charCountLabel;
+
     public void changeLanguage() {
         if (changeL == true) {
             lang1.setText("Tiếng Việt");
             lang2.setText("Tiếng Anh");
             chooseFile.setText("Chọn ảnh");
-            warning.setText("Vui lòng nhập không quá 150 ký tự");
+            warning.setText("Vui lòng nhập không quá 600 ký tự");
             changeL = false;
         } else {
             lang1.setText("English");
             lang2.setText("Vietnamese");
             chooseFile.setText("Choose image");
-            warning.setText("Enter no more than 150 characters");
+            warning.setText("Enter no more than 600 characters");
             changeL = true;
         }
     }
@@ -151,6 +152,20 @@ public class TranslationController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkMode1.setVisible(false);
+        checkMode2.setVisible(true);
+        checkMode3.setVisible(false);
+        checkMode4.setVisible(false);
+        tx1.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                int charCount = newValue.length();
+                if (charCount > 600) {
+                    charCountLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                }
+                charCountLabel.setText(charCount + "/600");
+            }
+        });
         left.setVisible(false);
         left.setTranslateX(-100);
         dich.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");

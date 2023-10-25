@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class DictDMBS {
@@ -41,7 +40,7 @@ public class DictDMBS {
     }
 
     public Word getWordInformation(String searchWord) {
-        String sql = "SELECT word,html,description,pronounce FROM "
+        String sql = "SELECT DISTINCT word,html,description,pronounce FROM "
                 +tableName
                 +" WHERE word = ?;";
         try  {
@@ -65,7 +64,7 @@ public class DictDMBS {
 
     ObservableList<String> exportSuggestionList(String prefixString) {
         List<String> filterList = new ArrayList<String>();
-        String sql = "SELECT word FROM " + tableName
+        String sql = "SELECT DISTINCT word FROM " + tableName
                 + " WHERE word LIKE \'" + prefixString
                 + "%\';";
         try (Connection conn = this.connecting();

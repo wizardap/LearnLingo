@@ -1,6 +1,5 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -86,6 +85,17 @@ public class GeneralController implements Initializable {
     @FXML
     protected Button menu;
 
+    @FXML
+    protected ImageView checkMode1;
+
+    @FXML
+    protected ImageView checkMode2;
+
+    @FXML
+    protected ImageView checkMode3;
+
+    @FXML
+    protected ImageView checkMode4;
     protected boolean checkMenuBar = false;
     private final static String DEFAULT_DICT_DBMS_PATH = "./src/main/resources/com/application/learnlingo/database/dict_hh.db";
 
@@ -144,7 +154,6 @@ public class GeneralController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
 
