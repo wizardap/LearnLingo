@@ -1,11 +1,8 @@
 package com.application.learnlingo;
 
-import javafx.animation.TranslateTransition;
-import javafx.fxml.FXML;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,22 +27,6 @@ public class SynonymAndAntonym extends GeneralController {
         }
         isUKFlagVisible = !isUKFlagVisible;
     }
-    @FXML
-    public void setMenu() {
-        checkMenuBar = !checkMenuBar;
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(left);
-        if (!checkMenuBar) {
-            left.setVisible(true);
-            left.setPrefWidth(100);
-            slide.setToX(0);
-            slide.play();
-        } else {
-            slide.setToX(-100);
-            slide.play();
-        }
-    }
 
     public void handleMouseClicked(MouseEvent mouseEvent) {
 
@@ -54,6 +35,8 @@ public class SynonymAndAntonym extends GeneralController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        tableRW.setVisible(false);
+        labelRW.setVisible(false);
         listWords.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
@@ -64,13 +47,6 @@ public class SynonymAndAntonym extends GeneralController {
 
         Background background = new Background(backgroundImage);
         center.setBackground(background);
-        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
-        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
-        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
-        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
-        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
     }
 
 }

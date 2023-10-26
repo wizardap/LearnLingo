@@ -1,6 +1,5 @@
 package com.application.learnlingo;
 
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -8,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,39 +57,10 @@ public class BookMarkController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        checkMode1.setVisible(false);
-        checkMode2.setVisible(false);
-        checkMode3.setVisible(false);
-        checkMode4.setVisible(false);
+        super.initialize(url, resourceBundle);
         center.setStyle("-fx-background-color: #F4F4F4");
-        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
-        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
-        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
-        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
-        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
-        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
-        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         listWords.setCellFactory(param -> new IconAndFontListCell());
         listWords.getItems().addAll("Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World", "Hello", "World");
-    }
-
-    @FXML
-    public void setMenu() {
-        checkMenuBar = !checkMenuBar;
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(left);
-        if (!checkMenuBar) {
-            left.setVisible(true);
-            left.setPrefWidth(100);
-            slide.setToX(0);
-            slide.play();
-        } else {
-            slide.setToX(-100);
-            slide.play();
-        }
     }
 
     @FXML

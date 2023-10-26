@@ -1,10 +1,12 @@
 package com.application.learnlingo;
 
 import com.jfoenix.controls.JFXListView;
+import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -15,12 +17,43 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GeneralController implements Initializable {
+
+    @FXML
+    protected AnchorPane tableRW;
+
+    @FXML
+    protected Label labelRW;
+
+    @FXML
+    protected Label rw1;
+
+    @FXML
+    protected Label rw2;
+
+    @FXML
+    protected Label rw3;
+
+    @FXML
+    protected Label rw4;
+
+    @FXML
+    protected Label rw5;
+
+    @FXML
+    protected Label rw6;
+
+    @FXML
+    protected Label rw7;
+
+    @FXML
+    protected Label rw8;
 
     @FXML
     protected Button settings;
@@ -162,6 +195,38 @@ public class GeneralController implements Initializable {
         checkMode2.setVisible(false);
         checkMode3.setVisible(false);
         checkMode4.setVisible(false);
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
+        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
+        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
+        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
+    }
+
+    @FXML
+    public void setMenu() {
+        checkMenuBar = !checkMenuBar;
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(left);
+        if (!checkMenuBar) {
+            left.setVisible(true);
+            left.setPrefWidth(100);
+            slide.setToX(0);
+            slide.play();
+        } else {
+            slide.setToX(-100);
+            slide.play();
+        }
+    }
+
+    @FXML
+    public void generateRelatedWord() {
+        tableRW.setVisible(true);
+        labelRW.setVisible(true);
     }
 }
 

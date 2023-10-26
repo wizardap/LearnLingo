@@ -1,10 +1,8 @@
 package com.application.learnlingo;
 
-import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -12,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
-import javafx.util.Duration;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
@@ -164,8 +161,6 @@ public class TranslationController extends GeneralController {
                 charCountLabel.setText(charCount + "/600");
             }
         });
-        left.setVisible(false);
-        left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -173,50 +168,8 @@ public class TranslationController extends GeneralController {
 
         Background background = new Background(backgroundImage);
         center.setBackground(background);
-        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
-        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
-        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
-        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
-        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
-        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         tx1.setWrapText(true);
         tx2.setWrapText(true);
-    }
-
-    @FXML
-    public void setMenu() {
-        checkMenuBar = !checkMenuBar;
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(left);
-        TranslateTransition slide2 = new TranslateTransition();
-        slide2.setDuration(Duration.seconds(0.4));
-        slide2.setNode(center);
-        if (checkMenuBar) {
-            left.setVisible(true);
-            left.setPrefWidth(100);
-            slide.setToX(-40);
-            slide.play();
-            slide2.setToX(40);
-            slide2.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                if (child.getId() == null || !child.getId().equals("left")) {
-                    child.setOpacity(0.8);
-                } else {
-                    child.setOpacity(1);
-                }
-            }
-        } else {
-            slide.setToX(-100);
-            slide.play();
-            slide2.setToX(0);
-            slide2.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                child.setOpacity(1);
-            }
-        }
     }
 
     @FXML

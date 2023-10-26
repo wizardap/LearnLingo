@@ -1,6 +1,5 @@
 package com.application.learnlingo;
 
-import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
@@ -24,6 +22,30 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
+
+    @FXML
+    private Label rw9;
+
+    @FXML
+    private Label rw10;
+
+    @FXML
+    private Label rw11;
+
+    @FXML
+    private Label rw12;
+
+    @FXML
+    private Label rw13;
+
+    @FXML
+    private Label rw14;
+
+    @FXML
+    private Label rw15;
+
+    @FXML
+    private Label rw16;
 
     @FXML
     private Button btnYes;
@@ -93,6 +115,8 @@ public class DictionaryController extends GeneralController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        tableRW.setVisible(false);
+        labelRW.setVisible(false);
         confirmAdd.setVisible(false);
         listWords.setCellFactory(param -> new IconAndFontListCell());
         listWords.setVisible(false);
@@ -115,13 +139,6 @@ public class DictionaryController extends GeneralController {
         bookmark.setVisible(false);
         speakUK.setVisible(false);
         speakUS.setVisible(false);
-        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
-        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
-        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
-        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
-        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
-        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
-        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
         webEngine = webView.getEngine();
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
@@ -173,23 +190,6 @@ public class DictionaryController extends GeneralController {
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void setMenu() {
-        checkMenuBar = !checkMenuBar;
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(left);
-        if (!checkMenuBar) {
-            left.setVisible(true);
-            left.setPrefWidth(100);
-            slide.setToX(0);
-            slide.play();
-        } else {
-            slide.setToX(-100);
-            slide.play();
         }
     }
 
@@ -270,6 +270,8 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void handleMouseClicked(MouseEvent mouseEvent) {
+        tableRW.setVisible(false);
+        labelRW.setVisible(false);
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             String meaningHTMLString = "";
@@ -306,5 +308,4 @@ public class DictionaryController extends GeneralController {
             bookmark.setVisible(true);
         }
     }
-
 }

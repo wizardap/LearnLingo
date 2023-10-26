@@ -122,10 +122,7 @@ public class GameController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        checkMode1.setVisible(false);
-        checkMode2.setVisible(false);
-        checkMode3.setVisible(false);
-        checkMode4.setVisible(false);
+        super.initialize(url, resourceBundle);
         credit.setVisible(false);
         htp.setVisible(false);
         Image image = new Image(getClass().getResource("image/music.png").toString());
@@ -152,14 +149,6 @@ public class GameController extends GeneralController {
 
         Background background = new Background(backgroundImage);
         center.setBackground(background);
-        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
-        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
-        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
-        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
-        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
-        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
-        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
     }
 
     @FXML

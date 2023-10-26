@@ -18,7 +18,7 @@
    <center>
       <AnchorPane fx:id="center" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="subcenter" layoutX="-1.0" prefHeight="550.0" prefWidth="910.0" stylesheets="@../../../translation.css">
+            <VBox fx:id="subcenter" layoutX="34.0" prefHeight="550.0" prefWidth="875.0" stylesheets="@../../../translation.css">
                <children>
                   <HBox prefHeight="327.0" prefWidth="900.0">
                      <children>
