@@ -53,6 +53,7 @@ public class SynonymAndAntonym extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
         listWords.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());

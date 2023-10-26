@@ -10,6 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -106,4 +108,44 @@ public class SettingsController extends GeneralController {
         TextToSpeech pronouce = new TextToSpeech(selectedWord,"hl=en-us","Mike", Integer.toString(DictionaryController.speedRate));
     }
 
+    @FXML
+    public void deleteBookmark() {
+        try {
+            FileWriter writer = new FileWriter(bookmarkTxt);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void resetDefault() {
+        try {
+            FileWriter writer = new FileWriter(bookmarkTxt);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter writer = new FileWriter(historyTxt);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        slider.setValue(50);
+    }
+
+    @FXML
+    public void sendFeedback() {
+        try {
+            FileWriter fw = new FileWriter(feedbackTxt, true);
+            String feedback = textfield.getText();
+            fw.write(feedback);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

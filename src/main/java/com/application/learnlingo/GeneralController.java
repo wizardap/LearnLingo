@@ -144,6 +144,9 @@ public class GeneralController implements Initializable {
             bookmark.setVisible(true);
         }
     }
+
+    private static final String FEEDBACK_TXT_PATH
+            = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
     private static final String BOOKMARK_TXT_PATH
             = "./src/main/resources/com/application/learnlingo/database/bookmark.txt";
     private static final String HISTORY_TXT_PATH
@@ -151,9 +154,14 @@ public class GeneralController implements Initializable {
 
     protected static File bookmarkTxt = new File(BOOKMARK_TXT_PATH);
     protected static File historyTxt = new File(HISTORY_TXT_PATH);
+    protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkMode1.setVisible(false);
+        checkMode2.setVisible(false);
+        checkMode3.setVisible(false);
+        checkMode4.setVisible(false);
     }
 }
 

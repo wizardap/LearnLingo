@@ -21,12 +21,12 @@
          <children>
             <Button fx:id="reset" layoutX="391.0" layoutY="332.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="25.0" stylesheets="@../../../vu.css" />
             <Label fx:id="lb1" layoutX="263.0" layoutY="157.0" prefHeight="29.0" prefWidth="109.0" style="-fx-font-weight: bold; -fx-font-size: 13;" stylesheets="@../../../vu.css" text="Delete BookMark" />
-            <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="380.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+            <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="380.0" layoutY="160.0" onMouseClicked="#deleteBookmark" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@image/deleteBM.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="378.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+            <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="378.0" layoutY="215.0" onMouseClicked="#resetDefault" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@image/resetDF.png" />
                </image>
@@ -41,7 +41,7 @@
             <Label fx:id="lb3" layoutX="261.0" layoutY="272.0" prefHeight="29.0" prefWidth="105.0" style="-fx-font-weight: bold; -fx-font-size: 13;" stylesheets="@../../../vu.css" text="Voice Speed" />
             <Label fx:id="lb4" layoutX="261.0" layoutY="331.0" prefHeight="29.0" prefWidth="105.0" style="-fx-font-weight: bold; -fx-font-size: 13;" stylesheets="@../../../vu.css" text="Feedbacks" />
             <TextArea fx:id="feedback" layoutX="380.0" layoutY="339.0" prefHeight="141.0" prefWidth="165.0" promptText="Text here" />
-            <ImageView fx:id="sendfb" fitHeight="31.0" fitWidth="21.0" layoutX="519.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+            <ImageView fx:id="sendfb" fitHeight="31.0" fitWidth="21.0" layoutX="519.0" layoutY="454.0" onMouseClicked="#sendFeedback" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@image/sendfb.png" />
                </image>
@@ -214,7 +214,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </HBox.margin>
             </HBox>
-            <HBox fx:id="function" prefHeight="48.0" prefWidth="410.0" spacing="7.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
+            <HBox fx:id="function" prefHeight="48.0" prefWidth="410.0" spacing="5.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
                <children>
                   <JFXButton fx:id="tudien" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Dictionary" HBox.hgrow="ALWAYS">
                      <HBox.margin>
@@ -246,7 +246,7 @@
                         <Insets left="16.0" />
                      </padding>
                   </JFXButton>
-                  <JFXButton fx:id="synonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Synonyms" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="synonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="100.0" style="-fx-min-width: 93;" text="Synonyms" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets top="11.0" />
                      </HBox.margin>
@@ -258,7 +258,7 @@
                         </ImageView>
                      </graphic>
                      <padding>
-                        <Insets left="17.0" />
+                        <Insets left="16.0" />
                      </padding>
                   </JFXButton>
                   <JFXButton fx:id="antonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Antonyms" HBox.hgrow="ALWAYS">

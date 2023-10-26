@@ -12,7 +12,6 @@ public class SynonymController extends SynonymAndAntonym {
         checkMode2.setVisible(false);
         checkMode3.setVisible(true);
         checkMode4.setVisible(false);
-        synonym.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
     }
 

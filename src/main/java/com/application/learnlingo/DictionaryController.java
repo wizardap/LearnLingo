@@ -4,6 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
@@ -11,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -22,6 +24,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
+
+    @FXML
+    private Button btnYes;
+
+    @FXML
+    private Button btnNo;
+
+    @FXML
+    private AnchorPane confirmAdd;
+
     public static int speedRate;
     private DictionaryCache searchCache = new DictionaryCache();
 
@@ -80,12 +92,11 @@ public class DictionaryController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
+        confirmAdd.setVisible(false);
         listWords.setCellFactory(param -> new IconAndFontListCell());
         listWords.setVisible(false);
         checkMode1.setVisible(true);
-        checkMode2.setVisible(false);
-        checkMode3.setVisible(false);
-        checkMode4.setVisible(false);
         if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
@@ -191,38 +202,41 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void saveWordInBookMark() {
-        try {
-            List<String> bookmarkList = new ArrayList<>();
-            boolean isBookmarked = false;
-            String selectedWord = listWords.getSelectionModel().getSelectedItem();
-            FileReader fr = new FileReader(bookmarkTxt);
-            BufferedReader input = new BufferedReader(fr);
-            String line;
-            while ((line = input.readLine()) != null) {
-                if (line.equals(selectedWord)) {
-                    isBookmarked = true;
+        confirmAdd.setVisible(true);
+        btnYes.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            try {
+                List<String> bookmarkList = new ArrayList<>();
+                boolean isBookmarked = false;
+                String selectedWord = listWords.getSelectionModel().getSelectedItem();
+                FileReader fr = new FileReader(bookmarkTxt);
+                BufferedReader input = new BufferedReader(fr);
+                String line;
+                while ((line = input.readLine()) != null) {
+                    if (line.equals(selectedWord)) {
+                        isBookmarked = true;
+                    }
+                    bookmarkList.add(line);
                 }
-                bookmarkList.add(line);
+                input.close();
+                fr.close();
+                FileWriter fw = new FileWriter(bookmarkTxt);
+                BufferedWriter output = new BufferedWriter(fw);
+                if (!isBookmarked) {
+                    output.write(selectedWord);
+                    output.newLine();
+                }
+                for (String bookmarkedWord : bookmarkList) {
+                    output.write(bookmarkedWord);
+                    output.newLine();
+                }
+                output.close();
+                fw.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            input.close();
-            fr.close();
-            FileWriter fw = new FileWriter(bookmarkTxt);
-            BufferedWriter output = new BufferedWriter(fw);
-            if (!isBookmarked) {
-                output.write(selectedWord);
-                output.newLine();
-            }
-            for (String bookmarkedWord : bookmarkList) {
-                output.write(bookmarkedWord);
-                output.newLine();
-            }
-            output.close();
-            fw.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
+        });
+        btnNo.setOnAction(ev -> confirmAdd.setVisible(false));
     }
 
     @FXML

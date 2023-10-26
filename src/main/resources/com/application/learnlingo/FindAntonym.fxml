@@ -264,7 +264,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </HBox.margin>
             </HBox>
-            <HBox fx:id="function" prefHeight="48.0" prefWidth="410.0" spacing="7.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
+            <HBox fx:id="function" prefHeight="48.0" prefWidth="410.0" spacing="5.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
                <children>
                   <JFXButton fx:id="tudien" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Dictionary" HBox.hgrow="ALWAYS">
                      <HBox.margin>
@@ -296,7 +296,7 @@
                         <Insets left="16.0" />
                      </padding>
                   </JFXButton>
-                  <JFXButton fx:id="synonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Synonyms" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="synonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="100.0" style="-fx-min-width: 93;" text="Synonyms" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets top="11.0" />
                      </HBox.margin>
@@ -308,7 +308,7 @@
                         </ImageView>
                      </graphic>
                      <padding>
-                        <Insets left="17.0" />
+                        <Insets left="16.0" />
                      </padding>
                   </JFXButton>
                   <JFXButton fx:id="antonym" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Antonyms" HBox.hgrow="ALWAYS">

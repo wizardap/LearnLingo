@@ -152,10 +152,8 @@ public class TranslationController extends GeneralController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        checkMode1.setVisible(false);
+        super.initialize(url, resourceBundle);
         checkMode2.setVisible(true);
-        checkMode3.setVisible(false);
-        checkMode4.setVisible(false);
         tx1.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -168,7 +166,6 @@ public class TranslationController extends GeneralController {
         });
         left.setVisible(false);
         left.setTranslateX(-100);
-        dich.setStyle("-fx-background-color: #dddddd; -fx-min-width: 85;");
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
