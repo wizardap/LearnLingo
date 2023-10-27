@@ -91,21 +91,21 @@
             </VBox>
             <AnchorPane layoutX="434.0" layoutY="58.0" prefHeight="227.0" prefWidth="390.0" style="-fx-background-color: white; -fx-border-color: #1d2a57; -fx-border-width: 4 0 0 0;">
                <children>
-                  <Button fx:id="a1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="big" />
-                  <Button fx:id="a2" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="reverse" />
-                  <Button fx:id="a3" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="large" />
-                  <Button fx:id="a4" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="turnaround" />
-                  <Button fx:id="a5" layoutX="10.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="reversal" />
-                  <Button fx:id="a6" layoutX="146.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="reversion" />
-                  <Button fx:id="a7" layoutX="146.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="turnabout" />
-                  <Button fx:id="a8" layoutX="146.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="macroscopic" />
-                  <Button fx:id="a9" layoutX="145.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="macroscopical" />
-                  <Button fx:id="a10" layoutX="145.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
-                  <Button fx:id="a11" layoutX="275.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
-                  <Button fx:id="a13" layoutX="275.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
-                  <Button fx:id="a12" layoutX="275.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
-                  <Button fx:id="a14" layoutX="275.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
-                  <Button fx:id="a15" layoutX="275.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
+                  <Button fx:id="b1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="big" />
+                  <Button fx:id="b2" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="reverse" />
+                  <Button fx:id="b3" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="large" />
+                  <Button fx:id="b4" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="turnaround" />
+                  <Button fx:id="b5" layoutX="10.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="reversal" />
+                  <Button fx:id="b6" layoutX="146.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="reversion" />
+                  <Button fx:id="b7" layoutX="146.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="turnabout" />
+                  <Button fx:id="b8" layoutX="146.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="macroscopic" />
+                  <Button fx:id="b9" layoutX="145.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="macroscopical" />
+                  <Button fx:id="b10" layoutX="145.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" />
+                  <Button fx:id="b11" layoutX="275.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" />
+                  <Button fx:id="b12" layoutX="275.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" />
+                  <Button fx:id="b13" layoutX="275.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" />
+                  <Button fx:id="b14" layoutX="275.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" />
+                  <Button fx:id="b15" layoutX="275.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" />
                </children>
             </AnchorPane>
             <Label layoutX="434.0" layoutY="19.0" prefHeight="30.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Antonyms">
