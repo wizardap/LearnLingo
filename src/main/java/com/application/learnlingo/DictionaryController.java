@@ -115,8 +115,6 @@ public class DictionaryController extends GeneralController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
-        tableRW.setVisible(false);
-        labelRW.setVisible(false);
         confirmAdd.setVisible(false);
         listWords.setCellFactory(param -> new IconAndFontListCell());
         listWords.setVisible(false);
@@ -270,8 +268,6 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void handleMouseClicked(MouseEvent mouseEvent) {
-        tableRW.setVisible(false);
-        labelRW.setVisible(false);
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             String meaningHTMLString = "";

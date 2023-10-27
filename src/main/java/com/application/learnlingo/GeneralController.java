@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -24,36 +23,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GeneralController implements Initializable {
-
-    @FXML
-    protected AnchorPane tableRW;
-
-    @FXML
-    protected Label labelRW;
-
-    @FXML
-    protected Label rw1;
-
-    @FXML
-    protected Label rw2;
-
-    @FXML
-    protected Label rw3;
-
-    @FXML
-    protected Label rw4;
-
-    @FXML
-    protected Label rw5;
-
-    @FXML
-    protected Label rw6;
-
-    @FXML
-    protected Label rw7;
-
-    @FXML
-    protected Label rw8;
 
     @FXML
     protected Button settings;
@@ -111,7 +80,6 @@ public class GeneralController implements Initializable {
     protected BorderPane container;
     @FXML
     protected Button search;
-
     @FXML
     protected Button game;
 
@@ -223,10 +191,6 @@ public class GeneralController implements Initializable {
         }
     }
 
-    @FXML
-    public void generateRelatedWord() {
-        tableRW.setVisible(true);
-        labelRW.setVisible(true);
-    }
+
 }
 

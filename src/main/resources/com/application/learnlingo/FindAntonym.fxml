@@ -89,83 +89,73 @@
                   </Button>
                </children>
             </VBox>
-            <AnchorPane layoutX="331.0" layoutY="36.0" prefHeight="227.0" prefWidth="390.0" style="-fx-background-color: white; -fx-border-color: #1d2a57; -fx-border-width: 4 0 0 0;">
+            <AnchorPane layoutX="434.0" layoutY="58.0" prefHeight="227.0" prefWidth="390.0" style="-fx-background-color: white; -fx-border-color: #1d2a57; -fx-border-width: 4 0 0 0;">
                <children>
-                  <Button fx:id="b1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="receive" />
-                  <Button fx:id="b2" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="get" />
-                  <Button fx:id="b3" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="take" />
-                  <Button fx:id="b4" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="accept" />
-                  <Button fx:id="b5" layoutX="10.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="keep" />
-                  <Button fx:id="b6" layoutX="146.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="hold" />
-                  <Button fx:id="b7" layoutX="146.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="withhold" />
-                  <Button fx:id="b8" layoutX="146.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="retain" />
-                  <Button fx:id="b9" layoutX="145.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="withdraw" />
-                  <Button fx:id="b10" layoutX="145.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="deny" />
-                  <Button fx:id="b11" layoutX="275.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="refuse" />
-                  <Button fx:id="b13" layoutX="275.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="conceal" />
-                  <Button fx:id="b12" layoutX="275.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="hide" />
-                  <Button fx:id="b14" layoutX="275.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="neglect" />
-                  <Button fx:id="b15" layoutX="275.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="reject" />
+                  <Button fx:id="a1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="big" />
+                  <Button fx:id="a2" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="reverse" />
+                  <Button fx:id="a3" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="large" />
+                  <Button fx:id="a4" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="turnaround" />
+                  <Button fx:id="a5" layoutX="10.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="reversal" />
+                  <Button fx:id="a6" layoutX="146.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="reversion" />
+                  <Button fx:id="a7" layoutX="146.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="turnabout" />
+                  <Button fx:id="a8" layoutX="146.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="macroscopic" />
+                  <Button fx:id="a9" layoutX="145.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../ant.css" text="macroscopical" />
+                  <Button fx:id="a10" layoutX="145.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
+                  <Button fx:id="a11" layoutX="275.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
+                  <Button fx:id="a13" layoutX="275.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
+                  <Button fx:id="a12" layoutX="275.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
+                  <Button fx:id="a14" layoutX="275.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
+                  <Button fx:id="a15" layoutX="275.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../ant.css" />
                </children>
             </AnchorPane>
-            <Label layoutX="332.0" layoutY="3.0" prefHeight="30.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Antonyms">
+            <Label layoutX="434.0" layoutY="19.0" prefHeight="30.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Antonyms">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="tableRW" layoutX="331.0" layoutY="279.0" prefHeight="262.0" prefWidth="390.0" style="-fx-border-width: 2; -fx-border-color: #cccccc; -fx-background-color: white;">
+            <JFXListView fx:id="listWords" layoutX="98.0" layoutY="-2.0" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
+            <AnchorPane layoutX="434.0" layoutY="294.0" prefHeight="234.0" prefWidth="390.0" style="-fx-background-color: #fec400;">
                <children>
-                  <Label fx:id="rw1" layoutX="10.0" layoutY="38.0" stylesheets="@../../../syn.css" text="girt">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rw3" layoutX="10.0" layoutY="92.0" stylesheets="@../../../syn.css" text="gismo">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rw2" layoutX="10.0" layoutY="65.0" stylesheets="@../../../syn.css" text="girth">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rw4" layoutX="10.0" layoutY="121.0" stylesheets="@../../../syn.css" text="gist">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rw5" layoutX="10.0" layoutY="149.0" stylesheets="@../../../syn.css" text="gift">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rw7" layoutX="10.0" layoutY="206.0" stylesheets="@../../../syn.css" text="giant">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rw6" layoutX="10.0" layoutY="178.0" stylesheets="@../../../syn.css" text="giraffe">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="rw8" layoutX="10.0" layoutY="233.0" stylesheets="@../../../syn.css" text="given">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
+                  <Label layoutX="107.0" layoutY="2.0" prefHeight="32.0" prefWidth="173.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Word of the day" />
+                  <Label layoutX="18.0" layoutY="31.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="Enormity" />
+                  <Label layoutX="69.0" layoutY="84.0" text="/əˈnɔːr.mə.t̬i/" />
+                  <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="12.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="US">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/speakVolume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="210.0" layoutY="84.0" text="/ɪˈnɔː.mə.ti/" />
+                  <Button fx:id="speakUK" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="153.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="UK">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/speakVolume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="20.0" layoutY="61.0" style="-fx-font-style: italic; -fx-font-weight: bold;" text="adjective" />
+                  <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="235.0" layoutY="31.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../../../vu.css" text="Add to word list">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/bookmark.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="20.0" layoutY="106.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="very great size or importance:" />
+                  <Label layoutX="21.0" layoutY="130.0" style="-fx-font-style: italic;" text="- I don't think you realize the enormity of the problem." />
+                  <Label layoutX="21.0" layoutY="150.0" style="-fx-font-style: italic;" text="- The enormity of the wilderness awed us." />
+                  <Label layoutX="20.0" layoutY="167.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="a terrible or immoral act, or immoral something is:" />
+                  <Label layoutX="21.0" layoutY="188.0" style="-fx-font-style: italic;" text="- Shock over the enormity of the crime has subsided." />
+                  <Label layoutX="21.0" layoutY="211.0" style="-fx-font-style: italic;" text="- Goya’s etchings depict in shocking detail the enormities of war." />
                </children>
             </AnchorPane>
-            <Label fx:id="labelRW" layoutX="331.0" layoutY="278.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-weight: bold; -fx-background-color: #ffe797;" text="Search">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </Label>
-            <JFXListView fx:id="listWords" layoutX="98.0" layoutY="-2.0" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
          </children>
       </AnchorPane>
    </center>
@@ -212,7 +202,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="find" mnemonicParsing="false" onAction="#generateRelatedWord" prefHeight="25.0" prefWidth="25.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
+                  <Button fx:id="find" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
