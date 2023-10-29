@@ -24,28 +24,7 @@ import java.util.ResourceBundle;
 public class DictionaryController extends GeneralController {
 
     @FXML
-    private Label rw9;
-
-    @FXML
-    private Label rw10;
-
-    @FXML
-    private Label rw11;
-
-    @FXML
-    private Label rw12;
-
-    @FXML
-    private Label rw13;
-
-    @FXML
-    private Label rw14;
-
-    @FXML
-    private Label rw15;
-
-    @FXML
-    private Label rw16;
+    private AnchorPane introduction;
 
     @FXML
     private Button btnYes;
@@ -239,6 +218,7 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
+        introduction.setVisible(false);
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
             listWords.setVisible(true);
