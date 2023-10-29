@@ -13,24 +13,6 @@ import java.util.ResourceBundle;
 
 public class SynonymAndAntonym extends GeneralController {
 
-    public void changeMode() {
-        if (isUKFlagVisible) {
-            changeDictionary.getChildren().removeAll(british, vn, change);
-            changeDictionary.getChildren().addAll(vn, change, british);
-            tudien.setText("Từ điển");
-            dich.setText("Dịch câu");
-            synonym.setText("Đồng nghĩa");
-            antonym.setText("Trái nghĩa");
-        } else {
-            changeDictionary.getChildren().removeAll(vn, british, change);
-            changeDictionary.getChildren().addAll(british, change, vn);
-            tudien.setText("Dictionary");
-            dich.setText("Translation");
-            synonym.setText("Synonyms");
-            antonym.setText("Antonyms");
-        }
-        isUKFlagVisible = !isUKFlagVisible;
-    }
 
     public void handleMouseClicked(MouseEvent mouseEvent) {
 
@@ -63,36 +45,7 @@ public class SynonymAndAntonym extends GeneralController {
 
     @FXML
     public void saveWordInBookMark() {
-        try {
-            List<String> bookmarkList = new ArrayList<>();
-            boolean isBookmarked = false;
-            String selectedWord = "enormity";
-            FileReader fr = new FileReader(bookmarkTxt);
-            BufferedReader input = new BufferedReader(fr);
-            String line;
-            while ((line = input.readLine()) != null) {
-                if (line.equals(selectedWord)) {
-                    isBookmarked = true;
-                }
-                bookmarkList.add(line);
-            }
-            input.close();
-            fr.close();
-            FileWriter fw = new FileWriter(bookmarkTxt);
-            BufferedWriter output = new BufferedWriter(fw);
-            if (!isBookmarked) {
-                output.write(selectedWord);
-                output.newLine();
-            }
-            for (String bookmarkedWord : bookmarkList) {
-                output.write(bookmarkedWord);
-                output.newLine();
-            }
-            output.close();
-            fw.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }
 

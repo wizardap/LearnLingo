@@ -2,6 +2,7 @@ package com.application.learnlingo;
 
 import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +27,8 @@ public class SettingsController extends GeneralController {
 
     @FXML
     private ImageView speak;
+    @FXML
+    private Button reset;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,37 +71,12 @@ public class SettingsController extends GeneralController {
 
     @FXML
     public void deleteBookmark() {
-        try {
-            FileWriter writer = new FileWriter(bookmarkTxt);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
     public void resetDefault() {
-        try {
-            FileWriter writer = new FileWriter(bookmarkTxt);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileWriter writer = new FileWriter(historyTxt);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            FileWriter writer = new FileWriter(feedbackTxt);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        evDict.resetData();
+        veDict.resetData();
         slider.setValue(50);
     }
 

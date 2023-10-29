@@ -2,6 +2,7 @@ package com.application.learnlingo;
 
 import com.jfoenix.controls.JFXListView;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,7 +68,7 @@ public class GeneralController implements Initializable {
     @FXML
     protected HBox changeDictionary;
     @FXML
-    static boolean isUKFlagVisible = true;
+    static boolean isUKFlagVisible;
     @FXML
     protected Button tudien;
     @FXML
@@ -98,11 +99,16 @@ public class GeneralController implements Initializable {
     @FXML
     protected ImageView checkMode4;
     protected boolean checkMenuBar = false;
-    private final static String DEFAULT_DICT_DBMS_PATH = "./src/main/resources/com/application/learnlingo/database/dict_hh.db";
+    private final static String DATABASE_PATH = "./src/main/resources/com/application/learnlingo/database/";
+    private final static String DATABASE_NAME = "dict_hh.db";
 
-    protected static DictDMBS evDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH, "av");
-    protected static DictDMBS veDict = new DictDMBS(DEFAULT_DICT_DBMS_PATH, "va");
+    protected static DictDMBS evDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "AV","defaultAV");
+    protected static DictDMBS veDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "VA","defaultVA");
+    protected static DictDMBS currentDictionary;
 
+    private static final String FEEDBACK_TXT_PATH
+            = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
+    protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
         listWords.getItems().clear();
@@ -120,25 +126,15 @@ public class GeneralController implements Initializable {
     }
 
     public ObservableList<String> suggestionSearchList(String text) {
-        if (isUKFlagVisible) {
-            return evDict.exportSuggestionList(text);
-        }
-        return veDict.exportSuggestionList(text);
+        return FXCollections.observableList(currentDictionary.exportSuggestionList(text));
     }
 
-    @FXML
-    public void handleKeyPressed(KeyEvent keyEvent) {
-
-    }
 
     @FXML
     public void handleMouseClicked(MouseEvent mouseEvent) {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
-            String meaningHTMLString = "";
-            if (isUKFlagVisible) {
-                meaningHTMLString = evDict.getWordInformation(selectedWord).getHtml();
-            } else meaningHTMLString = veDict.getWordInformation(selectedWord).getHtml();
+            String meaningHTMLString = currentDictionary.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
             speakUS.setVisible(true);
             speakUK.setVisible(true);
@@ -146,16 +142,6 @@ public class GeneralController implements Initializable {
         }
     }
 
-    private static final String FEEDBACK_TXT_PATH
-            = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
-    private static final String BOOKMARK_TXT_PATH
-            = "./src/main/resources/com/application/learnlingo/database/bookmark.txt";
-    private static final String HISTORY_TXT_PATH
-            ="./src/main/resources/com/application/learnlingo/database/history.txt";
-
-    protected static File bookmarkTxt = new File(BOOKMARK_TXT_PATH);
-    protected static File historyTxt = new File(HISTORY_TXT_PATH);
-    protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -172,6 +158,8 @@ public class GeneralController implements Initializable {
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
+        isUKFlagVisible = true;
+        currentDictionary = evDict;
     }
 
     @FXML
@@ -190,7 +178,28 @@ public class GeneralController implements Initializable {
             slide.play();
         }
     }
-
+    @FXML
+    public void changeMode() {
+        if (isUKFlagVisible) {
+            currentDictionary = veDict;
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+        } else {
+            currentDictionary = evDict;
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+        }
+        isUKFlagVisible = !isUKFlagVisible;
+        listWords.getItems().clear();
+    }
 
 }
 
