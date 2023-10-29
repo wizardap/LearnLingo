@@ -4,7 +4,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -31,6 +30,5 @@ public class AntonymController extends SynonymAndAntonym {
 
         synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
     }
-
 
 }

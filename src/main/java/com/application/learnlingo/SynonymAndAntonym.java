@@ -105,30 +105,23 @@ public abstract class SynonymAndAntonym extends GeneralController {
     public void handleMouseClicked(MouseEvent mouseEvent, String s) {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
-            try {
-                FileReader fr = new FileReader(historyTxt);
-                BufferedReader input = new BufferedReader(fr);
-                buttons = new Button[]{b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15};
-                List<String> result = this.setList(selectedWord, s);
-                if (result.isEmpty()) {
-                    if (Objects.equals(s, "syn")) buttons[0].setText("There is no synonym for this word.");
-                    else buttons[0].setText("There is no antonym for this word.");
-                    for (int i = 1; i < 15; i++) {
+            buttons = new Button[]{b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15};
+            List<String> result = this.setList(selectedWord, s);
+            if (result.isEmpty()) {
+                if (Objects.equals(s, "syn")) buttons[0].setText("There is no synonym for this word.");
+                else buttons[0].setText("There is no antonym for this word.");
+                for (int i = 1; i < 15; i++) {
+                    buttons[i].setVisible(false);
+                }
+            } else {
+                for (int i = 0; i < 15; i++) {
+                    if (i < result.size()) {
+                        buttons[i].setVisible(true);
+                        buttons[i].setText(result.get(i));
+                    } else {
                         buttons[i].setVisible(false);
                     }
-                } else {
-                    for (int i = 0; i < 15; i++) {
-                        if (i < result.size()) {
-                            buttons[i].setVisible(true);
-                            buttons[i].setText(result.get(i));
-                        } else {
-                            buttons[i].setVisible(false);
-                        }
-                    }
                 }
-                input.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -160,36 +153,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
 
     @FXML
     public void saveWordInBookMark() {
-        try {
-            List<String> bookmarkList = new ArrayList<>();
-            boolean isBookmarked = false;
-            String selectedWord = "enormity";
-            FileReader fr = new FileReader(bookmarkTxt);
-            BufferedReader input = new BufferedReader(fr);
-            String line;
-            while ((line = input.readLine()) != null) {
-                if (line.equals(selectedWord)) {
-                    isBookmarked = true;
-                }
-                bookmarkList.add(line);
-            }
-            input.close();
-            fr.close();
-            FileWriter fw = new FileWriter(bookmarkTxt);
-            BufferedWriter output = new BufferedWriter(fw);
-            if (!isBookmarked) {
-                output.write(selectedWord);
-                output.newLine();
-            }
-            for (String bookmarkedWord : bookmarkList) {
-                output.write(bookmarkedWord);
-                output.newLine();
-            }
-            output.close();
-            fw.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     public abstract void buttonClicked(MouseEvent mouseEvent);
