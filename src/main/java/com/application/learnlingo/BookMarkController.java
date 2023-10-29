@@ -103,7 +103,7 @@ public class BookMarkController extends DictionaryController {
 
     @Override
     public ObservableList<String> suggestionSearchList(String text) {
-        List<String> suggestionList = currentDictionary.exportBookmarkList();
+        List<String> suggestionList = currentDictionary.exportBookmarkSuggestionList(text);
         return FXCollections.observableList(suggestionList);
     }
 
@@ -111,23 +111,11 @@ public class BookMarkController extends DictionaryController {
     public void handleKeyTyped(KeyEvent keyEvent) {
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
-            listWords.setVisible(true);
             listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
-            int s = listWords.getItems().size();
-            if (s < 23)
-                listWords.setPrefHeight(3 + 24 * s);
-            else
-                listWords.setPrefHeight(550);
         } else {
             listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-            int k = listWords.getItems().size();
-            if (k == 0) {
-                listWords.setVisible(false);
-            } else if (k < 23)
-                listWords.setPrefHeight(3 + 24 * k);
-            else
-                listWords.setPrefHeight(550);
         }
+        displayListWord();
     }
 
     @Override
