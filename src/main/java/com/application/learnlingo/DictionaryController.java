@@ -56,11 +56,11 @@ public class DictionaryController extends GeneralController {
         }
     }
 
-    public void displayExtensionButton(boolean ready){
+    public void displayExtensionButton(boolean ready) {
         bookmark.setVisible(ready);
         speakUK.setVisible(ready);
         speakUS.setVisible(ready);
-        if (ready==false) {
+        if (ready == false) {
             webEngine.loadContent("");
         }
     }
@@ -97,13 +97,13 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void speakWordUS() {
-        String line = listWords.getSelectionModel().getSelectedItem();
+        String line = currentDictionary.getHistoryString(0);
         TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-us", "Mike", Integer.toString(speedRate));
     }
 
     @FXML
     public void speakWordUK() {
-        String line = listWords.getSelectionModel().getSelectedItem();
+        String line = currentDictionary.getHistoryString(0);
         TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-gb", "LiLy", Integer.toString(speedRate));
 
     }
@@ -133,7 +133,6 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
-        displayExtensionButton(false);
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
             listWords.getItems().addAll(suggestionSearchList(textfield.getText()));

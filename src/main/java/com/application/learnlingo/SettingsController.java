@@ -78,6 +78,7 @@ public class SettingsController extends GeneralController {
         evDict.resetData();
         veDict.resetData();
         slider.setValue(50);
+        DictionaryController.speedRate = calculateSpeedRate(50);
     }
 
     @FXML

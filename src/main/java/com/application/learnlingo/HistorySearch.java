@@ -108,4 +108,11 @@ public class HistorySearch {
 
     }
 
+    public String getHistoryIndex(int index){
+        if (historyList.isEmpty() || index>historyList.size()){
+            throw new IllegalArgumentException("Error: The index is out of bound of history list!");
+        }
+        return historyList.get(index);
+    }
+
 }

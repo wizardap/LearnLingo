@@ -214,7 +214,7 @@ public class DictDMBS {
             pstmt.setString(1, word);
             pstmt.executeUpdate();
             if (!bookmarkList.contains(word)) {
-                bookmarkList.add(word);
+                bookmarkList.add(0,word);
                 prefixBookmarkTree.put(word);
             }
         } catch (SQLException e) {
@@ -271,5 +271,8 @@ public class DictDMBS {
     @Override
     public int hashCode() {
         return Objects.hash(dbPath, dbName, tableName, defaultTableName, connection, historySearch, bookmarkList, prefixTree);
+    }
+    public String getHistoryString(int index){
+        return historySearch.getHistoryIndex(index);
     }
 }
