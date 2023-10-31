@@ -19,7 +19,7 @@
    <center>
       <AnchorPane fx:id="center" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="reset" layoutX="380.0" layoutY="215.0" mnemonicParsing="false" onAction="#resetDefault" prefHeight="29.0" prefWidth="25.0" stylesheets="@../../../vu.css" />
+            <Button fx:id="resetButton" layoutX="380.0" layoutY="215.0" mnemonicParsing="false" onAction="#resetDefault" prefHeight="29.0" prefWidth="25.0" stylesheets="@../../../vu.css" />
             <Label fx:id="lb1" layoutX="263.0" layoutY="157.0" prefHeight="29.0" prefWidth="109.0" style="-fx-font-weight: bold; -fx-font-size: 13;" stylesheets="@../../../vu.css" text="Delete BookMark" />
             <ImageView fitHeight="24.0" fitWidth="28.0" layoutX="380.0" layoutY="160.0" onMouseClicked="#deleteBookmark" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>

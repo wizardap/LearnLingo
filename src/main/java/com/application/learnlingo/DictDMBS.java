@@ -275,4 +275,7 @@ public class DictDMBS {
     public String getHistoryString(int index){
         return historySearch.getHistoryIndex(index);
     }
+    public boolean contain(String word){
+        return prefixTree.contain(word);
+    }
 }

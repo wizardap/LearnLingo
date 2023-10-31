@@ -28,7 +28,7 @@ public class SettingsController extends GeneralController {
     @FXML
     private ImageView speak;
     @FXML
-    private Button reset;
+    private Button resetButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

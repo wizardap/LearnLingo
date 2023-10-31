@@ -79,7 +79,7 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
             if (!head.existNode(ch)) {
-                throw new IllegalArgumentException(new StringBuilder().append("Error: Doesn't exist word").append(word).toString());
+                return 0;
             }
             head = head.getChild(ch);
         }
