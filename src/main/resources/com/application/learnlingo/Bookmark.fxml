@@ -21,7 +21,7 @@
          <children>
             <JFXListView fx:id="listWords" layoutX="98.0" layoutY="-1.0" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
             <WebView fx:id="webView" layoutX="322.0" layoutY="44.0" prefHeight="507.0" prefWidth="586.0" />
-            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="726.0" layoutY="9.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../../../vu.css" text="Add to word list">
+            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="726.0" layoutY="9.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../../../vu.css" text="Delete this word">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -117,7 +117,7 @@
             </VBox>
             <AnchorPane fx:id="confirmAdd" layoutX="716.0" layoutY="45.0" prefHeight="145.0" prefWidth="165.0" style="-fx-background-color: #FEC400; -fx-background-radius: 20;">
                <children>
-                  <Label layoutX="16.0" layoutY="14.0" prefHeight="45.0" prefWidth="133.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to add this word in Bookmark" textAlignment="CENTER" wrapText="true" />
+                  <Label layoutX="13.0" layoutY="14.0" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to delete this word in Bookmark" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="btnYes" layoutX="40.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="YES" />
                   <Button fx:id="btnNo" layoutX="90.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="NO" />
                </children>

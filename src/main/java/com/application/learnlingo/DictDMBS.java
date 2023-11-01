@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class DictDMBS {
-    private static Connection connection;
     private String dbPath;
     private String dbName;
     private String tableName;
     private String defaultTableName;
+    private static Connection connection;
     private HistorySearch historySearch;
     private List<String> bookmarkList;
     private Trie prefixTree;
@@ -114,8 +114,7 @@ public class DictDMBS {
 
         return FXCollections.observableList(prefixTree.getPrefixStringList(prefixString));
     }
-
-    ObservableList<String> exportBookmarkSuggestionList(String prefixString) {
+    ObservableList<String> exportBookmarkSuggestionList(String prefixString){
         return FXCollections.observableList(prefixBookmarkTree.getPrefixStringList(prefixString));
     }
 

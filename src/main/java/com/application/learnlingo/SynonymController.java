@@ -15,15 +15,21 @@ import java.util.ResourceBundle;
 
 public class SynonymController extends SynonymAndAntonym {
 
-    public Button s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15;
-    public Button[] buttons;
+    @Override
+    public void handleMouseClicked(MouseEvent mouseEvent) {
+        super.handleMouseClicked(mouseEvent, "syn");
+    }
 
+    @Override
+    public void buttonClicked(MouseEvent mouseEvent) {
+        super.buttonClicked(mouseEvent, "syn");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
 
-        buttons = new Button[]{s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15};
+        buttons = new Button[]{b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15};
 
         checkMode1.setVisible(false);
         checkMode2.setVisible(false);
@@ -32,65 +38,5 @@ public class SynonymController extends SynonymAndAntonym {
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
     }
 
-    public List<String> setListSyn(String s) {
-        List<String> result = new ArrayList<>();
-        try {
-            String apiUrl = "https://api.datamuse.com/words?rel_syn=" + s.replaceAll(" ", "+");
 
-            URL url = new URL(apiUrl);
-
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                response.append(line);
-            }
-
-            reader.close();
-
-            connection.disconnect();
-
-            String[] words = response.toString().split("(?<=\\}),");
-            for (String word : words) {
-                String[] wordParts = word.split(":");
-                if (wordParts.length >= 2) {
-                    String cleanWord = wordParts[1].replaceAll("\"", "");
-                    cleanWord = cleanWord.split(",")[0];
-                    result.add(cleanWord);
-                }
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    @Override
-    public void handleMouseClicked(MouseEvent mouseEvent) {
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        if (selectedWord != null) {
-            buttons = new Button[]{s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15};
-            List<String> result = this.setListSyn(selectedWord);
-            if (result.size() == 0) {
-                buttons[0].setText("There is no synonym for this word.");
-                for (int i = 1; i < 15; i++) {
-                    buttons[i].setVisible(false);
-                }
-            } else {
-                for (int i = 0; i < 15; i++) {
-                    if (i < result.size()) {
-                        buttons[i].setVisible(true);
-                        buttons[i].setText(result.get(i));
-                    } else {
-                        buttons[i].setVisible(false);
-                    }
-                }
-            }
-        }
-    }
 }

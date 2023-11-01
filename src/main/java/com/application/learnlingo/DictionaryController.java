@@ -18,6 +18,11 @@ import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
 
+    protected static boolean checkStyle = false;
+
+    @FXML
+    private AnchorPane introduction;
+
     public static int speedRate;
     @FXML
     protected Button btnYes;
@@ -68,8 +73,8 @@ public class DictionaryController extends GeneralController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        checkStyle = false;
         confirmAdd.setVisible(false);
-        listWords.setCellFactory(param -> new IconAndFontListCell());
         listWords.setVisible(false);
         checkMode1.setVisible(true);
         if (!SettingsController.changeL) {
@@ -132,13 +137,17 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
+        introduction.setVisible(false);
+        displayExtensionButton(false);
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
             listWords.getItems().addAll(suggestionSearchList(textfield.getText().toLowerCase()));
-
+            checkStyle = false;
         } else {
             listWords.getItems().addAll(currentDictionary.exportHistoryList());
+            checkStyle = true;
         }
+        listWords.setCellFactory(param -> new IconAndFontListCell());
         displayListWord();
     }
 
@@ -175,7 +184,11 @@ public class DictionaryController extends GeneralController {
                 String[] lines = item.split("\n");
 
                 HBox hbox = new HBox();
-                ImageView iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
+                ImageView iconImageView;
+                if (checkStyle)
+                    iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
+                else
+                    iconImageView = new ImageView(new Image(getClass().getResource("image/find1.png").toString()));
                 iconImageView.setFitHeight(15);
                 iconImageView.setFitWidth(15);
                 hbox.getChildren().add(iconImageView);

@@ -117,12 +117,31 @@
             </VBox>
             <AnchorPane fx:id="confirmAdd" layoutX="716.0" layoutY="45.0" prefHeight="145.0" prefWidth="165.0" style="-fx-background-color: #FEC400; -fx-background-radius: 20;">
                <children>
-                  <Label layoutX="16.0" layoutY="14.0" prefHeight="45.0" prefWidth="133.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to add this word in Bookmark" textAlignment="CENTER" wrapText="true" />
+                  <Label layoutX="13.0" layoutY="14.0" prefHeight="45.0" prefWidth="135.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to add this word in Bookmark" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="btnYes" layoutX="40.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="YES" />
                   <Button fx:id="btnNo" layoutX="90.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="NO" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="249.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="introduction" layoutX="100.0" prefHeight="549.0" prefWidth="810.0" style="-fx-background-color: #fff8e4;">
+               <children>
+                  <Label layoutX="53.0" layoutY="14.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="WELCOME TO OUR LEARNING ENGLISH APPLICATION" />
+                  <Label layoutX="53.0" layoutY="53.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="ABOUT" />
+                  <Label layoutX="53.0" layoutY="75.0" prefHeight="141.0" prefWidth="303.0" style="-fx-font-size: 15;" text="This English Learning Application was made by Le Hoang Vu, Vi Van Quan, Nguyen Duc Anh Tuan. We hope you guys will enjoy our app and give us feedbacks about it, so we can develop our learning English Application better. Hope you a good day and take care" wrapText="true" />
+                  <Label layoutX="53.0" layoutY="246.0" prefHeight="297.0" prefWidth="669.0" style="-fx-font-size: 15;" text="In our application you can search, find synonyms and antonyms for a word easily. Moreover, we've made a game for you to relax if you want to play and know more English words with us. Our App have 8 modes for you to use. The first one is about DICTIONARY, in this mode you can look up a word easily and see about its meanings, examples, pronunciations. TRANSLATION is the second mode, from this mode you can translate a paragraph containing no more than 600 characters. Especially, you can choose an text image for the App to translate from English to Vietnamese as well as Vietnamese to English. The next 2 mode are about SYNONYMS and ANTONYMS. From these mode, you can find many words that are synonyms or antonym for the word you searched in search bar. The next mode is ADD/DELETE, changeWord specifically. The mode created for you to add or delete word in our App easily if you want. GAME is a next mode, this mode will help you know more English words as well as entertain you a lot. The next mode is BOOKMARK and this mode consists of the words that you want to save by click add to list word button in DICTIONARY mode. So you can review your words flexibly. The last mode is about SETTINGS for you to set functions to our App when you use." wrapText="true" />
+                  <Label layoutX="53.0" layoutY="220.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="FUNCTIONS" />
+                  <ImageView fitHeight="193.0" fitWidth="317.0" layoutX="401.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/general.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="333.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/heart.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>

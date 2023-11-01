@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.SynonymController">
+<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.SynonymController">
    <center>
       <AnchorPane fx:id="center" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -91,21 +83,21 @@
             </VBox>
             <AnchorPane layoutX="434.0" layoutY="58.0" prefHeight="227.0" prefWidth="390.0" style="-fx-background-color: white; -fx-border-color: #1d2a57; -fx-border-width: 4 0 0 0;">
                <children>
-                  <Button fx:id="s1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="bid" />
-                  <Button fx:id="s2" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="go" />
-                  <Button fx:id="s3" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="pass" />
-                  <Button fx:id="s4" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="fling" />
-                  <Button fx:id="s5" layoutX="10.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="provide" />
-                  <Button fx:id="s6" layoutX="146.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="tender" />
-                  <Button fx:id="s7" layoutX="146.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="crack" />
-                  <Button fx:id="s8" layoutX="146.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="extend" />
-                  <Button fx:id="s9" layoutX="145.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="propose" />
-                  <Button fx:id="s10" layoutX="145.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="volunteer" />
-                  <Button fx:id="s11" layoutX="275.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="proffer" />
-                  <Button fx:id="s13" layoutX="275.0" layoutY="102.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="put up" />
-                  <Button fx:id="s12" layoutX="275.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="offering" />
-                  <Button fx:id="s14" layoutX="275.0" layoutY="143.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="whirl" />
-                  <Button fx:id="s15" layoutX="275.0" layoutY="184.0" mnemonicParsing="false" stylesheets="@../../../syn.css" text="offer up" />
+                  <Button fx:id="b1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="bid" />
+                  <Button fx:id="b2" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="go" />
+                  <Button fx:id="b3" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="pass" />
+                  <Button fx:id="b4" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="fling" />
+                  <Button fx:id="b5" layoutX="10.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="provide" />
+                  <Button fx:id="b6" layoutX="146.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="tender" />
+                  <Button fx:id="b7" layoutX="146.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="crack" />
+                  <Button fx:id="b8" layoutX="146.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="extend" />
+                  <Button fx:id="b9" layoutX="145.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="propose" />
+                  <Button fx:id="b10" layoutX="145.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="volunteer" />
+                  <Button fx:id="b11" layoutX="275.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="proffer" />
+                  <Button fx:id="b12" layoutX="275.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="put up" />
+                  <Button fx:id="b13" layoutX="275.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="offering" />
+                  <Button fx:id="b14" layoutX="275.0" layoutY="143.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="whirl" />
+                  <Button fx:id="b15" layoutX="275.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="offer up" />
                </children>
             </AnchorPane>
             <Label layoutX="434.0" layoutY="19.0" prefHeight="30.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Synonyms">
