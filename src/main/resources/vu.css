@@ -140,7 +140,7 @@
     -fx-font-weight: bold;
 }
 
-#speakUK, #speakUS {
+#speakUK, #speakUS, #speakVN {
     -fx-border-insets: 0;
     -fx-background-radius: 10;
     -fx-background-insets: 0;
@@ -148,7 +148,7 @@
     -fx-font-weight: bold;
 }
 
-#speakUK:hover, #speakUS:hover {
+#speakUK:hover, #speakUS:hover, #speakVN:hover {
     -fx-opacity: 0.9;
 }
 

@@ -46,6 +46,14 @@
                      </image>
                   </ImageView>
                </graphic></Button>
+            <Button fx:id="speakVN" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordVN" prefHeight="26.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="VN">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/speakVolume.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <VBox fx:id="left" prefHeight="552.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
                <children>
                   <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
