@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
@@ -61,12 +62,12 @@ public class DictionaryController extends GeneralController {
         }
     }
 
-    public void displayExtensionButton(boolean ready) {
+    protected void displayExtensionButton(boolean ready) {
         bookmark.setVisible(ready);
         speakUK.setVisible(ready);
         speakUS.setVisible(ready);
         speakVN.setVisible(ready);
-        if (ready == false) {
+        if (!ready) {
             webEngine.loadContent("");
         }
     }
@@ -103,7 +104,7 @@ public class DictionaryController extends GeneralController {
     }
     @FXML
     public void speakWordVN() {
-        String line = listWords.getSelectionModel().getSelectedItem();
+        String line = currentDictionary.getHistoryString(0);
         TextToSpeech pronounce = new TextToSpeech(veDict.getWordInformation(line).getWord(), "hl=vi-vn","Chi", Integer.toString(speedRate));
 
     }
@@ -201,9 +202,9 @@ public class DictionaryController extends GeneralController {
                 HBox hbox = new HBox();
                 ImageView iconImageView;
                 if (checkStyle)
-                    iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
+                    iconImageView = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("image/clock.png")).toString()));
                 else
-                    iconImageView = new ImageView(new Image(getClass().getResource("image/find1.png").toString()));
+                    iconImageView = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("image/find1.png")).toString()));
                 iconImageView.setFitHeight(15);
                 iconImageView.setFitWidth(15);
                 hbox.getChildren().add(iconImageView);
@@ -223,5 +224,12 @@ public class DictionaryController extends GeneralController {
                 setGraphic(hbox);
             }
         }
+    }
+
+    @Override
+    public void changeMode() {
+        super.changeMode();
+        listWords.getItems().clear();
+        textfield.clear();
     }
 }

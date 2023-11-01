@@ -20,11 +20,10 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         checkStyle = true;
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        int s = listWords.getItems().size();
-        if (s < 23)
-            listWords.setPrefHeight(3 + 24 * s);
-        else
-            listWords.setPrefHeight(550);
+        if (!isUKFlagVisible) {
+            changeMode();
+        }
+        displayListWord();
     }
 
     @Override
@@ -42,7 +41,9 @@ public class BookMarkController extends DictionaryController {
         confirmAdd.setVisible(true);
         btnYes.setOnAction(ev -> {
             confirmAdd.setVisible(false);
-            // Xử lý xóa ở đây
+            currentDictionary.unsetBookmark(selectedWord);
+            listWords.getItems().removeIf(e -> e.equals(selectedWord));
+            displayListWord();
         });
         btnNo.setOnAction(ev -> {
             confirmAdd.setVisible(false);
@@ -69,10 +70,6 @@ public class BookMarkController extends DictionaryController {
         displayListWord();
     }
 
-    @Override
-    public void handleSearchMouseClicked(MouseEvent mouseEvent) {
-        super.handleSearchMouseClicked(mouseEvent);
-    }
 
     @Override
     public void handleMouseClicked(MouseEvent mouseEvent) {
@@ -82,6 +79,7 @@ public class BookMarkController extends DictionaryController {
     @Override
     public void changeMode() {
         super.changeMode();
+        listWords.getItems().clear();
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
     }
 
@@ -89,14 +87,7 @@ public class BookMarkController extends DictionaryController {
     public void deleteSearch() {
         listWords.getItems().clear();
         textfield.setText("");
-
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-        int k = listWords.getItems().size();
-        if (k == 0) {
-            listWords.setVisible(false);
-        } else if (k < 23)
-            listWords.setPrefHeight(3 + 24 * k);
-        else
-            listWords.setPrefHeight(550);
+        displayListWord();
     }
 }

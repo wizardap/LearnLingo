@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class ChangeWordController extends GeneralController {
 
-    private static StringBuilder DEFAULT_HTML_CONTENT_FILEPATH =
+    private static final StringBuilder DEFAULT_HTML_CONTENT_FILEPATH =
             new StringBuilder("src/main/resources/com/application/learnlingo/database/defaultHTMLEditor.txt");
     private static String defaultHTMLContent;
     @FXML
@@ -51,11 +51,12 @@ public class ChangeWordController extends GeneralController {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        assert fr != null;
         BufferedReader br = new BufferedReader(fr);
         String line = null;
         while (true) {
             try {
-                if (!((line = br.readLine()) != null)) break;
+                if ((line = br.readLine()) == null) break;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -74,10 +75,12 @@ public class ChangeWordController extends GeneralController {
         Background background = new Background(backgroundImage);
         center.setBackground(background);
         d1.setSelected(true);
-        currentDictionary = evDict;
+        if (!isUKFlagVisible) {
+            changeMode();
+        }
         d1.setOnAction(event -> {
             if (d1.isSelected()) {
-                currentDictionary = evDict;
+                changeMode();
                 d2.setSelected(false);
                 isLookedUp=false;
             }
@@ -85,7 +88,7 @@ public class ChangeWordController extends GeneralController {
 
         d2.setOnAction(event -> {
             if (d2.isSelected()) {
-                currentDictionary = veDict;
+                changeMode();
                 d1.setSelected(false);
                 isLookedUp=false;
             }
@@ -95,6 +98,11 @@ public class ChangeWordController extends GeneralController {
         });
         loadDefaultHTMLContent();
         contentHTMLEditor.setHtmlText(defaultHTMLContent);
+    }
+
+    @Override
+    public void changeMode() {
+        super.changeMode();
     }
 
     @FXML
@@ -111,7 +119,7 @@ public class ChangeWordController extends GeneralController {
         if (result.isPresent()) {
             if (result.get() == ButtonType.YES) {
                 String contentSearchWord = textfield1.getText().toLowerCase();
-                if (!currentDictionary.contain(contentSearchWord)) {
+                if (!contentSearchWord.isEmpty() && !currentDictionary.contain(contentSearchWord)) {
                     Word modifiedWord = new Word(contentSearchWord,contentHTMLEditor.getHtmlText(),false);
                     Alert success = new Alert(Alert.AlertType.INFORMATION);
                     success.setHeaderText(new StringBuilder()
@@ -147,7 +155,7 @@ public class ChangeWordController extends GeneralController {
         if (result.isPresent()) {
             if (result.get() == ButtonType.YES) {
                 String contentSearchWord = textfield1.getText().toLowerCase();
-                if (currentDictionary.contain(contentSearchWord)) {
+                if (!contentSearchWord.isEmpty() && currentDictionary.contain(contentSearchWord)) {
                    currentDictionary.removeWord(contentSearchWord);
                     Alert success = new Alert(Alert.AlertType.INFORMATION);
                     success.setHeaderText(new StringBuilder()
