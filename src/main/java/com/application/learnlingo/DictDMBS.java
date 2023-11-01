@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class DictDMBS {
+    private static Connection connection;
     private String dbPath;
     private String dbName;
     private String tableName;
     private String defaultTableName;
-    private static Connection connection;
     private HistorySearch historySearch;
     private List<String> bookmarkList;
     private Trie prefixTree;
@@ -114,7 +114,8 @@ public class DictDMBS {
 
         return FXCollections.observableList(prefixTree.getPrefixStringList(prefixString));
     }
-    ObservableList<String> exportBookmarkSuggestionList(String prefixString){
+
+    ObservableList<String> exportBookmarkSuggestionList(String prefixString) {
         return FXCollections.observableList(prefixBookmarkTree.getPrefixStringList(prefixString));
     }
 
@@ -150,12 +151,14 @@ public class DictDMBS {
     }
 
     public void modifyWord(Word opWord) {
-        String sql = "UPDATE " + tableName + " SET html = ? WHERE word = ?;";
+        String sql = "UPDATE " + tableName + " SET word = ?, html = ?, isBookmarked = ? WHERE word = ?;";
         PreparedStatement pstmt = null;
         try {
             pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, opWord.getHtml());
-            pstmt.setString(2, opWord.getWord());
+            pstmt.setString(1, opWord.getWord());
+            pstmt.setString(2, opWord.getHtml());
+            pstmt.setInt(3, opWord.isBookmarked() ? 1 : 0);
+            pstmt.setString(4, opWord.getWord());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -214,7 +217,7 @@ public class DictDMBS {
             pstmt.setString(1, word);
             pstmt.executeUpdate();
             if (!bookmarkList.contains(word)) {
-                bookmarkList.add(0,word);
+                bookmarkList.add(0, word);
                 prefixBookmarkTree.put(word);
             }
         } catch (SQLException e) {
@@ -272,10 +275,12 @@ public class DictDMBS {
     public int hashCode() {
         return Objects.hash(dbPath, dbName, tableName, defaultTableName, connection, historySearch, bookmarkList, prefixTree);
     }
-    public String getHistoryString(int index){
+
+    public String getHistoryString(int index) {
         return historySearch.getHistoryIndex(index);
     }
-    public boolean contain(String word){
+
+    public boolean contain(String word) {
         return prefixTree.contain(word);
     }
 }

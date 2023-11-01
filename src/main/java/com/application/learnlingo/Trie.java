@@ -5,65 +5,78 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Trie {
-    static final int ALPHABET_SIZE = 256;
-    static final char FIRST_CHARACTER = (char)0;
     private TrieNode root;
-    private int index(char ch){
-        return (int) ch - FIRST_CHARACTER;
-    }
-
+    private HashMap<Integer,String> map;
+    private int wordTotal;
     public Trie() {
         root = new TrieNode();
+        wordTotal=0;
+        map = new HashMap<>();
     }
 
     public boolean put(String word) {
         TrieNode head = root;
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
+        String lowerCaseString = word.toLowerCase();
+        for (int i = 0; i < lowerCaseString.length(); i++) {
+            char ch = lowerCaseString.charAt(i);
             head.addChild(ch);
             head = head.getChild(ch);
         }
         if (head.isEndOfWord()) {
             return false;
         }
-        head.increaseEndWord(1);
+        head.setWordID(wordTotal);
+        map.put(wordTotal,word);
+        wordTotal++;
         return true;
     }
 
     public boolean contain(String word) {
-        return count(word)>0;
+        String lowerCaseString = word.toLowerCase();
+        TrieNode head = root;
+        for (int i = 0; i < lowerCaseString.length(); i++) {
+            char ch = lowerCaseString.charAt(i);
+            if (!head.existNode(ch)) {
+                return false;
+            }
+            head = head.getChild(ch);
+        }
+        return head.isEndOfWord();
     }
 
     public List<String> getPrefixStringList(String prefixString) {
+        String lowerCaseString = prefixString.toLowerCase();
         TrieNode head = root;
-        StringBuilder completeWord = new StringBuilder(prefixString);
         List<String> result = new ArrayList<>();
-        for (int i = 0; i < prefixString.length(); i++) {
-            char ch = prefixString.charAt(i);
+        for (int i = 0; i < lowerCaseString.length(); i++) {
+            char ch = lowerCaseString.charAt(i);
             if (head.getChild(ch) == null) {
                 return result;
             }
             head = head.getChild(ch);
         }
-        traversalNode(head, result, completeWord);
+        traversalNode(head, result);
         return result;
     }
 
-    private void traversalNode(TrieNode head, List<String> result, StringBuilder prefix) {
-        if (head.isEndOfWord()) result.add(prefix.toString());
-        for (int i = 0; i < ALPHABET_SIZE; i++) {
-            char ch = (char)i;
-            if (head.getChild(ch) != null) {
-                prefix.append(ch);
-                traversalNode(head.getChild(ch), result, prefix);
-                prefix.deleteCharAt(prefix.length() - 1);
+    private void traversalNode(TrieNode head, List<String> result) {
+        if (head.isEndOfWord()) {
+            int index = head.getWordID();
+            if (!map.containsKey(index)){
+                throw new IllegalArgumentException("The word doesn\'t exist in Trie but in this node have end of word !");
             }
+            result.add(map.get(index));
+        }
+        for (Character character:head.children.keySet())
+        {
+            char ch = character.charValue();
+            traversalNode(head.getChild(ch), result);
         }
     }
 
     public boolean remove(String word) {
-        int frequencyOfWord = count(word);
-        if (frequencyOfWord==0) {
+
+        if (!contain(word)) {
             throw new IllegalArgumentException(new StringBuilder().append("Error: The word").append(word).append(" doesn't exist!").toString());
         }
         TrieNode head = root;
@@ -71,40 +84,30 @@ public class Trie {
             char ch = word.charAt(i);
             head = head.getChild(ch);
         }
-        head.increaseEndWord(-1);
+        head.setWordID(-1);
         return true;
     }
-    public int count(String word){
-        TrieNode head = root;
-        for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            if (!head.existNode(ch)) {
-                return 0;
-            }
-            head = head.getChild(ch);
-        }
-        return head.wordTotal();
-    }
+
 
     private class TrieNode {
         private HashMap<Character,TrieNode> children;
-        private int endWordTotal;
+        private int wordID;
 
 
         public TrieNode() {
             children = new HashMap<>();
-            endWordTotal = 0;
+            wordID = -1;
         }
 
-        public int wordTotal(){
-            return endWordTotal;
+        public int getWordID(){
+            return wordID;
         }
         public boolean isEndOfWord() {
-            return endWordTotal>0;
+            return wordID >=0;
         }
 
-        public void increaseEndWord(int value) {
-            endWordTotal += value;
+        public void setWordID(int ID){
+            this.wordID = ID;
         }
 
         public TrieNode getChild(char ch) {

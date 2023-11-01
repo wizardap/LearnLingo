@@ -114,7 +114,6 @@ public class DictionaryController extends GeneralController {
         textfield.setText("");
         listWords.getItems().addAll(currentDictionary.exportHistoryList());
         displayListWord();
-        displayExtensionButton(false);
     }
 
     @FXML
@@ -135,7 +134,7 @@ public class DictionaryController extends GeneralController {
     public void handleKeyTyped(KeyEvent keyEvent) {
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
-            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText().toLowerCase()));
 
         } else {
             listWords.getItems().addAll(currentDictionary.exportHistoryList());
@@ -145,7 +144,7 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void handleSearchMouseClicked(MouseEvent mouseEvent) {
-        if (textfield.getText().isEmpty()) {
+        if (textfield.getText().isEmpty() && listWords.getItems().isEmpty()) {
             listWords.getItems().addAll(currentDictionary.exportHistoryList());
             displayListWord();
         }
