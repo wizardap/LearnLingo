@@ -23,10 +23,69 @@ import java.util.ResourceBundle;
 public class GameController extends GeneralController {
 
     @FXML
+    private HBox word0;
+    @FXML
+    private HBox word1;
+
+    @FXML
+    private HBox word2;
+
+    @FXML
+    private HBox word3;
+
+    @FXML
+    private HBox word4;
+
+    @FXML
+    private HBox word5;
+
+    @FXML
+    private HBox word6;
+
+    @FXML
+    private HBox word7;
+
+    @FXML
+    private HBox word8;
+
+    @FXML
+    private HBox word9;
+
+
+    @FXML
     private Label timerLabel;
 
     private int seconds = 120;
 
+    @FXML
+    private Label f1;
+
+    @FXML
+    private Label f2;
+
+    @FXML
+    private Label f3;
+
+    @FXML
+    private Label f4;
+
+    @FXML
+    private Label f5;
+
+    @FXML
+    private Label f6;
+
+    @FXML
+    private Label f7;
+
+    @FXML
+    private Label f8;
+
+    @FXML
+    private Label f9;
+
+    @FXML
+    private Label f10;
 
     @FXML
     private Label s1;
@@ -50,6 +109,15 @@ public class GameController extends GeneralController {
     private Label s7;
 
     @FXML
+    private Label s8;
+
+    @FXML
+    private Label s9;
+
+    @FXML
+    private Label s10;
+
+    @FXML
     private Button l1;
 
     @FXML
@@ -69,6 +137,15 @@ public class GameController extends GeneralController {
 
     @FXML
     private Button l7;
+
+    @FXML
+    private Button l8;
+
+    @FXML
+    private Button l9;
+
+    @FXML
+    private Button l10;
 
     @FXML
     private Button clear;
@@ -119,7 +196,15 @@ public class GameController extends GeneralController {
     @FXML
     private Button start;
 
+    @FXML
+    private AnchorPane containerWords;
 
+    private String [] listwords = new String[] {"contact", "act", "cat", "cot", "ton"
+            , "ant", "can", "not", "con", "coat"};
+
+    private int [] checkAns = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+    private int [] checkHBoxSet = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
@@ -253,13 +338,24 @@ public class GameController extends GeneralController {
     public void startGame() {
         mediaPlayer.play();
         start.setVisible(false);
+        int index = 0;
+        for (Node child : containerWords.getChildren()) {
+            int n = listwords[index].length();
+            for (int j = 0; j < ((HBox) child).getChildren().size(); j++) {
+                if (j >= n) {
+                    ((HBox) child).getChildren().remove(((HBox) child).getChildren().get(j));
+                    j--;
+                }
+            }
+            index++;
+        }
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event1 -> {
                     seconds--;
                     timerLabel.setText("TIME                " + seconds);
                 })
         );
-
+        List<Label> listFrameToSet = new ArrayList<>();
         List<Label> listLabelToSet = new ArrayList<>();
         List<Label> listLabelLastAgain = new ArrayList<>();
         List<Button> listButtonToClick = new ArrayList<>();
@@ -272,6 +368,21 @@ public class GameController extends GeneralController {
         listLabelToSet.add(s5);
         listLabelToSet.add(s6);
         listLabelToSet.add(s7);
+        listLabelToSet.add(s8);
+        listLabelToSet.add(s9);
+        listLabelToSet.add(s10);
+
+        listFrameToSet.add(f1);
+        listFrameToSet.add(f2);
+        listFrameToSet.add(f3);
+        listFrameToSet.add(f4);
+        listFrameToSet.add(f5);
+        listFrameToSet.add(f6);
+        listFrameToSet.add(f7);
+        listFrameToSet.add(f8);
+        listFrameToSet.add(f9);
+        listFrameToSet.add(f10);
+
         listButtonToClick.add(l1);
         listButtonToClick.add(l2);
         listButtonToClick.add(l3);
@@ -279,7 +390,27 @@ public class GameController extends GeneralController {
         listButtonToClick.add(l5);
         listButtonToClick.add(l6);
         listButtonToClick.add(l7);
+        listButtonToClick.add(l8);
+        listButtonToClick.add(l9);
+        listButtonToClick.add(l10);
         timeline.setCycleCount(Timeline.INDEFINITE);
+
+        int n = listwords[0].length();
+
+        for(int i = 0; i < 10; i++) {
+            if (i < n) {
+                listButtonToClick.get(i).setText(String.valueOf(listwords[0].charAt(i)).toUpperCase());
+            } else {
+                listButtonToClick.get(i).setVisible(false);
+                listFrameToSet.get(i).setVisible(false);
+                listLabelToSet.get(i).setVisible(false);
+            }
+        }
+
+        for (int i = n; i < listButtonToClick.size(); i++) {
+            listButtonToClick.remove(i);
+            i--;
+        }
 
         for (Button btn : listButtonToClick) {
             btn.setOnAction(e -> {
@@ -343,7 +474,29 @@ public class GameController extends GeneralController {
             for (Label x : listLabelToSet) {
                 ans += x.getText();
             }
-            System.out.println(ans);
+            ans = ans.toLowerCase();
+            int j = 0;
+            int k = 0;
+
+            // Check Answer
+            for (int i = 0; i < listwords.length; i++) {
+                if (checkAns[i] == 0 && ans.equals(listwords[i])) {
+                    for (Node child : containerWords.getChildren()) {
+                        if (checkHBoxSet[k] == 0 && ((HBox) child).getChildren().size() == ans.length()) {
+                            for (Node label : ((HBox) child).getChildren()) {
+                                ((Label) label).setText(String.valueOf(ans.charAt(j)).toUpperCase());
+                                j++;
+                            }
+                            checkHBoxSet[k] = 1;
+                            break;
+                        }
+                        k++;
+                    }
+                    checkAns[i] = 1;
+                    break;
+                }
+            }
+
         });
 
         timeline.play();

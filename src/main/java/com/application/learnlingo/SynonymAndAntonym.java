@@ -7,8 +7,9 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
-import javax.swing.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -153,7 +154,8 @@ public abstract class SynonymAndAntonym extends GeneralController {
 
     @FXML
     public void saveWordInBookMark() {
-
+        String selectedWord = "enormous";
+        currentDictionary.setBookmark(selectedWord);
     }
 
     public abstract void buttonClicked(MouseEvent mouseEvent);

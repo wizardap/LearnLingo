@@ -17,6 +17,7 @@ public class DictDMBS {
     private HistorySearch historySearch;
     private List<String> bookmarkList;
     private Trie prefixTree;
+    private Trie prefixBookmarkTree;
 
 
     public DictDMBS(String dbPath, String dbName, String tableName, String defaultTableName) {
@@ -25,6 +26,7 @@ public class DictDMBS {
         this.tableName = tableName;
         this.defaultTableName = defaultTableName;
         this.prefixTree = new Trie();
+        this.prefixBookmarkTree = new Trie();
         this.historySearch = new HistorySearch(new StringBuilder()
                 .append(dbPath)
                 .append("history")
@@ -50,6 +52,7 @@ public class DictDMBS {
         this.bookmarkList = new ArrayList<>();
         this.connection = this.connectingToDatabase();
         this.prefixTree = new Trie();
+        this.prefixBookmarkTree = new Trie();
         importBookmarkListFromDatabase();
         importWordListFromDatabase();
     }
@@ -110,6 +113,9 @@ public class DictDMBS {
     ObservableList<String> exportSuggestionList(String prefixString) {
 
         return FXCollections.observableList(prefixTree.getPrefixStringList(prefixString));
+    }
+    ObservableList<String> exportBookmarkSuggestionList(String prefixString){
+        return FXCollections.observableList(prefixBookmarkTree.getPrefixStringList(prefixString));
     }
 
     public void removeWord(String opWord) {
@@ -207,7 +213,10 @@ public class DictDMBS {
             pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, word);
             pstmt.executeUpdate();
-            if (!bookmarkList.contains(word)) bookmarkList.add(word);
+            if (!bookmarkList.contains(word)) {
+                bookmarkList.add(word);
+                prefixBookmarkTree.put(word);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error: Couldn't set word into bookmark list!");
@@ -223,6 +232,7 @@ public class DictDMBS {
             pstmt.executeUpdate();
             if (bookmarkList.contains(word)) {
                 bookmarkList.removeIf(e -> e.equals(word));
+                prefixBookmarkTree.remove(word);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -240,7 +250,9 @@ public class DictDMBS {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                bookmarkList.add(rs.getString("word"));
+                String word = rs.getString("word");
+                bookmarkList.add(word);
+                prefixBookmarkTree.put(word);
             }
         } catch (SQLException e) {
             e.printStackTrace();
