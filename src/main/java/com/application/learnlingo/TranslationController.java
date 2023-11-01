@@ -1,53 +1,42 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import javafx.util.Duration;
+import javafx.stage.FileChooser;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class TranslationController implements Initializable{
+public class TranslationController extends GeneralController {
 
     @FXML
-    private JFXButton b1;
+    private Button b1;
 
     @FXML
-    private JFXButton b2;
+    private Button b2;
 
     @FXML
-    private JFXButton b3;
-
-    @FXML
-    private VBox left;
-
-    @FXML
-    private VBox center;
-
-    @FXML
-    private HBox function;
+    private Button b3;
 
     @FXML
     private Button deleteWord;
+
     @FXML
     private TextField textfield;
 
@@ -58,123 +47,69 @@ public class TranslationController implements Initializable{
     private ImageView speech;
 
     @FXML
-    private JFXButton lang1;
+    private Button lang1;
 
     @FXML
-    private JFXButton lang2;
+    private Button lang2;
 
     @FXML
     private Button changeMode;
-    @FXML
-    static Boolean changeL = true;
-    @FXML
-    static Boolean b = true;
 
     @FXML
     private TextArea tx1;
     @FXML
     private TextArea tx2;
 
-    @FXML
-    private Button search;
+    private boolean checkMenuBar = false;
 
     @FXML
-    private BorderPane container;
-
-    private void makeFadeOutToBookMark() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setBookMark());
-        fadeTransition.play();
-    }
+    private Label warning;
 
     @FXML
-    public void handleButtonClickBookMark() {
-        makeFadeOutToBookMark();
-    }
-
-    private void setBookMark() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("BookMark.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void makeFadeOutToChangeWord() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setChangeWord());
-        fadeTransition.play();
-    }
+    private Button chooseFile;
 
     @FXML
-    public void handleButtonClickChangeWord() {
-        makeFadeOutToChangeWord();
-    }
-
-    private void setChangeWord() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("changeWordController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void handleButtonClick() {
-        makeFadeOut();
-    }
-
-    private void makeFadeOut() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setDictonaryMode());
-        fadeTransition.play();
-    }
-
-    private void setDictonaryMode() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("hello-view.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private Label charCountLabel;
 
     public void changeLanguage() {
-        if(changeL == true) {
-            lang1.setText("Vietnamese");
-            lang2.setText("English");
+        if (changeL == true) {
+            lang1.setText("Tiếng Việt");
+            lang2.setText("Tiếng Anh");
+            chooseFile.setText("Chọn ảnh");
+            warning.setText("Vui lòng nhập không quá 600 ký tự");
             changeL = false;
         } else {
             lang1.setText("English");
             lang2.setText("Vietnamese");
+            chooseFile.setText("Choose image");
+            warning.setText("Enter no more than 600 characters");
             changeL = true;
         }
     }
 
 
     @FXML
+    public void text_to_speech1() {
+        if(changeL) {
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=en-us","Mike","0");
+        } else {
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(),"hl=vi-vn","Chi","0");
+        }
+    }
+
+    @FXML
+    public void text_to_speech2() {
+        if(changeL) {
+            SettingsController set = new SettingsController();
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=vi-vn","Chi","0");
+        } else {
+            SettingsController set = new SettingsController();
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(),"hl=en-us","Mike","0");
+        }
+    }
+
+    @FXML
     public String translate(String langFrom, String langTo, String text) throws IOException {
-        // INSERT YOU URL HERE
         String urlStr = "https://script.google.com/macros/s/AKfycbzF2OvXi2Ka9v4aBMt-7L_TL9fCGfLpAaCqrFfibjNKi6baRPl7Qrlt_zakZH6Y3KE9ew/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
                 "&target=" + langTo +
@@ -191,14 +126,14 @@ public class TranslationController implements Initializable{
         in.close();
         return response.toString();
     }
+
     @FXML
     public void translateMini() throws IOException {
         String text = tx1.getText();
-        if(!changeL) {
+        if (!changeL) {
             tx2.setText(translate("vi", "en", text));
         } else {
             tx2.setText(translate("en", "vi", text));
-            TextToSpeech pronouce = new TextToSpeech("Translate successfully");
         }
     }
 
@@ -211,42 +146,55 @@ public class TranslationController implements Initializable{
         }
     }
 
-    public void text_to_speech() {
-        if(changeL) {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText());
-        } else {
-            //to do voice VietNamese
-        }
-    }
-
-    private static void animation(JFXButton button, int x, int time, String message) {
-        TranslateTransition transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(time));
-        transition.setNode(button);
-        transition.setToY(x);
-        transition.setAutoReverse(true);
-        transition.setCycleCount(TranslateTransition.INDEFINITE);
-        transition.play();
-        button.setOnAction(e -> {
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-            alert1.setHeaderText(message);
-            alert1.show();
-        });
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
+        checkMode2.setVisible(true);
+        tx1.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                int charCount = newValue.length();
+                if (charCount > 600) {
+                    charCountLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+                }
+                charCountLabel.setText(charCount + "/600");
+            }
+        });
         BackgroundImage backgroundImage = new BackgroundImage(
-                new javafx.scene.image.Image("C:\\IdeaProjects\\LearnLingo\\src\\main\\resources\\com\\application\\learnlingo\\image\\bg3.jpg", 910, 600, false, true),
+                new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
         Background background = new Background(backgroundImage);
-        animation(b1, 150, 1, "Have a good day <3");
-        animation(b2, -150, 1, "You are so amazing <3");
-        animation(b3, 150, 1, "Wish you everything <3");
         center.setBackground(background);
         tx1.setWrapText(true);
         tx2.setWrapText(true);
+    }
+
+    @FXML
+    public void chooseFileToTranslate() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.jpg"));
+        File initialDirectory = new File("imageToChoose");
+        fileChooser.setInitialDirectory(initialDirectory);
+        fileChooser.setTitle("Open Resource File");
+        java.io.File file = fileChooser.showOpenDialog(center.getScene().getWindow());
+        if (file != null) {
+            Tesseract tesseract = new Tesseract();
+            tesseract.setTessVariable("debug_file", "/dev/null");
+            if (!changeL) {
+                tesseract.setLanguage("vie");
+            } else {
+                tesseract.setLanguage("eng");
+            }
+            try {
+                tesseract.setDatapath("Tess4J/tessdata");
+                String text = tesseract.doOCR(new File(file.getAbsolutePath())).replaceAll("\n", " ").replaceAll("\r", "");
+                tx1.setText(text);
+            } catch (TesseractException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

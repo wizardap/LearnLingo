@@ -11,9 +11,25 @@
     -fx-cursor: hand;
 }
 
-#speech:hover {
+#speech:hover, #speech1:hover {
     -fx-opacity: 0.7;
     -fx-cursor: hand;
 }
 
+
+.jfx-slider .thumb {
+    -fx-background-color: #1d2a57;
+}
+
+.jfx-slider .colored-track {
+    -fx-background-color: #1d2a57;
+}
+
+.jfx-slider .animated-thumb {
+    -fx-background-color: #1d2a57;
+}
+
+#slider:hover {
+    -fx-cursor: hand;
+}
 

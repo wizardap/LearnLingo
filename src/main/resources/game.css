@@ -1,0 +1,19 @@
+.button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.9;
+}
+
+#menuButton, #start {
+    -fx-background-color: #074B9C;
+    -fx-border-color: #cccccc;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+
+#s1, #s2, #s2, #s3, #s4, #s5, #s6, #s7, #s8, #s9, #s10 {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 32;
+}

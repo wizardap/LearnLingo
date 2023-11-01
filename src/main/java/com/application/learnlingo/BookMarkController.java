@@ -1,121 +1,102 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import javafx.animation.FadeTransition;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.util.Duration;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.util.Objects;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class BookMarkController implements Initializable {
+public class BookMarkController extends DictionaryController {
 
-    @FXML
-    private TextField textfield1;
-
-    @FXML
-    private BorderPane container;
-
-    @FXML
-    private JFXListView listWords;
-
-//    public static JFXListView getListWords() {
-//        return listWords;
-//    }
-
-    private void makeFadeOutToChangeWord() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setChangeWord());
-        fadeTransition.play();
-    }
-
-    @FXML
-    public void handleButtonClickChangeWord() {
-        makeFadeOutToChangeWord();
-    }
-
-    private void setChangeWord() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("changeWordController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void handleButtonClick() {
-        makeFadeOut();
-    }
-
-    private void makeFadeOut() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setDictonaryMode());
-        fadeTransition.play();
-    }
-
-    private void setDictonaryMode() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("hello-view.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void handleButtonClickSetTranslation() {
-        makeFadeOutToTranslation();
-    }
-
-    private void makeFadeOutToTranslation() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setTranslation());
-        fadeTransition.play();
-    }
-
-    private void setTranslation() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("TranslationController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void deleteWord() {
-        textfield1.setText("");
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listWords.getItems().addAll("Hello", "World","Hello", "World","Hello", "World","Hello", "World","Hello", "World");
+        super.initialize(url, resourceBundle);
+        listWords.setVisible(true);
+        center.setStyle("-fx-background-color: #F4F4F4");
+        checkMode1.setVisible(false);
+        listWords.getItems().addAll(currentDictionary.exportBookmarkList());
+        checkStyle = true;
+        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
+        int s = listWords.getItems().size();
+        if (s < 23)
+            listWords.setPrefHeight(3 + 24 * s);
+        else
+            listWords.setPrefHeight(550);
+    }
 
+    @Override
+    public void speakWordUS() {
+        super.speakWordUS();
+    }
+
+    @Override
+    public void speakWordUK() {
+        super.speakWordUK();
+    }
+
+    public void deleteWordInBookMark() {
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        confirmAdd.setVisible(true);
+        btnYes.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            // Xử lý xóa ở đây
+        });
+        btnNo.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+        });
+    }
+
+    @Override
+    public ObservableList<String> suggestionSearchList(String text) {
+        List<String> suggestionList = currentDictionary.exportBookmarkSuggestionList(text);
+        return FXCollections.observableList(suggestionList);
+    }
+
+    @Override
+    public void handleKeyTyped(KeyEvent keyEvent) {
+        listWords.getItems().clear();
+        if (!textfield.getText().isEmpty()) {
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+            checkStyle = false;
+        } else {
+            listWords.getItems().addAll(currentDictionary.exportBookmarkList());
+            checkStyle = true;
+        }
+        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
+        displayListWord();
+    }
+
+    @Override
+    public void handleSearchMouseClicked(MouseEvent mouseEvent) {
+        super.handleSearchMouseClicked(mouseEvent);
+    }
+
+    @Override
+    public void handleMouseClicked(MouseEvent mouseEvent) {
+        super.handleMouseClicked(mouseEvent);
+    }
+
+    @Override
+    public void changeMode() {
+        super.changeMode();
+        listWords.getItems().addAll(currentDictionary.exportBookmarkList());
+    }
+
+    @Override
+    public void deleteSearch() {
+        listWords.getItems().clear();
+        textfield.setText("");
+
+        listWords.getItems().addAll(currentDictionary.exportBookmarkList());
+        int k = listWords.getItems().size();
+        if (k == 0) {
+            listWords.setVisible(false);
+        } else if (k < 23)
+            listWords.setPrefHeight(3 + 24 * k);
+        else
+            listWords.setPrefHeight(550);
     }
 }

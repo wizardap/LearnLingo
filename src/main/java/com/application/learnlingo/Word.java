@@ -4,22 +4,25 @@ import java.util.Objects;
 
 public class Word {
     private String word;
-    private String description;
     private String html;
-    private String pronounce;
+    private boolean bookmarked;
 
     public Word() {
         this.word = null;
-        this.description = null;
         this.html = null;
-        this.pronounce = null;
+        this.bookmarked = false;
     }
 
-    public Word(String word, String description, String html, String pronounce) {
+    public Word(String word, String html, boolean bookmarked) {
         this.word = word;
-        this.description = description;
         this.html = html;
-        this.pronounce = pronounce;
+        this.bookmarked = bookmarked;
+    }
+
+    public Word(String word, String html) {
+        this.word = word;
+        this.html = html;
+        this.bookmarked = false;
     }
 
     public String getWord() {
@@ -30,14 +33,6 @@ public class Word {
         this.word = word;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getHtml() {
         return html;
     }
@@ -46,23 +41,25 @@ public class Word {
         this.html = html;
     }
 
-    public String getPronounce() {
-        return pronounce;
+    public boolean isBookmarked() {
+        return bookmarked;
     }
 
-    public void setPronounce(String pronounce) {
-        this.pronounce = pronounce;
+    public void setBookmarked(boolean bookmarked) {
+        this.bookmarked = bookmarked;
     }
 
-    public boolean isNotFound(){
-        return this.word == null;
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Word word1 = (Word) o;
-        return Objects.equals(word, word1.word) && Objects.equals(description, word1.description) && Objects.equals(html, word1.html) && Objects.equals(pronounce, word1.pronounce);
+        return bookmarked == word1.bookmarked && Objects.equals(word, word1.word) && Objects.equals(html, word1.html);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(word, html, bookmarked);
     }
 
 }

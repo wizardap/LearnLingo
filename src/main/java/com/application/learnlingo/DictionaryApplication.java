@@ -1,11 +1,8 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;

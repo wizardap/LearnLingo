@@ -1,94 +1,90 @@
 package com.application.learnlingo;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import javafx.animation.FadeTransition;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class DictionaryController extends GeneralController implements Initializable {
+public class DictionaryController extends GeneralController {
 
-    static Boolean b = true;
-    @FXML
-    static boolean changeL = true;
-    @FXML
-    private Button bookmark;
-    @FXML
-    private Button add;
-    @FXML
-    private VBox left;
-    @FXML
-    private WebView webView;
-    @FXML
-    private WebEngine webEngine;
-    @FXML
-    private AnchorPane center;
-    @FXML
-    private Button find;
-    @FXML
-    private JFXListView<String> listWords;
-    @FXML
-    private HBox function;
-    @FXML
-    private Button deleteWord;
-    @FXML
-    private TextField textfield;
-    @FXML
-    private Button history;
-    @FXML
-    private Button change;
-    @FXML
-    private ImageView british;
-    @FXML
-    private ImageView vn;
-    @FXML
-    private HBox changeDictionary;
-    @FXML
-    private boolean isUKFlagVisible = true;
-    @FXML
-    private JFXButton tudien;
-    @FXML
-    private JFXButton dich;
-    @FXML
-    private JFXButton synonym;
-    @FXML
-    private JFXButton antonym;
-    @FXML
-    private BorderPane container;
-    @FXML
-    private Button search;
+    protected static boolean checkStyle = false;
 
     @FXML
-    public void changeMode() {
-        if (isUKFlagVisible) {
+    private AnchorPane introduction;
+
+    public static int speedRate;
+    @FXML
+    protected Button btnYes;
+    @FXML
+    protected Button btnNo;
+    @FXML
+    protected AnchorPane confirmAdd;
+    @FXML
+    private Label rw9;
+    @FXML
+    private Label rw10;
+    @FXML
+    private Label rw11;
+    @FXML
+    private Label rw12;
+    @FXML
+    private Label rw13;
+    @FXML
+    private Label rw14;
+    @FXML
+    private Label rw15;
+    @FXML
+    private Label rw16;
+    private DictionaryCache searchCache = new DictionaryCache();
+
+    protected void displayListWord() {
+        int k = listWords.getItems().size();
+        if (k == 0) {
+            listWords.setVisible(false);
+        } else {
+            listWords.setVisible(true);
+            if (k < 23)
+                listWords.setPrefHeight(3 + 24 * k);
+            else
+                listWords.setPrefHeight(550);
+        }
+    }
+
+    public void displayExtensionButton(boolean ready) {
+        bookmark.setVisible(ready);
+        speakUK.setVisible(ready);
+        speakUS.setVisible(ready);
+        speakVN.setVisible(ready);
+        if (ready == false) {
+            webEngine.loadContent("");
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
+        checkStyle = false;
+        confirmAdd.setVisible(false);
+        listWords.setVisible(false);
+        checkMode1.setVisible(true);
+        if (!SettingsController.changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
             tudien.setText("Từ điển");
             dich.setText("Dịch câu");
             synonym.setText("Đồng nghĩa");
             antonym.setText("Trái nghĩa");
-            listWords.getItems().clear();
         } else {
             changeDictionary.getChildren().removeAll(vn, british, change);
             changeDictionary.getChildren().addAll(british, change, vn);
@@ -96,124 +92,78 @@ public class DictionaryController extends GeneralController implements Initializ
             dich.setText("Translation");
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
-            listWords.getItems().clear();
         }
-        isUKFlagVisible = !isUKFlagVisible;
+        webEngine = webView.getEngine();
+        bookmark.setVisible(false);
+        speakUK.setVisible(false);
+        speakUS.setVisible(false);
+        speakVN.setVisible(false);
+        listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+    }
+    @FXML
+    public void speakWordVN() {
+        String line = listWords.getSelectionModel().getSelectedItem();
+        TextToSpeech pronounce = new TextToSpeech(veDict.getWordInformation(line).getWord(), "hl=vi-vn","Chi", Integer.toString(speedRate));
+
+    }
+    @FXML
+    public void speakWordUS() {
+        String line = currentDictionary.getHistoryString(0);
+        TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-us", "Mike", Integer.toString(speedRate));
     }
 
     @FXML
-    public void handleButtonClick() {
-        makeFadeOutToTranslation();
-    }
+    public void speakWordUK() {
+        String line = currentDictionary.getHistoryString(0);
+        TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-gb", "LiLy", Integer.toString(speedRate));
 
-    private void makeFadeOutToTranslation() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setTranslation());
-        fadeTransition.play();
-    }
-
-    private void setTranslation() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("TranslationController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void makeFadeOutToChangeWord() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setChangeWord());
-        fadeTransition.play();
     }
 
     @FXML
-    public void handleButtonClickChangeWord() {
-        makeFadeOutToChangeWord();
-    }
-
-    private void setChangeWord() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("changeWordController.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void makeFadeOutToBookMark() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(container.getCenter());
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setOnFinished(e -> setBookMark());
-        fadeTransition.play();
-    }
-
-    @FXML
-    public void handleButtonClickBookMark() {
-        makeFadeOutToBookMark();
-    }
-
-    private void setBookMark() {
-        try {
-            BorderPane secondView = (BorderPane) FXMLLoader.load(Objects.requireNonNull(DictionaryApplication.class.getResource("BookMark.fxml")));
-            Scene newScene = new Scene(secondView, 910, 600);
-            Stage curStage = (Stage) container.getScene().getWindow();
-            curStage.setScene(newScene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void deleteSearch() {
+    public void deleteSearch() {
         listWords.getItems().clear();
         textfield.setText("");
+        listWords.getItems().addAll(currentDictionary.exportHistoryList());
+        displayListWord();
     }
 
     @FXML
     public void saveWordInBookMark() {
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        webEngine = webView.getEngine();
-        listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    }
-
-    private ObservableList<String> suggestionSearchList(String text) {
-        if (isUKFlagVisible) {
-            return evDict.exportSuggestionList(text);
-        }
-        return veDict.exportSuggestionList(text);
+        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        confirmAdd.setVisible(true);
+        btnYes.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            currentDictionary.setBookmark(selectedWord);
+        });
+        btnNo.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            currentDictionary.unsetBookmark(selectedWord);
+        });
     }
 
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
+        introduction.setVisible(false);
+        displayExtensionButton(false);
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
-            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText().toLowerCase()));
+            checkStyle = false;
+        } else {
+            listWords.getItems().addAll(currentDictionary.exportHistoryList());
+            checkStyle = true;
         }
+        listWords.setCellFactory(param -> new IconAndFontListCell());
+        displayListWord();
     }
 
     @FXML
-    public void handleKeyPressed(KeyEvent keyEvent) {
-
+    public void handleSearchMouseClicked(MouseEvent mouseEvent) {
+        if (textfield.getText().isEmpty() && listWords.getItems().isEmpty()) {
+            listWords.getItems().addAll(currentDictionary.exportHistoryList());
+            displayListWord();
+        }
     }
 
     @FXML
@@ -221,10 +171,57 @@ public class DictionaryController extends GeneralController implements Initializ
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             String meaningHTMLString = "";
-            if (isUKFlagVisible) {
-                meaningHTMLString = evDict.getWordInformation(selectedWord).getHtml();
-            } else meaningHTMLString = veDict.getWordInformation(selectedWord).getHtml();
+            meaningHTMLString = searchCache.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
+            currentDictionary.insertToHistoryList(selectedWord);
+            if (changeL){
+                speakUS.setVisible(true);
+                speakUK.setVisible(true);
+                speakVN.setVisible(false);
+            }
+            else {
+                speakVN.setVisible(true);
+                speakUS.setVisible(false);
+                speakUK.setVisible(false);
+            }
+            bookmark.setVisible(true);
+        }
+    }
+
+    public static class IconAndFontListCell extends ListCell<String> {
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item == null || empty) {
+                setGraphic(null);
+            } else {
+                String[] lines = item.split("\n");
+
+                HBox hbox = new HBox();
+                ImageView iconImageView;
+                if (checkStyle)
+                    iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
+                else
+                    iconImageView = new ImageView(new Image(getClass().getResource("image/find1.png").toString()));
+                iconImageView.setFitHeight(15);
+                iconImageView.setFitWidth(15);
+                hbox.getChildren().add(iconImageView);
+
+                VBox vBox = new VBox();
+                for (int i = 0; i < 1; i++) {
+                    Label text = new Label(lines[i]);
+                    if (i == 0) {
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
+                    } else {
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
+                    }
+                    vBox.getChildren().add(text);
+                }
+                hbox.setSpacing(5);
+                hbox.getChildren().add(vBox);
+                setGraphic(hbox);
+            }
         }
     }
 }
