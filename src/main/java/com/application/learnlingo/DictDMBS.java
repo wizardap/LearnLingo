@@ -150,12 +150,14 @@ public class DictDMBS {
     }
 
     public void modifyWord(Word opWord) {
-        String sql = "UPDATE " + tableName + " SET html = ? WHERE word = ?;";
+        String sql = "UPDATE " + tableName + " SET word = ?, html = ?, isBookmarked = ? WHERE word = ?;";
         PreparedStatement pstmt = null;
         try {
             pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, opWord.getHtml());
-            pstmt.setString(2, opWord.getWord());
+            pstmt.setString(1, opWord.getWord());
+            pstmt.setString(2, opWord.getHtml());
+            pstmt.setInt(3, opWord.isBookmarked() ? 1 : 0);
+            pstmt.setString(4, opWord.getWord());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -214,7 +216,7 @@ public class DictDMBS {
             pstmt.setString(1, word);
             pstmt.executeUpdate();
             if (!bookmarkList.contains(word)) {
-                bookmarkList.add(word);
+                bookmarkList.add(0, word);
                 prefixBookmarkTree.put(word);
             }
         } catch (SQLException e) {
@@ -271,5 +273,13 @@ public class DictDMBS {
     @Override
     public int hashCode() {
         return Objects.hash(dbPath, dbName, tableName, defaultTableName, connection, historySearch, bookmarkList, prefixTree);
+    }
+
+    public String getHistoryString(int index) {
+        return historySearch.getHistoryIndex(index);
+    }
+
+    public boolean contain(String word) {
+        return prefixTree.contain(word);
     }
 }

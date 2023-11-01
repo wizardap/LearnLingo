@@ -126,7 +126,7 @@
     -fx-background-color: #6a78a8;;
 }
 
-#deleteWord, #deleteWord1 {
+#deleteWord, #deleteContentSearchButton {
     -fx-background-color: -fx-background;
     -fx-background-insets: 0;
     -fx-background-radius: 0 20 20 0;
@@ -140,7 +140,7 @@
     -fx-font-weight: bold;
 }
 
-#speakUK, #speakUS {
+#speakUK, #speakUS, #speakVN {
     -fx-border-insets: 0;
     -fx-background-radius: 10;
     -fx-background-insets: 0;
@@ -148,7 +148,7 @@
     -fx-font-weight: bold;
 }
 
-#speakUK:hover, #speakUS:hover {
+#speakUK:hover, #speakUS:hover, #speakVN:hover {
     -fx-opacity: 0.9;
 }
 
@@ -159,20 +159,20 @@
     -fx-background-color: #FEC400;
 }
 
-#send {
+#searchWordButton {
     -fx-background-insets: 0;
     -fx-background-color: #1d2a57;
 }
 
-#send:hover {
+#searchWordButton:hover {
     -fx-opacity: 0.8;
 }
 
-#changed, #reset {
+#saveWordButton, #resetButton {
     -fx-background-color: white;
 }
 
-#changed:hover, #reset:hover {
+#saveWordButton:hover, #resetButton:hover {
     -fx-background-color: #cccccc;
 }
 
@@ -180,7 +180,7 @@
     -fx-cursor: hand;
 }
 
-#addw, #delw {
+#addWordButton, #deleteWordButton {
     -fx-border-insets: 0;
     -fx-background-color: #eeeeee;
     -fx-font-size: 13;
@@ -188,7 +188,7 @@
     -fx-text-fill: #1d2a57;
 }
 
-#addw:hover, #delw:hover {
+#addWordButton:hover, #deleteWordButton:hover {
     -fx-background-color: #1d2a57;
     -fx-text-fill: white;
 }

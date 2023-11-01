@@ -46,6 +46,14 @@
                      </image>
                   </ImageView>
                </graphic></Button>
+            <Button fx:id="speakVN" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordVN" prefHeight="26.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="VN">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/speakVolume.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <VBox fx:id="left" prefHeight="552.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
                <children>
                   <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
@@ -174,12 +182,12 @@
             </Button>
             <HBox prefHeight="23.0" prefWidth="239.0" HBox.hgrow="ALWAYS">
                <children>
-                  <TextField fx:id="textfield" onKeyTyped="#handleKeyTyped" onMouseClicked="#handleMouseClicked" prefHeight="25.0" prefWidth="180.0" promptText="Search here" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="textfield" onKeyTyped="#handleKeyTyped" onMouseClicked="#handleSearchMouseClicked" prefHeight="25.0" prefWidth="180.0" promptText="Search here" stylesheets="@../../../vu.css" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="deleteWord" mnemonicParsing="false" onAction="#deleteSearch" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
+                  <Button fx:id="deleteWord" mnemonicParsing="false" onAction="#deleteSearch" onMouseClicked="#handleSearchMouseClicked" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>

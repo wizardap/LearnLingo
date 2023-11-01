@@ -61,11 +61,12 @@ public class DictionaryController extends GeneralController {
         }
     }
 
-    public void displayExtensionButton(boolean ready){
+    public void displayExtensionButton(boolean ready) {
         bookmark.setVisible(ready);
         speakUK.setVisible(ready);
         speakUS.setVisible(ready);
-        if (ready==false) {
+        speakVN.setVisible(ready);
+        if (ready == false) {
             webEngine.loadContent("");
         }
     }
@@ -96,19 +97,25 @@ public class DictionaryController extends GeneralController {
         bookmark.setVisible(false);
         speakUK.setVisible(false);
         speakUS.setVisible(false);
+        speakVN.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
     }
+    @FXML
+    public void speakWordVN() {
+        String line = listWords.getSelectionModel().getSelectedItem();
+        TextToSpeech pronounce = new TextToSpeech(veDict.getWordInformation(line).getWord(), "hl=vi-vn","Chi", Integer.toString(speedRate));
 
+    }
     @FXML
     public void speakWordUS() {
-        String line = listWords.getSelectionModel().getSelectedItem();
+        String line = currentDictionary.getHistoryString(0);
         TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-us", "Mike", Integer.toString(speedRate));
     }
 
     @FXML
     public void speakWordUK() {
-        String line = listWords.getSelectionModel().getSelectedItem();
+        String line = currentDictionary.getHistoryString(0);
         TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-gb", "LiLy", Integer.toString(speedRate));
 
     }
@@ -119,7 +126,6 @@ public class DictionaryController extends GeneralController {
         textfield.setText("");
         listWords.getItems().addAll(currentDictionary.exportHistoryList());
         displayListWord();
-        displayExtensionButton(false);
     }
 
     @FXML
@@ -142,7 +148,7 @@ public class DictionaryController extends GeneralController {
         displayExtensionButton(false);
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
-            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText().toLowerCase()));
             checkStyle = false;
         } else {
             listWords.getItems().addAll(currentDictionary.exportHistoryList());
@@ -154,7 +160,7 @@ public class DictionaryController extends GeneralController {
 
     @FXML
     public void handleSearchMouseClicked(MouseEvent mouseEvent) {
-        if (textfield.getText().isEmpty()) {
+        if (textfield.getText().isEmpty() && listWords.getItems().isEmpty()) {
             listWords.getItems().addAll(currentDictionary.exportHistoryList());
             displayListWord();
         }
@@ -168,8 +174,16 @@ public class DictionaryController extends GeneralController {
             meaningHTMLString = searchCache.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
             currentDictionary.insertToHistoryList(selectedWord);
-            speakUS.setVisible(true);
-            speakUK.setVisible(true);
+            if (changeL){
+                speakUS.setVisible(true);
+                speakUK.setVisible(true);
+                speakVN.setVisible(false);
+            }
+            else {
+                speakVN.setVisible(true);
+                speakUS.setVisible(false);
+                speakUK.setVisible(false);
+            }
             bookmark.setVisible(true);
         }
     }
