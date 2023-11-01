@@ -32,6 +32,8 @@ public class GeneralController implements Initializable {
     @FXML
     protected Button speakUK;
     @FXML
+    protected Button speakVN;
+    @FXML
     protected static boolean changeL = true;
     @FXML
     protected Button bookmark;
@@ -68,7 +70,7 @@ public class GeneralController implements Initializable {
     @FXML
     protected HBox changeDictionary;
     @FXML
-    static boolean isUKFlagVisible;
+    static boolean isUKFlagVisible = true;
     @FXML
     protected Button tudien;
     @FXML
@@ -104,7 +106,7 @@ public class GeneralController implements Initializable {
 
     protected static DictDMBS evDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "AV","defaultAV");
     protected static DictDMBS veDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "VA","defaultVA");
-    protected static DictDMBS currentDictionary;
+    protected static DictDMBS currentDictionary= evDict;
 
     private static final String FEEDBACK_TXT_PATH
             = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
@@ -136,8 +138,16 @@ public class GeneralController implements Initializable {
         if (selectedWord != null) {
             String meaningHTMLString = currentDictionary.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
-            speakUS.setVisible(true);
-            speakUK.setVisible(true);
+            if (changeL){
+                speakUS.setVisible(true);
+                speakUK.setVisible(true);
+                speakVN.setVisible(false);
+            }
+            else {
+                speakVN.setVisible(true);
+                speakUS.setVisible(false);
+                speakUK.setVisible(false);
+            }
             bookmark.setVisible(true);
         }
     }
@@ -158,8 +168,6 @@ public class GeneralController implements Initializable {
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
-        isUKFlagVisible = true;
-        currentDictionary = evDict;
     }
 
     @FXML
@@ -188,6 +196,7 @@ public class GeneralController implements Initializable {
             dich.setText("Dịch câu");
             synonym.setText("Đồng nghĩa");
             antonym.setText("Trái nghĩa");
+            changeL=!changeL;
         } else {
             currentDictionary = evDict;
             changeDictionary.getChildren().removeAll(vn, british, change);
@@ -196,6 +205,7 @@ public class GeneralController implements Initializable {
             dich.setText("Translation");
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
+            changeL=!changeL;
         }
         isUKFlagVisible = !isUKFlagVisible;
         listWords.getItems().clear();

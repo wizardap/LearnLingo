@@ -65,6 +65,7 @@ public class DictionaryController extends GeneralController {
         bookmark.setVisible(ready);
         speakUK.setVisible(ready);
         speakUS.setVisible(ready);
+        speakVN.setVisible(ready);
         if (ready == false) {
             webEngine.loadContent("");
         }
@@ -96,10 +97,16 @@ public class DictionaryController extends GeneralController {
         bookmark.setVisible(false);
         speakUK.setVisible(false);
         speakUS.setVisible(false);
+        speakVN.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
     }
+    @FXML
+    public void speakWordVN() {
+        String line = listWords.getSelectionModel().getSelectedItem();
+        TextToSpeech pronounce = new TextToSpeech(veDict.getWordInformation(line).getWord(), "hl=vi-vn","Chi", Integer.toString(speedRate));
 
+    }
     @FXML
     public void speakWordUS() {
         String line = currentDictionary.getHistoryString(0);
@@ -167,8 +174,16 @@ public class DictionaryController extends GeneralController {
             meaningHTMLString = searchCache.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
             currentDictionary.insertToHistoryList(selectedWord);
-            speakUS.setVisible(true);
-            speakUK.setVisible(true);
+            if (changeL){
+                speakUS.setVisible(true);
+                speakUK.setVisible(true);
+                speakVN.setVisible(false);
+            }
+            else {
+                speakVN.setVisible(true);
+                speakUS.setVisible(false);
+                speakUK.setVisible(false);
+            }
             bookmark.setVisible(true);
         }
     }
