@@ -31,22 +31,7 @@ public class DictionaryController extends GeneralController {
     protected Button btnNo;
     @FXML
     protected AnchorPane confirmAdd;
-    @FXML
-    private Label rw9;
-    @FXML
-    private Label rw10;
-    @FXML
-    private Label rw11;
-    @FXML
-    private Label rw12;
-    @FXML
-    private Label rw13;
-    @FXML
-    private Label rw14;
-    @FXML
-    private Label rw15;
-    @FXML
-    private Label rw16;
+
     private DictionaryCache searchCache = new DictionaryCache();
 
     protected void displayListWord() {

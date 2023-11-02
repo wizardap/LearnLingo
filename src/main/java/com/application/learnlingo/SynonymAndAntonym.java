@@ -46,7 +46,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
         setBut(s, clickedButton);
     }
     public void changeMode() {
-        if (isUKFlagVisible) {
+        if (changeL) {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
             tudien.setText("Từ điển");
@@ -61,7 +61,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
         }
-        isUKFlagVisible = !isUKFlagVisible;
+        changeL = !changeL;
     }
 
 

@@ -11,6 +11,7 @@ import javafx.scene.layout.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SettingsController extends GeneralController {
@@ -71,6 +72,10 @@ public class SettingsController extends GeneralController {
 
     @FXML
     public void deleteBookmark() {
+        List<String> bookmarkList = currentDictionary.exportBookmarkList();
+        for (String word : bookmarkList){
+            currentDictionary.unsetBookmark(word);
+        }
     }
 
     @FXML

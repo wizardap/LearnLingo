@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -69,29 +70,25 @@ public class ChangeWordController extends GeneralController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         BackgroundImage backgroundImage = new BackgroundImage(
-                new Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
+                new Image(Objects.requireNonNull(getClass().getResource("image/bg3.jpg")).toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         Background background = new Background(backgroundImage);
         center.setBackground(background);
         d1.setSelected(true);
-        if (!isUKFlagVisible) {
+        if (!changeL) {
             changeMode();
         }
         d1.setOnAction(event -> {
-            if (d1.isSelected()) {
-                changeMode();
-                d2.setSelected(false);
-                isLookedUp=false;
-            }
+            d2.setSelected(!d1.isSelected());
+            changeMode();
+            isLookedUp=false;
         });
 
         d2.setOnAction(event -> {
-            if (d2.isSelected()) {
-                changeMode();
-                d1.setSelected(false);
-                isLookedUp=false;
-            }
+            d1.setSelected(!d2.isSelected());
+            changeMode();
+            isLookedUp=false;
         });
         textfield1.setOnKeyTyped(e->{
             isLookedUp = false;
@@ -122,23 +119,19 @@ public class ChangeWordController extends GeneralController {
                 if (!contentSearchWord.isEmpty() && !currentDictionary.contain(contentSearchWord)) {
                     Word modifiedWord = new Word(contentSearchWord,contentHTMLEditor.getHtmlText(),false);
                     Alert success = new Alert(Alert.AlertType.INFORMATION);
-                    success.setHeaderText(new StringBuilder()
-                            .append("\'")
-                            .append(contentSearchWord)
-                            .append("\'")
-                            .append(" has been added to this dictionary!")
-                            .toString());
+                    success.setHeaderText("'" +
+                            contentSearchWord +
+                            "'" +
+                            " has been added to this dictionary!");
                     success.showAndWait();
                     currentDictionary.insertWord(modifiedWord);
                 }
                 else {
                     Alert failed = new Alert(Alert.AlertType.ERROR);
-                    failed.setHeaderText(new StringBuilder()
-                            .append("\'")
-                            .append(contentSearchWord)
-                            .append("\'")
-                            .append(" already exists in the dictionary.\n")
-                            .toString());
+                    failed.setHeaderText("'" +
+                            contentSearchWord +
+                            "'" +
+                            " already exists in the dictionary.\n");
                     failed.setContentText("You should edit the definition of this word and save it!");
                     failed.showAndWait();
 
@@ -158,23 +151,19 @@ public class ChangeWordController extends GeneralController {
                 if (!contentSearchWord.isEmpty() && currentDictionary.contain(contentSearchWord)) {
                    currentDictionary.removeWord(contentSearchWord);
                     Alert success = new Alert(Alert.AlertType.INFORMATION);
-                    success.setHeaderText(new StringBuilder()
-                            .append("\'")
-                            .append(contentSearchWord)
-                            .append("\'")
-                            .append(" has been deleted to this dictionary!")
-                            .toString());
+                    success.setHeaderText("'" +
+                            contentSearchWord +
+                            "'" +
+                            " has been deleted to this dictionary!");
                     success.showAndWait();
                     contentHTMLEditor.setHtmlText(defaultHTMLContent);
                 }
                 else {
                     Alert failed = new Alert(Alert.AlertType.ERROR);
-                    failed.setHeaderText(new StringBuilder()
-                            .append("\'")
-                            .append(contentSearchWord)
-                            .append("\'")
-                            .append(" doesn\'t exists in the dictionary.\n")
-                            .toString());
+                    failed.setHeaderText("'" +
+                            contentSearchWord +
+                            "'" +
+                            " doesn't exists in the dictionary.\n");
                     failed.setContentText("You should check your typo or make sure that this word is available!");
                     failed.showAndWait();
 
@@ -190,14 +179,12 @@ public class ChangeWordController extends GeneralController {
         if (searchWord.isEmpty() || !currentDictionary.contain(searchWord)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
-            alert.setContentText(new StringBuilder()
-                    .append("\'")
-                    .append(searchWord)
-                    .append("\'")
-                    .append(" isn\'t exist in this dictionary!\n")
-                    .append("If you need to add a new word, please insert content.\n")
-                    .append("Otherwise, you need to check your typo and search again.")
-                    .toString());
+            alert.setContentText("'" +
+                    searchWord +
+                    "'" +
+                    " isn't exist in this dictionary!\n" +
+                    "If you need to add a new word, please insert content.\n" +
+                    "Otherwise, you need to check your typo and search again.");
             alert.showAndWait();
             contentHTMLEditor.setHtmlText(defaultHTMLContent);
         } else {
@@ -231,11 +218,9 @@ public class ChangeWordController extends GeneralController {
             if (contentSearchWord.isEmpty()) contentSearchWord="This word on the search field";
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("ERROR: Can not save into dictionary!");
-            alert.setContentText(new StringBuilder()
-                    .append(contentSearchWord)
-                    .append(" does not exist in this dictionary!\n")
-                    .append("Please sure that your word is available in this dictionary!")
-                    .toString());
+            alert.setContentText(contentSearchWord +
+                    " does not exist in this dictionary!\n" +
+                    "Please sure that your word is available in this dictionary!");
             alert.showAndWait();
         }
     }

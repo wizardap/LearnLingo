@@ -14,8 +14,6 @@ public class DictionaryCache extends GeneralController {
         return information;
     }
     public Word getWordFromDatabase(String wordName){
-        if (isUKFlagVisible)
-            return evDict.getWordInformation(wordName);
-        return veDict.getWordInformation(wordName);
+       return currentDictionary.getWordInformation(wordName);
     }
 }

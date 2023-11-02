@@ -70,8 +70,6 @@ public class GeneralController implements Initializable {
     @FXML
     protected HBox changeDictionary;
     @FXML
-    static boolean isUKFlagVisible = true;
-    @FXML
     protected Button tudien;
     @FXML
     protected Button dich;
@@ -161,55 +159,55 @@ public class GeneralController implements Initializable {
         checkMode4.setVisible(false);
         game.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("gameController.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         add.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("changeWordController.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         search.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("hello-view.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         history.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("BookMark.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         settings.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("Settings.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         tudien.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("hello-view.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         dich.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("TranslationController.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         synonym.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
         antonym.setOnAction(e -> {
             AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container);
-            if (!isUKFlagVisible){
+            if (!changeL){
                 changeMode();
             }
         });
@@ -233,7 +231,7 @@ public class GeneralController implements Initializable {
     }
     @FXML
     public void changeMode() {
-        if (isUKFlagVisible) {
+        if (changeL) {
             currentDictionary = veDict;
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
@@ -251,7 +249,6 @@ public class GeneralController implements Initializable {
             antonym.setText("Antonyms");
         }
         changeL=!changeL;
-        isUKFlagVisible = !isUKFlagVisible;
     }
 
 }

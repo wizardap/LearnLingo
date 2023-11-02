@@ -69,7 +69,7 @@ public class Trie {
         }
         for (Character character:head.children.keySet())
         {
-            char ch = character.charValue();
+            char ch = character;
             traversalNode(head.getChild(ch), result);
         }
     }

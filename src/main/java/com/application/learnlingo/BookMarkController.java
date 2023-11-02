@@ -20,7 +20,7 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         checkStyle = true;
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        if (!isUKFlagVisible) {
+        if (!changeL) {
             changeMode();
         }
         displayListWord();
@@ -45,9 +45,7 @@ public class BookMarkController extends DictionaryController {
             listWords.getItems().removeIf(e -> e.equals(selectedWord));
             displayListWord();
         });
-        btnNo.setOnAction(ev -> {
-            confirmAdd.setVisible(false);
-        });
+        btnNo.setOnAction(ev -> confirmAdd.setVisible(false));
     }
 
     @Override
