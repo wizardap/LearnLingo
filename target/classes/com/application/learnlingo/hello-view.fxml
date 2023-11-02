@@ -17,11 +17,11 @@
 
 <BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style=";" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.DictionaryController">
    <center>
-      <AnchorPane fx:id="center" prefHeight="552.0" prefWidth="765.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="center" prefHeight="552.0" prefWidth="803.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listWords" layoutX="98.0" layoutY="-1.0" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
-            <WebView fx:id="webView" layoutX="322.0" layoutY="44.0" prefHeight="507.0" prefWidth="586.0" />
-            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="726.0" layoutY="9.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../../../vu.css" text="Add to word list">
+            <JFXListView fx:id="listWords" layoutX="-1.0" layoutY="-2.0" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
+            <WebView fx:id="webView" layoutX="224.0" layoutY="44.0" prefHeight="507.0" prefWidth="585.0" />
+            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="647.0" layoutY="9.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../../../vu.css" text="Add to word list">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +30,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="US">
+            <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="226.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="US">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +38,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="speakUK" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="414.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="UK">
+            <Button fx:id="speakUK" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="324.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="UK">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="speakVN" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordVN" prefHeight="26.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="VN">
+            <Button fx:id="speakVN" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="225.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordVN" prefHeight="26.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="VN">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,77 +54,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <VBox fx:id="left" prefHeight="552.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
-               <children>
-                  <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/home.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets left="5.0" top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="add" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="ADD/DELETE" VBox.vgrow="ALWAYS">
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/controls.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets left="5.0" top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="game" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="GAME" VBox.vgrow="ALWAYS">
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/game.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets left="4.0" top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="history" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="BOOKMARK" VBox.vgrow="ALWAYS">
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/history.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets left="4.0" top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Region prefHeight="150.0" prefWidth="99.0" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Region>
-                  <Button fx:id="settings" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="SETTINGS" VBox.vgrow="ALWAYS">
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/settings.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="4.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <AnchorPane layoutX="249.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane fx:id="introduction" layoutX="99.0" prefHeight="549.0" prefWidth="811.0" style="-fx-background-color: #fff8e4;">
+            <AnchorPane fx:id="introduction" prefHeight="549.0" prefWidth="809.0" style="-fx-background-color: #fff8e4;">
                <children>
                   <Label layoutX="53.0" layoutY="14.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="WELCOME TO OUR LEARNING ENGLISH APPLICATION" />
                   <Label layoutX="53.0" layoutY="53.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="ABOUT" />
@@ -311,4 +241,75 @@
          </children>
       </HBox>
    </top>
+   <left>
+      <VBox fx:id="left" prefHeight="552.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="add" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="ADD/DELETE" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/controls.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="game" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="GAME" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/game.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="4.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="history" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="BOOKMARK" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/history.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="4.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Region prefHeight="150.0" prefWidth="99.0" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Region>
+            <Button fx:id="settings" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="SETTINGS" VBox.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="4.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
 </BorderPane>

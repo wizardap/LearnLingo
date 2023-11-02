@@ -71,8 +71,10 @@ public class TranslationController extends GeneralController {
     @FXML
     private Label charCountLabel;
 
+    private boolean changeModeTrans;
+
     public void changeLanguage() {
-        if (changeL) {
+        if (changeModeTrans) {
             lang1.setText("Tiếng Việt");
             lang2.setText("Tiếng Anh");
             chooseFile.setText("Chọn ảnh");
@@ -83,6 +85,7 @@ public class TranslationController extends GeneralController {
             chooseFile.setText("Choose image");
             warning.setText("Enter no more than 600 characters");
         }
+        changeModeTrans = !changeModeTrans;
     }
 
 
@@ -128,7 +131,7 @@ public class TranslationController extends GeneralController {
     @FXML
     public void translateMini() throws IOException {
         String text = tx1.getText();
-        if (!changeL) {
+        if (!changeModeTrans) {
             tx2.setText(translate("vi", "en", text));
         } else {
             tx2.setText(translate("en", "vi", text));
@@ -149,6 +152,7 @@ public class TranslationController extends GeneralController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         checkMode2.setVisible(true);
+        changeModeTrans = changeL;
         if (!changeL) {
             lang1.setText("Tiếng Việt");
             lang2.setText("Tiếng Anh");
@@ -192,7 +196,7 @@ public class TranslationController extends GeneralController {
         if (file != null) {
             Tesseract tesseract = new Tesseract();
             tesseract.setTessVariable("debug_file", "/dev/null");
-            if (!changeL) {
+            if (!changeModeTrans) {
                 tesseract.setLanguage("vie");
             } else {
                 tesseract.setLanguage("eng");

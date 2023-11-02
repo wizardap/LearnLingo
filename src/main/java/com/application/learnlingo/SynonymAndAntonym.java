@@ -118,6 +118,11 @@ public abstract class SynonymAndAntonym extends GeneralController {
         dich.setText("Translation");
         synonym.setText("Synonyms");
         antonym.setText("Antonyms");
+        search.setText("HOME");
+        add.setText("ADD/DELETE");
+        game.setText("GAME");
+        history.setText("BOOKMARK");
+        settings.setText("SETTINGS");
         currentDictionary = evDict;
         listWords.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);

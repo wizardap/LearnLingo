@@ -143,6 +143,11 @@ public class SettingsController extends GeneralController {
             dich.setText("Dịch câu");
             synonym.setText("Đồng nghĩa");
             antonym.setText("Trái nghĩa");
+            search.setText("TRANG CHỦ");
+            add.setText("THÊM/XÓA");
+            game.setText("TRÒ CHƠI");
+            history.setText("TỪ ĐÃ LƯU");
+            settings.setText("CÀI ĐẶT");
         } else {
             currentDictionary = evDict;
             changeDictionary.getChildren().removeAll(vn, british, change);
@@ -156,6 +161,11 @@ public class SettingsController extends GeneralController {
             dich.setText("Translation");
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
+            search.setText("HOME");
+            add.setText("ADD/DELETE");
+            game.setText("GAME");
+            history.setText("BOOKMARK");
+            settings.setText("SETTINGS");
         }
         changeL=!changeL;
     }

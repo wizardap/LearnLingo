@@ -203,11 +203,11 @@ public class GeneralController implements Initializable {
         slide.setNode(left);
         if (!checkMenuBar) {
             left.setVisible(true);
-            left.setPrefWidth(100);
+            left.setPrefWidth(99);
             slide.setToX(0);
             slide.play();
         } else {
-            slide.setToX(-100);
+            slide.setToX(-99);
             slide.play();
         }
     }

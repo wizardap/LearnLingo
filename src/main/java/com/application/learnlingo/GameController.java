@@ -199,7 +199,7 @@ public class GameController extends GeneralController {
     @FXML
     private AnchorPane containerWords;
 
-    private String [] listwords = new String[] {"contact", "act", "cat", "cot", "ton"
+    private String [] listwords = new String[] {"dependent", "act", "cat", "cot", "ton"
             , "ant", "can", "not", "con", "coat"};
 
     private int [] checkAns = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -224,7 +224,7 @@ public class GameController extends GeneralController {
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         menuGame.setVisible(false);
-        menuGame.setTranslateX(600);
+        menuGame.setTranslateX(620);
         left.setVisible(false);
         left.setTranslateX(-100);
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -244,7 +244,7 @@ public class GameController extends GeneralController {
         slide.setNode(left);
         if (checkMenuBar) {
             left.setVisible(true);
-            left.setPrefWidth(100);
+            left.setPrefWidth(99);
             slide.setToX(0);
             slide.play();
             for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
@@ -255,7 +255,7 @@ public class GameController extends GeneralController {
                 }
             }
         } else {
-            slide.setToX(-100);
+            slide.setToX(-99);
             slide.play();
             for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
                 child.setOpacity(1);
@@ -281,7 +281,7 @@ public class GameController extends GeneralController {
                 }
             }
         } else {
-            slide.setToX(600);
+            slide.setToX(620);
             slide.play();
             for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
                 child.setOpacity(1);
