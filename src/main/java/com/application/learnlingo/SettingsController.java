@@ -3,6 +3,7 @@ package com.application.learnlingo;
 import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,12 +28,41 @@ public class SettingsController extends GeneralController {
 
     @FXML
     private ImageView speak;
+
     @FXML
     private Button resetButton;
+
+    @FXML
+    private Label lb1;
+
+    @FXML
+    private Label lb2;
+
+    @FXML
+    private Label lb3;
+
+    @FXML
+    private Label lb4;
+
+    @FXML
+    private Label lb5;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        if (!changeL) {
+            lb1.setText("Xóa Bookmark");
+            lb2.setText("Reset về ban đầu");
+            lb3.setText("Tốc độ nói");
+            lb4.setText("Phản hồi");
+            lb5.setText("Chậm      Vừa         Nhanh");
+        } else {
+            lb1.setText("Delete BookMark");
+            lb2.setText("Reset Default");
+            lb3.setText("Voice Speed");
+            lb4.setText("Feedbacks");
+            lb5.setText("Slow      Average      Fast");
+        }
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -65,8 +95,13 @@ public class SettingsController extends GeneralController {
 
     @FXML
     public void testVoiceSpeed() {
-        String selectedWord = "Contribution";
-        TextToSpeech pronouce = new TextToSpeech(selectedWord,"hl=en-us","Mike", Integer.toString(DictionaryController.speedRate));
+        if (!changeL) {
+            String selectedWord = "Anh yêu em";
+            TextToSpeech pronounce = new TextToSpeech(selectedWord, "hl=vi-vn", "Chi", Integer.toString(DictionaryController.speedRate));
+        } else {
+            String selectedWord = "I love you";
+            TextToSpeech pronouce = new TextToSpeech(selectedWord, "hl=en-us", "Mike", Integer.toString(DictionaryController.speedRate));
+        }
     }
 
     @FXML
@@ -91,5 +126,37 @@ public class SettingsController extends GeneralController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void changeMode2() {
+        if (changeL) {
+            currentDictionary = veDict;
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            lb1.setText("Xóa Bookmark");
+            lb2.setText("Reset về ban đầu");
+            lb3.setText("Tốc độ nói");
+            lb4.setText("Phản hồi");
+            lb5.setText("Chậm      Vừa         Nhanh");
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+        } else {
+            currentDictionary = evDict;
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            lb1.setText("Delete BookMark");
+            lb2.setText("Reset Default");
+            lb3.setText("Voice Speed");
+            lb4.setText("Feedbacks");
+            lb5.setText("Slow      Average      Fast");
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+        }
+        changeL=!changeL;
     }
 }

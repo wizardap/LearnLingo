@@ -72,18 +72,16 @@ public class TranslationController extends GeneralController {
     private Label charCountLabel;
 
     public void changeLanguage() {
-        if (changeL == true) {
+        if (changeL) {
             lang1.setText("Tiếng Việt");
             lang2.setText("Tiếng Anh");
             chooseFile.setText("Chọn ảnh");
             warning.setText("Vui lòng nhập không quá 600 ký tự");
-            changeL = false;
         } else {
             lang1.setText("English");
             lang2.setText("Vietnamese");
             chooseFile.setText("Choose image");
             warning.setText("Enter no more than 600 characters");
-            changeL = true;
         }
     }
 
@@ -151,6 +149,17 @@ public class TranslationController extends GeneralController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         checkMode2.setVisible(true);
+        if (!changeL) {
+            lang1.setText("Tiếng Việt");
+            lang2.setText("Tiếng Anh");
+            chooseFile.setText("Chọn ảnh");
+            warning.setText("Vui lòng nhập không quá 600 ký tự");
+        } else {
+            lang1.setText("English");
+            lang2.setText("Vietnamese");
+            chooseFile.setText("Choose image");
+            warning.setText("Enter no more than 600 characters");
+        }
         tx1.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

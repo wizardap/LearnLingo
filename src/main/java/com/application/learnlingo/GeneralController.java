@@ -24,7 +24,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GeneralController implements Initializable {
-
     @FXML
     protected Button settings;
     @FXML
@@ -69,8 +68,7 @@ public class GeneralController implements Initializable {
     protected ImageView vn;
     @FXML
     protected HBox changeDictionary;
-    @FXML
-    static boolean isUKFlagVisible = true;
+
     @FXML
     protected Button tudien;
     @FXML
@@ -155,6 +153,33 @@ public class GeneralController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (!changeL) {
+            currentDictionary = veDict;
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+            search.setText("TRANG CHỦ");
+            add.setText("THÊM/XÓA");
+            game.setText("TRÒ CHƠI");
+            history.setText("TỪ ĐÃ LƯU");
+            settings.setText("CÀI ĐẶT");
+        } else {
+            currentDictionary = evDict;
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+            search.setText("HOME");
+            add.setText("ADD/DELETE");
+            game.setText("GAME");
+            history.setText("BOOKMARK");
+            settings.setText("SETTINGS");
+        }
         checkMode1.setVisible(false);
         checkMode2.setVisible(false);
         checkMode3.setVisible(false);
@@ -186,9 +211,9 @@ public class GeneralController implements Initializable {
             slide.play();
         }
     }
-    @FXML
-    public void changeMode() {
-        if (isUKFlagVisible) {
+
+    public void changeMode2() {
+        if (changeL) {
             currentDictionary = veDict;
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
@@ -196,7 +221,11 @@ public class GeneralController implements Initializable {
             dich.setText("Dịch câu");
             synonym.setText("Đồng nghĩa");
             antonym.setText("Trái nghĩa");
-            changeL=!changeL;
+            search.setText("TRANG CHỦ");
+            add.setText("THÊM/XÓA");
+            game.setText("TRÒ CHƠI");
+            history.setText("TỪ ĐÃ LƯU");
+            settings.setText("CÀI ĐẶT");
         } else {
             currentDictionary = evDict;
             changeDictionary.getChildren().removeAll(vn, british, change);
@@ -205,9 +234,46 @@ public class GeneralController implements Initializable {
             dich.setText("Translation");
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
-            changeL=!changeL;
+            search.setText("HOME");
+            add.setText("ADD/DELETE");
+            game.setText("GAME");
+            history.setText("BOOKMARK");
+            settings.setText("SETTINGS");
         }
-        isUKFlagVisible = !isUKFlagVisible;
+        changeL=!changeL;
+    }
+    @FXML
+    public void changeMode() {
+        if (changeL) {
+            currentDictionary = veDict;
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            bookmark.setText("Thêm từ này");
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+            search.setText("TRANG CHỦ");
+            add.setText("THÊM/XÓA");
+            game.setText("TRÒ CHƠI");
+            history.setText("TỪ ĐÃ LƯU");
+            settings.setText("CÀI ĐẶT");
+        } else {
+            currentDictionary = evDict;
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            bookmark.setText("Add to word list");
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+            search.setText("HOME");
+            add.setText("ADD/DELETE");
+            game.setText("GAME");
+            history.setText("BOOKMARK");
+            settings.setText("SETTINGS");
+        }
+        changeL=!changeL;
         listWords.getItems().clear();
     }
 

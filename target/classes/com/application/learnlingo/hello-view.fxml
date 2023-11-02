@@ -30,7 +30,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="US">
+            <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="US">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +38,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="speakUK" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="414.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="UK">
+            <Button fx:id="speakUK" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="414.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="UK">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="speakVN" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordVN" prefHeight="26.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="VN">
+            <Button fx:id="speakVN" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordVN" prefHeight="26.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="VN">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -123,15 +123,8 @@
                   </Button>
                </children>
             </VBox>
-            <AnchorPane fx:id="confirmAdd" layoutX="716.0" layoutY="45.0" prefHeight="145.0" prefWidth="165.0" style="-fx-background-color: #FEC400; -fx-background-radius: 20;">
-               <children>
-                  <Label layoutX="13.0" layoutY="14.0" prefHeight="45.0" prefWidth="135.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to add this word in Bookmark" textAlignment="CENTER" wrapText="true" />
-                  <Button fx:id="btnYes" layoutX="40.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="YES" />
-                  <Button fx:id="btnNo" layoutX="90.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="NO" />
-               </children>
-            </AnchorPane>
             <AnchorPane layoutX="249.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane fx:id="introduction" layoutX="100.0" prefHeight="549.0" prefWidth="810.0" style="-fx-background-color: #fff8e4;">
+            <AnchorPane fx:id="introduction" layoutX="99.0" prefHeight="549.0" prefWidth="811.0" style="-fx-background-color: #fff8e4;">
                <children>
                   <Label layoutX="53.0" layoutY="14.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="WELCOME TO OUR LEARNING ENGLISH APPLICATION" />
                   <Label layoutX="53.0" layoutY="53.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="ABOUT" />

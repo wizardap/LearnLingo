@@ -45,25 +45,6 @@ public abstract class SynonymAndAntonym extends GeneralController {
         Button clickedButton = (Button) mouseEvent.getSource();
         setBut(s, clickedButton);
     }
-    public void changeMode() {
-        if (isUKFlagVisible) {
-            changeDictionary.getChildren().removeAll(british, vn, change);
-            changeDictionary.getChildren().addAll(vn, change, british);
-            tudien.setText("Từ điển");
-            dich.setText("Dịch câu");
-            synonym.setText("Đồng nghĩa");
-            antonym.setText("Trái nghĩa");
-        } else {
-            changeDictionary.getChildren().removeAll(vn, british, change);
-            changeDictionary.getChildren().addAll(british, change, vn);
-            tudien.setText("Dictionary");
-            dich.setText("Translation");
-            synonym.setText("Synonyms");
-            antonym.setText("Antonyms");
-        }
-        isUKFlagVisible = !isUKFlagVisible;
-    }
-
 
     public List<String> setList(String s, String a) {
         List<String> result = new ArrayList<>();
@@ -130,6 +111,14 @@ public abstract class SynonymAndAntonym extends GeneralController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        changeL = true;
+        changeDictionary.getChildren().removeAll(vn, british, change);
+        changeDictionary.getChildren().addAll(british, change, vn);
+        tudien.setText("Dictionary");
+        dich.setText("Translation");
+        synonym.setText("Synonyms");
+        antonym.setText("Antonyms");
+        currentDictionary = evDict;
         listWords.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
@@ -154,7 +143,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
 
     @FXML
     public void saveWordInBookMark() {
-        String selectedWord = "enormous";
+        String selectedWord = "enormity";
         currentDictionary.setBookmark(selectedWord);
     }
 

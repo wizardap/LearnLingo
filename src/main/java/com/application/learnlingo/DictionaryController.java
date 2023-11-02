@@ -1,7 +1,6 @@
 package com.application.learnlingo;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
@@ -24,12 +23,6 @@ public class DictionaryController extends GeneralController {
     private AnchorPane introduction;
 
     public static int speedRate;
-    @FXML
-    protected Button btnYes;
-    @FXML
-    protected Button btnNo;
-    @FXML
-    protected AnchorPane confirmAdd;
     @FXML
     private Label rw9;
     @FXML
@@ -74,25 +67,14 @@ public class DictionaryController extends GeneralController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        if (!changeL) {
+            bookmark.setText("Thêm từ này");
+        } else {
+            bookmark.setText("Add to word list");
+        }
         checkStyle = false;
-        confirmAdd.setVisible(false);
         listWords.setVisible(false);
         checkMode1.setVisible(true);
-        if (!SettingsController.changeL) {
-            changeDictionary.getChildren().removeAll(british, vn, change);
-            changeDictionary.getChildren().addAll(vn, change, british);
-            tudien.setText("Từ điển");
-            dich.setText("Dịch câu");
-            synonym.setText("Đồng nghĩa");
-            antonym.setText("Trái nghĩa");
-        } else {
-            changeDictionary.getChildren().removeAll(vn, british, change);
-            changeDictionary.getChildren().addAll(british, change, vn);
-            tudien.setText("Dictionary");
-            dich.setText("Translation");
-            synonym.setText("Synonyms");
-            antonym.setText("Antonyms");
-        }
         webEngine = webView.getEngine();
         bookmark.setVisible(false);
         speakUK.setVisible(false);
@@ -105,7 +87,6 @@ public class DictionaryController extends GeneralController {
     public void speakWordVN() {
         String line = listWords.getSelectionModel().getSelectedItem();
         TextToSpeech pronounce = new TextToSpeech(veDict.getWordInformation(line).getWord(), "hl=vi-vn","Chi", Integer.toString(speedRate));
-
     }
     @FXML
     public void speakWordUS() {
@@ -131,15 +112,7 @@ public class DictionaryController extends GeneralController {
     @FXML
     public void saveWordInBookMark() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        confirmAdd.setVisible(true);
-        btnYes.setOnAction(ev -> {
-            confirmAdd.setVisible(false);
-            currentDictionary.setBookmark(selectedWord);
-        });
-        btnNo.setOnAction(ev -> {
-            confirmAdd.setVisible(false);
-            currentDictionary.unsetBookmark(selectedWord);
-        });
+        currentDictionary.setBookmark(selectedWord);
     }
 
     @FXML

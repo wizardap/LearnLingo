@@ -14,6 +14,11 @@ public class BookMarkController extends DictionaryController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        if (!changeL) {
+            bookmark.setText("Xóa từ này");
+        } else {
+            bookmark.setText("Delete this word");
+        }
         listWords.setVisible(true);
         center.setStyle("-fx-background-color: #F4F4F4");
         checkMode1.setVisible(false);
@@ -37,16 +42,13 @@ public class BookMarkController extends DictionaryController {
         super.speakWordUK();
     }
 
+    @Override
+    public void speakWordVN() {
+        super.speakWordVN();
+    }
+
     public void deleteWordInBookMark() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        confirmAdd.setVisible(true);
-        btnYes.setOnAction(ev -> {
-            confirmAdd.setVisible(false);
-            // Xử lý xóa ở đây
-        });
-        btnNo.setOnAction(ev -> {
-            confirmAdd.setVisible(false);
-        });
     }
 
     @Override
@@ -82,8 +84,21 @@ public class BookMarkController extends DictionaryController {
     @Override
     public void changeMode() {
         super.changeMode();
+        if (!changeL) {
+            bookmark.setText("Xóa từ này");
+        } else {
+            bookmark.setText("Delete this word");
+        }
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
+        int k = listWords.getItems().size();
+        if (k == 0) {
+            listWords.setVisible(false);
+        } else if (k < 23)
+            listWords.setPrefHeight(3 + 24 * k);
+        else
+            listWords.setPrefHeight(550);
     }
+
 
     @Override
     public void deleteSearch() {
