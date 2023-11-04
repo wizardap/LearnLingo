@@ -214,6 +214,8 @@ public class DictionaryController extends GeneralController {
     @Override
     public void changeMode() {
         super.changeMode();
+        displayExtensionButton(false);
+        webEngine.loadContent("");
         listWords.getItems().clear();
         textfield.clear();
     }

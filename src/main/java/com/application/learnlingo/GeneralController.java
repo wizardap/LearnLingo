@@ -157,60 +157,15 @@ public class GeneralController implements Initializable {
         checkMode2.setVisible(false);
         checkMode3.setVisible(false);
         checkMode4.setVisible(false);
-        game.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("gameController.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        add.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("changeWordController.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        search.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("hello-view.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        history.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("BookMark.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        settings.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("Settings.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        tudien.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("hello-view.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        dich.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("TranslationController.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        synonym.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
-        antonym.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container);
-            if (!changeL){
-                changeMode();
-            }
-        });
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
+        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
+        settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
+        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
+        synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
+        antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
     }
 
     @FXML

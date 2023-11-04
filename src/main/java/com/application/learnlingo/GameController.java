@@ -347,7 +347,7 @@ public class GameController extends GeneralController {
                     j--;
                 }
             }
-            index++;
+            index++ ;
         }
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event1 -> {
