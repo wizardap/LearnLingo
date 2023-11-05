@@ -2,14 +2,7 @@ package com.application.learnlingo;
 
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 

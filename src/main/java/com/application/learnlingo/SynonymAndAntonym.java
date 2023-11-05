@@ -51,6 +51,26 @@ public abstract class SynonymAndAntonym extends GeneralController {
         displayListWord();
     }
 
+    public void changeMode() {
+        if (changeL) {
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+        } else {
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+        }
+        changeL = !changeL;
+    }
+
+
     public List<String> setList(String s, String a) {
         List<String> result = new ArrayList<>();
         try {

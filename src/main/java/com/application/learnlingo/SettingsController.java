@@ -12,6 +12,8 @@ import javafx.scene.layout.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SettingsController extends GeneralController {
@@ -106,6 +108,17 @@ public class SettingsController extends GeneralController {
 
     @FXML
     public void deleteBookmark() {
+        List<String> bookmarkList = new ArrayList<>();
+        bookmarkList.addAll(evDict.exportBookmarkList());
+        for (String bookmarkWord: bookmarkList){
+            evDict.unsetBookmark(bookmarkWord);
+        }
+
+        bookmarkList.clear();
+        bookmarkList.addAll(veDict.exportBookmarkList());
+        for (String bookmarkWord: bookmarkList){
+            veDict.unsetBookmark(bookmarkWord);
+        }
     }
 
     @FXML

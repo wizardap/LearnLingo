@@ -1,6 +1,7 @@
 package com.application.learnlingo;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
@@ -13,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DictionaryController extends GeneralController {
@@ -23,6 +25,13 @@ public class DictionaryController extends GeneralController {
     private AnchorPane introduction;
 
     public static int speedRate;
+
+    @FXML
+    protected Button btnYes;
+    @FXML
+    protected Button btnNo;
+    @FXML
+    protected AnchorPane confirmAdd;
     @FXML
     private Label rw9;
     @FXML
@@ -41,15 +50,29 @@ public class DictionaryController extends GeneralController {
     private Label rw16;
     private DictionaryCache searchCache = new DictionaryCache();
 
-    public void displayExtensionButton(boolean ready) {
+    protected void displayListWord() {
+        int k = listWords.getItems().size();
+        if (k == 0) {
+            listWords.setVisible(false);
+        } else {
+            listWords.setVisible(true);
+            if (k < 23)
+                listWords.setPrefHeight(3 + 24 * k);
+            else
+                listWords.setPrefHeight(550);
+        }
+    }
+
+    protected void displayExtensionButton(boolean ready) {
         bookmark.setVisible(ready);
         speakUK.setVisible(ready);
         speakUS.setVisible(ready);
         speakVN.setVisible(ready);
-        if (ready == false) {
+        if (!ready) {
             webEngine.loadContent("");
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,6 +82,7 @@ public class DictionaryController extends GeneralController {
         } else {
             bookmark.setText("Add to word list");
         }
+        confirmAdd.setVisible(false);
         checkStyle = false;
         listWords.setVisible(false);
         checkMode1.setVisible(true);
@@ -72,7 +96,7 @@ public class DictionaryController extends GeneralController {
     }
     @FXML
     public void speakWordVN() {
-        String line = listWords.getSelectionModel().getSelectedItem();
+        String line = currentDictionary.getHistoryString(0);
         TextToSpeech pronounce = new TextToSpeech(veDict.getWordInformation(line).getWord(), "hl=vi-vn","Chi", Integer.toString(speedRate));
     }
     @FXML
@@ -99,7 +123,15 @@ public class DictionaryController extends GeneralController {
     @FXML
     public void saveWordInBookMark() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        currentDictionary.setBookmark(selectedWord);
+        confirmAdd.setVisible(true);
+        btnYes.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            currentDictionary.setBookmark(selectedWord);
+        });
+        btnNo.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            currentDictionary.unsetBookmark(selectedWord);
+        });
     }
 
     @FXML
@@ -144,6 +176,7 @@ public class DictionaryController extends GeneralController {
                 speakUS.setVisible(false);
                 speakUK.setVisible(false);
             }
+
             bookmark.setVisible(true);
         }
     }
@@ -161,9 +194,9 @@ public class DictionaryController extends GeneralController {
                 HBox hbox = new HBox();
                 ImageView iconImageView;
                 if (checkStyle)
-                    iconImageView = new ImageView(new Image(getClass().getResource("image/clock.png").toString()));
+                    iconImageView = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("image/clock.png")).toString()));
                 else
-                    iconImageView = new ImageView(new Image(getClass().getResource("image/find1.png").toString()));
+                    iconImageView = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("image/find1.png")).toString()));
                 iconImageView.setFitHeight(15);
                 iconImageView.setFitWidth(15);
                 hbox.getChildren().add(iconImageView);
@@ -183,5 +216,14 @@ public class DictionaryController extends GeneralController {
                 setGraphic(hbox);
             }
         }
+    }
+
+    @Override
+    public void changeMode() {
+        super.changeMode();
+        displayExtensionButton(false);
+        webEngine.loadContent("");
+        listWords.getItems().clear();
+        textfield.clear();
     }
 }

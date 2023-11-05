@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class DictDMBS {
-    private String dbPath;
-    private String dbName;
-    private String tableName;
+    private final String dbPath;
+    private final String dbName;
+    private final String tableName;
     private String defaultTableName;
-    private static Connection connection;
+    public static Connection connection;
     private HistorySearch historySearch;
     private List<String> bookmarkList;
     private Trie prefixTree;
@@ -34,7 +34,7 @@ public class DictDMBS {
                 .append(".txt")
                 .toString());
         this.bookmarkList = new ArrayList<>();
-        this.connection = this.connectingToDatabase();
+        connection = this.connectingToDatabase();
         importBookmarkListFromDatabase();
         importWordListFromDatabase();
     }
@@ -59,9 +59,8 @@ public class DictDMBS {
 
     private void importWordListFromDatabase() {
         String sql = new StringBuilder().append("SELECT DISTINCT word FROM ").append(tableName).toString();
-        Statement stmt = null;
         try {
-            stmt = connection.createStatement();
+            Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 prefixTree.put(rs.getString("word"));
@@ -124,7 +123,7 @@ public class DictDMBS {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, opWord);
             pstmt.executeUpdate();
-
+            prefixTree.remove(opWord);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -135,9 +134,9 @@ public class DictDMBS {
             throw new IllegalArgumentException("Error: Duplicated the word!");
         }
         String sql = "INSERT INTO " + tableName + " (word,html,isBookmarked) VALUES(?,?,?);";
-        PreparedStatement pstmt = null;
+
         try {
-            pstmt = connection.prepareStatement(sql);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, newWord.getWord());
             pstmt.setString(2, newWord.getHtml());
             pstmt.setInt(3, newWord.isBookmarked() ? 1 : 0);
@@ -151,9 +150,9 @@ public class DictDMBS {
 
     public void modifyWord(Word opWord) {
         String sql = "UPDATE " + tableName + " SET word = ?, html = ?, isBookmarked = ? WHERE word = ?;";
-        PreparedStatement pstmt = null;
+
         try {
-            pstmt = connection.prepareStatement(sql);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, opWord.getWord());
             pstmt.setString(2, opWord.getHtml());
             pstmt.setInt(3, opWord.isBookmarked() ? 1 : 0);
@@ -210,9 +209,9 @@ public class DictDMBS {
 
     public void setBookmark(String word) {
         String sql = "UPDATE " + tableName + " SET isBookmarked = 1 WHERE word = ?;";
-        PreparedStatement pstmt = null;
+
         try {
-            pstmt = connection.prepareStatement(sql);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, word);
             pstmt.executeUpdate();
             if (!bookmarkList.contains(word)) {
@@ -227,9 +226,9 @@ public class DictDMBS {
 
     public void unsetBookmark(String word) {
         String sql = "UPDATE " + tableName + " SET isBookmarked = 0 WHERE word = ?;";
-        PreparedStatement pstmt = null;
+
         try {
-            pstmt = connection.prepareStatement(sql);
+           PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, word);
             pstmt.executeUpdate();
             if (bookmarkList.contains(word)) {
@@ -267,12 +266,25 @@ public class DictDMBS {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DictDMBS dictDMBS = (DictDMBS) o;
-        return Objects.equals(dbPath, dictDMBS.dbPath) && Objects.equals(dbName, dictDMBS.dbName) && Objects.equals(tableName, dictDMBS.tableName) && Objects.equals(defaultTableName, dictDMBS.defaultTableName) && Objects.equals(connection, dictDMBS.connection) && Objects.equals(historySearch, dictDMBS.historySearch) && Objects.equals(bookmarkList, dictDMBS.bookmarkList) && Objects.equals(prefixTree, dictDMBS.prefixTree);
+        return Objects.equals(dbPath, dictDMBS.dbPath)
+                && Objects.equals(dbName, dictDMBS.dbName)
+                && Objects.equals(tableName, dictDMBS.tableName)
+                && Objects.equals(defaultTableName, dictDMBS.defaultTableName)
+                && Objects.equals(historySearch, dictDMBS.historySearch)
+                && Objects.equals(bookmarkList, dictDMBS.bookmarkList)
+                && Objects.equals(prefixTree, dictDMBS.prefixTree);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dbPath, dbName, tableName, defaultTableName, connection, historySearch, bookmarkList, prefixTree);
+        return Objects.hash(dbPath,
+                dbName,
+                tableName,
+                defaultTableName,
+                connection,
+                historySearch,
+                bookmarkList,
+                prefixTree);
     }
 
     public String getHistoryString(int index) {

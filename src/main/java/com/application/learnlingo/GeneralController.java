@@ -102,13 +102,14 @@ public class GeneralController implements Initializable {
     private final static String DATABASE_PATH = "./src/main/resources/com/application/learnlingo/database/";
     private final static String DATABASE_NAME = "dict_hh.db";
 
-    protected static DictDMBS evDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "AV","defaultAV");
-    protected static DictDMBS veDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "VA","defaultVA");
-    protected static DictDMBS currentDictionary= evDict;
+    protected static DictDMBS evDict = new DictDMBS(DATABASE_PATH, DATABASE_NAME, "AV", "defaultAV");
+    protected static DictDMBS veDict = new DictDMBS(DATABASE_PATH, DATABASE_NAME, "VA", "defaultVA");
+    protected static DictDMBS currentDictionary = evDict;
 
     private static final String FEEDBACK_TXT_PATH
             = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
     protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
+
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
         listWords.getItems().clear();
@@ -136,12 +137,11 @@ public class GeneralController implements Initializable {
         if (selectedWord != null) {
             String meaningHTMLString = currentDictionary.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
-            if (changeL){
+            if (changeL) {
                 speakUS.setVisible(true);
                 speakUK.setVisible(true);
                 speakVN.setVisible(false);
-            }
-            else {
+            } else {
                 speakVN.setVisible(true);
                 speakUS.setVisible(false);
                 speakUK.setVisible(false);
@@ -213,37 +213,37 @@ public class GeneralController implements Initializable {
     }
 
     public void changeMode2() {
-        if (changeL) {
-            currentDictionary = veDict;
-            changeDictionary.getChildren().removeAll(british, vn, change);
-            changeDictionary.getChildren().addAll(vn, change, british);
-            tudien.setText("Từ điển");
-            dich.setText("Dịch câu");
-            synonym.setText("Đồng nghĩa");
-            antonym.setText("Trái nghĩa");
-            search.setText("TRANG CHỦ");
-            add.setText("THÊM/XÓA");
-            game.setText("TRÒ CHƠI");
-            history.setText("TỪ ĐÃ LƯU");
-            settings.setText("CÀI ĐẶT");
-        } else {
-            currentDictionary = evDict;
-            changeDictionary.getChildren().removeAll(vn, british, change);
-            changeDictionary.getChildren().addAll(british, change, vn);
-            tudien.setText("Dictionary");
-            dich.setText("Translation");
-            synonym.setText("Synonyms");
-            antonym.setText("Antonyms");
-            search.setText("HOME");
-            add.setText("ADD/DELETE");
-            game.setText("GAME");
-            history.setText("BOOKMARK");
-            settings.setText("SETTINGS");
+            if (changeL) {
+                currentDictionary = veDict;
+                changeDictionary.getChildren().removeAll(british, vn, change);
+                changeDictionary.getChildren().addAll(vn, change, british);
+                tudien.setText("Từ điển");
+                dich.setText("Dịch câu");
+                synonym.setText("Đồng nghĩa");
+                antonym.setText("Trái nghĩa");
+                search.setText("TRANG CHỦ");
+                add.setText("THÊM/XÓA");
+                game.setText("TRÒ CHƠI");
+                history.setText("TỪ ĐÃ LƯU");
+                settings.setText("CÀI ĐẶT");
+            } else {
+                currentDictionary = evDict;
+                changeDictionary.getChildren().removeAll(vn, british, change);
+                changeDictionary.getChildren().addAll(british, change, vn);
+                tudien.setText("Dictionary");
+                dich.setText("Translation");
+                synonym.setText("Synonyms");
+                antonym.setText("Antonyms");
+                search.setText("HOME");
+                add.setText("ADD/DELETE");
+                game.setText("GAME");
+                history.setText("BOOKMARK");
+                settings.setText("SETTINGS");
+            }
+            changeL = !changeL;
         }
-        changeL=!changeL;
-    }
     @FXML
-    public void changeMode() {
+    public void changeMode () {
         if (changeL) {
             currentDictionary = veDict;
             changeDictionary.getChildren().removeAll(british, vn, change);
@@ -273,7 +273,7 @@ public class GeneralController implements Initializable {
             history.setText("BOOKMARK");
             settings.setText("SETTINGS");
         }
-        changeL=!changeL;
+        changeL = !changeL;
         listWords.getItems().clear();
     }
 

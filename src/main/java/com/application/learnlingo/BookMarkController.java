@@ -25,11 +25,7 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         checkStyle = true;
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        int s = listWords.getItems().size();
-        if (s < 23)
-            listWords.setPrefHeight(3 + 24 * s);
-        else
-            listWords.setPrefHeight(550);
+        displayListWord();
     }
 
     @Override
@@ -49,6 +45,9 @@ public class BookMarkController extends DictionaryController {
 
     public void deleteWordInBookMark() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        currentDictionary.unsetBookmark(selectedWord);
+        listWords.getItems().removeIf(e -> e.equals(selectedWord));
+        displayListWord();
     }
 
     @Override
@@ -71,10 +70,6 @@ public class BookMarkController extends DictionaryController {
         displayListWord();
     }
 
-    @Override
-    public void handleSearchMouseClicked(MouseEvent mouseEvent) {
-        super.handleSearchMouseClicked(mouseEvent);
-    }
 
     @Override
     public void handleMouseClicked(MouseEvent mouseEvent) {
@@ -89,6 +84,7 @@ public class BookMarkController extends DictionaryController {
         } else {
             bookmark.setText("Delete this word");
         }
+        listWords.getItems().clear();
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         displayListWord();
     }

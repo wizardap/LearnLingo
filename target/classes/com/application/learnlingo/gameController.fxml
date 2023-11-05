@@ -13,339 +13,16 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.GameController">
+<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: white;" stylesheets="@../../../game.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.GameController">
    <center>
-      <AnchorPane fx:id="center" prefHeight="552.0" prefWidth="809.0" style="-fx-border-color: #A5DA03; -fx-border-width: 5;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="center" style="-fx-border-color: #A5DA03; -fx-border-width: 5;" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="f1" layoutX="152.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s1" alignment="CENTER" layoutX="156.0" layoutY="287.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f2" layoutX="217.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s2" alignment="CENTER" layoutX="221.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f3" layoutX="282.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s3" alignment="CENTER" layoutX="286.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f4" layoutX="347.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s4" alignment="CENTER" layoutX="350.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f5" layoutX="412.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s5" alignment="CENTER" layoutX="415.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f7" layoutX="542.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s7" alignment="CENTER" layoutX="545.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f6" layoutX="477.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s6" alignment="CENTER" layoutX="480.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label alignment="CENTER" layoutX="195.0" layoutY="10.0" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="SCORE                0" />
-            <Label fx:id="timerLabel" alignment="CENTER" layoutX="414.0" layoutY="11.0" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="TIME                120" />
-            <Label alignment="CENTER" layoutX="636.0" layoutY="11.0" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #074B9C; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white;" text="ROUND                1" />
             <ImageView fitHeight="70.0" fitWidth="114.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/gamelogo.png" />
                </image>
             </ImageView>
-            <Button fx:id="menuButton" layoutX="762.0" layoutY="504.0" mnemonicParsing="false" onAction="#setMenuGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="Menu" />
-            <Button fx:id="twist" layoutX="157.0" layoutY="454.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="TWIST" />
-            <Button fx:id="clear" layoutX="316.0" layoutY="454.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="CLEAR" />
-            <Button fx:id="last" layoutX="474.0" layoutY="454.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="LAST" />
-            <Button fx:id="enter" layoutX="621.0" layoutY="454.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="ENTER" />
-            <Button fx:id="start" layoutX="631.0" layoutY="504.0" mnemonicParsing="false" onAction="#startGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="START HERE" />
-            <Button fx:id="l1" layoutX="158.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l2" layoutX="222.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l3" layoutX="288.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l4" layoutX="353.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l5" layoutX="418.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l6" layoutX="483.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l7" layoutX="548.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <AnchorPane fx:id="containerWords" layoutX="245.0" layoutY="77.0" prefHeight="185.0" prefWidth="423.0" style="-fx-background-color: #0EC7FF;">
-               <children>
-                  <HBox fx:id="word0" layoutX="10.0" layoutY="16.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word1" layoutX="10.0" layoutY="49.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word2" layoutX="10.0" layoutY="84.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word3" layoutX="10.0" layoutY="119.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word4" layoutX="10.0" layoutY="153.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word5" layoutX="227.0" layoutY="16.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word6" layoutX="227.0" layoutY="49.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word7" layoutX="227.0" layoutY="84.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word8" layoutX="227.0" layoutY="119.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="word9" layoutX="227.0" layoutY="153.0" prefHeight="17.0" prefWidth="185.0" spacing="1.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="114.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="10.0" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-font-weight: bold;" />
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-            <Button fx:id="l8" layoutX="613.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l9" layoutX="677.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Button fx:id="l10" layoutX="741.0" layoutY="358.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: #cccccc; -fx-background-insets: 0; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 25; -fx-background-radius: 999;" stylesheets="@../../../game.css" />
-            <Label fx:id="f8" layoutX="607.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s8" alignment="CENTER" layoutX="611.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f9" layoutX="671.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s9" alignment="CENTER" layoutX="675.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <Label fx:id="f10" layoutX="735.0" layoutY="283.0" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-color: #0CCDF8;" />
-            <Label fx:id="s10" alignment="CENTER" layoutX="739.0" layoutY="286.0" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 999; -fx-background-color: #1CC2F4;" stylesheets="@../../../game.css" />
-            <VBox fx:id="menuGame" layoutX="298.0" layoutY="10.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
-               <children>
-                  <JFXButton onAction="#setHowToPlay" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HOW TO PLAY">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="171.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HIGH SCORES">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton layoutX="24.0" layoutY="20.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="DIFFICULTY">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="213.0" onAction="#setCredit" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CREDITS">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="btnvolume" mnemonicParsing="false" onAction="#stopVolume" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
-                           <graphic>
-                              <ImageView fx:id="volume" fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="66.0" top="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="btnmusic" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
-                           <graphic>
-                              <ImageView fx:id="music" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="35.0" top="10.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <JFXButton fx:id="back" layoutX="24.0" layoutY="174.0" onAction="#setMenuGame" prefHeight="40.0" prefWidth="77.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="BACK">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="96.0" />
-                     </VBox.margin>
-                  </JFXButton>
-               </children>
-            </VBox>
-            <VBox fx:id="htp" layoutX="298.0" layoutY="10.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="INSTRUCTION!">
-                     <VBox.margin>
-                        <Insets left="52.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="63.0" layoutY="23.0" prefHeight="228.0" prefWidth="231.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Form words with the letters provided. Find at least one word that uses all letters to continue to the next round. Find every word for bonus points! Click on the balls to form words, then press the ENTER button. Use the TWIST button if you get stuck. It help you to see new words" textAlignment="CENTER" wrapText="true">
-                     <VBox.margin>
-                        <Insets left="22.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" onAction="#setAgainMenu" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
-                     <VBox.margin>
-                        <Insets left="90.0" top="10.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox fx:id="credit" layoutX="298.0" layoutY="10.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Lê Hoàng Vũ">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Vi Văn Quân">
-                     <VBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Nguyễn Đức Anh Tuấn">
-                     <VBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="199.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="GameHouse">
-                     <VBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" onAction="#setAgainMenu1" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
-                     <VBox.margin>
-                        <Insets left="90.0" top="64.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox fx:id="left" prefHeight="541.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
+            <VBox fx:id="left" layoutX="-1.0" prefHeight="541.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
                <children>
                   <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
                      <graphic>
@@ -410,6 +87,154 @@
                      </graphic>
                      <VBox.margin>
                         <Insets bottom="10.0" left="4.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <HBox fx:id="gameFunctions" alignment="CENTER" layoutX="153.0" layoutY="444.0" prefHeight="42.0" prefWidth="646.0" spacing="30.0">
+               <children>
+                  <Button fx:id="enter" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="ENTER" />
+                  <Button fx:id="last" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="LAST" />
+                  <Button fx:id="twist" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="TWIST" />
+                  <Button fx:id="clear" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #0EC7FF; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-font-size: 15; -fx-border-width: 3; -fx-font-weight: bold; -fx-background-insets: 0;" stylesheets="@../../../game.css" text="CLEAR" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="143.0" layoutY="6.0" prefHeight="52.0" prefWidth="666.0" spacing="90.0">
+               <children>
+                  <HBox prefHeight="52.0" prefWidth="130.0" styleClass="tilte-bar">
+                     <children>
+                        <Label prefHeight="52.0" prefWidth="84.0" styleClass="tilte-bar" text=" SCORE" />
+                        <Label fx:id="scoreLabel" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="130.0" style="-fx-background-color: #074B9C;" styleClass="hbox-title-bar">
+                     <children>
+                        <Label prefHeight="52.0" prefWidth="84.0" styleClass="tilte-bar" text=" TIME" />
+                        <Label fx:id="timerLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="130.0" styleClass="hbox-title-bar">
+                     <children>
+                        <Label prefHeight="52.0" prefWidth="81.0" styleClass="tilte-bar" text=" ROUND" />
+                        <Label fx:id="roundLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox fx:id="containerWords" layoutX="161.0" layoutY="65.0" prefHeight="177.0" prefWidth="630.0" style="-fx-background-color: #074B9C;">
+               <children>
+                  <VBox fx:id="wordList1" prefHeight="178.0" prefWidth="315.0" spacing="10.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox fx:id="wordList2" prefHeight="178.0" prefWidth="315.0" spacing="10.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox fx:id="containerCharacterGuess" alignment="CENTER" layoutX="146.0" layoutY="257.0" prefHeight="64.0" prefWidth="660.0" />
+            <HBox fx:id="containerCharacterChoose" alignment="CENTER" layoutX="146.0" layoutY="342.0" prefHeight="64.0" prefWidth="660.0" />
+            <Button fx:id="start" layoutX="600.0" layoutY="491.0" mnemonicParsing="false" onAction="#startGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="START HERE" />
+            <Button fx:id="menuButton" layoutX="741.0" layoutY="491.0" mnemonicParsing="false" onAction="#setMenuGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="Menu" />
+            <VBox fx:id="menuGame" layoutX="326.0" layoutY="61.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <JFXButton onAction="#setHowToPlay" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HOW TO PLAY">
+                     <VBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="171.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HIGH SCORES">
+                     <VBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="24.0" layoutY="20.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="DIFFICULTY">
+                     <VBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="213.0" onAction="#setCredit" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CREDITS">
+                     <VBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnvolume" mnemonicParsing="false" onAction="#stopVolume" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
+                           <graphic>
+                              <ImageView fx:id="volume" fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="66.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnmusic" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
+                           <graphic>
+                              <ImageView fx:id="music" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="35.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <JFXButton fx:id="back" layoutX="24.0" layoutY="174.0" onAction="#setMenuGame" prefHeight="40.0" prefWidth="77.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="BACK">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="96.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <VBox fx:id="htp" layoutX="326.0" layoutY="61.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="INSTRUCTION!">
+                     <VBox.margin>
+                        <Insets left="52.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="63.0" layoutY="23.0" prefHeight="228.0" prefWidth="231.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Form words with the letters provided. Find at least one word that uses all letters to continue to the next round. Find every word for bonus points! Click on the balls to form words, then press the ENTER button. Use the TWIST button if you get stuck. It help you to see new words" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets left="22.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#setAgainMenu" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
+                     <VBox.margin>
+                        <Insets left="90.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="credit" layoutX="326.0" layoutY="61.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Lê Hoàng Vũ">
+                     <VBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Vi Văn Quân">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Nguyễn Đức Anh Tuấn">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="199.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="GameHouse">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#setAgainMenu1" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
+                     <VBox.margin>
+                        <Insets left="90.0" top="64.0" />
                      </VBox.margin>
                   </Button>
                </children>

@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -175,7 +176,7 @@ public class TranslationController extends GeneralController {
             }
         });
         BackgroundImage backgroundImage = new BackgroundImage(
-                new javafx.scene.image.Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),
+                new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("image/bg3.jpg")).toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
@@ -185,7 +186,6 @@ public class TranslationController extends GeneralController {
         tx2.setWrapText(true);
     }
 
-    @FXML
     public void chooseFileToTranslate() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.jpg"));

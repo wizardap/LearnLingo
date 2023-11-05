@@ -13,6 +13,7 @@ public class DictionaryApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(DictionaryApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 910, 600);
         stage.setTitle("LearnLingo");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

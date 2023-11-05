@@ -24,8 +24,7 @@ public class HistorySearch {
             try {
                 if (!historyFile.createNewFile()) {
                     System.out.println(new StringBuilder().append("Couldn't create file ")
-                            .append(historyPath).
-                            toString());
+                            .append(historyPath));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -40,18 +39,18 @@ public class HistorySearch {
                     .append(historyPath)
                     .toString());
         }
+        assert fr != null;
         BufferedReader br = new BufferedReader(fr);
         String line = null;
         while (true) {
             try {
-                if (!((line = br.readLine()) != null)) {
+                if ((line = br.readLine()) == null) {
                     break;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println(new StringBuilder().append("Error: Can't read data from ")
-                        .append(historyPath)
-                        .toString());
+                        .append(historyPath));
             }
             historyList.add(line);
         }
@@ -61,8 +60,7 @@ public class HistorySearch {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(new StringBuilder().append("Error: Can't close ")
-                    .append(historyPath)
-                    .toString());
+                    .append(historyPath));
 
         }
     }
@@ -84,8 +82,7 @@ public class HistorySearch {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(new StringBuilder().append("Error: Can't insert word to file ")
-                    .append(historyPath)
-                    .toString());
+                    .append(historyPath));
         }
     }
 
@@ -94,9 +91,9 @@ public class HistorySearch {
     }
 
     public void clearHistory() {
-        FileWriter fw = null;
+
         try {
-            fw = new FileWriter(historyPath);
+            FileWriter fw = new FileWriter(historyPath);
             BufferedWriter bf = new BufferedWriter(fw);
             bf.write("");
             bf.close();
