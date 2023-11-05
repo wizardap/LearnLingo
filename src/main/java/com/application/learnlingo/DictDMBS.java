@@ -13,7 +13,7 @@ public class DictDMBS {
     private final String dbName;
     private final String tableName;
     private String defaultTableName;
-    private static Connection connection;
+    public static Connection connection;
     private HistorySearch historySearch;
     private List<String> bookmarkList;
     private Trie prefixTree;
