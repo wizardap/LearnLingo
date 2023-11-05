@@ -56,12 +56,12 @@
                </graphic></Button>
             <AnchorPane fx:id="introduction" prefHeight="549.0" prefWidth="809.0" style="-fx-background-color: #fff8e4;">
                <children>
-                  <Label layoutX="53.0" layoutY="14.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="WELCOME TO OUR LEARNING ENGLISH APPLICATION" />
-                  <Label layoutX="53.0" layoutY="53.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="ABOUT" />
-                  <Label layoutX="53.0" layoutY="75.0" prefHeight="141.0" prefWidth="303.0" style="-fx-font-size: 15;" text="This English Learning Application was made by Le Hoang Vu, Vi Van Quan, Nguyen Duc Anh Tuan. We hope you guys will enjoy our app and give us feedbacks about it, so we can develop our learning English Application better. Hope you a good day and take care" wrapText="true" />
-                  <Label layoutX="53.0" layoutY="246.0" prefHeight="297.0" prefWidth="669.0" style="-fx-font-size: 15;" text="In our application you can search, find synonyms and antonyms for a word easily. Moreover, we've made a game for you to relax if you want to play and know more English words with us. Our App have 8 modes for you to use. The first one is about DICTIONARY, in this mode you can look up a word easily and see about its meanings, examples, pronunciations. TRANSLATION is the second mode, from this mode you can translate a paragraph containing no more than 600 characters. Especially, you can choose an text image for the App to translate from English to Vietnamese as well as Vietnamese to English. The next 2 mode are about SYNONYMS and ANTONYMS. From these mode, you can find many words that are synonyms or antonym for the word you searched in search bar. The next mode is ADD/DELETE, changeWord specifically. The mode created for you to add or delete word in our App easily if you want. GAME is a next mode, this mode will help you know more English words as well as entertain you a lot. The next mode is BOOKMARK and this mode consists of the words that you want to save by click add to list word button in DICTIONARY mode. So you can review your words flexibly. The last mode is about SETTINGS for you to set functions to our App when you use." wrapText="true" />
-                  <Label layoutX="53.0" layoutY="220.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="FUNCTIONS" />
-                  <ImageView fitHeight="193.0" fitWidth="317.0" layoutX="401.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                  <Label layoutX="38.0" layoutY="14.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="WELCOME TO OUR LEARNING ENGLISH APPLICATION" />
+                  <Label layoutX="38.0" layoutY="53.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="ABOUT" />
+                  <Label layoutX="38.0" layoutY="75.0" prefHeight="141.0" prefWidth="303.0" style="-fx-font-size: 15;" text="This English Learning Application was made by Le Hoang Vu, Vi Van Quan, Nguyen Duc Anh Tuan. We hope you guys will enjoy our app and give us feedbacks about it, so we can develop our learning English Application better. Hope you a good day and take care" wrapText="true" />
+                  <Label layoutX="38.0" layoutY="246.0" prefHeight="297.0" prefWidth="669.0" style="-fx-font-size: 15;" text="In our application you can search, find synonyms and antonyms for a word easily. Moreover, we've made a game for you to relax if you want to play and know more English words with us. Our App have 8 modes for you to use. The first one is about DICTIONARY, in this mode you can look up a word easily and see about its meanings, examples, pronunciations. TRANSLATION is the second mode, from this mode you can translate a paragraph containing no more than 600 characters. Especially, you can choose an text image for the App to translate from English to Vietnamese as well as Vietnamese to English. The next 2 mode are about SYNONYMS and ANTONYMS. From these mode, you can find many words that are synonyms or antonym for the word you searched in search bar. The next mode is ADD/DELETE, changeWord specifically. The mode created for you to add or delete word in our App easily if you want. GAME is a next mode, this mode will help you know more English words as well as entertain you a lot. The next mode is BOOKMARK and this mode consists of the words that you want to save by click add to list word button in DICTIONARY mode. So you can review your words flexibly. The last mode is about SETTINGS for you to set functions to our App when you use." wrapText="true" />
+                  <Label layoutX="38.0" layoutY="220.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="FUNCTIONS" />
+                  <ImageView fitHeight="193.0" fitWidth="317.0" layoutX="386.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/general.jpg" />
                      </image>
@@ -242,74 +242,78 @@
       </HBox>
    </top>
    <left>
-      <VBox fx:id="left" prefHeight="552.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="552.0" prefWidth="99.0" style="-fx-background-color: #fff8e4;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/home.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="5.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="add" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="ADD/DELETE" VBox.vgrow="ALWAYS">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/controls.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="5.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="game" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="GAME" VBox.vgrow="ALWAYS">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/game.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="4.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="history" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="BOOKMARK" VBox.vgrow="ALWAYS">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/history.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="4.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Region prefHeight="150.0" prefWidth="99.0" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Region>
-            <Button fx:id="settings" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="SETTINGS" VBox.vgrow="ALWAYS">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/settings.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="4.0" />
-               </VBox.margin>
-            </Button>
+            <VBox fx:id="left" prefHeight="552.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
+               <children>
+                  <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="add" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="ADD/DELETE" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/controls.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="game" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="GAME" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/game.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="4.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="history" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="BOOKMARK" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/history.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="4.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Region prefHeight="150.0" prefWidth="99.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Region>
+                  <Button fx:id="settings" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="SETTINGS" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="4.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </left>
 </BorderPane>

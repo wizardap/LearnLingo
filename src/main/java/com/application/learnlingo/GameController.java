@@ -199,7 +199,7 @@ public class GameController extends GeneralController {
     @FXML
     private AnchorPane containerWords;
 
-    private String [] listwords = new String[] {"dependent", "act", "cat", "cot", "ton"
+    private String [] listwords = new String[] {"contact", "act", "cat", "cot", "ton"
             , "ant", "can", "not", "con", "coat"};
 
     private int [] checkAns = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

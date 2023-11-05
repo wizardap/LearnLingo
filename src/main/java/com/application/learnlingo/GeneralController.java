@@ -207,7 +207,7 @@ public class GeneralController implements Initializable {
             slide.setToX(0);
             slide.play();
         } else {
-            slide.setToX(-99);
+            slide.setToX(-99.5);
             slide.play();
         }
     }
@@ -275,6 +275,19 @@ public class GeneralController implements Initializable {
         }
         changeL=!changeL;
         listWords.getItems().clear();
+    }
+
+    protected void displayListWord() {
+        int k = listWords.getItems().size();
+        if (k == 0) {
+            listWords.setVisible(false);
+        } else {
+            listWords.setVisible(true);
+            if (k < 23)
+                listWords.setPrefHeight(3 + 24 * k);
+            else
+                listWords.setPrefHeight(550);
+        }
     }
 
 }

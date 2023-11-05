@@ -41,19 +41,6 @@ public class DictionaryController extends GeneralController {
     private Label rw16;
     private DictionaryCache searchCache = new DictionaryCache();
 
-    protected void displayListWord() {
-        int k = listWords.getItems().size();
-        if (k == 0) {
-            listWords.setVisible(false);
-        } else {
-            listWords.setVisible(true);
-            if (k < 23)
-                listWords.setPrefHeight(3 + 24 * k);
-            else
-                listWords.setPrefHeight(550);
-        }
-    }
-
     public void displayExtensionButton(boolean ready) {
         bookmark.setVisible(ready);
         speakUK.setVisible(ready);
@@ -121,7 +108,7 @@ public class DictionaryController extends GeneralController {
         displayExtensionButton(false);
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
-            listWords.getItems().addAll(suggestionSearchList(textfield.getText().toLowerCase()));
+            listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
             checkStyle = false;
         } else {
             listWords.getItems().addAll(currentDictionary.exportHistoryList());

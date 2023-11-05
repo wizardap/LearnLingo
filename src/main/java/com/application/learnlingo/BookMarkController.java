@@ -90,28 +90,14 @@ public class BookMarkController extends DictionaryController {
             bookmark.setText("Delete this word");
         }
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-        int k = listWords.getItems().size();
-        if (k == 0) {
-            listWords.setVisible(false);
-        } else if (k < 23)
-            listWords.setPrefHeight(3 + 24 * k);
-        else
-            listWords.setPrefHeight(550);
+        displayListWord();
     }
-
 
     @Override
     public void deleteSearch() {
         listWords.getItems().clear();
         textfield.setText("");
-
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-        int k = listWords.getItems().size();
-        if (k == 0) {
-            listWords.setVisible(false);
-        } else if (k < 23)
-            listWords.setPrefHeight(3 + 24 * k);
-        else
-            listWords.setPrefHeight(550);
+        displayListWord();
     }
 }

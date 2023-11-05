@@ -43,7 +43,12 @@ public abstract class SynonymAndAntonym extends GeneralController {
     }
     public void buttonClicked(MouseEvent mouseEvent,String s) {
         Button clickedButton = (Button) mouseEvent.getSource();
+        String txt = clickedButton.getText();
         setBut(s, clickedButton);
+        textfield.setText(txt);
+        listWords.getItems().removeAll(listWords.getItems());
+        listWords.getItems().addAll(suggestionSearchList(txt));
+        displayListWord();
     }
 
     public List<String> setList(String s, String a) {
