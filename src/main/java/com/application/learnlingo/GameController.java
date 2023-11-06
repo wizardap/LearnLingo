@@ -11,7 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -89,6 +91,8 @@ public class GameController extends GeneralController {
     @FXML
     private Button btnvolume;
 
+    AudioClip click = new AudioClip(GameUtils.class.getResource("audio/click.wav").toString());
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
@@ -121,7 +125,7 @@ public class GameController extends GeneralController {
         timerLabel.setText(String.valueOf(GameUtils.seconds));
         start.setText("START HERE");
         initGame();
-        GameUtils.numberOfTurn=1;
+        GameUtils.numberOfTurn = 1;
         GameUtils.score = 0;
     }
 
@@ -146,14 +150,15 @@ public class GameController extends GeneralController {
                     groupData.add(word);
                     maxCharacter = Math.max(maxCharacter, word.length());
                 }
-                maxWord = Math.round((double)groupData.size() / 2);
+                maxWord = Math.round((double) groupData.size() / 2);
                 dataList.add(groupData);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    private void initGame(){
+
+    private void initGame() {
         GameUtils.init();
         wordList1.getChildren().clear();
         wordList2.getChildren().clear();
@@ -164,6 +169,7 @@ public class GameController extends GeneralController {
         roundLabel.setText(String.valueOf(GameUtils.numberOfTurn));
         scoreLabel.setText(String.valueOf(GameUtils.score));
     }
+
     private void createQuizz() {
         // Loading the character box of invisible character box to guess.
         GameUtils.dice();
@@ -197,6 +203,12 @@ public class GameController extends GeneralController {
             }
             Label boxLabel = GameUtils.getCharacterLabel("", "guess-square-character");
             boxLabel.setPrefSize(boxWidth, boxHeight);
+            boxLabel.setStyle("-fx-cursor: hand;");
+            boxLabel.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+                if (checkVolume) {
+                    click.play();
+                }
+            });
             containerCharacterGuess.getChildren().add(boxLabel);
         }
 
@@ -214,6 +226,12 @@ public class GameController extends GeneralController {
             HBox boxLabel = new HBox();
             boxLabel.setPrefSize(boxWidth, boxHeight);
             roundLabel.setPrefSize(boxWidth - 10, boxHeight - 10);
+            roundLabel.setStyle("-fx-cursor: hand;");
+            roundLabel.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+                if (checkVolume) {
+                    click.play();
+                }
+            });
             boxLabel.getChildren().add(roundLabel);
             boxLabel.setAlignment(Pos.CENTER);
             containerCharacterChoose.getChildren().add(boxLabel);
@@ -296,6 +314,10 @@ public class GameController extends GeneralController {
                         Label visibleCharacter = (Label) wordHbox.getChildren().get(j);
                         visibleCharacter.setText(String.valueOf(enterWord.charAt(j)));
                     }
+                    AudioClip rightAnswer = new AudioClip(GameUtils.class.getResource("audio/rightAnswer.mp3").toString());
+                    if (checkVolume) {
+                        rightAnswer.play();
+                    }
                     while (!remainGuessLabel.isEmpty()) {
                         int finalI = remainGuessLabel.first();
                         Label guessCharacter = (Label) guessCharacterList.get(finalI);
@@ -309,9 +331,12 @@ public class GameController extends GeneralController {
                         emptyGuessLabel.add(finalI);
                         remainGuessLabel.remove(finalI);
                     }
-                }
-                else {
+                } else {
                     GameUtils.modifyScore(GameUtils.DEFAULT_SCORE_EACH_WRONG_WORD);
+                    AudioClip wrongAnswer = new AudioClip(GameController.class.getResource("audio/wrongAnswer.mp3").toString());
+                    if (checkVolume) {
+                        wrongAnswer.play();
+                    }
                 }
                 scoreLabel.setText(String.valueOf(GameUtils.score));
             }
@@ -319,6 +344,9 @@ public class GameController extends GeneralController {
 
         clear.setOnAction(e -> {
             if (GameUtils.isPlaying) {
+                if (checkVolume) {
+                    click.play();
+                }
                 for (int i = 0; i < chooseCharacterList.size(); i++) {
                     Label guessCharacter = (Label) guessCharacterList.get(i);
                     if (!guessCharacter.getText().isEmpty()) {
@@ -336,7 +364,11 @@ public class GameController extends GeneralController {
             }
         });
         twist.setOnAction(e -> {
+
             if (GameUtils.isPlaying) {
+                if (checkVolume) {
+                    click.play();
+                }
                 List<Integer> list = new ArrayList<>();
                 for (int i = 0; i < chooseCharacterList.size(); i++) {
                     list.add(i);
@@ -364,7 +396,11 @@ public class GameController extends GeneralController {
             }
         });
         last.setOnAction(e -> {
+
             if (GameUtils.isPlaying) {
+                if (checkVolume) {
+                    click.play();
+                }
                 while (!remainGuessLabel.isEmpty()) {
                     int finalI = remainGuessLabel.first();
                     Label guessCharacter = (Label) guessCharacterList.get(finalI);
@@ -431,6 +467,9 @@ public class GameController extends GeneralController {
 
     @FXML
     public void setMenuGame() {
+        if (checkVolume) {
+            click.play();
+        }
         checkMenuGame = !checkMenuGame;
         TranslateTransition slide = new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
@@ -456,7 +495,7 @@ public class GameController extends GeneralController {
     }
 
 
-    private void countdown(){
+    private void countdown() {
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event1 -> {
@@ -469,18 +508,17 @@ public class GameController extends GeneralController {
                     GameUtils.isPlaying = false;
                     timeline.stop();
                     start.setVisible(true);
-                    if (GameUtils.status){
+                    if (GameUtils.status) {
                         start.setText("NEXT");
-                       GameUtils.nextRound();
+                        GameUtils.nextRound();
                         // Thông báo hay animation thắng ở đây
-                    }
-                    else {
+                    } else {
                         start.setText("RESTART");
                         GameUtils.restart();
                         // Thông báo hay animation thua ở đây
                     }
 
-                    if (GameUtils.numberOfTurn == dataList.size()){
+                    if (GameUtils.numberOfTurn == dataList.size()) {
                         // Thông báo hay animation phá đảo game ở đây
                     }
                 }
@@ -489,13 +527,21 @@ public class GameController extends GeneralController {
 
         timeline.play();
     }
+
     @FXML
     public void startGame() {
+        if (checkAudio) {
+            musicGame.play();
+        }
         initGame();
         start.setVisible(false);
         createQuizz();
         play();
         countdown();
+        AudioClip nextRound = new AudioClip(GameController.class.getResource("audio/nextround.mp3").toString());
+        if (checkAudio) {
+            nextRound.play();
+        }
     }
 
     public void stopMusic() {
@@ -505,18 +551,23 @@ public class GameController extends GeneralController {
             music.setFitWidth(21);
             music.setFitHeight(21);
             btnmusic.setGraphic(music);
+            musicGame.stop();
         } else {
             Image image = new Image(getClass().getResource("image/music.png").toString());
             music = new ImageView(image);
             music.setFitWidth(21);
             music.setFitHeight(21);
             btnmusic.setGraphic(music);
+            musicGame.play();
         }
         checkAudio = !checkAudio;
     }
 
     @FXML
     public void setHowToPlay() {
+        if (checkVolume) {
+            click.play();
+        }
         htp.setOpacity(1);
         htp.setVisible(true);
         menuGame.setVisible(false);
@@ -524,12 +575,18 @@ public class GameController extends GeneralController {
 
     @FXML
     public void setAgainMenu() {
+        if (checkVolume) {
+            click.play();
+        }
         htp.setVisible(false);
         menuGame.setVisible(true);
     }
 
     @FXML
     public void setAgainMenu1() {
+        if (checkVolume) {
+            click.play();
+        }
         credit.setVisible(false);
         menuGame.setVisible(true);
     }
@@ -537,6 +594,9 @@ public class GameController extends GeneralController {
 
     @FXML
     public void setCredit() {
+        if (checkVolume) {
+            click.play();
+        }
         credit.setOpacity(1);
         credit.setVisible(true);
         menuGame.setVisible(false);
@@ -560,7 +620,7 @@ public class GameController extends GeneralController {
         checkVolume = !checkVolume;
     }
 
-    private static class GameUtils {
+    public static class GameUtils {
         public static final int DEFAULT_SCORE_EACH_CORRECT_WORD = 10;
         public static final int DEFAULT_SCORE_EACH_WRONG_WORD = -5;
         public static boolean status = false;
@@ -608,7 +668,6 @@ public class GameController extends GeneralController {
             }
             GameUtils.status = true;
             return true;
-
         }
 
         public static void dice() {
@@ -638,16 +697,19 @@ public class GameController extends GeneralController {
             }
             mainWord = str.toString();
         }
-        public static void restart(){
+
+        public static void restart() {
             score = 0;
             numberOfTurn = 1;
         }
-        public static void nextRound(){
+
+        public static void nextRound() {
             numberOfTurn++;
         }
-        public static void modifyScore(int quantity){
-            score+=quantity;
-            if (score<0){
+
+        public static void modifyScore(int quantity) {
+            score += quantity;
+            if (score < 0) {
                 score = 0;
             }
         }

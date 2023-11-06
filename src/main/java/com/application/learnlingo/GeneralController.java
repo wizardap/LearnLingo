@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Duration;
@@ -54,8 +55,6 @@ public class GeneralController implements Initializable {
     protected JFXListView<String> listWords;
     @FXML
     protected HBox function;
-    @FXML
-    protected Button deleteWord;
     @FXML
     protected TextField textfield;
     @FXML
@@ -110,6 +109,9 @@ public class GeneralController implements Initializable {
             = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
     protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
 
+    protected AudioClip musicGame = new AudioClip(GameController.class.getResource("audio/soundGame.mp3").toString());
+
+
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
         listWords.getItems().clear();
@@ -153,6 +155,8 @@ public class GeneralController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        musicGame.setCycleCount(-1);
+        musicGame.stop();
         if (!changeL) {
             currentDictionary = veDict;
             changeDictionary.getChildren().removeAll(british, vn, change);

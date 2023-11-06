@@ -45,6 +45,12 @@ public class ChangeWordController extends GeneralController {
     private Word currentSearchWord;
     private static boolean showFoundWord;
 
+    @FXML
+    private Label dictionary;
+
+    @FXML
+    private Label labelWord;
+
     @Override
     public void changeMode () {
         if (changeL) {
@@ -60,6 +66,10 @@ public class ChangeWordController extends GeneralController {
             game.setText("TRÒ CHƠI");
             history.setText("TỪ ĐÃ LƯU");
             settings.setText("CÀI ĐẶT");
+            deleteWordButton.setText("Xóa từ");
+            addWordButton.setText("Thêm từ");
+            dictionary.setText("Từ điển");
+            labelWord.setText("Từ");
         } else {
             currentDictionary = evDict;
             changeDictionary.getChildren().removeAll(vn, british, change);
@@ -73,6 +83,10 @@ public class ChangeWordController extends GeneralController {
             game.setText("GAME");
             history.setText("BOOKMARK");
             settings.setText("SETTINGS");
+            deleteWordButton.setText("Delete word");
+            addWordButton.setText("Add word");
+            dictionary.setText("Dictionary");
+            labelWord.setText("Word");
         }
         changeL = !changeL;
     }
@@ -107,10 +121,21 @@ public class ChangeWordController extends GeneralController {
                 BackgroundSize.DEFAULT);
         Background background = new Background(backgroundImage);
         center.setBackground(background);
-        d1.setSelected(true);
         if (!changeL) {
-            changeMode();
+            d2.setSelected(true);
+            deleteWordButton.setText("Xóa từ");
+            addWordButton.setText("Thêm từ");
+            dictionary.setText("Từ điển");
+            labelWord.setText("Từ");
+        } else {
+            d1.setSelected(true);
+            deleteWordButton.setText("Delete word");
+            addWordButton.setText("Add word");
+            dictionary.setText("Dictionary");
+            labelWord.setText("Word");
         }
+
+
         d1.setOnAction(event -> {
             d2.setSelected(!d1.isSelected());
             changeMode();

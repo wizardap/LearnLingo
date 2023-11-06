@@ -186,6 +186,7 @@
     -fx-font-size: 13;
     -fx-font-weight: bold;
     -fx-text-fill: #1d2a57;
+    -fx-min-width: 92;
 }
 
 #addWordButton:hover, #deleteWordButton:hover {

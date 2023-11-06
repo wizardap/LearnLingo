@@ -103,7 +103,7 @@
                <children>
                   <HBox prefHeight="52.0" prefWidth="130.0" styleClass="tilte-bar">
                      <children>
-                        <Label prefHeight="52.0" prefWidth="84.0" styleClass="tilte-bar" text=" SCORE" />
+                        <Label prefHeight="52.0" prefWidth="103.0" styleClass="tilte-bar" text=" SCORE" />
                         <Label fx:id="scoreLabel" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
                      </children>
                   </HBox>
@@ -115,7 +115,7 @@
                   </HBox>
                   <HBox prefHeight="52.0" prefWidth="130.0" styleClass="hbox-title-bar">
                      <children>
-                        <Label prefHeight="52.0" prefWidth="81.0" styleClass="tilte-bar" text=" ROUND" />
+                        <Label prefHeight="49.0" prefWidth="105.0" styleClass="tilte-bar" text=" ROUND" />
                         <Label fx:id="roundLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
                      </children>
                   </HBox>

@@ -49,7 +49,7 @@
                   </Button>
                </children>
             </HBox>
-            <Label alignment="CENTER" layoutX="493.0" layoutY="-1.0" prefHeight="20.0" prefWidth="38.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="Word" />
+            <Label fx:id="labelWord" layoutX="486.0" layoutY="-1.0" prefHeight="20.0" prefWidth="38.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="Từ" />
             <HTMLEditor fx:id="contentHTMLEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="22.0" layoutY="90.0" prefHeight="446.0" prefWidth="757.0" />
             <Button fx:id="saveWordButton" layoutX="705.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#saveWordIntoDatabase" prefHeight="34.0" prefWidth="38.0" stylesheets="@../../../vu.css">
                <graphic>
@@ -79,7 +79,7 @@
             </VBox>
             <VBox layoutX="133.0" layoutY="2.0" prefHeight="73.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="29.0" prefWidth="69.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="Dictionary" />
+                  <Label fx:id="dictionary" prefHeight="29.0" prefWidth="69.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="Dictionary" />
                   <VBox prefHeight="43.0" prefWidth="100.0">
                      <children>
                         <CheckBox fx:id="d1" mnemonicParsing="false" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="EN-VI" />
