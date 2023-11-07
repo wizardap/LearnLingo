@@ -133,7 +133,8 @@ public class TranslationController extends GeneralController {
     public void translateMini() throws IOException {
         String text = tx1.getText();
         if (!changeModeTrans) {
-            tx2.setText(translate("vi", "en", text));
+            String trans = translate("vi", "en", text).replaceAll("&#39;", "'");;
+            tx2.setText(trans);
         } else {
             tx2.setText(translate("en", "vi", text));
         }

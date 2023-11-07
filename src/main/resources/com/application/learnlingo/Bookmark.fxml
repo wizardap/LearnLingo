@@ -54,11 +54,78 @@
                   </ImageView>
                </graphic>
             </Button>
-            <AnchorPane fx:id="confirmAdd" layoutX="635.0" layoutY="45.0" prefHeight="145.0" prefWidth="165.0" style="-fx-background-color: #FEC400; -fx-background-radius: 20;">
+            <AnchorPane fx:id="confirmAdd" layoutX="635.0" layoutY="44.0" prefHeight="145.0" prefWidth="165.0" style="-fx-background-color: #FEC400; -fx-background-radius: 20;">
                <children>
-                  <Label layoutX="13.0" layoutY="14.0" prefHeight="45.0" prefWidth="135.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to delete this word in Bookmark" textAlignment="CENTER" wrapText="true" />
-                  <Button fx:id="btnYes" layoutX="40.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="YES" />
-                  <Button fx:id="btnNo" layoutX="90.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="NO" />
+                  <Label fx:id="label" layoutX="13.0" layoutY="14.0" prefHeight="45.0" prefWidth="135.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to delete this word in Bookmark" textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="btnYes" layoutX="18.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand; -fx-min-width: 60;" stylesheets="@../../../vu.css" text="YES" />
+                  <Button fx:id="btnNo" layoutX="88.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand; -fx-min-width: 60;" stylesheets="@../../../vu.css" text="NO" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="introduction" prefHeight="549.0" prefWidth="809.0" style="-fx-background-color: #fff8e4;">
+               <children>
+                  <AnchorPane layoutX="337.0" layoutY="293.0" prefHeight="234.0" prefWidth="390.0" style="-fx-background-color: #fec400;">
+                     <children>
+                        <Label layoutX="107.0" layoutY="2.0" prefHeight="32.0" prefWidth="173.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Word of the day" />
+                        <Label layoutX="18.0" layoutY="31.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="Enormity" />
+                        <Label layoutX="69.0" layoutY="84.0" text="/əˈnɔːr.mə.t̬i/" />
+                        <Button fx:id="speakUS1" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="12.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#speakWordUSWordOfDay" prefHeight="26.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="US">
+                           <graphic>
+                              <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/speakVolume.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="210.0" layoutY="84.0" text="/ɪˈnɔː.mə.ti/" />
+                        <Button fx:id="speakUK1" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="153.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#speakWordUKWordOfDay" prefHeight="20.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="UK">
+                           <graphic>
+                              <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/speakVolume.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="20.0" layoutY="61.0" style="-fx-font-style: italic; -fx-font-weight: bold;" text="adjective" />
+                        <Button fx:id="bookmark1" contentDisplay="RIGHT" layoutX="235.0" layoutY="31.0" mnemonicParsing="false" onAction="#saveWordInBookMark" onMouseClicked="#saveWordInBookMarkWordOfDay" prefHeight="33.0" prefWidth="141.0" stylesheets="@../../../vu.css" text="Add to word list">
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@image/bookmark.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="20.0" layoutY="106.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="very great size or importance:" />
+                        <Label layoutX="21.0" layoutY="130.0" style="-fx-font-style: italic;" text="- I don't think you realize the enormity of the problem." />
+                        <Label layoutX="21.0" layoutY="150.0" style="-fx-font-style: italic;" text="- The enormity of the wilderness awed us." />
+                        <Label layoutX="20.0" layoutY="167.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="a terrible or immoral act, or immoral something is:" />
+                        <Label layoutX="21.0" layoutY="188.0" style="-fx-font-style: italic;" text="- Shock over the enormity of the crime has subsided." />
+                        <Label layoutX="21.0" layoutY="211.0" style="-fx-font-style: italic;" text="- Goya’s etchings depict in shocking detail the enormities of war." />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="338.0" layoutY="25.0" prefHeight="234.0" prefWidth="390.0" style="-fx-background-color: #fec400;">
+                     <children>
+                        <Label layoutX="107.0" layoutY="2.0" prefHeight="32.0" prefWidth="173.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Idiom of the day" />
+                        <Label layoutX="18.0" layoutY="31.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="Money doesn't grow on trees" />
+                        <Label layoutX="20.0" layoutY="61.0" style="-fx-font-style: italic; -fx-font-weight: bold;" text="idiom" />
+                        <Label layoutX="20.0" layoutY="77.0" prefHeight="67.0" prefWidth="347.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="said to warn someone to be careful how much money they spend, because there is only a limited amount:" wrapText="true" />
+                        <Label layoutX="22.0" layoutY="140.0" prefHeight="37.0" prefWidth="319.0" style="-fx-font-style: italic;" text="- &quot;Mum, I'd like a new bike.&quot; &quot;I'll have to think about it - money doesn't grow on trees, you know!&quot;" wrapText="true" />
+                        <Label layoutX="22.0" layoutY="176.0" prefHeight="43.0" prefWidth="287.0" style="-fx-font-style: italic;" text="- My daughter Claire wants a car for her 17th birthday, but I can’t afford it. Money doesn’t grow on trees!" wrapText="true" />
+                        <Label layoutX="64.0" layoutY="61.0" prefHeight="17.0" prefWidth="36.0" text="saying" />
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="234.0" fitWidth="391.0" layoutX="88.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/idiom.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="234.0" fitWidth="391.0" layoutX="102.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/enormity.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>

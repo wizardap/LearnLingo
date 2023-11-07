@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -25,6 +26,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GeneralController implements Initializable {
+
+    @FXML
+    protected Button btnYes;
+
+    @FXML
+    protected Button btnNo;
+
     @FXML
     protected Button settings;
     @FXML
@@ -48,6 +56,9 @@ public class GeneralController implements Initializable {
 
     @FXML
     protected AnchorPane center;
+
+    @FXML
+    protected Label label;
 
     @FXML
     protected Button find;
@@ -253,6 +264,9 @@ public class GeneralController implements Initializable {
             changeDictionary.getChildren().removeAll(british, vn, change);
             changeDictionary.getChildren().addAll(vn, change, british);
             bookmark.setText("Thêm từ này");
+            label.setText("Bạn muốn thêm từ này vào Bookmark không");
+            btnYes.setText("Có");
+            btnNo.setText("Không");
             tudien.setText("Từ điển");
             dich.setText("Dịch câu");
             synonym.setText("Đồng nghĩa");
@@ -267,6 +281,9 @@ public class GeneralController implements Initializable {
             changeDictionary.getChildren().removeAll(vn, british, change);
             changeDictionary.getChildren().addAll(british, change, vn);
             bookmark.setText("Add to word list");
+            label.setText("Do you want to add this word in Bookmark");
+            btnYes.setText("Yes");
+            btnNo.setText("No");
             tudien.setText("Dictionary");
             dich.setText("Translation");
             synonym.setText("Synonyms");

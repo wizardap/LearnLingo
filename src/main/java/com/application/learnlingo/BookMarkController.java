@@ -2,6 +2,7 @@ package com.application.learnlingo;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -16,8 +17,14 @@ public class BookMarkController extends DictionaryController {
         super.initialize(url, resourceBundle);
         if (!changeL) {
             bookmark.setText("Xóa từ này");
+            label.setText("Bạn muốn xóa từ này khỏi Bookmark không");
+            btnYes.setText("Có");
+            btnNo.setText("Không");
         } else {
             bookmark.setText("Delete this word");
+            label.setText("Do you want to delete this word in Bookmark");
+            btnYes.setText("Yes");
+            btnNo.setText("No");
         }
         listWords.setVisible(true);
         center.setStyle("-fx-background-color: #F4F4F4");
@@ -25,7 +32,12 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         checkStyle = true;
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        displayListWord();
+        if (listWords.getItems().isEmpty()) {
+            introduction.setVisible(true);
+        } else {
+            displayListWord();
+            introduction.setVisible(false);
+        }
     }
 
     @Override
@@ -44,10 +56,20 @@ public class BookMarkController extends DictionaryController {
     }
 
     public void deleteWordInBookMark() {
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
-        currentDictionary.unsetBookmark(selectedWord);
-        listWords.getItems().removeIf(e -> e.equals(selectedWord));
-        displayListWord();
+        confirmAdd.setVisible(true);
+        btnYes.setOnAction(ev -> {
+            String selectedWord = listWords.getSelectionModel().getSelectedItem();
+            currentDictionary.unsetBookmark(selectedWord);
+            listWords.getItems().removeIf(e -> e.equals(selectedWord));
+            confirmAdd.setVisible(false);
+            if (listWords.getItems().isEmpty()) {
+                introduction.setVisible(true);
+            } else {
+                displayListWord();
+                introduction.setVisible(false);
+            }
+        });
+        btnNo.setOnAction(ev -> confirmAdd.setVisible(false));
     }
 
     @Override
@@ -67,7 +89,12 @@ public class BookMarkController extends DictionaryController {
             checkStyle = true;
         }
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        displayListWord();
+        if (listWords.getItems().isEmpty()) {
+            introduction.setVisible(true);
+        } else {
+            displayListWord();
+            introduction.setVisible(false);
+        }
     }
 
 
@@ -78,15 +105,50 @@ public class BookMarkController extends DictionaryController {
 
     @Override
     public void changeMode() {
-        super.changeMode();
-        if (!changeL) {
+        if (changeL) {
+            currentDictionary = veDict;
+            changeDictionary.getChildren().removeAll(british, vn, change);
+            changeDictionary.getChildren().addAll(vn, change, british);
             bookmark.setText("Xóa từ này");
+            label.setText("Bạn muốn xóa từ này khỏi Bookmark không");
+            btnYes.setText("Có");
+            btnNo.setText("Không");
+            tudien.setText("Từ điển");
+            dich.setText("Dịch câu");
+            synonym.setText("Đồng nghĩa");
+            antonym.setText("Trái nghĩa");
+            search.setText("TRANG CHỦ");
+            add.setText("THÊM/XÓA");
+            game.setText("TRÒ CHƠI");
+            history.setText("TỪ ĐÃ LƯU");
+            settings.setText("CÀI ĐẶT");
         } else {
+            currentDictionary = evDict;
+            changeDictionary.getChildren().removeAll(vn, british, change);
+            changeDictionary.getChildren().addAll(british, change, vn);
             bookmark.setText("Delete this word");
+            label.setText("Do you want to delete this word in Bookmark");
+            btnYes.setText("Yes");
+            btnNo.setText("No");
+            tudien.setText("Dictionary");
+            dich.setText("Translation");
+            synonym.setText("Synonyms");
+            antonym.setText("Antonyms");
+            search.setText("HOME");
+            add.setText("ADD/DELETE");
+            game.setText("GAME");
+            history.setText("BOOKMARK");
+            settings.setText("SETTINGS");
         }
+        changeL = !changeL;
         listWords.getItems().clear();
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-        displayListWord();
+        if (listWords.getItems().isEmpty()) {
+            introduction.setVisible(true);
+        } else {
+            displayListWord();
+            introduction.setVisible(false);
+        }
     }
 
     @Override
@@ -94,6 +156,27 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().clear();
         textfield.setText("");
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-        displayListWord();
+        if (listWords.getItems().isEmpty()) {
+            introduction.setVisible(true);
+        } else {
+            displayListWord();
+            introduction.setVisible(false);
+        }
+    }
+
+    @FXML
+    public void speakWordUSWordOfDay() {
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation("enormity").getWord(), "hl=en-us", "Mike", Integer.toString(DictionaryController.speedRate));
+    }
+
+    @FXML
+    public void speakWordUKWordOfDay() {
+        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation("enormity").getWord(), "hl=en-gb", "LiLy", Integer.toString(DictionaryController.speedRate));
+    }
+
+    @FXML
+    public void saveWordInBookMarkWordOfDay() {
+        String selectedWord = "enormity";
+        currentDictionary.setBookmark(selectedWord);
     }
 }

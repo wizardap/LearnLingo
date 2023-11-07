@@ -22,7 +22,7 @@ public class DictionaryController extends GeneralController {
     protected static boolean checkStyle = false;
 
     @FXML
-    private AnchorPane introduction;
+    protected AnchorPane introduction;
 
     public static int speedRate;
 
@@ -32,22 +32,7 @@ public class DictionaryController extends GeneralController {
     protected Button btnNo;
     @FXML
     protected AnchorPane confirmAdd;
-    @FXML
-    private Label rw9;
-    @FXML
-    private Label rw10;
-    @FXML
-    private Label rw11;
-    @FXML
-    private Label rw12;
-    @FXML
-    private Label rw13;
-    @FXML
-    private Label rw14;
-    @FXML
-    private Label rw15;
-    @FXML
-    private Label rw16;
+
     private DictionaryCache searchCache = new DictionaryCache();
 
     protected void displayListWord() {
@@ -79,8 +64,14 @@ public class DictionaryController extends GeneralController {
         super.initialize(url, resourceBundle);
         if (!changeL) {
             bookmark.setText("Thêm từ này");
+            label.setText("Bạn muốn thêm từ này vào Bookmark không");
+            btnYes.setText("Có");
+            btnNo.setText("Không");
         } else {
             bookmark.setText("Add to word list");
+            label.setText("Do you want to add this word in Bookmark");
+            btnYes.setText("Yes");
+            btnNo.setText("No");
         }
         confirmAdd.setVisible(false);
         checkStyle = false;
@@ -221,6 +212,7 @@ public class DictionaryController extends GeneralController {
     @Override
     public void changeMode() {
         super.changeMode();
+        confirmAdd.setVisible(false);
         displayExtensionButton(false);
         webEngine.loadContent("");
         listWords.getItems().clear();

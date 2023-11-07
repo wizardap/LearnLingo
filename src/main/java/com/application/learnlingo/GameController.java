@@ -506,15 +506,20 @@ public class GameController extends GeneralController {
                 if (GameUtils.seconds <= 0 || GameUtils.status) {
                     System.out.println(GameUtils.status);
                     GameUtils.isPlaying = false;
+                    click.stop();
                     timeline.stop();
                     start.setVisible(true);
                     if (GameUtils.status) {
                         start.setText("NEXT");
                         GameUtils.nextRound();
                         // Thông báo hay animation thắng ở đây
+                        musicGame.stop();
                     } else {
                         start.setText("RESTART");
                         GameUtils.restart();
+                        AudioClip loseGame = new AudioClip(GameController.class.getResource("audio/loseGame.mp3").toString());
+                        loseGame.play();
+                        musicGame.stop();
                         // Thông báo hay animation thua ở đây
                     }
 

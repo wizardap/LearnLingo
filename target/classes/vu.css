@@ -132,7 +132,7 @@
     -fx-background-radius: 0 20 20 0;
 }
 
-#bookmark {
+#bookmark, #bookmark1 {
     -fx-background-insets: 0;
     -fx-background-color: #FEC400;
     -fx-background-radius: 20;
@@ -140,7 +140,7 @@
     -fx-font-weight: bold;
 }
 
-#speakUK, #speakUS, #speakVN {
+#speakUK, #speakUS, #speakVN, #speakUS1, #speakUK1 {
     -fx-border-insets: 0;
     -fx-background-radius: 10;
     -fx-background-insets: 0;
@@ -148,11 +148,11 @@
     -fx-font-weight: bold;
 }
 
-#speakUK:hover, #speakUS:hover, #speakVN:hover {
+#speakUK:hover, #speakUS:hover, #speakVN:hover, #speakUS1:hover, #speakUK1:hover {
     -fx-opacity: 0.9;
 }
 
-#bookmark:hover {
+#bookmark:hover, #bookmark1:hover {
     -fx-cursor: hand;
     -fx-background-insets: 0;
     -fx-opacity: 0.9;

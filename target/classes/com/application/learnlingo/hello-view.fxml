@@ -57,11 +57,11 @@
             <AnchorPane fx:id="confirmAdd" layoutX="625.0" layoutY="45.0" prefHeight="145.0" prefWidth="165.0" style="-fx-background-color: #FEC400; -fx-background-radius: 20;">
                <children>
                   <Label fx:id="label" layoutX="13.0" layoutY="14.0" prefHeight="45.0" prefWidth="135.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 20; -fx-font-weight: bold;" text="Do you want to add this word in Bookmark" textAlignment="CENTER" wrapText="true" />
-                  <Button fx:id="btnYes" layoutX="40.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="YES" />
-                  <Button fx:id="btnNo" layoutX="90.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand;" stylesheets="@../../../vu.css" text="NO" />
+                  <Button fx:id="btnYes" layoutX="18.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand; -fx-min-width: 60;" stylesheets="@../../../vu.css" text="YES" />
+                  <Button fx:id="btnNo" layoutX="88.0" layoutY="103.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee; -fx-border-insets: 0; -fx-background-insets: 0; -fx-background-radius: 10; -fx-font-weight: bold; -fx-cursor: hand; -fx-min-width: 60;" stylesheets="@../../../vu.css" text="NO" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="introduction" prefHeight="549.0" prefWidth="808.0" style="-fx-background-color: #fff8e4;">
+            <AnchorPane fx:id="introduction" prefHeight="549.0" prefWidth="809.0" style="-fx-background-color: #fff8e4;">
                <children>
                   <Label layoutX="53.0" layoutY="14.0" style="-fx-font-size: 26; -fx-font-weight: bold;" text="WELCOME TO OUR LEARNING ENGLISH APPLICATION" />
                   <Label layoutX="53.0" layoutY="53.0" style="-fx-font-size: 17; -fx-font-weight: bold;" text="ABOUT" />
