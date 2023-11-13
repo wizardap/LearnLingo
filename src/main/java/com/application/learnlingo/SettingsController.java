@@ -119,6 +119,13 @@ public class SettingsController extends GeneralController {
         for (String bookmarkWord: bookmarkList){
             veDict.unsetBookmark(bookmarkWord);
         }
+
+        bookmarkList.clear();
+        bookmarkList.addAll(veDict.exportBookmarkList());
+        for (String bookmarkWord: bookmarkList){
+            veDict.unsetBookmark(bookmarkWord);
+        }
+
     }
 
     @FXML

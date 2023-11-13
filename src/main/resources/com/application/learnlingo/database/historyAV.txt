@@ -1,3 +1,4 @@
+heap
 enormity
 hello
 helper
@@ -7,10 +8,18 @@ hearse
 heartbeat
 hearsay
 hear
-heap
 click
 invariable
 invariableness
 invariance
 invariably
 e qualizer
+legion
+place
+algobrithm
+de rigueur
+debate
+a-pac-thai
+location
+legend
+play

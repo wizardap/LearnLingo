@@ -201,7 +201,7 @@ public class ChangeWordController extends GeneralController {
             if (result.get() == ButtonType.YES) {
                 String contentSearchWord = textfield1.getText().toLowerCase();
                 if (!contentSearchWord.isEmpty() && currentDictionary.contain(contentSearchWord)) {
-                   currentDictionary.removeWord(contentSearchWord);
+                   currentDictionary.deleteWord(contentSearchWord);
                     Alert success = new Alert(Alert.AlertType.INFORMATION);
                     success.setHeaderText("'" +
                             contentSearchWord +

@@ -33,7 +33,6 @@ public class DictionaryController extends GeneralController {
     @FXML
     protected AnchorPane confirmAdd;
 
-    private DictionaryCache searchCache = new DictionaryCache();
 
     protected void displayListWord() {
         int k = listWords.getItems().size();
@@ -154,7 +153,7 @@ public class DictionaryController extends GeneralController {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             String meaningHTMLString = "";
-            meaningHTMLString = searchCache.getWordInformation(selectedWord).getHtml();
+            meaningHTMLString = currentDictionary.getDefinition(selectedWord);
             webEngine.loadContent(meaningHTMLString);
             currentDictionary.insertToHistoryList(selectedWord);
             if (changeL){
