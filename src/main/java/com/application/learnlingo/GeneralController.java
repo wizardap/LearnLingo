@@ -25,6 +25,16 @@ import java.util.ResourceBundle;
 
 public class GeneralController implements Initializable {
 
+    private final static String DATABASE_PATH = "./src/main/resources/com/application/learnlingo/database/";
+    private final static String DATABASE_NAME = "dict_hh.db";
+    private static final String FEEDBACK_TXT_PATH
+            = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
+    @FXML
+    protected static boolean changeL = true;
+    protected static DatabaseDictionary<Word> evDict = new EnglishDictionary(DATABASE_PATH, DATABASE_NAME, "AV", "defaultAV");
+    protected static DatabaseDictionary<Word> currentDictionary = evDict;
+    protected static DatabaseDictionary<Word> veDict = new VietnameseDictionary(DATABASE_PATH, DATABASE_NAME, "VA", "defaultVA");
+    protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
     @FXML
     protected Button settings;
     @FXML
@@ -33,8 +43,6 @@ public class GeneralController implements Initializable {
     protected Button speakUK;
     @FXML
     protected Button speakVN;
-    @FXML
-    protected static boolean changeL = true;
     @FXML
     protected Button bookmark;
     @FXML
@@ -45,10 +53,8 @@ public class GeneralController implements Initializable {
     protected WebView webView;
     @FXML
     protected WebEngine webEngine;
-
     @FXML
     protected AnchorPane center;
-
     @FXML
     protected Button find;
     @FXML
@@ -83,32 +89,18 @@ public class GeneralController implements Initializable {
     protected Button search;
     @FXML
     protected Button game;
-
     @FXML
     protected Button menu;
-
     @FXML
     protected ImageView checkMode1;
-
     @FXML
     protected ImageView checkMode2;
-
     @FXML
     protected ImageView checkMode3;
-
     @FXML
     protected ImageView checkMode4;
     protected boolean checkMenuBar = false;
-    private final static String DATABASE_PATH = "./src/main/resources/com/application/learnlingo/database/";
-    private final static String DATABASE_NAME = "dict_hh.db";
 
-    protected static DictDMBS evDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "AV","defaultAV");
-    protected static DictDMBS veDict = new DictDMBS(DATABASE_PATH,DATABASE_NAME, "VA","defaultVA");
-    protected static DictDMBS currentDictionary= evDict;
-
-    private static final String FEEDBACK_TXT_PATH
-            = "./src/main/resources/com/application/learnlingo/database/feedbacks.txt";
-    protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
         listWords.getItems().clear();
@@ -136,12 +128,11 @@ public class GeneralController implements Initializable {
         if (selectedWord != null) {
             String meaningHTMLString = currentDictionary.getWordInformation(selectedWord).getHtml();
             webEngine.loadContent(meaningHTMLString);
-            if (changeL){
+            if (changeL) {
                 speakUS.setVisible(true);
                 speakUK.setVisible(true);
                 speakVN.setVisible(false);
-            }
-            else {
+            } else {
                 speakVN.setVisible(true);
                 speakUS.setVisible(false);
                 speakUK.setVisible(false);
@@ -184,6 +175,7 @@ public class GeneralController implements Initializable {
             slide.play();
         }
     }
+
     @FXML
     public void changeMode() {
         if (changeL) {
@@ -203,7 +195,7 @@ public class GeneralController implements Initializable {
             synonym.setText("Synonyms");
             antonym.setText("Antonyms");
         }
-        changeL=!changeL;
+        changeL = !changeL;
     }
 
 }

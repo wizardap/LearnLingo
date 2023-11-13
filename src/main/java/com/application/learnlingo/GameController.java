@@ -10,8 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -19,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 
-public class GameController extends GeneralController {
+public class GameController extends GeneralController implements Game {
     private static final int DEFAULT_TIME_SECOND = 120;
     private static final double DEFAULT_BOX_HEIGHT = 64;
     private static double maxCharacter = 0;
@@ -63,6 +61,7 @@ public class GameController extends GeneralController {
     private VBox wordList2;
     private boolean checkMenuGame = false;
     private List<String> columnGameTable = new ArrayList<>();
+    private Timeline timeline;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,7 +78,7 @@ public class GameController extends GeneralController {
         loadDataFromDatabase();
         timerLabel.setText(String.valueOf(GameUtils.seconds));
         start.setText("START HERE");
-        initGame();
+        init();
         GameUtils.numberOfTurn=1;
         GameUtils.score = 0;
     }
@@ -88,15 +87,14 @@ public class GameController extends GeneralController {
         String sqlGetColumnName = "SELECT name FROM PRAGMA_TABLE_INFO(\"Game\");";
         String sql = "SELECT * from Game";
         try {
-            Statement stmt = DictDMBS.connection.createStatement();
+            Statement stmt = DatabaseDictionary.connection.createStatement();
             ResultSet rs = stmt.executeQuery(sqlGetColumnName);
             while (rs.next()) {
                 columnGameTable.add(rs.getString("name"));
             }
-            System.out.println(columnGameTable.get(0));
             columnGameTable.remove(0);
 
-            stmt = DictDMBS.connection.createStatement();
+            stmt = DatabaseDictionary.connection.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 List<String> groupData = new ArrayList<>();
@@ -111,17 +109,6 @@ public class GameController extends GeneralController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    private void initGame(){
-        GameUtils.init();
-        wordList1.getChildren().clear();
-        wordList2.getChildren().clear();
-        containerCharacterChoose.getChildren().clear();
-        containerCharacterGuess.getChildren().clear();
-        timerLabel.setText(String.valueOf(GameUtils.seconds));
-        GameUtils.isPlaying = true;
-        roundLabel.setText(String.valueOf(GameUtils.numberOfTurn));
-        scoreLabel.setText(String.valueOf(GameUtils.score));
     }
     private void createQuizz() {
         // Loading the character box of invisible character box to guess.
@@ -357,8 +344,6 @@ public class GameController extends GeneralController {
                 }
             }
         });
-
-
     }
 
     @FXML
@@ -398,11 +383,11 @@ public class GameController extends GeneralController {
 
 
     private void countdown(){
-        Timeline timeline = new Timeline();
+        timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event1 -> {
-            GameUtils.seconds--;
             if (GameUtils.isPlaying) {
+                GameUtils.seconds--;
                 timerLabel.setText(String.valueOf(GameUtils.seconds));
                 GameUtils.checkStatus();
                 if (GameUtils.seconds <= 0 || GameUtils.status) {
@@ -410,34 +395,84 @@ public class GameController extends GeneralController {
                     GameUtils.isPlaying = false;
                     timeline.stop();
                     start.setVisible(true);
+                    notice(GameUtils.status);
                     if (GameUtils.status){
                         start.setText("NEXT");
                        GameUtils.nextRound();
-                        // Thông báo hay animation thắng ở đây
                     }
                     else {
                         start.setText("RESTART");
                         GameUtils.restart();
-                        // Thông báo hay animation thua ở đây
                     }
 
-                    if (GameUtils.numberOfTurn == dataList.size()){
-                        // Thông báo hay animation phá đảo game ở đây
-                    }
                 }
             }
         }));
-
         timeline.play();
     }
     @FXML
     public void startGame() {
-        initGame();
+        init();
         start.setVisible(false);
         createQuizz();
         play();
         countdown();
+        menuButton.setOnMouseClicked(e->{
+            GameUtils.menuButtonClicked++;
+            GameUtils.menuButtonClicked%=2;
+            if (GameUtils.menuButtonClicked == 1){
+                pause();
+            }
+            else {
+                resume();
+            }
+            /// Sửa menu tại đây
+        });
     }
+
+    @Override
+    public void init() {
+        GameUtils.init();
+        wordList1.getChildren().clear();
+        wordList2.getChildren().clear();
+        containerCharacterChoose.getChildren().clear();
+        containerCharacterGuess.getChildren().clear();
+        timerLabel.setText(String.valueOf(GameUtils.seconds));
+        GameUtils.isPlaying = true;
+        roundLabel.setText(String.valueOf(GameUtils.numberOfTurn));
+        scoreLabel.setText(String.valueOf(GameUtils.score));
+    }
+
+    @Override
+    public void start() {
+        startGame();
+    }
+
+    @Override
+    public void notice(boolean isWon) {
+        if (GameUtils.numberOfTurn == dataList.size()){
+            // Thông báo hay animation phá đảo game ở đây
+        }
+        if (isWon){
+            // Thông báo hay animation về chiến thắng ở đây
+        }
+        else{
+            // Thông báo hay animation về thua cuộc ở đây
+        }
+    }
+
+    @Override
+    public void resume() {
+        GameUtils.isPlaying=true;
+        timeline.play();
+    }
+
+    @Override
+    public void pause() {
+        GameUtils.isPlaying=false;
+        timeline.pause();
+    }
+
 
     private static class GameUtils {
         public static final int DEFAULT_SCORE_EACH_CORRECT_WORD = 10;
@@ -450,8 +485,9 @@ public class GameController extends GeneralController {
         public static int numberOfTurn = 1;
         public static int seconds = DEFAULT_TIME_SECOND;
         public static int score = 0;
-
+        public static int menuButtonClicked = 0;
         public static void init() {
+            menuButtonClicked = 0;
             isPlaying = false;
             mainWord = "";
             wordList.clear();

@@ -3,6 +3,7 @@ package com.application.learnlingo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Stack;
 
 public class Trie {
     private TrieNode root;
@@ -88,7 +89,6 @@ public class Trie {
         return true;
     }
 
-
     private class TrieNode {
         private HashMap<Character,TrieNode> children;
         private int wordID;
@@ -112,6 +112,9 @@ public class Trie {
 
         public TrieNode getChild(char ch) {
             return children.get(ch);
+        }
+        public boolean isLeaf(){
+            return children.isEmpty();
         }
 
         public void addChild(char ch) {
