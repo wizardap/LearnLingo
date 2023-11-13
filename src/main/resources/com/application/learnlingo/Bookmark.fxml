@@ -121,7 +121,7 @@
                         <Image url="@image/idiom.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="234.0" fitWidth="391.0" layoutX="102.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="234.0" fitWidth="391.0" layoutX="102.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/enormity.jpg" />
                      </image>
