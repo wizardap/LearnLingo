@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.List;
@@ -99,8 +98,8 @@ public class BookMarkController extends DictionaryController {
 
 
     @Override
-    public void handleMouseClicked(MouseEvent mouseEvent) {
-        super.handleMouseClicked(mouseEvent);
+    public void handleMouseClicked() {
+        super.handleMouseClicked();
     }
 
     @Override

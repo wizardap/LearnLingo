@@ -7,6 +7,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -148,8 +149,9 @@ public class DictionaryController extends GeneralController {
         }
     }
 
+
     @FXML
-    public void handleMouseClicked(MouseEvent mouseEvent) {
+    public void handleMouseClicked() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             String meaningHTMLString = "";
@@ -166,8 +168,13 @@ public class DictionaryController extends GeneralController {
                 speakUS.setVisible(false);
                 speakUK.setVisible(false);
             }
-
             bookmark.setVisible(true);
+        }
+    }
+
+    public void handleKeyEnterPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            handleMouseClicked();
         }
     }
 

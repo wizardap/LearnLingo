@@ -10,8 +10,8 @@ import java.util.ResourceBundle;
 
 public class AntonymController extends SynonymAndAntonym {
     @Override
-    public void handleMouseClicked(MouseEvent mouseEvent) {
-        super.handleMouseClicked(mouseEvent, "ant");
+    public void handleMouseClicked() {
+        super.handleMouseClicked("ant");
     }
     @Override
     public void buttonClicked(MouseEvent mouseEvent){

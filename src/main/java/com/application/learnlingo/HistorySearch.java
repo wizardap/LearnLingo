@@ -7,7 +7,6 @@ import java.util.List;
 public class HistorySearch {
     private List<String> historyList;
     private String historyPath;
-
     public HistorySearch() {
         historyList = new ArrayList<>();
     }

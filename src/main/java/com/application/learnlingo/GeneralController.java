@@ -10,8 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -111,7 +111,7 @@ public class GeneralController implements Initializable {
     protected ImageView checkMode4;
     protected boolean checkMenuBar = false;
 
-    protected AudioClip musicGame = new AudioClip(GameController.class.getResource("audio/soundGame.mp3").toString());
+    protected AudioClip musicGame = new AudioClip(TextTwistGame.class.getResource("audio/soundGame.mp3").toString());
 
     @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
@@ -135,7 +135,7 @@ public class GeneralController implements Initializable {
 
 
     @FXML
-    public void handleMouseClicked(MouseEvent mouseEvent) {
+    public void handleMouseClicked() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             String meaningHTMLString = currentDictionary.getWordInformation(selectedWord).getHtml();
@@ -153,9 +153,22 @@ public class GeneralController implements Initializable {
         }
     }
 
+    public void handleKeyEnterPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            handleMouseClicked();
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        textfield.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.DOWN) {
+                listWords.getSelectionModel().selectFirst();
+                listWords.requestFocus();
+            }
+        });
+
         musicGame.setCycleCount(-1);
         musicGame.stop();
         if (!changeL) {
@@ -189,12 +202,12 @@ public class GeneralController implements Initializable {
         checkMode2.setVisible(false);
         checkMode3.setVisible(false);
         checkMode4.setVisible(false);
-        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("gameController.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("TextTwistGame.fxml", container));
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
-        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        search.setOnAction(e -> AnimationChangeScene.handleButtonClick("Dictionary.fxml", container));
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));
         settings.setOnAction(e -> AnimationChangeScene.handleButtonClick("Settings.fxml", container));
-        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("hello-view.fxml", container));
+        tudien.setOnAction(e -> AnimationChangeScene.handleButtonClick("Dictionary.fxml", container));
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));

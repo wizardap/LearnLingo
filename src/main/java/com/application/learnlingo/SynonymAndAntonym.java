@@ -109,7 +109,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
         return result;
     }
 
-    public void handleMouseClicked(MouseEvent mouseEvent, String s) {
+    public void handleMouseClicked(String s) {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             buttons = new Button[]{b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15};
