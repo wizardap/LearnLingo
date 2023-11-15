@@ -107,60 +107,115 @@ public class SettingsController extends GeneralController {
 
     @FXML
     public void deleteBookmark() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Delete Bookmark");
-        alert.setContentText("Do you want to delete Bookmark?");
+        if (changeL) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Bookmark");
+            alert.setContentText("Do you want to delete Bookmark?");
 
-        ButtonType buttonTypeYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-        ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.NO);
-        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+            ButtonType buttonTypeYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == buttonTypeYes) {
-            List<String> bookmarkList = new ArrayList<>();
-            bookmarkList.addAll(evDict.exportBookmarkList());
-            for (String bookmarkWord: bookmarkList){
-                evDict.unsetBookmark(bookmarkWord);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == buttonTypeYes) {
+                List<String> bookmarkList = new ArrayList<>();
+                bookmarkList.addAll(evDict.exportBookmarkList());
+                for (String bookmarkWord : bookmarkList) {
+                    evDict.unsetBookmark(bookmarkWord);
+                }
+                bookmarkList.clear();
+                bookmarkList.addAll(veDict.exportBookmarkList());
+                for (String bookmarkWord : bookmarkList) {
+                    veDict.unsetBookmark(bookmarkWord);
+                }
+
+                bookmarkList.clear();
+                bookmarkList.addAll(veDict.exportBookmarkList());
+                for (String bookmarkWord : bookmarkList) {
+                    veDict.unsetBookmark(bookmarkWord);
+                }
             }
-            bookmarkList.clear();
-            bookmarkList.addAll(veDict.exportBookmarkList());
-            for (String bookmarkWord: bookmarkList){
-                veDict.unsetBookmark(bookmarkWord);
-            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Xóa Bookmark");
+            alert.setContentText("Bạn có chắc là muốn xóa Bookmark không?");
 
-            bookmarkList.clear();
-            bookmarkList.addAll(veDict.exportBookmarkList());
-            for (String bookmarkWord: bookmarkList){
-                veDict.unsetBookmark(bookmarkWord);
+            ButtonType buttonTypeYes = new ButtonType("Có", ButtonBar.ButtonData.YES);
+            ButtonType buttonTypeNo = new ButtonType("Không", ButtonBar.ButtonData.NO);
+            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == buttonTypeYes) {
+                List<String> bookmarkList = new ArrayList<>();
+                bookmarkList.addAll(evDict.exportBookmarkList());
+                for (String bookmarkWord : bookmarkList) {
+                    evDict.unsetBookmark(bookmarkWord);
+                }
+                bookmarkList.clear();
+                bookmarkList.addAll(veDict.exportBookmarkList());
+                for (String bookmarkWord : bookmarkList) {
+                    veDict.unsetBookmark(bookmarkWord);
+                }
+
+                bookmarkList.clear();
+                bookmarkList.addAll(veDict.exportBookmarkList());
+                for (String bookmarkWord : bookmarkList) {
+                    veDict.unsetBookmark(bookmarkWord);
+                }
             }
         }
     }
 
     @FXML
     public void resetDefault() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Reset Default");
-        alert.setContentText("Do you want reset to default settings?");
+        if (changeL) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Reset Default");
+            alert.setContentText("Do you want reset to default settings?");
 
-        ButtonType buttonTypeYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-        ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.NO);
-        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+            ButtonType buttonTypeYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == buttonTypeYes) {
-            evDict.resetData();
-            veDict.resetData();
-            slider.setValue(50);
-            DictionaryController.speedRate = calculateSpeedRate(50);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == buttonTypeYes) {
+                evDict.resetData();
+                veDict.resetData();
+                slider.setValue(50);
+                DictionaryController.speedRate = calculateSpeedRate(50);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Quay về mặc định");
+            alert.setContentText("Bạn có muốn quay về cài đặt mặc định không?");
+
+            ButtonType buttonTypeYes = new ButtonType("Có", ButtonBar.ButtonData.YES);
+            ButtonType buttonTypeNo = new ButtonType("Không", ButtonBar.ButtonData.NO);
+            alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == buttonTypeYes) {
+                evDict.resetData();
+                veDict.resetData();
+                slider.setValue(50);
+                DictionaryController.speedRate = calculateSpeedRate(50);
+            }
         }
     }
 
     @FXML
     public void sendFeedback() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Thank you!");
-        alert.setContentText("Thank for giving us feedbacks");
-        alert.showAndWait();
+        if (changeL) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thank you!");
+            alert.setContentText("Thank for giving us feedbacks");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Cảm ơn bạn!");
+            alert.setContentText("Cảm ơn vì đã gửi cho chúng tôi phản hồi");
+            alert.showAndWait();
+        }
         try {
             FileWriter fw = new FileWriter(feedbackTxt, true);
             String fb = feedback.getText();

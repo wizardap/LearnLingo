@@ -104,14 +104,6 @@ public class DictionaryController extends GeneralController {
     }
 
     @FXML
-    public void deleteSearch() {
-        listWords.getItems().clear();
-        textfield.setText("");
-        listWords.getItems().addAll(currentDictionary.exportHistoryList());
-        displayListWord();
-    }
-
-    @FXML
     public void saveWordInBookMark() {
         String selectedWord = listWords.getSelectionModel().getSelectedItem();
         confirmAdd.setVisible(true);

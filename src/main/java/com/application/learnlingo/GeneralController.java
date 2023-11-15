@@ -214,6 +214,14 @@ public class GeneralController implements Initializable {
     }
 
     @FXML
+    public void deleteSearch() {
+        listWords.getItems().clear();
+        textfield.setText("");
+        listWords.getItems().addAll(currentDictionary.exportHistoryList());
+        displayListWord();
+    }
+
+    @FXML
     public void setMenu() {
         checkMenuBar = !checkMenuBar;
         TranslateTransition slide = new TranslateTransition();

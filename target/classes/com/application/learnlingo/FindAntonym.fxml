@@ -43,7 +43,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <JFXListView fx:id="listWords" layoutX="-2.0" layoutY="-2.0" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
+            <JFXListView fx:id="listWords" layoutX="-2.0" layoutY="-2.0" onKeyPressed="#handleKeyEnterPress" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
             <AnchorPane layoutX="298.0" layoutY="294.0" prefHeight="234.0" prefWidth="390.0" style="-fx-background-color: #fec400;">
                <children>
                   <Label layoutX="107.0" layoutY="2.0" prefHeight="32.0" prefWidth="173.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Word of the day" />
@@ -123,7 +123,7 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="deleteWord" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
+                  <Button fx:id="deleteWord" mnemonicParsing="false" onAction="#deleteSearch" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>

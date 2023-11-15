@@ -123,7 +123,7 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="deleteWord" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
+                  <Button fx:id="deleteWord" mnemonicParsing="false" onAction="#deleteSearch" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>

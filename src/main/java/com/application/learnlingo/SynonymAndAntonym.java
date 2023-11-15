@@ -70,6 +70,12 @@ public abstract class SynonymAndAntonym extends GeneralController {
         changeL = !changeL;
     }
 
+    @Override
+    public void deleteSearch() {
+        textfield.setText("");
+        listWords.getItems().clear();
+    }
+
 
     public List<String> setList(String s, String a) {
         List<String> result = new ArrayList<>();
