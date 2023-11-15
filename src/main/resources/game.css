@@ -58,3 +58,8 @@
     -fx-border-color: #cccccc;
     -fx-background-color: #074B9C;
 }
+
+#textTwist:hover, #funnyQuiz:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.9;
+}

@@ -202,7 +202,7 @@ public class GeneralController implements Initializable {
         checkMode2.setVisible(false);
         checkMode3.setVisible(false);
         checkMode4.setVisible(false);
-        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("TextTwistGame.fxml", container));
+        game.setOnAction(e -> AnimationChangeScene.handleButtonClick("Game.fxml", container));
         add.setOnAction(e -> AnimationChangeScene.handleButtonClick("changeWordController.fxml", container));
         search.setOnAction(e -> AnimationChangeScene.handleButtonClick("Dictionary.fxml", container));
         history.setOnAction(e -> AnimationChangeScene.handleButtonClick("BookMark.fxml", container));

@@ -2,9 +2,7 @@ package com.application.learnlingo;
 
 import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -14,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SettingsController extends GeneralController {
@@ -108,36 +107,60 @@ public class SettingsController extends GeneralController {
 
     @FXML
     public void deleteBookmark() {
-        List<String> bookmarkList = new ArrayList<>();
-        bookmarkList.addAll(evDict.exportBookmarkList());
-        for (String bookmarkWord: bookmarkList){
-            evDict.unsetBookmark(bookmarkWord);
-        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Bookmark");
+        alert.setContentText("Do you want to delete Bookmark?");
 
-        bookmarkList.clear();
-        bookmarkList.addAll(veDict.exportBookmarkList());
-        for (String bookmarkWord: bookmarkList){
-            veDict.unsetBookmark(bookmarkWord);
-        }
+        ButtonType buttonTypeYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
-        bookmarkList.clear();
-        bookmarkList.addAll(veDict.exportBookmarkList());
-        for (String bookmarkWord: bookmarkList){
-            veDict.unsetBookmark(bookmarkWord);
-        }
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonTypeYes) {
+            List<String> bookmarkList = new ArrayList<>();
+            bookmarkList.addAll(evDict.exportBookmarkList());
+            for (String bookmarkWord: bookmarkList){
+                evDict.unsetBookmark(bookmarkWord);
+            }
+            bookmarkList.clear();
+            bookmarkList.addAll(veDict.exportBookmarkList());
+            for (String bookmarkWord: bookmarkList){
+                veDict.unsetBookmark(bookmarkWord);
+            }
 
+            bookmarkList.clear();
+            bookmarkList.addAll(veDict.exportBookmarkList());
+            for (String bookmarkWord: bookmarkList){
+                veDict.unsetBookmark(bookmarkWord);
+            }
+        }
     }
 
     @FXML
     public void resetDefault() {
-        evDict.resetData();
-        veDict.resetData();
-        slider.setValue(50);
-        DictionaryController.speedRate = calculateSpeedRate(50);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Reset Default");
+        alert.setContentText("Do you want reset to default settings?");
+
+        ButtonType buttonTypeYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType buttonTypeNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonTypeYes) {
+            evDict.resetData();
+            veDict.resetData();
+            slider.setValue(50);
+            DictionaryController.speedRate = calculateSpeedRate(50);
+        }
     }
 
     @FXML
     public void sendFeedback() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Thank you!");
+        alert.setContentText("Thank for giving us feedbacks");
+        alert.showAndWait();
         try {
             FileWriter fw = new FileWriter(feedbackTxt, true);
             String fb = feedback.getText();

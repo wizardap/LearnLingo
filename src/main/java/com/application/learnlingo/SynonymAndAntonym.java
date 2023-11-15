@@ -151,6 +151,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
         currentDictionary = evDict;
         listWords.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        DictionaryController.checkStyle = false;
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
         BackgroundImage backgroundImage = new BackgroundImage(
                 new Image(getClass().getResource("image/bg3.jpg").toString(), 910, 600, false, true),

@@ -245,7 +245,7 @@
    <top>
       <HBox fx:id="top" prefHeight="23.0" prefWidth="942.0" spacing="5.0" style="-fx-background-color: #1d2a57;" stylesheets="@../../../vu.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="menu" mnemonicParsing="false" onAction="#setMenu" prefHeight="48.0" prefWidth="99.0" style="-fx-hgrow: always;" stylesheets="@../../../vu.css">
+            <Button fx:id="menu" mnemonicParsing="false" onAction="#setMenuInGame" prefHeight="48.0" prefWidth="99.0" style="-fx-hgrow: always;" stylesheets="@../../../vu.css">
                <graphic>
                   <HBox prefHeight="29.0" prefWidth="51.0" spacing="4.0">
                      <children>

@@ -3,7 +3,6 @@ package com.application.learnlingo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -12,7 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 
@@ -21,15 +22,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 
-public class TextTwistGame extends GeneralController implements Game {
+public class TextTwistGame extends GameController implements Game {
     private static final int DEFAULT_TIME_SECOND = 120;
     private static final double DEFAULT_BOX_HEIGHT = 64;
     private static double maxCharacter = 0;
     private static double maxWord = 0;
     private static List<List<String>> dataList = new ArrayList<>();
-
-    private boolean checkAudio = true;
-    private boolean checkVolume = true;
 
     @FXML
     private BorderPane container;
@@ -67,12 +65,8 @@ public class TextTwistGame extends GeneralController implements Game {
     private VBox wordList1;
     @FXML
     private VBox wordList2;
-    private boolean checkMenuGame = false;
     private List<String> columnGameTable = new ArrayList<>();
     private Timeline timeline;
-
-    @FXML
-    private VBox menuGame;
 
     @FXML
     private VBox credit;
@@ -80,25 +74,10 @@ public class TextTwistGame extends GeneralController implements Game {
     @FXML
     private VBox htp;
 
-    @FXML
-    private ImageView music;
-
-    @FXML
-    private ImageView volume;
-
-    @FXML
-    private Button btnmusic;
-
-    @FXML
-    private Button btnvolume;
-
-    AudioClip click = new AudioClip(GameUtils.class.getResource("audio/click.wav").toString());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
-        credit.setVisible(false);
-        htp.setVisible(false);
         Image image = new Image(getClass().getResource("image/music.png").toString());
         music = new ImageView(image);
         music.setFitWidth(21);
@@ -109,16 +88,12 @@ public class TextTwistGame extends GeneralController implements Game {
         volume.setFitWidth(23);
         volume.setFitHeight(23);
         btnvolume.setGraphic(volume);
+        credit.setVisible(false);
+        htp.setVisible(false);
         menuGame.setVisible(false);
         menuGame.setTranslateX(620);
         left.setVisible(false);
-        left.setTranslateX(-100);
-        BackgroundImage backgroundImage = new BackgroundImage(
-                new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("image/bg3.jpg")).toString(), 910, 600, false, true),
-                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-        Background background = new Background(backgroundImage);
-        center.setBackground(background);
+        left.setTranslateX(-99.5);
         loadDataFromDatabase();
         timerLabel.setText(String.valueOf(GameUtils.seconds));
         start.setText("START HERE");
@@ -422,62 +397,6 @@ public class TextTwistGame extends GeneralController implements Game {
         });
     }
 
-    @FXML
-    public void setMenu() {
-        checkMenuBar = !checkMenuBar;
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(left);
-        if (checkMenuBar) {
-            left.setVisible(true);
-            left.setPrefWidth(99);
-            slide.setToX(0);
-            slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                if (child.getId() == null || !child.getId().equals("left")) {
-                    child.setOpacity(0.8);
-                } else {
-                    child.setOpacity(1);
-                }
-            }
-        } else {
-            slide.setToX(-99);
-            slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                child.setOpacity(1);
-            }
-        }
-    }
-
-    @FXML
-    public void setMenuGame() {
-        if (checkVolume) {
-            click.play();
-        }
-        checkMenuGame = !checkMenuGame;
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(menuGame);
-        if (checkMenuGame) {
-            menuGame.setVisible(true);
-            slide.setToX(0);
-            slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                if (child.getId() == null || !child.getId().equals("menuGame")) {
-                    child.setOpacity(0.8);
-                } else {
-                    child.setOpacity(1);
-                }
-            }
-        } else {
-            slide.setToX(620);
-            slide.play();
-            for (Node child : ((AnchorPane) container.getCenter()).getChildren()) {
-                child.setOpacity(1);
-            }
-        }
-    }
-
     private void countdown(){
         timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -539,82 +458,6 @@ public class TextTwistGame extends GeneralController implements Game {
         if (checkAudio) {
             nextRound.play();
         }
-    }
-
-    public void stopMusic() {
-        if (checkAudio) {
-            Image image = new Image(getClass().getResource("image/stopmusic.png").toString());
-            music = new ImageView(image);
-            music.setFitWidth(21);
-            music.setFitHeight(21);
-            btnmusic.setGraphic(music);
-            musicGame.stop();
-        } else {
-            Image image = new Image(getClass().getResource("image/music.png").toString());
-            music = new ImageView(image);
-            music.setFitWidth(21);
-            music.setFitHeight(21);
-            btnmusic.setGraphic(music);
-            musicGame.play();
-        }
-        checkAudio = !checkAudio;
-    }
-
-    @FXML
-    public void setHowToPlay() {
-        if (checkVolume) {
-            click.play();
-        }
-        htp.setOpacity(1);
-        htp.setVisible(true);
-        menuGame.setVisible(false);
-    }
-
-    @FXML
-    public void setAgainMenu() {
-        if (checkVolume) {
-            click.play();
-        }
-        htp.setVisible(false);
-        menuGame.setVisible(true);
-    }
-
-    @FXML
-    public void setAgainMenu1() {
-        if (checkVolume) {
-            click.play();
-        }
-        credit.setVisible(false);
-        menuGame.setVisible(true);
-    }
-
-
-    @FXML
-    public void setCredit() {
-        if (checkVolume) {
-            click.play();
-        }
-        credit.setOpacity(1);
-        credit.setVisible(true);
-        menuGame.setVisible(false);
-    }
-
-    @FXML
-    public void stopVolume() {
-        if (checkVolume) {
-            Image image = new Image(getClass().getResource("image/stopvolumegame.png").toString());
-            volume = new ImageView(image);
-            volume.setFitWidth(23);
-            volume.setFitHeight(23);
-            btnvolume.setGraphic(volume);
-        } else {
-            Image image = new Image(getClass().getResource("image/volumegame.png").toString());
-            volume = new ImageView(image);
-            volume.setFitWidth(23);
-            volume.setFitHeight(23);
-            btnvolume.setGraphic(volume);
-        }
-        checkVolume = !checkVolume;
     }
 
     @Override

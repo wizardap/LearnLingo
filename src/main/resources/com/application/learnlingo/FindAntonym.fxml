@@ -19,7 +19,6 @@
    <center>
       <AnchorPane fx:id="center" prefHeight="552.0" prefWidth="809.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="resetButton" layoutX="391.0" layoutY="332.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="25.0" stylesheets="@../../../vu.css" />
             <AnchorPane layoutX="298.0" layoutY="58.0" prefHeight="227.0" prefWidth="390.0" style="-fx-background-color: white; -fx-border-color: #1d2a57; -fx-border-width: 4 0 0 0;">
                <children>
                   <Button fx:id="b1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="big" />

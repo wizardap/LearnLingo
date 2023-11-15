@@ -40,7 +40,7 @@
             <Label fx:id="lb2" layoutX="261.0" layoutY="215.0" prefHeight="29.0" prefWidth="105.0" style="-fx-font-weight: bold; -fx-font-size: 13;" stylesheets="@../../../vu.css" text="Reset Default" />
             <Label fx:id="lb3" layoutX="261.0" layoutY="272.0" prefHeight="29.0" prefWidth="105.0" style="-fx-font-weight: bold; -fx-font-size: 13;" stylesheets="@../../../vu.css" text="Voice Speed" />
             <Label fx:id="lb4" layoutX="261.0" layoutY="331.0" prefHeight="29.0" prefWidth="105.0" style="-fx-font-weight: bold; -fx-font-size: 13;" stylesheets="@../../../vu.css" text="Feedbacks" />
-            <TextArea fx:id="feedback" layoutX="380.0" layoutY="339.0" prefHeight="141.0" prefWidth="165.0" promptText="Text here" />
+            <TextArea fx:id="feedback" layoutX="380.0" layoutY="339.0" prefHeight="141.0" prefWidth="165.0" />
             <ImageView fx:id="sendfb" fitHeight="31.0" fitWidth="21.0" layoutX="519.0" layoutY="454.0" onMouseClicked="#sendFeedback" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@image/sendfb.png" />
