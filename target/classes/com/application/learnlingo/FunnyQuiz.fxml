@@ -17,17 +17,33 @@
    <center>
       <AnchorPane fx:id="center" prefWidth="872.0" style="-fx-border-color: #A5DA03; -fx-border-width: 5;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="260.0" fitWidth="580.0" layoutX="260.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imageFunnyQuiz/rome.jpg" />
-               </image>
-            </ImageView>
-            <Button fx:id="answerA" alignment="BASELINE_LEFT" layoutX="252.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #0EC7FF; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold;" text="A. Rome" />
-            <Label fx:id="question" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="341.0" prefHeight="39.0" prefWidth="406.0" style="-fx-background-color: #074B9C; -fx-font-size: 17; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-radius: 10; -fx-border-radius: 5;" text="What is the capital of Italia?" />
-            <Button fx:id="answerA1" alignment="BASELINE_LEFT" layoutX="252.0" layoutY="439.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #0EC7FF; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;" text="C. Berlin" />
-            <Button fx:id="answerA2" alignment="BASELINE_LEFT" layoutX="518.0" layoutY="390.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #0EC7FF; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold;" text="B. Ha Noi" />
-            <Button fx:id="answerA21" alignment="BASELINE_LEFT" layoutX="518.0" layoutY="439.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #0EC7FF; -fx-border-color: #cccccc; -fx-border-width: 2; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14;" text="D. UET" />
-            <HBox alignment="CENTER" layoutX="122.0" layoutY="14.0" prefHeight="52.0" prefWidth="666.0" spacing="90.0">
+            <VBox fx:id="boxContainImage" alignment="CENTER" layoutX="240.0" layoutY="70.0" prefHeight="268.0" prefWidth="466.0">
+               <children>
+                  <ImageView fx:id="illustrations" fitHeight="260.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imageFunnyQuiz/rome.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="341.0" prefHeight="57.0" prefWidth="476.0" style="-fx-background-color: #074B9C; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-radius: 10; -fx-border-radius: 5;" text="What is the capital of Italia?" />
+            <Button fx:id="answerA" alignment="BASELINE_LEFT" layoutX="190.0" layoutY="406.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" styleClass="answerButton" stylesheets="@../../../funnyQuiz.css" text="Rome">
+               <graphic>
+                  <Label text="A." textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="answerB" alignment="BASELINE_LEFT" layoutX="630.0" layoutY="406.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" styleClass="answerButton" stylesheets="@../../../funnyQuiz.css" text="Ha Noi">
+               <graphic>
+                  <Label text="B." textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="answerC" alignment="BASELINE_LEFT" layoutX="190.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" styleClass="answerButton" stylesheets="@../../../funnyQuiz.css" text="Berlin">
+               <graphic>
+                  <Label text="C." textFill="#fffdfd" />
+               </graphic></Button>
+            <Button fx:id="answerD" alignment="BASELINE_LEFT" layoutX="630.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" styleClass="answerButton" stylesheets="@../../../funnyQuiz.css" text="UET">
+               <graphic>
+                  <Label text="D." textFill="WHITE" />
+               </graphic></Button>
+            <HBox alignment="CENTER" layoutX="143.0" layoutY="14.0" prefHeight="52.0" prefWidth="666.0" spacing="90.0">
                <children>
                   <HBox prefHeight="52.0" prefWidth="130.0" styleClass="tilte-bar">
                      <children>
@@ -49,7 +65,7 @@
                   </HBox>
                </children>
             </HBox>
-            <Button fx:id="start" layoutX="588.0" layoutY="505.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="START HERE" />
+            <Button fx:id="startButton" layoutX="615.0" layoutY="505.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" styleClass="tilte-bar" stylesheets="@../../../game.css" text="START HERE" />
             <Button fx:id="menuButton" layoutX="742.0" layoutY="505.0" mnemonicParsing="false" onAction="#setMenuGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="Menu" />
             <VBox fx:id="menuGame" layoutX="314.0" layoutY="66.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
                <children>

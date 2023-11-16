@@ -33,7 +33,7 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
                 .append(tableName)
                 .append(".txt")
                 .toString());
-        connection = this.connectingToDatabase();
+        connection = DatabaseManager.getConnection(dbPath + dbName);
         this.bookmark = new DatabaseBookmark(tableName);
         cache = new HashMap<>();
         importWordListFromDatabase();
@@ -53,20 +53,7 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
         }
     }
 
-    public Connection connectingToDatabase() {
-        String url = new StringBuilder()
-                .append("jdbc:sqlite:")
-                .append(dbPath)
-                .append(dbName)
-                .toString();
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return conn;
-    }
+
 
     public abstract T getWordInformation(String searchWord);
 

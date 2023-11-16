@@ -211,6 +211,7 @@ public class GeneralController implements Initializable {
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
+        DatabaseManager.connectingToDatabase(DATABASE_PATH + DATABASE_NAME);
     }
 
     @FXML
