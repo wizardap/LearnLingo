@@ -54,7 +54,6 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
     }
 
 
-
     public abstract T getWordInformation(String searchWord);
 
     public ObservableList<String> exportSuggestionList(String prefixString) {
@@ -65,6 +64,7 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
     public ObservableList<String> exportBookmarkSuggestionList(String prefixString) {
         return FXCollections.observableList(bookmark.exportPrefixStringList(prefixString));
     }
+
     @Override
     public void deleteWord(String opWord) {
         String sql = "DELETE FROM " + tableName + " WHERE word=?;";
@@ -146,7 +146,7 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
     }
 
     public void unsetBookmark(String word) {
-       bookmark.remove(word);
+        bookmark.remove(word);
     }
 
     public List<String> exportBookmarkList() {
@@ -191,4 +191,21 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
         return getWordInformation(word).getHtml();
     }
 
+    public String getRandomWord() {
+        String sql = new StringBuilder()
+                .append("SELECT DISTINCT word FROM ")
+                .append(tableName)
+                .append(" ORDER BY RANDOM() LIMIT 1;")
+                .toString();
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                return rs.getString("word");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }

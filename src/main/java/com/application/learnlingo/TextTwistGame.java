@@ -272,13 +272,17 @@ public class TextTwistGame extends GameController implements Game {
                 System.out.println(GameUtils.wordList);
                 int id = GameUtils.wordList.indexOf(enterWord.toString());
                 if (id != -1) {
-                    GameUtils.modifyScore(GameUtils.DEFAULT_SCORE_EACH_CORRECT_WORD);
-                    System.out.println("Found!");
+                    String guessWord ="";
                     HBox wordHbox = GameUtils.wordListHbox.get(id);
                     for (int j = 0; j < wordHbox.getChildren().size(); j++) {
                         Label visibleCharacter = (Label) wordHbox.getChildren().get(j);
+                        guessWord += visibleCharacter.getText();
                         visibleCharacter.setText(String.valueOf(enterWord.charAt(j)));
                     }
+                    if (!guessWord.equals(enterWord.toString())) {
+                        GameUtils.modifyScore(GameUtils.DEFAULT_SCORE_EACH_CORRECT_WORD);
+                    }
+                    System.out.println("Found!");
                     AudioClip rightAnswer = new AudioClip(GameUtils.class.getResource("audio/rightAnswer.mp3").toString());
                     if (checkVolume) {
                         rightAnswer.play();

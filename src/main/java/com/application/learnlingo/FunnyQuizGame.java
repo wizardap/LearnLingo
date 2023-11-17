@@ -113,6 +113,7 @@ public class FunnyQuizGame extends GameController implements Game {
                 timerLabel.setText(String.valueOf(time));
             } else {
                 timeline.stop();
+                playing=false;
                 notice(false);
             }
         }));
@@ -188,8 +189,8 @@ public class FunnyQuizGame extends GameController implements Game {
             playing = true;
             startButton.setVisible(false);
             answerList.forEach(button -> {
-                button.getStyleClass().remove("correctAnswer");
-                button.getStyleClass().remove("wrongAnswer");
+                button.getStyleClass().removeIf(eg ->eg.equals("correctAnswer"));
+                button.getStyleClass().removeIf(eg -> eg.equals("wrongAnswer"));
             });
             if (startButton.getText().equals("NEXT")) {
                 round++;
@@ -207,7 +208,36 @@ public class FunnyQuizGame extends GameController implements Game {
                 answerList.get(i).setText(answer.get(i));
             }
             setImage(quiz.getImagePath());
-            countdown();
+            timerLabel.setText(String.valueOf(TIME));
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
+                int time = Integer.parseInt(timerLabel.getText());
+                if (time > 0) {
+                    time--;
+                    timerLabel.setText(String.valueOf(time));
+                } else {
+                    timeline.stop();
+                    playing=false;
+                    startButton.setVisible(true);
+                    for (Button button : answerList) {
+                        String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
+                        if (button.getText().equals(answerText)) {
+                            button.getStyleClass().add("correctAnswer");
+                        } else {
+                            button.getStyleClass().add("wrongAnswer");
+                            answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
+                            startButton.setText("RESTART");
+                        }
+                    }
+                    AudioClip wrongAnswer = new AudioClip(getClass().getResource("audio/wrongAnswer.mp3").toString());
+                    if (checkVolume) {
+                        wrongAnswer.play();
+                    }
+                    notice(false);
+                }
+            }));
+            timeline.play();
             answerList.forEach(button -> {
                 button.setOnAction(event -> {
                     if (playing) {
@@ -250,8 +280,6 @@ public class FunnyQuizGame extends GameController implements Game {
             });
 
         });
-
-
     }
 
     @Override

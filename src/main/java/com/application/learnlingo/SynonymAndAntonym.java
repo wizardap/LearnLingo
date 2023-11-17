@@ -6,6 +6,8 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,6 +22,12 @@ import java.util.ResourceBundle;
 public abstract class SynonymAndAntonym extends GeneralController {
     public Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15;
     public Button[] buttons;
+    @FXML
+    private AnchorPane confirmAdd;
+    @FXML
+    private WebView wordOfDayWebView;
+
+    private WebEngine webEngine;
 
     public void setBut(String s, Button x){
         buttons = new Button[]{b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15};
@@ -166,18 +174,33 @@ public abstract class SynonymAndAntonym extends GeneralController {
 
         Background background = new Background(backgroundImage);
         center.setBackground(background);
+        webEngine=wordOfDayWebView.getEngine();
+        webEngine.loadContent(WordOfTheDay.getDefinition());
     }
 
     @FXML
     public void speakWordUS() {
+        String line = WordOfTheDay.getWordToday();
+        TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-us", "Mike", Integer.toString(DictionaryController.speedRate));
     }
 
     @FXML
     public void speakWordUK() {
+        String line = WordOfTheDay.getWordToday();
+        TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-gb", "LiLy", Integer.toString(DictionaryController.speedRate));
     }
 
     @FXML
     public void saveWordInBookMark() {
+        confirmAdd.setVisible(true);
+        btnYes.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            currentDictionary.setBookmark(WordOfTheDay.getWordToday());
+        });
+        btnNo.setOnAction(ev -> {
+            confirmAdd.setVisible(false);
+            currentDictionary.unsetBookmark(WordOfTheDay.getWordToday());
+        });
 
     }
 
