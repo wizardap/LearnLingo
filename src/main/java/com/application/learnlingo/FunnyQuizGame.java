@@ -364,4 +364,13 @@ public class FunnyQuizGame extends GameController implements Game {
         start();
     }
 
+    public void displayHighScores() {
+        if (checkVolume) {
+            click.play();
+        }
+        highscore.setOpacity(1);
+        highscore.setVisible(true);
+        menuGame.setVisible(false);
+    }
+
 }
