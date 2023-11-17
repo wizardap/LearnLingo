@@ -31,12 +31,7 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         checkStyle = true;
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        if (listWords.getItems().isEmpty()) {
-            introduction.setVisible(true);
-        } else {
-            displayListWord();
-            introduction.setVisible(false);
-        }
+        displayListWord();
     }
 
     @Override
@@ -61,12 +56,7 @@ public class BookMarkController extends DictionaryController {
             currentDictionary.unsetBookmark(selectedWord);
             listWords.getItems().removeIf(e -> e.equals(selectedWord));
             confirmAdd.setVisible(false);
-            if (listWords.getItems().isEmpty()) {
-                introduction.setVisible(true);
-            } else {
-                displayListWord();
-                introduction.setVisible(false);
-            }
+            displayListWord();
         });
         btnNo.setOnAction(ev -> confirmAdd.setVisible(false));
     }
@@ -88,12 +78,7 @@ public class BookMarkController extends DictionaryController {
             checkStyle = true;
         }
         listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
-        if (listWords.getItems().isEmpty()) {
-            introduction.setVisible(true);
-        } else {
-            displayListWord();
-            introduction.setVisible(false);
-        }
+        displayListWord();
     }
 
 
@@ -142,12 +127,6 @@ public class BookMarkController extends DictionaryController {
         changeL = !changeL;
         listWords.getItems().clear();
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-        if (listWords.getItems().isEmpty()) {
-            introduction.setVisible(true);
-        } else {
-            displayListWord();
-            introduction.setVisible(false);
-        }
     }
 
     @Override
@@ -155,12 +134,7 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().clear();
         textfield.setText("");
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
-        if (listWords.getItems().isEmpty()) {
-            introduction.setVisible(true);
-        } else {
-            displayListWord();
-            introduction.setVisible(false);
-        }
+        displayListWord();
     }
 
     @FXML

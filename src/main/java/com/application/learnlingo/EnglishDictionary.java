@@ -43,7 +43,22 @@ public class EnglishDictionary<T extends Word> extends DatabaseDictionary<T> {
 
     @Override
     public void insertWord(T newWord) {
+        if (prefixTree.contain(newWord.getWord())) {
+            throw new IllegalArgumentException("Error: Duplicated the word!");
+        }
+        String sql = "INSERT INTO " + tableName + " (word,html,isBookmarked) VALUES(?,?,?);";
 
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, newWord.getWord());
+            pstmt.setString(2, newWord.getHtml());
+            pstmt.setInt(3, newWord.isBookmarked() ? 1 : 0);
+            pstmt.executeUpdate();
+            prefixTree.put(newWord.getWord());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error: Couldn't insert word to database!");
+        }
     }
 
 

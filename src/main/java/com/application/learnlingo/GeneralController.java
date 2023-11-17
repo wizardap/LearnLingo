@@ -114,6 +114,9 @@ public class GeneralController implements Initializable {
     protected AudioClip musicGame = new AudioClip(TextTwistGame.class.getResource("audio/soundGame.mp3").toString());
 
     @FXML
+    protected Label wordOfDay;
+
+    @FXML
     public void handleKeyTyped(KeyEvent keyEvent) {
         listWords.getItems().clear();
         if (!textfield.getText().isEmpty()) {
@@ -211,6 +214,7 @@ public class GeneralController implements Initializable {
         dich.setOnAction(e -> AnimationChangeScene.handleButtonClick("TranslationController.fxml", container));
         synonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindSynonym.fxml", container));
         antonym.setOnAction(e -> AnimationChangeScene.handleButtonClick("FindAntonym.fxml", container));
+        DatabaseManager.connectingToDatabase(DATABASE_PATH + DATABASE_NAME);
     }
 
     @FXML

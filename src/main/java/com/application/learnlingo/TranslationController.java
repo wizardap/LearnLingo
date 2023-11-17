@@ -189,8 +189,13 @@ public class TranslationController extends GeneralController {
 
     public void chooseFileToTranslate() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.jpg"));
-        File initialDirectory = new File("imageToChoose");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.png"));
+        File initialDirectory;
+        if (changeModeTrans) {
+            initialDirectory = new File("imageToChooseInEnglish");
+        } else {
+            initialDirectory = new File("imageToChooseInVietnamese");
+        }
         fileChooser.setInitialDirectory(initialDirectory);
         fileChooser.setTitle("Open Resource File");
         java.io.File file = fileChooser.showOpenDialog(center.getScene().getWindow());

@@ -14,11 +14,21 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
 <BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.SynonymController">
    <center>
       <AnchorPane fx:id="center" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="298.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="US">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/speakVolume.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <AnchorPane layoutX="298.0" layoutY="58.0" prefHeight="227.0" prefWidth="390.0" style="-fx-background-color: white; -fx-border-color: #1d2a57; -fx-border-width: 4 0 0 0;">
                <children>
                   <Button fx:id="b1" layoutX="10.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#buttonClicked" stylesheets="@../../../synandant.css" text="bid" />
@@ -44,48 +54,21 @@
                </font>
             </Label>
             <JFXListView fx:id="listWords" layoutX="-2.0" layoutY="-2.0" onKeyPressed="#handleKeyEnterPress" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../../../vu.css" />
-            <AnchorPane layoutX="298.0" layoutY="294.0" prefHeight="234.0" prefWidth="390.0" style="-fx-background-color: #fec400;">
-               <children>
-                  <Label layoutX="107.0" layoutY="2.0" prefHeight="32.0" prefWidth="173.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Word of the day" />
-                  <Label layoutX="18.0" layoutY="31.0" style="-fx-font-weight: bold; -fx-font-size: 20;" text="Enormity" />
-                  <Label layoutX="69.0" layoutY="84.0" text="/əˈnɔːr.mə.t̬i/" />
-                  <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="12.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="US">
-                     <graphic>
-                        <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/speakVolume.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="210.0" layoutY="84.0" text="/ɪˈnɔː.mə.ti/" />
-                  <Button fx:id="speakUK" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="153.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="55.0" stylesheets="@../../../vu.css" text="UK">
-                     <graphic>
-                        <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/speakVolume.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="20.0" layoutY="61.0" style="-fx-font-style: italic; -fx-font-weight: bold;" text="adjective" />
-                  <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="235.0" layoutY="31.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../../../vu.css" text="Add to word list">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@image/bookmark.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="20.0" layoutY="106.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="very great size or importance:" />
-                  <Label layoutX="21.0" layoutY="130.0" style="-fx-font-style: italic;" text="- I don't think you realize the enormity of the problem." />
-                  <Label layoutX="21.0" layoutY="150.0" style="-fx-font-style: italic;" text="- The enormity of the wilderness awed us." />
-                  <Label layoutX="20.0" layoutY="167.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="a terrible or immoral act, or immoral something is:" />
-                  <Label layoutX="21.0" layoutY="188.0" style="-fx-font-style: italic;" text="- Shock over the enormity of the crime has subsided." />
-                  <Label layoutX="21.0" layoutY="209.0" style="-fx-font-style: italic;" text="- Goya’s etchings depict in shocking detail the enormities of war." />
-               </children>
-            </AnchorPane>
+            <WebView layoutX="297.0" layoutY="345.0" prefHeight="195.0" prefWidth="485.0" />
+            <Label fx:id="wordOfDay" layoutX="298.0" layoutY="285.0" prefHeight="30.0" prefWidth="155.0" style="-fx-font-weight: bold;" text="Word of the day">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="speakUK" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="389.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#speakWordUK" prefHeight="20.0" prefWidth="56.0" stylesheets="@../../../vu.css" text="UK">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/speakVolume.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </center>

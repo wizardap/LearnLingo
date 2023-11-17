@@ -49,11 +49,15 @@ public class GameController extends GeneralController {
     @FXML
     protected VBox htp;
 
-    protected AudioClip click = new AudioClip(getClass().getResource("audio/click.wav").toString());
+    @FXML
+    protected VBox highscore;
+
+    protected AudioClip click;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        click = new AudioClip(getClass().getResource("audio/click.wav").toString());
         BackgroundImage backgroundImage = new BackgroundImage(
                 new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("image/bg3.jpg")).toString(), 910, 600, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
@@ -162,6 +166,15 @@ public class GameController extends GeneralController {
             click.play();
         }
         credit.setVisible(false);
+        menuGame.setVisible(true);
+    }
+
+    @FXML
+    public void setAgainMenu2() {
+        if (checkVolume) {
+            click.play();
+        }
+        highscore.setVisible(false);
         menuGame.setVisible(true);
     }
 

@@ -170,18 +170,15 @@ public abstract class SynonymAndAntonym extends GeneralController {
 
     @FXML
     public void speakWordUS() {
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation("enormity").getWord(), "hl=en-us", "Mike", Integer.toString(DictionaryController.speedRate));
     }
 
     @FXML
     public void speakWordUK() {
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation("enormity").getWord(), "hl=en-gb", "LiLy", Integer.toString(DictionaryController.speedRate));
     }
 
     @FXML
     public void saveWordInBookMark() {
-        String selectedWord = "enormity";
-        currentDictionary.setBookmark(selectedWord);
+
     }
 
     public abstract void buttonClicked(MouseEvent mouseEvent);

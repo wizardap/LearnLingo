@@ -1,10 +1,7 @@
 package com.application.learnlingo;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -149,6 +146,41 @@ public class DictionaryController extends GeneralController {
         checkStyle = true;
         listWords.getItems().addAll(currentDictionary.exportHistoryList());
         displayListWord();
+    }
+
+    @FXML
+    public void handleClickOnSearch() {
+        if (listWords.getItems().contains(textfield.getText())) {
+            String selectedWord = textfield.getText();
+            listWords.getSelectionModel().select(selectedWord);
+            String meaningHTMLString = "";
+            meaningHTMLString = currentDictionary.getDefinition(selectedWord);
+            webEngine.loadContent(meaningHTMLString);
+            currentDictionary.insertToHistoryList(selectedWord);
+            if (changeL){
+                speakUS.setVisible(true);
+                speakUK.setVisible(true);
+                speakVN.setVisible(false);
+            }
+            else {
+                speakVN.setVisible(true);
+                speakUS.setVisible(false);
+                speakUK.setVisible(false);
+            }
+            bookmark.setVisible(true);
+        } else {
+            if (changeL) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setContentText("The word you are finding don't exist, try to find again");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Cảnh báo");
+                alert.setContentText("Từ bạn tìm dường như không tồn tại, bạn thử tra lại đi");
+                alert.showAndWait();
+            }
+        }
     }
 
 

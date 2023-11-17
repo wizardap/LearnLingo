@@ -74,6 +74,9 @@ public class TextTwistGame extends GameController implements Game {
     @FXML
     private VBox htp;
 
+    @FXML
+    private VBox highscore;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -90,6 +93,7 @@ public class TextTwistGame extends GameController implements Game {
         btnvolume.setGraphic(volume);
         credit.setVisible(false);
         htp.setVisible(false);
+        highscore.setVisible(false);
         menuGame.setVisible(false);
         menuGame.setTranslateX(620);
         left.setVisible(false);
@@ -414,7 +418,10 @@ public class TextTwistGame extends GameController implements Game {
                     if (GameUtils.status) {
                         start.setText("NEXT");
                         GameUtils.nextRound();
-                        // Thông báo hay animation thắng ở đây
+                        AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
+                        if (checkVolume) {
+                            winAll.play();
+                        }
                         musicGame.stop();
                     } else {
                         start.setText("RESTART");
@@ -501,6 +508,15 @@ public class TextTwistGame extends GameController implements Game {
     public void pause() {
         GameUtils.isPlaying=false;
         timeline.pause();
+    }
+
+    public void displayHighScores() {
+        if (checkVolume) {
+            click.play();
+        }
+        highscore.setOpacity(1);
+        highscore.setVisible(true);
+        menuGame.setVisible(false);
     }
 
 
