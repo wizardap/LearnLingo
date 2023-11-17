@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -134,11 +133,22 @@ public class DictionaryController extends GeneralController {
     }
 
     @FXML
-    public void handleSearchMouseClicked(MouseEvent mouseEvent) {
+    public void handleSearchMouseClicked() {
         if (textfield.getText().isEmpty() && listWords.getItems().isEmpty()) {
+            checkStyle = false;
+            listWords.setCellFactory(param -> new IconAndFontListCell());
             listWords.getItems().addAll(currentDictionary.exportHistoryList());
             displayListWord();
         }
+    }
+
+    @FXML
+    public void deleteSearch() {
+        listWords.getItems().clear();
+        textfield.setText("");
+        checkStyle = true;
+        listWords.getItems().addAll(currentDictionary.exportHistoryList());
+        displayListWord();
     }
 
 

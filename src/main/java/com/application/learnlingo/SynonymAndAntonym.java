@@ -70,7 +70,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
         changeL = !changeL;
     }
 
-    @Override
+    @FXML
     public void deleteSearch() {
         textfield.setText("");
         listWords.getItems().clear();
