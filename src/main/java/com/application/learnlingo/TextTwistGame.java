@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -77,10 +78,30 @@ public class TextTwistGame extends GameController implements Game {
     @FXML
     private VBox highscore;
 
+    @FXML
+    private AnchorPane loseGame;
+
+    @FXML
+    private AnchorPane winGame;
+
+    @FXML
+    private Button yesWin;
+
+    @FXML
+    private Button noWin;
+
+    @FXML
+    private Button yesLose;
+
+    @FXML
+    private Button noLose;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        loseGame.setVisible(false);
+        winGame.setVisible(false);
         Image image = new Image(getClass().getResource("image/music.png").toString());
         music = new ImageView(image);
         music.setFitWidth(21);
@@ -430,14 +451,38 @@ public class TextTwistGame extends GameController implements Game {
                     } else {
                         start.setText("RESTART");
                         GameUtils.restart();
+                        loseGame.setVisible(true);
                         AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
                         loseGame.play();
+
+                        // xử lý chơi lại ở đây nha
+                        yesLose.setOnAction(e -> {
+
+                        });
+
+                        noLose.setOnAction(e -> {
+
+                        });
+
                         musicGame.stop();
                         // Thông báo hay animation thua ở đây
                     }
 
                     if (GameUtils.numberOfTurn == dataList.size()) {
-                        // Thông báo hay animation phá đảo game ở đây
+                        AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
+                        if (checkVolume) {
+                            winAll.play();
+                        }
+                        musicGame.stop();
+                        winGame.setVisible(true);
+
+                        yesWin.setOnAction(e1 -> {
+
+                        });
+
+                        noWin.setOnAction(e1 -> {
+
+                        });
                     }
                     notice(GameUtils.status);
                     if (GameUtils.status){
@@ -447,6 +492,16 @@ public class TextTwistGame extends GameController implements Game {
                     else {
                         start.setText("RESTART");
                         GameUtils.restart();
+                        loseGame.setVisible(true);
+                        musicGame.stop();
+
+                        yesLose.setOnAction(e -> {
+
+                        });
+
+                        noLose.setOnAction(e -> {
+
+                        });
                     }
 
                 }

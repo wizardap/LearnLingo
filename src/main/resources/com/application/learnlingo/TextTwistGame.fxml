@@ -428,6 +428,32 @@
                   </Button>
                </children>
             </VBox>
+            <AnchorPane fx:id="loseGame" layoutX="370.0" layoutY="135.0" prefHeight="226.0" prefWidth="200.0" style="-fx-background-color: #FEC400;">
+               <children>
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU LOSE THE GAME" />
+                  <ImageView fitHeight="132.0" fitWidth="134.0" layoutX="34.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/loseGame.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="48.0" layoutY="166.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesLose" layoutX="48.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noLose" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="winGame" layoutX="370.0" layoutY="135.0" prefHeight="226.0" prefWidth="200.0" style="-fx-background-color: #FEC400;">
+               <children>
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU WIN THE GAME" />
+                  <ImageView fitHeight="175.0" fitWidth="186.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/winGame.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="48.0" layoutY="166.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesWin" layoutX="48.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noWin" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>

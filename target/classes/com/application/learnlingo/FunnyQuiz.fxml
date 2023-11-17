@@ -67,19 +67,14 @@
             </HBox>
             <Button fx:id="startButton" layoutX="615.0" layoutY="505.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" styleClass="tilte-bar" stylesheets="@../../../game.css" text="START HERE" />
             <Button fx:id="menuButton" layoutX="742.0" layoutY="505.0" mnemonicParsing="false" onAction="#setMenuGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="Menu" />
-            <VBox fx:id="menuGame" layoutX="314.0" layoutY="66.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+            <VBox fx:id="menuGame" layoutX="314.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
                <children>
                   <JFXButton onAction="#setHowToPlay" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HOW TO PLAY">
                      <VBox.margin>
                         <Insets left="50.0" top="10.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="171.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HIGH SCORES">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton layoutX="24.0" layoutY="20.0" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="DIFFICULTY">
+                  <JFXButton layoutX="10.0" layoutY="171.0" onAction="#displayHighScores" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HIGH SCORES">
                      <VBox.margin>
                         <Insets left="50.0" top="10.0" />
                      </VBox.margin>
@@ -265,6 +260,32 @@
                   </Button>
                </children>
             </VBox>
+            <AnchorPane fx:id="loseGame" layoutX="371.0" layoutY="100.0" prefHeight="226.0" prefWidth="200.0" style="-fx-background-color: #FEC400;">
+               <children>
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU LOSE THE GAME" />
+                  <ImageView fitHeight="132.0" fitWidth="134.0" layoutX="34.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/loseGame.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="48.0" layoutY="166.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesLose" layoutX="48.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noLose" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="winGame" layoutX="370.0" layoutY="100.0" prefHeight="226.0" prefWidth="200.0" style="-fx-background-color: #FEC400;">
+               <children>
+                  <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU WIN THE GAME" />
+                  <ImageView fitHeight="177.0" fitWidth="186.0" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/winGame.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="48.0" layoutY="166.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesWin" layoutX="48.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noWin" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>

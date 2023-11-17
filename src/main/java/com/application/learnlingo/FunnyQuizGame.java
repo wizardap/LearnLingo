@@ -102,6 +102,24 @@ public class FunnyQuizGame extends GameController implements Game {
     @FXML
     private VBox highscore;
 
+    @FXML
+    private AnchorPane loseGame;
+
+    @FXML
+    private AnchorPane winGame;
+
+    @FXML
+    private Button yesWin;
+
+    @FXML
+    private Button noWin;
+
+    @FXML
+    private Button yesLose;
+
+    @FXML
+    private Button noLose;
+
     private void countdown() {
         timerLabel.setText(String.valueOf(TIME));
         timeline = new Timeline();
@@ -112,7 +130,20 @@ public class FunnyQuizGame extends GameController implements Game {
                 time--;
                 timerLabel.setText(String.valueOf(time));
             } else {
+                loseGame.setVisible(true);
+                AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
+                loseGame.play();
+                musicGame.stop();
                 timeline.stop();
+
+                yesLose.setOnAction(e1 -> {
+
+                });
+
+                noLose.setOnAction(e1 -> {
+
+                });
+
                 playing=false;
                 notice(false);
             }
@@ -262,6 +293,16 @@ public class FunnyQuizGame extends GameController implements Game {
                                 if (checkVolume) {
                                     winAll.play();
                                 }
+                                winGame.setVisible(true);
+                                musicGame.stop();
+
+                                yesWin.setOnAction(e1 -> {
+
+                                });
+
+                                noWin.setOnAction(e1 -> {
+
+                                });
                             }
                         } else {
                             AudioClip wrongAnswer = new AudioClip(getClass().getResource("audio/wrongAnswer.mp3").toString());
@@ -271,6 +312,19 @@ public class FunnyQuizGame extends GameController implements Game {
                             button.getStyleClass().add("wrongAnswer");
                             answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
                             startButton.setText("RESTART");
+                            loseGame.setVisible(true);
+                            AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
+                            loseGame.play();
+                            musicGame.stop();
+
+                            yesLose.setOnAction(e1 -> {
+
+                            });
+
+                            noLose.setOnAction(e1 -> {
+
+                            });
+
                             notice(false);
                         }
                         playing = false;
@@ -314,6 +368,8 @@ public class FunnyQuizGame extends GameController implements Game {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        loseGame.setVisible(false);
+        winGame.setVisible(false);
         highscore.setVisible(false);
         Image image = new Image(getClass().getResource("image/music.png").toString());
         music = new ImageView(image);
@@ -334,6 +390,15 @@ public class FunnyQuizGame extends GameController implements Game {
         setImage(IMAGE_PATH + "rome");
         init();
         start();
+    }
+
+    public void displayHighScores() {
+        if (checkVolume) {
+            click.play();
+        }
+        highscore.setOpacity(1);
+        highscore.setVisible(true);
+        menuGame.setVisible(false);
     }
 
 }
