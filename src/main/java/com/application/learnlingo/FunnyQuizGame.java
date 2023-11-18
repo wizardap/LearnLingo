@@ -34,6 +34,15 @@ public class FunnyQuizGame extends GameController implements Game {
     private static final int DEFAULT_CORRECT_PENALTY = 10;
     private static int score = 0;
     private static int round = 1;
+    public static ArrayList<Integer> bxh = new ArrayList<>();
+    @FXML
+    public Label top1;
+    @FXML
+    public Label top2;
+    @FXML
+    public Label top3;
+    @FXML
+    public Label top4;
     @FXML
     public Button startButton;
     @FXML
@@ -240,6 +249,8 @@ public class FunnyQuizGame extends GameController implements Game {
                     time--;
                     timerLabel.setText(String.valueOf(time));
                 } else {
+                    bxh.add(score);
+                    Collections.sort(bxh,Collections.reverseOrder());
                     timeline.stop();
                     playing = false;
                     loseGame.setVisible(true);
@@ -262,6 +273,7 @@ public class FunnyQuizGame extends GameController implements Game {
                         wrongAnswer.play();
                     }
                     notice(false);
+
                 }
             }));
             timeline.play();
@@ -290,6 +302,8 @@ public class FunnyQuizGame extends GameController implements Game {
                                 startButton.setText("NEXT");
                             }
                         } else {
+                            bxh.add(score);
+                            Collections.sort(bxh,Collections.reverseOrder());
                             AudioClip wrongAnswer = new AudioClip(getClass().getResource("audio/wrongAnswer.mp3").toString());
                             if (checkVolume) {
                                 wrongAnswer.play();
@@ -324,6 +338,7 @@ public class FunnyQuizGame extends GameController implements Game {
             AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
             loseGame.play();
             musicGame.stop();
+
         }
     }
 
@@ -381,6 +396,38 @@ public class FunnyQuizGame extends GameController implements Game {
     public void displayHighScores() {
         if (checkVolume) {
             click.play();
+        }
+        switch (bxh.size()){
+            case 0:
+                top1.setText("0");
+                top2.setText("0");
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 1:
+                top1.setText(bxh.get(0).toString());
+                top2.setText("0");
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 2:
+                top1.setText(bxh.get(0).toString());
+                top2.setText(bxh.get(1).toString());
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 3:
+                top1.setText(bxh.get(0).toString());
+                top2.setText(bxh.get(1).toString());
+                top3.setText(bxh.get(2).toString());
+                top4.setText("0");
+                break;
+            default:
+                top1.setText(bxh.get(0).toString());
+                top2.setText(bxh.get(1).toString());
+                top3.setText(bxh.get(2).toString());
+                top4.setText(bxh.get(3).toString());
+                break;
         }
         highscore.setOpacity(1);
         highscore.setVisible(true);

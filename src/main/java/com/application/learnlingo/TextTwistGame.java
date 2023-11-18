@@ -29,7 +29,15 @@ public class TextTwistGame extends GameController implements Game {
     private static double maxCharacter = 0;
     private static double maxWord = 0;
     private static List<List<String>> dataList = new ArrayList<>();
-
+    private ArrayList<Integer>bxh = new ArrayList<>();
+    @FXML
+    public Label top1;
+    @FXML
+    public Label top2;
+    @FXML
+    public Label top3;
+    @FXML
+    public Label top4;
     @FXML
     private BorderPane container;
     @FXML
@@ -517,6 +525,10 @@ public class TextTwistGame extends GameController implements Game {
             musicGame.stop();
         }
         else{
+            bxh.add(GameUtils.score);
+            Collections.sort(bxh,Collections.reverseOrder());
+            System.out.println(bxh);
+            System.out.println(bxh.size());
             start.setText("RESTART");
             loseGame.setVisible(true);
             AudioClip loseGameSound = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
@@ -543,6 +555,38 @@ public class TextTwistGame extends GameController implements Game {
     public void displayHighScores() {
         if (checkVolume) {
             click.play();
+        }
+        switch (bxh.size()){
+            case 0:
+                top1.setText("0");
+                top2.setText("0");
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 1:
+                top1.setText(bxh.get(0).toString());
+                top2.setText("0");
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 2:
+                top1.setText(bxh.get(0).toString());
+                top2.setText(bxh.get(1).toString());
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 3:
+                top1.setText(bxh.get(0).toString());
+                top2.setText(bxh.get(1).toString());
+                top3.setText(bxh.get(2).toString());
+                top4.setText("0");
+                break;
+            default:
+                top1.setText(bxh.get(0).toString());
+                top2.setText(bxh.get(1).toString());
+                top3.setText(bxh.get(2).toString());
+                top4.setText(bxh.get(3).toString());
+                break;
         }
         highscore.setOpacity(1);
         highscore.setVisible(true);
