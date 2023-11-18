@@ -126,14 +126,15 @@ public class BookMarkController extends DictionaryController {
         }
         changeL = !changeL;
         listWords.getItems().clear();
-        listWords.getItems().addAll(currentDictionary.exportBookmarkList());
+        listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+        displayListWord();
     }
 
     @Override
     public void deleteSearch() {
         listWords.getItems().clear();
         textfield.setText("");
-        listWords.getItems().addAll(currentDictionary.exportBookmarkList());
+        listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
         displayListWord();
     }
 
