@@ -246,7 +246,6 @@ public class FunnyQuizGame extends GameController implements Game {
                     AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
                     loseGame.play();
                     musicGame.stop();
-                    startButton.setVisible(true);
                     for (Button button : answerList) {
                         String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
                         if (button.getText().equals(answerText)) {
@@ -272,13 +271,13 @@ public class FunnyQuizGame extends GameController implements Game {
                             click.play();
                         }
                         timeline.stop();
-                        startButton.setVisible(true);
                         String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
                         if (button.getText().equals(answerText)) {
                             AudioClip rightAnswer = new AudioClip(getClass().getResource("audio/rightAnswer.mp3").toString());
                             if (checkVolume) {
                                 rightAnswer.play();
                             }
+                            startButton.setVisible(true);
                             button.getStyleClass().add("correctAnswer");
                             score += DEFAULT_CORRECT_PENALTY;
                             scoreLabel.setText(String.valueOf(score));

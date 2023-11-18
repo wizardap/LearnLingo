@@ -24,7 +24,7 @@ import java.sql.Statement;
 import java.util.*;
 
 public class TextTwistGame extends GameController implements Game {
-    private static final int DEFAULT_TIME_SECOND = 120;
+    private static final int DEFAULT_TIME_SECOND = 5;
     private static final double DEFAULT_BOX_HEIGHT = 64;
     private static double maxCharacter = 0;
     private static double maxWord = 0;
@@ -122,7 +122,6 @@ public class TextTwistGame extends GameController implements Game {
         loadDataFromDatabase();
         timerLabel.setText(String.valueOf(GameUtils.seconds));
         start.setText("START HERE");
-        GameUtils.numberOfTurn = 1;
         init();
         GameUtils.numberOfTurn=1;
         GameUtils.score = 0;
@@ -439,7 +438,6 @@ public class TextTwistGame extends GameController implements Game {
                     GameUtils.isPlaying = false;
                     click.stop();
                     timeline.stop();
-                    start.setVisible(true);
                     notice(GameUtils.status);
                 }
             }
@@ -476,6 +474,7 @@ public class TextTwistGame extends GameController implements Game {
         scoreLabel.setText(String.valueOf(GameUtils.score));
         yesLose.setOnMouseClicked(e -> {
             loseGame.setVisible(false);
+            GameUtils.restart();
             startGame();
         });
 
@@ -484,6 +483,7 @@ public class TextTwistGame extends GameController implements Game {
         });
         yesWin.setOnMouseClicked(e1 -> {
             winGame.setVisible(false);
+            GameUtils.restart();
             startGame();
         });
 
@@ -508,6 +508,7 @@ public class TextTwistGame extends GameController implements Game {
             winGame.setVisible(true);
         }
         if (isWon){
+            start.setVisible(true);
             start.setText("NEXT");
             GameUtils.nextRound();
             AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
