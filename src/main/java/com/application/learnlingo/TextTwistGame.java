@@ -31,6 +31,14 @@ public class TextTwistGame extends GameController implements Game {
     private static List<List<String>> dataList = new ArrayList<>();
 
     @FXML
+    public Label top1;
+    @FXML
+    public Label top2;
+    @FXML
+    public Label top3;
+    @FXML
+    public Label top4;
+    @FXML
     private BorderPane container;
     @FXML
     private Button refresh;
@@ -518,6 +526,10 @@ public class TextTwistGame extends GameController implements Game {
             musicGame.stop();
         }
         else{
+            GameUtils.bxh.add(GameUtils.score);
+            Collections.sort(GameUtils.bxh,Collections.reverseOrder());
+            System.out.println(GameUtils.bxh);
+            System.out.println(GameUtils.bxh.size());
             start.setText("RESTART");
             loseGame.setVisible(true);
             AudioClip loseGameSound = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
@@ -545,6 +557,38 @@ public class TextTwistGame extends GameController implements Game {
         if (checkVolume) {
             click.play();
         }
+        switch (GameUtils.bxh.size()){
+            case 0:
+                top1.setText("0");
+                top2.setText("0");
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 1:
+                top1.setText(GameUtils.bxh.get(0).toString());
+                top2.setText("0");
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 2:
+                top1.setText(GameUtils.bxh.get(0).toString());
+                top2.setText(GameUtils.bxh.get(1).toString());
+                top3.setText("0");
+                top4.setText("0");
+                break;
+            case 3:
+                top1.setText(GameUtils.bxh.get(0).toString());
+                top2.setText(GameUtils.bxh.get(1).toString());
+                top3.setText(GameUtils.bxh.get(2).toString());
+                top4.setText("0");
+                break;
+            default:
+                top1.setText(GameUtils.bxh.get(0).toString());
+                top2.setText(GameUtils.bxh.get(1).toString());
+                top3.setText(GameUtils.bxh.get(2).toString());
+                top4.setText(GameUtils.bxh.get(3).toString());
+                break;
+        }
         highscore.setOpacity(1);
         highscore.setVisible(true);
         menuGame.setVisible(false);
@@ -563,6 +607,7 @@ public class TextTwistGame extends GameController implements Game {
         public static int seconds = DEFAULT_TIME_SECOND;
         public static int score = 0;
         public static int menuButtonClicked = 0;
+        public static ArrayList<Integer>bxh = new ArrayList<>();
         public static void init() {
             menuButtonClicked = 0;
             isPlaying = false;

@@ -401,22 +401,22 @@
                         <Insets left="60.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="50">
+                  <Label fx:id="top1" alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;">
                      <VBox.margin>
                         <Insets left="100.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="30">
+                  <Label fx:id="top2" alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;">
                      <VBox.margin>
                         <Insets left="100.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="199.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="20">
+                  <Label fx:id="top3" alignment="CENTER" layoutX="13.0" layoutY="199.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;">
                      <VBox.margin>
                         <Insets left="100.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="113.0" layoutY="207.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="10">
+                  <Label fx:id="top4" alignment="CENTER" layoutX="113.0" layoutY="207.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;">
                      <VBox.margin>
                         <Insets left="100.0" top="10.0" />
                      </VBox.margin>
