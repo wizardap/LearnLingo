@@ -30,7 +30,7 @@ public class BookMarkController extends DictionaryController {
         checkMode1.setVisible(false);
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         checkStyle = true;
-        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
+        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCellInBookMark());
         displayListWord();
     }
 
