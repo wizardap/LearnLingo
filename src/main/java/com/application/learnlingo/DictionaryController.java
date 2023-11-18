@@ -29,7 +29,9 @@ public class DictionaryController extends GeneralController {
     protected Button btnNo;
     @FXML
     protected AnchorPane confirmAdd;
-
+    private static String selectedWord;
+    @FXML
+    private Label wordOfDay;
 
     protected void displayListWord() {
         int k = listWords.getItems().size();
@@ -79,29 +81,28 @@ public class DictionaryController extends GeneralController {
         speakUS.setVisible(false);
         speakVN.setVisible(false);
         listWords.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        loadWordOfTheDay(true);
 
     }
     @FXML
     public void speakWordVN() {
-        String line = currentDictionary.getHistoryString(0);
+        String line = selectedWord;
         TextToSpeech pronounce = new TextToSpeech(veDict.getWordInformation(line).getWord(), "hl=vi-vn","Chi", Integer.toString(speedRate));
     }
     @FXML
     public void speakWordUS() {
-        String line = currentDictionary.getHistoryString(0);
+        String line = selectedWord;
         TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-us", "Mike", Integer.toString(speedRate));
     }
 
     @FXML
     public void speakWordUK() {
-        String line = currentDictionary.getHistoryString(0);
+        String line = selectedWord;
         TextToSpeech pronounce = new TextToSpeech(evDict.getWordInformation(line).getWord(), "hl=en-gb", "LiLy", Integer.toString(speedRate));
-
     }
 
     @FXML
     public void saveWordInBookMark() {
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
         confirmAdd.setVisible(true);
         btnYes.setOnAction(ev -> {
             confirmAdd.setVisible(false);
@@ -118,6 +119,7 @@ public class DictionaryController extends GeneralController {
         introduction.setVisible(false);
         displayExtensionButton(false);
         listWords.getItems().clear();
+        loadWordOfTheDay(true);
         if (!textfield.getText().isEmpty()) {
             listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
             checkStyle = false;
@@ -129,10 +131,22 @@ public class DictionaryController extends GeneralController {
         displayListWord();
     }
 
+    private void loadWordOfTheDay(boolean show) {
+        if (show) {
+            webEngine.loadContent(WordOfTheDay.getDefinition());
+            selectedWord = WordOfTheDay.getWordToday();
+        }
+        speakUS.setVisible(show);
+        speakUK.setVisible(show);
+        bookmark.setVisible(show);
+        wordOfDay.setVisible(show);
+    }
+
     @FXML
     public void handleSearchMouseClicked() {
         if (textfield.getText().isEmpty() && listWords.getItems().isEmpty()) {
-            checkStyle = false;
+            introduction.setVisible(false);
+            checkStyle = true;
             listWords.setCellFactory(param -> new IconAndFontListCell());
             listWords.getItems().addAll(currentDictionary.exportHistoryList());
             displayListWord();
@@ -143,6 +157,7 @@ public class DictionaryController extends GeneralController {
     public void deleteSearch() {
         listWords.getItems().clear();
         textfield.setText("");
+        loadWordOfTheDay(true);
         checkStyle = true;
         listWords.getItems().addAll(currentDictionary.exportHistoryList());
         displayListWord();
@@ -151,7 +166,8 @@ public class DictionaryController extends GeneralController {
     @FXML
     public void handleClickOnSearch() {
         if (listWords.getItems().contains(textfield.getText())) {
-            String selectedWord = textfield.getText();
+            loadWordOfTheDay(false);
+            selectedWord = textfield.getText();
             listWords.getSelectionModel().select(selectedWord);
             String meaningHTMLString = "";
             meaningHTMLString = currentDictionary.getDefinition(selectedWord);
@@ -183,13 +199,21 @@ public class DictionaryController extends GeneralController {
         }
     }
 
+    @FXML
+    public void handlePressEnterInTextField(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            handleClickOnSearch();
+        }
+    }
+
 
     @FXML
     public void handleMouseClicked() {
-        String selectedWord = listWords.getSelectionModel().getSelectedItem();
+        selectedWord = listWords.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             String meaningHTMLString = "";
             meaningHTMLString = currentDictionary.getDefinition(selectedWord);
+            loadWordOfTheDay(false);
             webEngine.loadContent(meaningHTMLString);
             currentDictionary.insertToHistoryList(selectedWord);
             if (changeL){
@@ -290,9 +314,17 @@ public class DictionaryController extends GeneralController {
     public void changeMode() {
         super.changeMode();
         confirmAdd.setVisible(false);
-        displayExtensionButton(false);
-        webEngine.loadContent("");
+        webEngine.loadContent(WordOfTheDay.getDefinition());
         listWords.getItems().clear();
         textfield.clear();
+        if (currentDictionary == evDict) {
+            bookmark.setVisible(true);
+            speakUS.setVisible(true);
+            speakUK.setVisible(true);
+        } else {
+            bookmark.setVisible(false);
+        }
+        wordOfDay.setVisible(true);
+        speakVN.setVisible(false);
     }
 }

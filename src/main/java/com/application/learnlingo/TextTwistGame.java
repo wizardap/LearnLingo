@@ -293,13 +293,17 @@ public class TextTwistGame extends GameController implements Game {
                 System.out.println(GameUtils.wordList);
                 int id = GameUtils.wordList.indexOf(enterWord.toString());
                 if (id != -1) {
-                    GameUtils.modifyScore(GameUtils.DEFAULT_SCORE_EACH_CORRECT_WORD);
-                    System.out.println("Found!");
+                    String guessWord ="";
                     HBox wordHbox = GameUtils.wordListHbox.get(id);
                     for (int j = 0; j < wordHbox.getChildren().size(); j++) {
                         Label visibleCharacter = (Label) wordHbox.getChildren().get(j);
+                        guessWord += visibleCharacter.getText();
                         visibleCharacter.setText(String.valueOf(enterWord.charAt(j)));
                     }
+                    if (!guessWord.equals(enterWord.toString())) {
+                        GameUtils.modifyScore(GameUtils.DEFAULT_SCORE_EACH_CORRECT_WORD);
+                    }
+                    System.out.println("Found!");
                     AudioClip rightAnswer = new AudioClip(GameUtils.class.getResource("audio/rightAnswer.mp3").toString());
                     if (checkVolume) {
                         rightAnswer.play();
@@ -436,70 +440,7 @@ public class TextTwistGame extends GameController implements Game {
                     click.stop();
                     timeline.stop();
                     start.setVisible(true);
-                    if (GameUtils.status) {
-                        start.setText("NEXT");
-                        GameUtils.nextRound();
-                        AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
-                        if (checkVolume) {
-                            winAll.play();
-                        }
-                        musicGame.stop();
-                    } else {
-                        start.setText("RESTART");
-                        GameUtils.restart();
-                        loseGame.setVisible(true);
-                        AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
-                        loseGame.play();
-
-                        // xử lý chơi lại ở đây nha
-                        yesLose.setOnAction(e -> {
-
-                        });
-
-                        noLose.setOnAction(e -> {
-
-                        });
-
-                        musicGame.stop();
-                        // Thông báo hay animation thua ở đây
-                    }
-
-                    if (GameUtils.numberOfTurn == dataList.size()) {
-                        AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
-                        if (checkVolume) {
-                            winAll.play();
-                        }
-                        musicGame.stop();
-                        winGame.setVisible(true);
-
-                        yesWin.setOnAction(e1 -> {
-
-                        });
-
-                        noWin.setOnAction(e1 -> {
-
-                        });
-                    }
                     notice(GameUtils.status);
-                    if (GameUtils.status){
-                        start.setText("NEXT");
-                       GameUtils.nextRound();
-                    }
-                    else {
-                        start.setText("RESTART");
-                        GameUtils.restart();
-                        loseGame.setVisible(true);
-                        musicGame.stop();
-
-                        yesLose.setOnAction(e -> {
-
-                        });
-
-                        noLose.setOnAction(e -> {
-
-                        });
-                    }
-
                 }
             }
         }));
@@ -533,6 +474,22 @@ public class TextTwistGame extends GameController implements Game {
         GameUtils.isPlaying = true;
         roundLabel.setText(String.valueOf(GameUtils.numberOfTurn));
         scoreLabel.setText(String.valueOf(GameUtils.score));
+        yesLose.setOnMouseClicked(e -> {
+            loseGame.setVisible(false);
+            startGame();
+        });
+
+        noLose.setOnAction(e -> {
+            AnimationChangeScene.handleButtonClick("game.fxml",container);
+        });
+        yesWin.setOnMouseClicked(e1 -> {
+            winGame.setVisible(false);
+            startGame();
+        });
+
+        noWin.setOnMouseClicked(e1 -> {
+            AnimationChangeScene.handleButtonClick("game.fxml",container);
+        });
     }
 
     @Override
@@ -543,13 +500,31 @@ public class TextTwistGame extends GameController implements Game {
     @Override
     public void notice(boolean isWon) {
         if (GameUtils.numberOfTurn == dataList.size()){
-            // Thông báo hay animation phá đảo game ở đây
+            AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
+            if (checkVolume) {
+                winAll.play();
+            }
+            musicGame.stop();
+            winGame.setVisible(true);
         }
         if (isWon){
-            // Thông báo hay animation về chiến thắng ở đây
+            start.setText("NEXT");
+            GameUtils.nextRound();
+            AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
+            if (checkVolume) {
+                winAll.play();
+            }
+            musicGame.stop();
         }
         else{
-            // Thông báo hay animation về thua cuộc ở đây
+            start.setText("RESTART");
+            loseGame.setVisible(true);
+            AudioClip loseGameSound = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
+            if (checkVolume) {
+                loseGameSound.play();
+            }
+            // xử lý chơi lại ở đây nha
+            musicGame.stop();
         }
     }
 

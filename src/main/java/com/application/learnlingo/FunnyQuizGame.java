@@ -120,35 +120,6 @@ public class FunnyQuizGame extends GameController implements Game {
     @FXML
     private Button noLose;
 
-    private void countdown() {
-        timerLabel.setText(String.valueOf(TIME));
-        timeline = new Timeline();
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
-            int time = Integer.parseInt(timerLabel.getText());
-            if (time > 0) {
-                time--;
-                timerLabel.setText(String.valueOf(time));
-            } else {
-                loseGame.setVisible(true);
-                AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
-                loseGame.play();
-                musicGame.stop();
-                timeline.stop();
-
-                yesLose.setOnAction(e1 -> {
-
-                });
-
-                noLose.setOnAction(e1 -> {
-
-                });
-
-                notice(false);
-            }
-        }));
-        timeline.play();
-    }
 
     private void loadDataFromDatabase() {
         Connection connection = DatabaseManager.getConnection(DB_PATH);
@@ -203,8 +174,32 @@ public class FunnyQuizGame extends GameController implements Game {
         answerList.add(answerB);
         answerList.add(answerC);
         answerList.add(answerD);
+        score = 0;
+        round = 1;
         loadDataFromDatabase();
         Collections.shuffle(quizList);
+        yesLose.setOnMouseClicked(e1 -> {
+            loseGame.setVisible(false);
+            if (checkAudio) {
+                musicGame.play();
+            }
+            init();
+            startButton.getOnMouseClicked().handle(e1);
+        });
+
+        noLose.setOnMouseClicked(e1 -> {
+            AnimationChangeScene.handleButtonClick("game.fxml", container);
+        });
+        yesWin.setOnMouseClicked(e1 -> {
+            winGame.setVisible(false);
+            init();
+            startButton.getOnMouseClicked().handle(e1);
+        });
+
+        noWin.setOnMouseClicked(e1 -> {
+            AnimationChangeScene.handleButtonClick("game.fxml", container);
+        });
+
     }
 
     @Override
@@ -219,8 +214,8 @@ public class FunnyQuizGame extends GameController implements Game {
             playing = true;
             startButton.setVisible(false);
             answerList.forEach(button -> {
-                button.getStyleClass().remove("correctAnswer");
-                button.getStyleClass().remove("wrongAnswer");
+                button.getStyleClass().removeIf(eg -> eg.equals("correctAnswer"));
+                button.getStyleClass().removeIf(eg -> eg.equals("wrongAnswer"));
             });
             if (startButton.getText().equals("NEXT")) {
                 round++;
@@ -238,7 +233,40 @@ public class FunnyQuizGame extends GameController implements Game {
                 answerList.get(i).setText(answer.get(i));
             }
             setImage(quiz.getImagePath());
-            countdown();
+            timerLabel.setText(String.valueOf(TIME));
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
+                int time = Integer.parseInt(timerLabel.getText());
+                if (time > 0) {
+                    time--;
+                    timerLabel.setText(String.valueOf(time));
+                } else {
+                    timeline.stop();
+                    playing = false;
+                    loseGame.setVisible(true);
+                    AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
+                    loseGame.play();
+                    musicGame.stop();
+                    startButton.setVisible(true);
+                    for (Button button : answerList) {
+                        String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
+                        if (button.getText().equals(answerText)) {
+                            button.getStyleClass().add("correctAnswer");
+                        } else {
+                            button.getStyleClass().add("wrongAnswer");
+                            answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
+                            startButton.setText("RESTART");
+                        }
+                    }
+                    AudioClip wrongAnswer = new AudioClip(getClass().getResource("audio/wrongAnswer.mp3").toString());
+                    if (checkVolume) {
+                        wrongAnswer.play();
+                    }
+                    notice(false);
+                }
+            }));
+            timeline.play();
             answerList.forEach(button -> {
                 button.setOnAction(event -> {
                     if (playing) {
@@ -256,23 +284,12 @@ public class FunnyQuizGame extends GameController implements Game {
                             button.getStyleClass().add("correctAnswer");
                             score += DEFAULT_CORRECT_PENALTY;
                             scoreLabel.setText(String.valueOf(score));
-                            startButton.setText("NEXT");
                             if (round == quizList.size()) {
                                 notice(true);
-                                AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
-                                if (checkVolume) {
-                                    winAll.play();
-                                }
-                                winGame.setVisible(true);
-                                musicGame.stop();
-
-                                yesWin.setOnAction(e1 -> {
-
-                                });
-
-                                noWin.setOnAction(e1 -> {
-
-                                });
+                                round = 1;
+                                score = 0;
+                            } else {
+                                startButton.setText("NEXT");
                             }
                         } else {
                             AudioClip wrongAnswer = new AudioClip(getClass().getResource("audio/wrongAnswer.mp3").toString());
@@ -281,20 +298,6 @@ public class FunnyQuizGame extends GameController implements Game {
                             }
                             button.getStyleClass().add("wrongAnswer");
                             answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
-                            startButton.setText("RESTART");
-                            loseGame.setVisible(true);
-                            AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
-                            loseGame.play();
-                            musicGame.stop();
-
-                            yesLose.setOnAction(e1 -> {
-
-                            });
-
-                            noLose.setOnAction(e1 -> {
-
-                            });
-
                             notice(false);
                         }
                         playing = false;
@@ -304,13 +307,26 @@ public class FunnyQuizGame extends GameController implements Game {
             });
 
         });
-
-
     }
 
     @Override
     public void notice(boolean isWon) {
-
+        if (isWon){
+            AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
+            if (checkVolume) {
+                winAll.play();
+            }
+            winGame.setVisible(true);
+            musicGame.stop();
+            startButton.setText("RESTART");
+        }
+        else {
+            startButton.setText("RESTART");
+            loseGame.setVisible(true);
+            AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
+            loseGame.play();
+            musicGame.stop();
+        }
     }
 
     @Override

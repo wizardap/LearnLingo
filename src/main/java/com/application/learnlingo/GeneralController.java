@@ -37,6 +37,7 @@ public class GeneralController implements Initializable {
     protected static DatabaseDictionary<Word> currentDictionary = evDict;
     protected static DatabaseDictionary<Word> veDict = new VietnameseDictionary(DATABASE_PATH, DATABASE_NAME, "VA", "defaultVA");
     protected static File feedbackTxt = new File(FEEDBACK_TXT_PATH);
+    protected static WordOfTheDay wordOfTheDay = new WordOfTheDay();
     @FXML
     protected Button btnYes;
 

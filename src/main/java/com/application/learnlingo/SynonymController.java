@@ -1,7 +1,10 @@
 package com.application.learnlingo;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,6 +21,11 @@ public class SynonymController extends SynonymAndAntonym {
         super.buttonClicked(mouseEvent, "syn");
     }
 
+    @FXML
+    public void handleClickOnSearch() {super.handleClickOnSearch("syn");}
+
+    @FXML
+    public void handlePressEnterInTextField(KeyEvent event) {super.handlePressEnterInTextField(event, "syn");}
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
