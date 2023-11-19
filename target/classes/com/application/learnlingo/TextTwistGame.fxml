@@ -287,7 +287,7 @@
                   <HBox layoutX="498.0" layoutY="10.0" prefHeight="52.0" prefWidth="150.0" styleClass="hbox-title-bar">
                      <children>
                         <Label prefHeight="49.0" prefWidth="105.0" styleClass="tilte-bar" text=" HIGH SCORE" />
-                        <Label fx:id="roundLabel1" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                        <Label fx:id="highScoreLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
                      </children>
                   </HBox>
                </children>

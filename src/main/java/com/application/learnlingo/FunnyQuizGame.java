@@ -17,6 +17,8 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -28,13 +30,14 @@ public class FunnyQuizGame extends GameController implements Game {
 
     private static final String DB_PATH =
             "./src/main/resources/com/application/learnlingo/database/quiz.db";
+    private static final String DEFAULT_HIGH_SCORE_FILE_PATH =
+            "./src/main/resources/com/application/learnlingo/database/FunnyQuizGameHighScore.txt";
     private static final String IMAGE_PATH =
             "imageFunnyQuiz/";
     private static final int TIME = 15;
     private static final int DEFAULT_CORRECT_PENALTY = 10;
     private static int score = 0;
     private static int round = 1;
-    public static ArrayList<Integer> bxh = new ArrayList<>();
     @FXML
     public Label top1;
     @FXML
@@ -125,6 +128,10 @@ public class FunnyQuizGame extends GameController implements Game {
 
     @FXML
     private Button noLose;
+    @FXML
+    private Label highScoreLabel;
+
+    private int highScore = 0;
 
 
     private void loadDataFromDatabase() {
@@ -184,6 +191,7 @@ public class FunnyQuizGame extends GameController implements Game {
         round = 1;
         loadDataFromDatabase();
         Collections.shuffle(quizList);
+        highScoreLabel.setText(String.valueOf(highScore));
         yesLose.setOnMouseClicked(e1 -> {
             loseGame.setVisible(false);
             if (checkAudio) {
@@ -249,8 +257,6 @@ public class FunnyQuizGame extends GameController implements Game {
                     time--;
                     timerLabel.setText(String.valueOf(time));
                 } else {
-                    bxh.add(score);
-                    Collections.sort(bxh,Collections.reverseOrder());
                     timeline.stop();
                     playing = false;
                     loseGame.setVisible(true);
@@ -295,6 +301,29 @@ public class FunnyQuizGame extends GameController implements Game {
                             button.getStyleClass().add("correctAnswer");
                             score += DEFAULT_CORRECT_PENALTY;
                             scoreLabel.setText(String.valueOf(score));
+                            if (score>highScore){
+                                highScore = score;
+                                highScoreLabel.setText(String.valueOf(highScore));
+                                FileWriter fw = null;
+                                try {
+                                    fw = new FileWriter(DEFAULT_HIGH_SCORE_FILE_PATH);
+                                } catch (java.io.IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                                assert fw != null;
+                                java.io.BufferedWriter bw = new java.io.BufferedWriter(fw);
+                                try {
+                                    bw.write(String.valueOf(highScore));
+                                } catch (java.io.IOException e2) {
+                                    e2.printStackTrace();
+                                }
+                                try {
+                                    bw.close();
+                                    fw.close();
+                                } catch (java.io.IOException e3) {
+                                    e3.printStackTrace();
+                                }
+                            }
                             if (round == quizList.size()) {
                                 notice(true);
                                 round = 1;
@@ -303,8 +332,6 @@ public class FunnyQuizGame extends GameController implements Game {
                                 startButton.setText("NEXT");
                             }
                         } else {
-                            bxh.add(score);
-                            Collections.sort(bxh,Collections.reverseOrder());
                             AudioClip wrongAnswer = new AudioClip(getClass().getResource("audio/wrongAnswer.mp3").toString());
                             if (checkVolume) {
                                 wrongAnswer.play();
@@ -390,10 +417,50 @@ public class FunnyQuizGame extends GameController implements Game {
         left.setVisible(false);
         left.setTranslateX(-99.5);
         setImage(IMAGE_PATH + "rome");
+
+        // Read high score
+        FileReader fr = null;
+        try {
+            fr = new FileReader(DEFAULT_HIGH_SCORE_FILE_PATH);
+        } catch (java.io.FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert fr != null;
+        java.io.BufferedReader br = new java.io.BufferedReader(fr);
+        String line = null;
+        try {
+            line = br.readLine();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        if (line != null) {
+            highScore = Integer.parseInt(line);
+        }
         init();
         start();
     }
 
+    public static void reset(){
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(DEFAULT_HIGH_SCORE_FILE_PATH);
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        assert fw != null;
+        java.io.BufferedWriter bw = new java.io.BufferedWriter(fw);
+        try {
+            bw.write("0");
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            bw.close();
+            fw.close();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

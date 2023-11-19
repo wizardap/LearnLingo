@@ -18,30 +18,24 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 
+import java.io.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 
 public class TextTwistGame extends GameController implements Game {
-    private static final int DEFAULT_TIME_SECOND = 120;
+    private static final String DEFAULT_HIGHSCORE_FILE_PATH =
+            "./src/main/resources/com/application/learnlingo/database/TextTwistGameHighScore.txt";
+    private static final int DEFAULT_TIME_SECOND =10;
     private static final double DEFAULT_BOX_HEIGHT = 64;
     private static double maxCharacter = 0;
     private static double maxWord = 0;
     private static List<List<String>> dataList = new ArrayList<>();
 
     @FXML
-    public Label top1;
-    @FXML
-    public Label top2;
-    @FXML
-    public Label top3;
-    @FXML
-    public Label top4;
-    @FXML
     private BorderPane container;
-    @FXML
-    private Button refresh;
+
     @FXML
     private Button clear;
     @FXML
@@ -49,13 +43,8 @@ public class TextTwistGame extends GameController implements Game {
     @FXML
     private HBox containerCharacterGuess;
     @FXML
-    private HBox containerWords;
-    @FXML
     private Button enter;
-    @FXML
-    private Button game;
-    @FXML
-    private HBox gameFunctions;
+
     @FXML
     private Button last;
     @FXML
@@ -102,8 +91,9 @@ public class TextTwistGame extends GameController implements Game {
     @FXML
     private Button noLose;
 
+    @FXML
+    private Label highScoreLabel;
     private int highScore = 0;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -132,6 +122,22 @@ public class TextTwistGame extends GameController implements Game {
         init();
         GameUtils.numberOfTurn=1;
         GameUtils.score = 0;
+
+
+        FileReader fr = null;
+        try {
+            fr = new FileReader(DEFAULT_HIGHSCORE_FILE_PATH);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            if (line != null) {
+                highScore = Integer.parseInt(line);
+            }
+        } catch (FileNotFoundException e) {
+           e.printStackTrace();
+
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
     }
 
     private void loadDataFromDatabase() {
@@ -187,12 +193,7 @@ public class TextTwistGame extends GameController implements Game {
         for (char ch : GameUtils.mainWord.toCharArray()) {
 
             double boxHeight = DEFAULT_BOX_HEIGHT;
-            double boxWidth = 0;
-            try {
-                boxWidth = DEFAULT_BOX_HEIGHT;
-            } catch (ArithmeticException e) {
-                e.printStackTrace();
-            }
+            double boxWidth = DEFAULT_BOX_HEIGHT;
             Label boxLabel = GameUtils.getCharacterLabel("", "guess-square-character");
             boxLabel.setPrefSize(boxWidth, boxHeight);
             boxLabel.setStyle("-fx-cursor: hand;");
@@ -208,12 +209,8 @@ public class TextTwistGame extends GameController implements Game {
         GameUtils.shuffleMainWord();
         for (char ch : GameUtils.mainWord.toCharArray()) {
             double boxHeight = DEFAULT_BOX_HEIGHT;
-            double boxWidth = 0;
-            try {
-                boxWidth = DEFAULT_BOX_HEIGHT;
-            } catch (ArithmeticException e) {
-                e.printStackTrace();
-            }
+            double boxWidth = DEFAULT_BOX_HEIGHT;
+
             Label roundLabel = GameUtils.getCharacterLabel(ch, "choose-round-character");
             HBox boxLabel = new HBox();
             boxLabel.setPrefSize(boxWidth, boxHeight);
@@ -308,6 +305,23 @@ public class TextTwistGame extends GameController implements Game {
                     }
                     if (!guessWord.equals(enterWord.toString())) {
                         GameUtils.modifyScore(GameUtils.DEFAULT_SCORE_EACH_CORRECT_WORD);
+                        int currentScore = highScoreLabel.getText().equals("") ? 0 : Integer.parseInt(highScoreLabel.getText());
+                        if (currentScore < GameUtils.score) {
+                            highScore = GameUtils.score;
+                            highScoreLabel.setText(String.valueOf(highScore));
+                            FileWriter fw = null;
+                            try {
+                                fw = new FileWriter(DEFAULT_HIGHSCORE_FILE_PATH);
+                                BufferedWriter bw = new BufferedWriter(fw);
+                                System.out.println(highScore);
+                                bw.write(String.valueOf(highScore));
+                                bw.close();
+                                fw.close();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+
+                        }
                     }
                     System.out.println("Found!");
                     AudioClip rightAnswer = new AudioClip(GameUtils.class.getResource("audio/rightAnswer.mp3").toString());
@@ -480,15 +494,14 @@ public class TextTwistGame extends GameController implements Game {
         GameUtils.isPlaying = true;
         roundLabel.setText(String.valueOf(GameUtils.numberOfTurn));
         scoreLabel.setText(String.valueOf(GameUtils.score));
+        highScoreLabel.setText(String.valueOf(highScore));
         yesLose.setOnMouseClicked(e -> {
             loseGame.setVisible(false);
             GameUtils.restart();
             startGame();
         });
 
-        noLose.setOnAction(e -> {
-            AnimationChangeScene.handleButtonClick("game.fxml",container);
-        });
+        noLose.setOnAction(e -> AnimationChangeScene.handleButtonClick("game.fxml",container));
         yesWin.setOnMouseClicked(e1 -> {
             winGame.setVisible(false);
             GameUtils.restart();
@@ -522,10 +535,6 @@ public class TextTwistGame extends GameController implements Game {
             musicGame.stop();
         }
         else{
-            GameUtils.bxh.add(GameUtils.score);
-            Collections.sort(GameUtils.bxh,Collections.reverseOrder());
-            System.out.println(GameUtils.bxh);
-            System.out.println(GameUtils.bxh.size());
             start.setText("RESTART");
             loseGame.setVisible(true);
             AudioClip loseGameSound = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
@@ -549,6 +558,21 @@ public class TextTwistGame extends GameController implements Game {
     }
 
 
+    public static void reset() {
+        FileWriter fw;
+        try {
+            fw = new FileWriter(DEFAULT_HIGHSCORE_FILE_PATH);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("0");
+            bw.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     private static class GameUtils {
         public static final int DEFAULT_SCORE_EACH_CORRECT_WORD = 10;
         public static final int DEFAULT_SCORE_EACH_WRONG_WORD = -5;
@@ -561,7 +585,6 @@ public class TextTwistGame extends GameController implements Game {
         public static int seconds = DEFAULT_TIME_SECOND;
         public static int score = 0;
         public static int menuButtonClicked = 0;
-        public static ArrayList<Integer>bxh = new ArrayList<>();
         public static void init() {
             menuButtonClicked = 0;
             isPlaying = false;
@@ -645,5 +668,6 @@ public class TextTwistGame extends GameController implements Game {
             }
         }
     }
+
 
 }
