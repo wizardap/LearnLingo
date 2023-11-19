@@ -43,7 +43,7 @@
                <graphic>
                   <Label text="D." textFill="WHITE" />
                </graphic></Button>
-            <HBox alignment="CENTER" layoutX="143.0" layoutY="14.0" prefHeight="52.0" prefWidth="666.0" spacing="90.0">
+            <HBox alignment="CENTER" layoutX="143.0" layoutY="14.0" prefHeight="52.0" prefWidth="666.0" spacing="40.0">
                <children>
                   <HBox prefHeight="52.0" prefWidth="130.0" styleClass="tilte-bar">
                      <children>
@@ -63,100 +63,16 @@
                         <Label fx:id="roundLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="52.0" prefWidth="150.0" styleClass="hbox-title-bar">
+                     <children>
+                        <Label prefHeight="49.0" prefWidth="105.0" styleClass="tilte-bar" text=" HIGH SCORE" />
+                        <Label fx:id="roundLabel1" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
                </children>
             </HBox>
-            <Button fx:id="startButton" layoutX="615.0" layoutY="505.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" styleClass="tilte-bar" stylesheets="@../../../game.css" text="START HERE" />
+            <Button fx:id="startButton" layoutX="615.0" layoutY="505.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-border-color: #cccccc; -fx-border-insets: 0; -fx-background-insets: 0;" styleClass="tilte-bar" stylesheets="@../../../game.css" text="START HERE" />
             <Button fx:id="menuButton" layoutX="742.0" layoutY="505.0" mnemonicParsing="false" onAction="#setMenuGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../../../game.css" text="Menu" />
-            <VBox fx:id="menuGame" layoutX="314.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
-               <children>
-                  <JFXButton onAction="#setHowToPlay" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HOW TO PLAY">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="171.0" onAction="#displayHighScores" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HIGH SCORES">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="213.0" onAction="#setCredit" prefHeight="41.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CREDITS">
-                     <VBox.margin>
-                        <Insets left="50.0" top="10.0" />
-                     </VBox.margin>
-                  </JFXButton>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="btnvolume" mnemonicParsing="false" onAction="#stopVolume" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
-                           <graphic>
-                              <ImageView fx:id="volume" fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="66.0" top="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="btnmusic" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
-                           <graphic>
-                              <ImageView fx:id="music" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="35.0" top="10.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <JFXButton fx:id="back" layoutX="24.0" layoutY="174.0" onAction="#setMenuGame" prefHeight="40.0" prefWidth="77.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="BACK">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="96.0" />
-                     </VBox.margin>
-                  </JFXButton>
-               </children>
-            </VBox>
-            <VBox fx:id="htp" layoutX="314.0" layoutY="66.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="INSTRUCTION!">
-                     <VBox.margin>
-                        <Insets left="52.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="63.0" layoutY="23.0" prefHeight="228.0" prefWidth="231.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="You have to think to choose the right answer in the Question we give for you. There are four answers A, B, C, D. You should consider carefully before click an answer. Ready to test your English knowledge? Click &quot;START HERE&quot; and embark on your language learning journey!" textAlignment="CENTER" wrapText="true">
-                     <VBox.margin>
-                        <Insets left="22.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" onAction="#setAgainMenu" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
-                     <VBox.margin>
-                        <Insets left="90.0" top="10.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox fx:id="credit" layoutX="314.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Lê Hoàng Vũ">
-                     <VBox.margin>
-                        <Insets left="50.0" top="25.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Vi Văn Quân">
-                     <VBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Nguyễn Đức Anh Tuấn">
-                     <VBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" onAction="#setAgainMenu1" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
-                     <VBox.margin>
-                        <Insets left="90.0" top="65.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
             <VBox fx:id="left" prefHeight="541.0" prefWidth="99.0" spacing="10.0" stylesheets="@../../../vu.css">
                <children>
                   <Button fx:id="search" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../../../vu.css" text="HOME" VBox.vgrow="ALWAYS">
@@ -226,66 +142,117 @@
                   </Button>
                </children>
             </VBox>
-            <VBox fx:id="highscore" layoutX="314.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+            <AnchorPane fx:id="loseGame" layoutX="274.0" layoutY="71.0" prefHeight="267.0" prefWidth="400.0" style="-fx-background-color: #FEC400; -fx-background-radius: 10;">
                <children>
-                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="158.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="HIGHEST SCRORES">
-                     <VBox.margin>
-                        <Insets left="60.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="50">
-                     <VBox.margin>
-                        <Insets left="100.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="30">
-                     <VBox.margin>
-                        <Insets left="100.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="13.0" layoutY="199.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="20">
-                     <VBox.margin>
-                        <Insets left="100.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="113.0" layoutY="207.0" prefHeight="41.0" prefWidth="80.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="10">
-                     <VBox.margin>
-                        <Insets left="100.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" onAction="#setAgainMenu2" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="90.0" top="20.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <AnchorPane fx:id="loseGame" layoutX="371.0" layoutY="100.0" prefHeight="226.0" prefWidth="200.0" style="-fx-background-color: #FEC400;">
-               <children>
-                  <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU LOSE THE GAME" />
-                  <ImageView fitHeight="132.0" fitWidth="134.0" layoutX="34.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                  <Label alignment="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU LOSE THE GAME" />
+                  <ImageView fitHeight="190.0" fitWidth="321.0" layoutX="105.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/loseGame.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="48.0" layoutY="166.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
-                  <Button fx:id="yesLose" layoutX="48.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
-                  <Button fx:id="noLose" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+                  <Label alignment="CENTER" layoutX="144.0" layoutY="202.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesLose" layoutX="144.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noLose" layoutX="196.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="winGame" layoutX="370.0" layoutY="100.0" prefHeight="226.0" prefWidth="200.0" style="-fx-background-color: #FEC400;">
+            <AnchorPane fx:id="winGame" layoutX="274.0" layoutY="71.0" prefHeight="267.0" prefWidth="400.0" style="-fx-background-color: #FEC400; -fx-background-radius: 10;">
                <children>
-                  <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU WIN THE GAME" />
-                  <ImageView fitHeight="177.0" fitWidth="186.0" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <Label alignment="CENTER" layoutX="101.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU WIN THE GAME" />
+                  <ImageView fitHeight="210.0" fitWidth="238.0" layoutX="91.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/winGame.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="48.0" layoutY="166.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
-                  <Button fx:id="yesWin" layoutX="48.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
-                  <Button fx:id="noWin" layoutX="100.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+                  <Label alignment="CENTER" layoutX="144.0" layoutY="190.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesWin" layoutX="144.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noWin" layoutX="203.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
                </children>
             </AnchorPane>
+            <VBox fx:id="menuGame" layoutX="325.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <JFXButton onAction="#setHowToPlay" prefHeight="50.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="HOW TO PLAY">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="213.0" onAction="#setCredit" prefHeight="50.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CREDITS">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <HBox prefHeight="76.0" prefWidth="274.0">
+                     <children>
+                        <Button fx:id="btnvolume" mnemonicParsing="false" onAction="#stopVolume" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
+                           <graphic>
+                              <ImageView fx:id="volume" fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="66.0" top="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnmusic" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../../../game.css">
+                           <graphic>
+                              <ImageView fx:id="music" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="35.0" top="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <JFXButton fx:id="back" layoutX="24.0" layoutY="174.0" onAction="#setMenuGame" prefHeight="40.0" prefWidth="77.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../../../game.css" text="BACK">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="96.0" top="22.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <VBox fx:id="htp" layoutX="325.0" layoutY="66.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="INSTRUCTION!">
+                     <VBox.margin>
+                        <Insets left="52.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="63.0" layoutY="23.0" prefHeight="228.0" prefWidth="231.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="You have to think to choose the right answer in the Question we give for you. There are four answers A, B, C, D. You should consider carefully before click an answer. Ready to test your English knowledge? Click &quot;START HERE&quot; and embark on your language learning journey!" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets left="22.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#setAgainMenu" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
+                     <VBox.margin>
+                        <Insets left="90.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="credit" layoutX="325.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Lê Hoàng Vũ">
+                     <VBox.margin>
+                        <Insets left="50.0" top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Vi Văn Quân">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Nguyễn Đức Anh Tuấn">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#setAgainMenu1" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../../../game.css" text="CONTINUE">
+                     <VBox.margin>
+                        <Insets left="90.0" top="65.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </center>

@@ -317,14 +317,5 @@ public class DictionaryController extends GeneralController {
         webEngine.loadContent(WordOfTheDay.getDefinition());
         listWords.getItems().clear();
         textfield.clear();
-        if (currentDictionary == evDict) {
-            bookmark.setVisible(true);
-            speakUS.setVisible(true);
-            speakUK.setVisible(true);
-        } else {
-            bookmark.setVisible(false);
-        }
-        wordOfDay.setVisible(true);
-        speakVN.setVisible(false);
     }
 }
