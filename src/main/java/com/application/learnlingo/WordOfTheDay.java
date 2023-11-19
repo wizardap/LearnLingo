@@ -8,9 +8,9 @@ import static com.application.learnlingo.GeneralController.evDict;
 public class WordOfTheDay {
     private static final String WORD_OF_THE_DAY_PATH =
             "./src/main/resources/com/application/learnlingo/database/wordOfTheDay.txt";
-    private static String date;
     private static String wordToday;
     private static boolean loaded = false;
+    private static String date;
 
     public static String getWordToday() {
         return wordToday;

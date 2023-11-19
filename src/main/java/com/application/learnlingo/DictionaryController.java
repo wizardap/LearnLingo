@@ -106,11 +106,21 @@ public class DictionaryController extends GeneralController {
         confirmAdd.setVisible(true);
         btnYes.setOnAction(ev -> {
             confirmAdd.setVisible(false);
-            currentDictionary.setBookmark(selectedWord);
+            if (evDict.contain(selectedWord)){
+                evDict.setBookmark(selectedWord);
+            }
+            else{
+                veDict.setBookmark(selectedWord);
+            }
         });
         btnNo.setOnAction(ev -> {
             confirmAdd.setVisible(false);
-            currentDictionary.unsetBookmark(selectedWord);
+            if (evDict.contain(selectedWord)){
+                evDict.unsetBookmark(selectedWord);
+            }
+            else{
+                veDict.unsetBookmark(selectedWord);
+            }
         });
     }
 
@@ -119,7 +129,6 @@ public class DictionaryController extends GeneralController {
         introduction.setVisible(false);
         displayExtensionButton(false);
         listWords.getItems().clear();
-        loadWordOfTheDay(true);
         if (!textfield.getText().isEmpty()) {
             listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
             checkStyle = false;
@@ -274,5 +283,6 @@ public class DictionaryController extends GeneralController {
         webEngine.loadContent("");
         listWords.getItems().clear();
         textfield.clear();
+        loadWordOfTheDay(true);
     }
 }

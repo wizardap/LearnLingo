@@ -52,6 +52,7 @@ public class DatabaseBookmark implements Bookmark {
                 pstmt.setString(1, word);
                 pstmt.executeUpdate();
                 bookmarkList.add(0, word);
+                System.out.println(bookmarkList);
                 prefixTree.put(word);
             } catch (SQLException e) {
                 e.printStackTrace();

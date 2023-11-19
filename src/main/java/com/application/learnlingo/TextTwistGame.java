@@ -24,7 +24,7 @@ import java.sql.Statement;
 import java.util.*;
 
 public class TextTwistGame extends GameController implements Game {
-    private static final int DEFAULT_TIME_SECOND = 5;
+    private static final int DEFAULT_TIME_SECOND = 120;
     private static final double DEFAULT_BOX_HEIGHT = 64;
     private static double maxCharacter = 0;
     private static double maxWord = 0;
@@ -103,6 +103,8 @@ public class TextTwistGame extends GameController implements Game {
 
     @FXML
     private Button noLose;
+
+    private int highScore = 0;
 
 
     @Override
