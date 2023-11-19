@@ -109,9 +109,6 @@ public class FunnyQuizGame extends GameController implements Game {
     private boolean playing = false;
 
     @FXML
-    private VBox highscore;
-
-    @FXML
     private AnchorPane loseGame;
 
     @FXML
@@ -187,9 +184,11 @@ public class FunnyQuizGame extends GameController implements Game {
         round = 1;
         loadDataFromDatabase();
         Collections.shuffle(quizList);
-
         yesLose.setOnMouseClicked(e1 -> {
             loseGame.setVisible(false);
+            if (checkAudio) {
+                musicGame.play();
+            }
             init();
             startButton.getOnMouseClicked().handle(e1);
         });
@@ -212,6 +211,7 @@ public class FunnyQuizGame extends GameController implements Game {
     @Override
     public void start() {
         startButton.setOnMouseClicked(e -> {
+            checkStart = true;
             if (checkVolume) {
                 click.play();
             }
@@ -255,7 +255,9 @@ public class FunnyQuizGame extends GameController implements Game {
                     playing = false;
                     loseGame.setVisible(true);
                     AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
-                    loseGame.play();
+                    if (checkVolume) {
+                        loseGame.play();
+                    }
                     musicGame.stop();
                     for (Button button : answerList) {
                         String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
@@ -335,9 +337,10 @@ public class FunnyQuizGame extends GameController implements Game {
             startButton.setText("RESTART");
             loseGame.setVisible(true);
             AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource("audio/loseGame.mp3").toString());
-            loseGame.play();
+            if (checkVolume) {
+                loseGame.play();
+            }
             musicGame.stop();
-
         }
     }
 
@@ -370,7 +373,6 @@ public class FunnyQuizGame extends GameController implements Game {
         super.initialize(url, resourceBundle);
         loseGame.setVisible(false);
         winGame.setVisible(false);
-        highscore.setVisible(false);
         Image image = new Image(getClass().getResource("image/music.png").toString());
         music = new ImageView(image);
         music.setFitWidth(21);
@@ -392,45 +394,6 @@ public class FunnyQuizGame extends GameController implements Game {
         start();
     }
 
-    public void displayHighScores() {
-        if (checkVolume) {
-            click.play();
-        }
-        switch (bxh.size()){
-            case 0:
-                top1.setText("0");
-                top2.setText("0");
-                top3.setText("0");
-                top4.setText("0");
-                break;
-            case 1:
-                top1.setText(bxh.get(0).toString());
-                top2.setText("0");
-                top3.setText("0");
-                top4.setText("0");
-                break;
-            case 2:
-                top1.setText(bxh.get(0).toString());
-                top2.setText(bxh.get(1).toString());
-                top3.setText("0");
-                top4.setText("0");
-                break;
-            case 3:
-                top1.setText(bxh.get(0).toString());
-                top2.setText(bxh.get(1).toString());
-                top3.setText(bxh.get(2).toString());
-                top4.setText("0");
-                break;
-            default:
-                top1.setText(bxh.get(0).toString());
-                top2.setText(bxh.get(1).toString());
-                top3.setText(bxh.get(2).toString());
-                top4.setText(bxh.get(3).toString());
-                break;
-        }
-        highscore.setOpacity(1);
-        highscore.setVisible(true);
-        menuGame.setVisible(false);
-    }
+
 
 }

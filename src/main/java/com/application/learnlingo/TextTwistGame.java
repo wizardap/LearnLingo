@@ -83,8 +83,6 @@ public class TextTwistGame extends GameController implements Game {
     @FXML
     private VBox htp;
 
-    @FXML
-    private VBox highscore;
 
     @FXML
     private AnchorPane loseGame;
@@ -124,7 +122,6 @@ public class TextTwistGame extends GameController implements Game {
         btnvolume.setGraphic(volume);
         credit.setVisible(false);
         htp.setVisible(false);
-        highscore.setVisible(false);
         menuGame.setVisible(false);
         menuGame.setTranslateX(620);
         left.setVisible(false);
@@ -457,6 +454,7 @@ public class TextTwistGame extends GameController implements Game {
 
     @FXML
     public void startGame() {
+        checkStart = true;
         if (checkAudio) {
             musicGame.play();
         }
@@ -521,10 +519,6 @@ public class TextTwistGame extends GameController implements Game {
             start.setVisible(true);
             start.setText("NEXT");
             GameUtils.nextRound();
-            AudioClip winAll = new AudioClip(getClass().getResource("audio/winAll.mp3").toString());
-            if (checkVolume) {
-                winAll.play();
-            }
             musicGame.stop();
         }
         else{
@@ -538,7 +532,6 @@ public class TextTwistGame extends GameController implements Game {
             if (checkVolume) {
                 loseGameSound.play();
             }
-            // xử lý chơi lại ở đây nha
             musicGame.stop();
         }
     }
@@ -553,47 +546,6 @@ public class TextTwistGame extends GameController implements Game {
     public void pause() {
         GameUtils.isPlaying=false;
         timeline.pause();
-    }
-
-    public void displayHighScores() {
-        if (checkVolume) {
-            click.play();
-        }
-        switch (GameUtils.bxh.size()){
-            case 0:
-                top1.setText("0");
-                top2.setText("0");
-                top3.setText("0");
-                top4.setText("0");
-                break;
-            case 1:
-                top1.setText(GameUtils.bxh.get(0).toString());
-                top2.setText("0");
-                top3.setText("0");
-                top4.setText("0");
-                break;
-            case 2:
-                top1.setText(GameUtils.bxh.get(0).toString());
-                top2.setText(GameUtils.bxh.get(1).toString());
-                top3.setText("0");
-                top4.setText("0");
-                break;
-            case 3:
-                top1.setText(GameUtils.bxh.get(0).toString());
-                top2.setText(GameUtils.bxh.get(1).toString());
-                top3.setText(GameUtils.bxh.get(2).toString());
-                top4.setText("0");
-                break;
-            default:
-                top1.setText(GameUtils.bxh.get(0).toString());
-                top2.setText(GameUtils.bxh.get(1).toString());
-                top3.setText(GameUtils.bxh.get(2).toString());
-                top4.setText(GameUtils.bxh.get(3).toString());
-                break;
-        }
-        highscore.setOpacity(1);
-        highscore.setVisible(true);
-        menuGame.setVisible(false);
     }
 
 

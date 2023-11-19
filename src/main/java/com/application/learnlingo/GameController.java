@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class GameController extends GeneralController {
 
+    protected boolean checkStart = false;
+
     @FXML
     protected ImageView music;
 
@@ -45,12 +47,8 @@ public class GameController extends GeneralController {
 
     @FXML
     protected VBox credit;
-
     @FXML
     protected VBox htp;
-
-    @FXML
-    protected VBox highscore;
 
     protected AudioClip click;
 
@@ -138,7 +136,9 @@ public class GameController extends GeneralController {
             music.setFitWidth(21);
             music.setFitHeight(21);
             btnmusic.setGraphic(music);
-            musicGame.play();
+            if (checkStart) {
+                musicGame.play();
+            }
         }
         checkAudio = !checkAudio;
     }
@@ -168,16 +168,6 @@ public class GameController extends GeneralController {
         credit.setVisible(false);
         menuGame.setVisible(true);
     }
-
-    @FXML
-    public void setAgainMenu2() {
-        if (checkVolume) {
-            click.play();
-        }
-        highscore.setVisible(false);
-        menuGame.setVisible(true);
-    }
-
 
     @FXML
     public void setCredit() {

@@ -2,7 +2,6 @@ package com.application.learnlingo;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
@@ -30,7 +29,11 @@ public class BookMarkController extends DictionaryController {
         checkMode1.setVisible(false);
         listWords.getItems().addAll(currentDictionary.exportBookmarkList());
         checkStyle = true;
-        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
+        bookmark.setVisible(false);
+        speakUK.setVisible(false);
+        speakUS.setVisible(false);
+        speakVN.setVisible(false);
+        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCellInBookMark());
         displayListWord();
     }
 
@@ -77,7 +80,7 @@ public class BookMarkController extends DictionaryController {
             listWords.getItems().addAll(currentDictionary.exportBookmarkList());
             checkStyle = true;
         }
-        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCell());
+        listWords.setCellFactory(param -> new DictionaryController.IconAndFontListCellInBookMark());
         displayListWord();
     }
 
@@ -135,22 +138,8 @@ public class BookMarkController extends DictionaryController {
         listWords.getItems().clear();
         textfield.setText("");
         listWords.getItems().addAll(suggestionSearchList(textfield.getText()));
+        checkStyle = true;
         displayListWord();
     }
 
-    @FXML
-    public void speakWordUSWordOfDay() {
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation("enormity").getWord(), "hl=en-us", "Mike", Integer.toString(DictionaryController.speedRate));
-    }
-
-    @FXML
-    public void speakWordUKWordOfDay() {
-        TextToSpeech pronouce = new TextToSpeech(evDict.getWordInformation("enormity").getWord(), "hl=en-gb", "LiLy", Integer.toString(DictionaryController.speedRate));
-    }
-
-    @FXML
-    public void saveWordInBookMarkWordOfDay() {
-        String selectedWord = "enormity";
-        currentDictionary.setBookmark(selectedWord);
-    }
 }

@@ -1,9 +1,12 @@
 package com.application.learnlingo;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.web.WebEngine;
@@ -29,7 +32,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
 
     private WebEngine webEngine;
 
-    public void setBut(String s, Button x){
+    public void setBut(String s, Button x) {
         buttons = new Button[]{b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15};
         List<String> result = this.setList(x.getText(), s);
         if (result.isEmpty()) {
@@ -49,7 +52,8 @@ public abstract class SynonymAndAntonym extends GeneralController {
             }
         }
     }
-    public void buttonClicked(MouseEvent mouseEvent,String s) {
+
+    public void buttonClicked(MouseEvent mouseEvent, String s) {
         Button clickedButton = (Button) mouseEvent.getSource();
         String txt = clickedButton.getText();
         setBut(s, clickedButton);
@@ -174,7 +178,7 @@ public abstract class SynonymAndAntonym extends GeneralController {
 
         Background background = new Background(backgroundImage);
         center.setBackground(background);
-        webEngine=wordOfDayWebView.getEngine();
+        webEngine = wordOfDayWebView.getEngine();
         webEngine.loadContent(WordOfTheDay.getDefinition());
     }
 
@@ -202,6 +206,26 @@ public abstract class SynonymAndAntonym extends GeneralController {
             currentDictionary.unsetBookmark(WordOfTheDay.getWordToday());
         });
 
+    }
+
+    @FXML
+    public void handleClickOnSearch(String s) {
+        if (listWords.getItems().contains(textfield.getText())) {
+            listWords.getSelectionModel().select(textfield.getText());
+            handleMouseClicked(s);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("The word you are finding don't exist, try to find again");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    public void handlePressEnterInTextField(KeyEvent event, String s) {
+        if (event.getCode() == KeyCode.ENTER) {
+            handleClickOnSearch(s);
+        }
     }
 
     public abstract void buttonClicked(MouseEvent mouseEvent);

@@ -48,7 +48,7 @@ public class WordOfTheDay {
             System.out.println(new StringBuilder().append("Error: Can't read data from ")
                     .append(WORD_OF_THE_DAY_PATH));
         }
-        if (line!=null){
+        if (line != null) {
             String[] data = line.split(" ");
             date = data[0];
             wordToday = data[1];
@@ -63,12 +63,13 @@ public class WordOfTheDay {
 
         }
     }
+
     public static String getDefinition() {
-        if (!loaded){
+        if (!loaded) {
             loadData();
             loaded = true;
         }
-        if (date==null || !date.equals(LocalDate.now().toString())){
+        if (date == null || !date.equals(LocalDate.now().toString())) {
             date = LocalDate.now().toString();
             wordToday = evDict.getRandomWord();
             saveData();

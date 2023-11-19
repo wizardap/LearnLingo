@@ -208,6 +208,13 @@ public class DictionaryController extends GeneralController {
         }
     }
 
+    @FXML
+    public void handlePressEnterInTextField(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            handleClickOnSearch();
+        }
+    }
+
 
     @FXML
     public void handleMouseClicked() {
@@ -275,12 +282,48 @@ public class DictionaryController extends GeneralController {
         }
     }
 
+    public static class IconAndFontListCellInBookMark extends ListCell<String> {
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item == null || empty) {
+                setGraphic(null);
+            } else {
+                String[] lines = item.split("\n");
+
+                HBox hbox = new HBox();
+                ImageView iconImageView;
+                if (checkStyle)
+                    iconImageView = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("image/bm.png")).toString()));
+                else
+                    iconImageView = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("image/find1.png")).toString()));
+                iconImageView.setFitHeight(15);
+                iconImageView.setFitWidth(15);
+                hbox.getChildren().add(iconImageView);
+
+                VBox vBox = new VBox();
+                for (int i = 0; i < 1; i++) {
+                    Label text = new Label(lines[i]);
+                    if (i == 0) {
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
+                    } else {
+                        text.setStyle("-fx-font-size: 12; -fx-text-fill: white;");
+                    }
+                    vBox.getChildren().add(text);
+                }
+                hbox.setSpacing(5);
+                hbox.getChildren().add(vBox);
+                setGraphic(hbox);
+            }
+        }
+    }
+
     @Override
     public void changeMode() {
         super.changeMode();
         confirmAdd.setVisible(false);
-        displayExtensionButton(false);
-        webEngine.loadContent("");
+        webEngine.loadContent(WordOfTheDay.getDefinition());
         listWords.getItems().clear();
         textfield.clear();
         loadWordOfTheDay(true);
