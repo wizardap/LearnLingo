@@ -1,0 +1,65 @@
+.button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.9;
+}
+
+#menuButton, #start {
+    -fx-background-color: #074B9C;
+    -fx-border-color: #cccccc;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+    -fx-text-align:center;
+}
+.guess-round-character {
+    -fx-background-color: #1CC2F4;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 25;
+    -fx-background-radius: 999;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+.choose-round-character {
+    -fx-background-radius: 999;
+    -fx-background-color: #cccccc;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-text-fill: #5D62A8;
+}
+.guess-square-character{
+    -fx-border-color:  #cccccc;
+    -fx-border-width: 3;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-background-color: #0CCDF8;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.choose-square-character{
+    -fx-background-color: white;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+.tilte-bar{
+    -fx-background-color: #074B9C;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.hbox-title-bar{
+    -fx-border-color: #cccccc;
+    -fx-background-color: #074B9C;
+}
+
+#textTwist:hover, #funnyQuiz:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.9;
+}

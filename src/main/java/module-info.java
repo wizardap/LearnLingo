@@ -14,6 +14,11 @@ module com.application.learnlingo {
     requires java.desktop;
     requires javafx.media;
     requires tess4j;
+
     opens com.application.learnlingo to javafx.fxml;
     exports com.application.learnlingo;
+    exports com.application.learnlingo.Controller;
+    opens com.application.learnlingo.Controller to javafx.fxml;
+    exports com.application.learnlingo.Model;
+    opens com.application.learnlingo.Model to javafx.fxml;
 }

@@ -13,7 +13,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.2</junit.version>
     </properties>
-
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
@@ -22,7 +21,6 @@
             <artifactId>tess4j</artifactId>
             <version>4.5.1</version>
         </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/net.sf.sociaal/freetts -->
         <dependency>
@@ -131,6 +129,12 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

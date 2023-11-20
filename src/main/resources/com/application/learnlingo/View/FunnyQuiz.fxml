@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: white;" stylesheets="@../CSS/game.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.Controller.FunnyQuizGame">
+   <center>
+      <AnchorPane fx:id="center" prefWidth="872.0" style="-fx-border-color: #A5DA03; -fx-border-width: 5;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="boxContainImage" alignment="CENTER" layoutX="240.0" layoutY="70.0" prefHeight="268.0" prefWidth="466.0">
+               <children>
+                  <ImageView fx:id="illustrations" fitHeight="260.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imageFunnyQuiz/rome.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="341.0" prefHeight="57.0" prefWidth="476.0" style="-fx-background-color: #074B9C; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #cccccc; -fx-border-width: 3; -fx-background-radius: 10; -fx-border-radius: 5;" text="What is the capital of Italia?" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="answerA" alignment="BASELINE_LEFT" layoutX="190.0" layoutY="406.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" styleClass="answerButton" stylesheets="@../CSS/funnyQuiz.css" text="Rome">
+               <graphic>
+                  <Label text="A." textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="answerB" alignment="BASELINE_LEFT" layoutX="584.0" layoutY="406.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" styleClass="answerButton" stylesheets="@../CSS/funnyQuiz.css" text="Ha Noi">
+               <graphic>
+                  <Label text="B." textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="answerC" alignment="BASELINE_LEFT" layoutX="190.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" styleClass="answerButton" stylesheets="@../CSS/funnyQuiz.css" text="Berlin">
+               <graphic>
+                  <Label text="C." textFill="#fffdfd" />
+               </graphic></Button>
+            <Button fx:id="answerD" alignment="BASELINE_LEFT" layoutX="584.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="180.0" styleClass="answerButton" stylesheets="@../CSS/funnyQuiz.css" text="UET">
+               <graphic>
+                  <Label text="D." textFill="WHITE" />
+               </graphic></Button>
+            <HBox alignment="CENTER" layoutX="143.0" layoutY="14.0" prefHeight="52.0" prefWidth="666.0" spacing="40.0">
+               <children>
+                  <HBox prefHeight="52.0" prefWidth="130.0" styleClass="tilte-bar">
+                     <children>
+                        <Label prefHeight="52.0" prefWidth="103.0" styleClass="tilte-bar" text=" SCORE" />
+                        <Label fx:id="scoreLabel" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="130.0" style="-fx-background-color: #074B9C;" styleClass="hbox-title-bar">
+                     <children>
+                        <Label prefHeight="52.0" prefWidth="84.0" styleClass="tilte-bar" text=" TIME" />
+                        <Label fx:id="timerLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="130.0" styleClass="hbox-title-bar">
+                     <children>
+                        <Label prefHeight="49.0" prefWidth="105.0" styleClass="tilte-bar" text=" QUESTION" />
+                        <Label fx:id="roundLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="150.0" styleClass="hbox-title-bar">
+                     <children>
+                        <Label prefHeight="49.0" prefWidth="105.0" styleClass="tilte-bar" text=" HIGH SCORE" />
+                        <Label fx:id="highScoreLabel" alignment="CENTER" prefHeight="52.0" prefWidth="51.0" styleClass="tilte-bar" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Button fx:id="startButton" layoutX="615.0" layoutY="505.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-border-color: #cccccc; -fx-border-insets: 0; -fx-background-insets: 0;" styleClass="tilte-bar" stylesheets="@../CSS/game.css" text="START HERE" />
+            <Button fx:id="menuButton" layoutX="742.0" layoutY="505.0" mnemonicParsing="false" onAction="#setMenuGame" prefHeight="33.0" prefWidth="115.0" stylesheets="@../CSS/game.css" text="Menu" />
+            <VBox fx:id="left" prefHeight="541.0" prefWidth="99.0" spacing="10.0" stylesheets="@../CSS/vu.css">
+               <children>
+                  <Button fx:id="searchButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../CSS/vu.css" text="HOME" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="changeDictionaryButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../CSS/vu.css" text="ADD/DELETE" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/controls.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="gameButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../CSS/vu.css" text="GAME" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/game.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="4.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="bookmarkButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../CSS/vu.css" text="BOOKMARK" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/history.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="4.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Region prefHeight="150.0" prefWidth="99.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Region>
+                  <Button fx:id="settingsButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-font-weight: bold;" stylesheets="@../CSS/vu.css" text="SETTINGS" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="4.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="loseGame" layoutX="274.0" layoutY="71.0" prefHeight="267.0" prefWidth="400.0" style="-fx-background-color: #FEC400; -fx-background-radius: 10;">
+               <children>
+                  <Label alignment="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU LOSE THE GAME" />
+                  <ImageView fitHeight="190.0" fitWidth="321.0" layoutX="105.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/loseGame.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="144.0" layoutY="202.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesLose" layoutX="144.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noLose" layoutX="196.0" layoutY="233.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="winGame" layoutX="274.0" layoutY="71.0" prefHeight="267.0" prefWidth="400.0" style="-fx-background-color: #FEC400; -fx-background-radius: 10;">
+               <children>
+                  <Label alignment="CENTER" layoutX="101.0" layoutY="14.0" prefHeight="31.0" prefWidth="189.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="YOU WIN THE GAME" />
+                  <ImageView fitHeight="210.0" fitWidth="238.0" layoutX="91.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/winGame.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="144.0" layoutY="190.0" prefHeight="31.0" prefWidth="103.0" style="-fx-font-weight: bold; -fx-font-size: 14;" text="PLAY AGAIN?" />
+                  <Button fx:id="yesWin" layoutX="144.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="YES" />
+                  <Button fx:id="noWin" layoutX="203.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: #FEC400; -fx-font-weight: bold;" text="NO" />
+               </children>
+            </AnchorPane>
+            <VBox fx:id="menuGame" layoutX="325.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <JFXButton onAction="#setHowToPlay" prefHeight="50.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../CSS/game.css" text="HOW TO PLAY">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="213.0" onAction="#setCredit" prefHeight="50.0" prefWidth="169.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 15; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../CSS/game.css" text="CREDITS">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <HBox prefHeight="76.0" prefWidth="274.0">
+                     <children>
+                        <Button fx:id="btnvolume" mnemonicParsing="false" onAction="#stopVolume" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../CSS/game.css">
+                           <graphic>
+                              <ImageView fx:id="volume" fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="66.0" top="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnmusic" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#stopMusic" prefHeight="51.0" prefWidth="51.0" style="-fx-background-color: #1d2a57; -fx-background-radius: 999; -fx-cursor: hand;" stylesheets="@../CSS/game.css">
+                           <graphic>
+                              <ImageView fx:id="music" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="35.0" top="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <JFXButton fx:id="back" layoutX="24.0" layoutY="174.0" onAction="#setMenuGame" prefHeight="40.0" prefWidth="77.0" style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold; -fx-background-color: #1d2a57; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-color: #A5DA03; -fx-border-width: 2;" stylesheets="@../CSS/game.css" text="BACK">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="96.0" top="22.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <VBox fx:id="htp" layoutX="325.0" layoutY="66.0" prefHeight="347.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="INSTRUCTION!">
+                     <VBox.margin>
+                        <Insets left="52.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="63.0" layoutY="23.0" prefHeight="228.0" prefWidth="231.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="You have to think to choose the right answer in the Question we give for you. There are four answers A, B, C, D. You should consider carefully before click an answer. Ready to test your English knowledge? Click &quot;START HERE&quot; and embark on your language learning journey!" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets left="22.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#setAgainMenu" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../CSS/game.css" text="CONTINUE">
+                     <VBox.margin>
+                        <Insets left="90.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="credit" layoutX="325.0" layoutY="66.0" prefHeight="300.0" prefWidth="280.0" style="-fx-background-color: #1CC2F4; -fx-border-color: #A5DA03; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 15;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Lê Hoàng Vũ">
+                     <VBox.margin>
+                        <Insets left="50.0" top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="13.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Vi Văn Quân">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="13.0" layoutY="158.0" prefHeight="41.0" prefWidth="169.0" style="-fx-background-color: #1d2a57; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-color: #A5DA03; -fx-border-width: 2; -fx-font-size: 15; -fx-background-radius: 15; -fx-border-radius: 10;" text="Nguyễn Đức Anh Tuấn">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#setAgainMenu1" style="-fx-background-color: #1d2a57; -fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: white; -fx-border-color: #A5DA03; -fx-background-insets: 0; -fx-background-radius: 13; -fx-border-radius: 10; -fx-border-width: 2;" stylesheets="@../CSS/game.css" text="CONTINUE">
+                     <VBox.margin>
+                        <Insets left="90.0" top="65.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <HBox fx:id="top" prefHeight="23.0" prefWidth="942.0" spacing="5.0" style="-fx-background-color: #1d2a57;" stylesheets="@../CSS/vu.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="menu" mnemonicParsing="false" onAction="#setMenuInGame" prefHeight="48.0" prefWidth="99.0" style="-fx-hgrow: always;" stylesheets="@../CSS/vu.css">
+               <graphic>
+                  <HBox prefHeight="29.0" prefWidth="51.0" spacing="4.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/menu.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets top="7.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../image/logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+            <HBox prefHeight="23.0" prefWidth="239.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="textfield" prefHeight="25.0" prefWidth="180.0" promptText="Search here" stylesheets="@../CSS/vu.css" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="deleteWord" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" style="-fx-background-color: #ffffff;" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/deleteWord.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="find" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" stylesheets="@../CSS/vu.css" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/find.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="changeDictionary" prefHeight="28.0" prefWidth="93.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fx:id="british" fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@../image/English.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="1.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Button fx:id="changeModeButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="25.0" stylesheets="@../CSS/vu.css">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/image.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <ImageView fx:id="vn" fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@../image/Vietnamese.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="1.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="function" prefHeight="48.0" prefWidth="410.0" spacing="5.0" stylesheets="@../CSS/vu.css" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXButton fx:id="dictionaryButton" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Dictionary" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="10.0" top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode1" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="translationButton" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="98.0" style="-fx-min-width: 98;" text="Translation" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode2" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="synonymButton" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="100.0" style="-fx-min-width: 93;" text="Synonyms" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode3" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="antonymButton" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="93.0" style="-fx-min-width: 93;" text="Antonyms" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="11.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="checkMode4" fitHeight="14.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="17.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
