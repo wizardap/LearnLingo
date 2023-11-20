@@ -50,8 +50,6 @@ public class TextTwistGame extends GameController implements Game {
     @FXML
     private Button last;
     @FXML
-    private Button menuButton;
-    @FXML
     private Label roundLabel;
     @FXML
     private Label scoreLabel;
@@ -305,6 +303,8 @@ public class TextTwistGame extends GameController implements Game {
                         lastWord.append(guessCharacter.getText());
                     }
                 }
+                System.out.println(enterWord);
+                System.out.println(GameUtils.wordList);
 
                 int id = GameUtils.wordList.indexOf(enterWord.toString());
                 if (id != -1) {
@@ -541,7 +541,6 @@ public class TextTwistGame extends GameController implements Game {
             start.setVisible(true);
             start.setText("NEXT");
             GameUtils.nextRound();
-            musicGame.stop();
         } else {
             start.setText("RESTART");
             loseGame.setVisible(true);
@@ -622,6 +621,7 @@ public class TextTwistGame extends GameController implements Game {
             Random dice = new Random();
             wordList.addAll(dataList.get(dice.nextInt(dataList.size())));
             Collections.shuffle(wordList);
+            System.out.println(wordList);
             for (String word : wordList) {
                 if (word.length() > mainWord.length()) {
                     mainWord = word;

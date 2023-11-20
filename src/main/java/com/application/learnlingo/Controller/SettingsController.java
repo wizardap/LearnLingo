@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 import java.io.FileWriter;
@@ -23,16 +22,6 @@ public class SettingsController extends GeneralController {
 
     @FXML
     private JFXSlider slider;
-
-    private boolean checkMenuBar = false;
-
-    private double speedVoice = 0;
-
-    @FXML
-    private ImageView speak;
-
-    @FXML
-    private Button resetButton;
 
     @FXML
     private Label lb1;

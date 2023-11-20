@@ -42,10 +42,6 @@ public class GameController extends GeneralController {
     @FXML
     protected VBox htp;
     protected AudioClip click;
-    @FXML
-    private Button textTwist;
-    @FXML
-    private Button funnyQuiz;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

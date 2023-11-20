@@ -15,7 +15,7 @@
 
 <BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: white;" stylesheets="@../CSS/game.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.learnlingo.Controller.FunnyQuizGame">
    <center>
-      <AnchorPane fx:id="center" prefWidth="872.0" style="-fx-border-color: #A5DA03; -fx-border-width: 5;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="center" onMouseClicked="#start" prefWidth="872.0" style="-fx-border-color: #A5DA03; -fx-border-width: 5;" BorderPane.alignment="CENTER">
          <children>
             <VBox fx:id="boxContainImage" alignment="CENTER" layoutX="240.0" layoutY="70.0" prefHeight="268.0" prefWidth="466.0">
                <children>

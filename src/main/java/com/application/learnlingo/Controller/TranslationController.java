@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import net.sourceforge.tess4j.Tesseract;
@@ -28,41 +26,15 @@ import java.util.ResourceBundle;
 public class TranslationController extends GeneralController {
 
     @FXML
-    private Button b1;
-
-    @FXML
-    private Button b2;
-
-    @FXML
-    private Button b3;
-
-    @FXML
-    private Button deleteWord;
-
-    @FXML
-    private TextField textfield;
-
-    @FXML
-    private ImageView translate;
-
-    @FXML
-    private ImageView speech;
-
-    @FXML
     private Button lang1;
 
     @FXML
     private Button lang2;
 
     @FXML
-    private Button changeMode;
-
-    @FXML
     private TextArea tx1;
     @FXML
     private TextArea tx2;
-
-    private boolean checkMenuBar = false;
 
     @FXML
     private Label warning;

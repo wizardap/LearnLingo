@@ -3,7 +3,6 @@ package com.application.learnlingo.Controller;
 import com.application.learnlingo.Model.DatabaseManager;
 import com.application.learnlingo.Model.Game;
 import com.application.learnlingo.Model.Quiz;
-import com.jfoenix.controls.JFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
@@ -43,17 +41,7 @@ public class FunnyQuizGame extends GameController implements Game {
     private static int score = 0;
     private static int round = 1;
     @FXML
-    public Label top1;
-    @FXML
-    public Label top2;
-    @FXML
-    public Label top3;
-    @FXML
-    public Label top4;
-    @FXML
     public Button startButton;
-    @FXML
-    private Button changeDictionaryButton;
     @FXML
     private Button answerA;
     @FXML
@@ -62,26 +50,16 @@ public class FunnyQuizGame extends GameController implements Game {
     private Button answerC;
     @FXML
     private Button answerD;
-    @FXML
-    private JFXButton back;
+
     @FXML
     private Button btnmusic;
     @FXML
     private Button btnvolume;
     @FXML
-    private AnchorPane center;
-    @FXML
-    private Button changeModeButton;
-    @FXML
     private BorderPane container;
     @FXML
     private VBox credit;
-    @FXML
-    private HBox function;
-    @FXML
-    private Button gameButton;
-    @FXML
-    private Button bookmarkButton;
+
     @FXML
     private VBox htp;
     @FXML
@@ -98,14 +76,10 @@ public class FunnyQuizGame extends GameController implements Game {
     private Label roundLabel;
     @FXML
     private Label scoreLabel;
-    @FXML
-    private Button settingsButton;
-    @FXML
-    private Button start;
+
     @FXML
     private Label timerLabel;
-    @FXML
-    private HBox top;
+
     @FXML
     private VBox boxContainImage;
     @FXML
@@ -243,137 +217,131 @@ public class FunnyQuizGame extends GameController implements Game {
         startButton.setOnMouseClicked(e -> {
             checkStart = true;
             if (checkVolume) {
-                if (!click.isPlaying()) {
-                    click.play();
-                }
+                click.play();
             }
             if (checkAudio && startButton.getText().equals("START HERE")) {
                 musicGame.play();
-                if (checkAudio) {
-                    if (!musicGame.isPlaying()) {
-                        musicGame.play();
-                    }
-                }
-                playing = true;
-                startButton.setVisible(false);
-                answerList.forEach(button -> {
-                    button.getStyleClass().removeIf(eg -> eg.equals("correctAnswer"));
-                    button.getStyleClass().removeIf(eg -> eg.equals("wrongAnswer"));
-                });
-                if (startButton.getText().equals("NEXT")) {
-                    round++;
-                } else if (startButton.getText().equals("RESTART")) {
-                    round = 1;
-                    score = 0;
-                    Collections.shuffle(quizList);
-                }
-                roundLabel.setText(String.valueOf(round));
-                scoreLabel.setText(String.valueOf(score));
-                Quiz quiz = quizList.get(round - 1);
-                questionLabel.setText(quiz.getQuestion());
-                List<String> answer = quiz.getAnswer();
-                for (int i = 0; i < answer.size(); i++) {
-                    answerList.get(i).setText(answer.get(i));
-                }
-                setImage(quiz.getImagePath());
-                timerLabel.setText(String.valueOf(TIME));
-                timeline = new Timeline();
-                timeline.setCycleCount(Timeline.INDEFINITE);
-                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
-                    int time = Integer.parseInt(timerLabel.getText());
-                    if (time > 0) {
-                        time--;
-                        timerLabel.setText(String.valueOf(time));
-                    } else {
-                        timeline.stop();
-                        playing = false;
-                        loseGame.setVisible(true);
-                        AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource(AUDIO_PATH + "loseGame.mp3").toString());
-                        if (checkVolume) {
-                            loseGame.play();
-                        }
-                        musicGame.stop();
-                        for (Button button : answerList) {
-                            String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
-                            if (button.getText().equals(answerText)) {
-                                button.getStyleClass().add("correctAnswer");
-                            } else {
-                                button.getStyleClass().add("wrongAnswer");
-                                answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
-                                startButton.setText("RESTART");
-                            }
-                        }
-                        AudioClip wrongAnswer = new AudioClip(getClass().getResource(AUDIO_PATH + "wrongAnswer.mp3").toString());
-                        if (checkVolume) {
-                            wrongAnswer.play();
-                        }
-                        notice(false);
-
-                    }
-                }));
-                timeline.play();
-                answerList.forEach(button -> {
-                    button.setOnAction(event -> {
-                        if (playing) {
-                            if (checkVolume) {
-                                click.play();
-                            }
-                            timeline.stop();
-                            String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
-                            if (button.getText().equals(answerText)) {
-                                AudioClip rightAnswer = new AudioClip(getClass().getResource(AUDIO_PATH + "rightAnswer.mp3").toString());
-                                if (checkVolume) {
-                                    rightAnswer.play();
-                                }
-                                button.getStyleClass().add("correctAnswer");
-                                score += DEFAULT_CORRECT_PENALTY;
-                                scoreLabel.setText(String.valueOf(score));
-                                if (score > highScore) {
-                                    highScore = score;
-                                    highScoreLabel.setText(String.valueOf(highScore));
-                                    FileWriter fw = null;
-                                    try {
-                                        fw = new FileWriter(DEFAULT_HIGH_SCORE_FILE_PATH);
-                                    } catch (java.io.IOException e1) {
-                                        e1.printStackTrace();
-                                    }
-                                    assert fw != null;
-                                    java.io.BufferedWriter bw = new java.io.BufferedWriter(fw);
-                                    try {
-                                        bw.write(String.valueOf(highScore));
-                                    } catch (java.io.IOException e2) {
-                                        e2.printStackTrace();
-                                    }
-                                    try {
-                                        bw.close();
-                                        fw.close();
-                                    } catch (java.io.IOException e3) {
-                                        e3.printStackTrace();
-                                    }
-                                }
-                                if (round == quizList.size()) {
-                                    notice(true);
-                                    round = 1;
-                                    score = 0;
-                                } else {
-                                    startButton.setVisible(true);
-                                    startButton.setText("NEXT");
-                                }
-                            } else {
-                                AudioClip wrongAnswer = new AudioClip(getClass().getResource(AUDIO_PATH + "wrongAnswer.mp3").toString());
-                                if (checkVolume) {
-                                    wrongAnswer.play();
-                                }
-                                button.getStyleClass().add("wrongAnswer");
-                                answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
-                                notice(false);
-                            }
-                            playing = false;
-                        }
-
-                    });
-                });
             }
+            playing = true;
+            startButton.setVisible(false);
+            answerList.forEach(button -> {
+                button.getStyleClass().removeIf(eg -> eg.equals("correctAnswer"));
+                button.getStyleClass().removeIf(eg -> eg.equals("wrongAnswer"));
+            });
+            if (startButton.getText().equals("NEXT")) {
+                round++;
+            } else if (startButton.getText().equals("RESTART")) {
+                round = 1;
+                score = 0;
+                Collections.shuffle(quizList);
+            }
+            roundLabel.setText(String.valueOf(round));
+            scoreLabel.setText(String.valueOf(score));
+            Quiz quiz = quizList.get(round - 1);
+            questionLabel.setText(quiz.getQuestion());
+            List<String> answer = quiz.getAnswer();
+            for (int i = 0; i < answer.size(); i++) {
+                answerList.get(i).setText(answer.get(i));
+            }
+            setImage(quiz.getImagePath());
+            timerLabel.setText(String.valueOf(TIME));
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
+                int time = Integer.parseInt(timerLabel.getText());
+                if (time > 0) {
+                    time--;
+                    timerLabel.setText(String.valueOf(time));
+                } else {
+                    timeline.stop();
+                    playing = false;
+                    loseGame.setVisible(true);
+                    AudioClip loseGame = new AudioClip(TextTwistGame.class.getResource(AUDIO_PATH + "loseGame.mp3").toString());
+                    if (checkVolume) {
+                        loseGame.play();
+                    }
+                    musicGame.stop();
+                    for (Button button : answerList) {
+                        String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
+                        if (button.getText().equals(answerText)) {
+                            button.getStyleClass().add("correctAnswer");
+                        } else {
+                            button.getStyleClass().add("wrongAnswer");
+                            answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
+                            startButton.setText("RESTART");
+                        }
+                    }
+                    AudioClip wrongAnswer = new AudioClip(getClass().getResource(AUDIO_PATH + "wrongAnswer.mp3").toString());
+                    if (checkVolume) {
+                        wrongAnswer.play();
+                    }
+                    notice(false);
+
+                }
+            }));
+            timeline.play();
+            answerList.forEach(button -> {
+                button.setOnAction(event -> {
+                    if (playing) {
+                        if (checkVolume) {
+                            click.play();
+                        }
+                        timeline.stop();
+                        String answerText = answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getText();
+                        if (button.getText().equals(answerText)) {
+                            AudioClip rightAnswer = new AudioClip(getClass().getResource(AUDIO_PATH + "rightAnswer.mp3").toString());
+                            if (checkVolume) {
+                                rightAnswer.play();
+                            }
+                            startButton.setVisible(true);
+                            button.getStyleClass().add("correctAnswer");
+                            score += DEFAULT_CORRECT_PENALTY;
+                            scoreLabel.setText(String.valueOf(score));
+                            if (score > highScore) {
+                                highScore = score;
+                                highScoreLabel.setText(String.valueOf(highScore));
+                                FileWriter fw = null;
+                                try {
+                                    fw = new FileWriter(DEFAULT_HIGH_SCORE_FILE_PATH);
+                                } catch (java.io.IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                                assert fw != null;
+                                java.io.BufferedWriter bw = new java.io.BufferedWriter(fw);
+                                try {
+                                    bw.write(String.valueOf(highScore));
+                                } catch (java.io.IOException e2) {
+                                    e2.printStackTrace();
+                                }
+                                try {
+                                    bw.close();
+                                    fw.close();
+                                } catch (java.io.IOException e3) {
+                                    e3.printStackTrace();
+                                }
+                            }
+                            if (round == quizList.size()) {
+                                notice(true);
+                                round = 1;
+                                score = 0;
+                            } else {
+                                startButton.setText("NEXT");
+                            }
+                        } else {
+                            AudioClip wrongAnswer = new AudioClip(getClass().getResource(AUDIO_PATH + "wrongAnswer.mp3").toString());
+                            if (checkVolume) {
+                                wrongAnswer.play();
+                            }
+                            button.getStyleClass().add("wrongAnswer");
+                            answerList.get(quiz.getCorrectAnswer().charAt(0) - 'A').getStyleClass().add("correctAnswer");
+                            notice(false);
+                        }
+                        playing = false;
+                    }
+
+                });
+            });
+
         });
     }
 
@@ -467,5 +435,6 @@ public class FunnyQuizGame extends GameController implements Game {
         init();
         start();
     }
+
 
 }
