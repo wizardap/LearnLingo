@@ -243,10 +243,14 @@ public class FunnyQuizGame extends GameController implements Game {
         startButton.setOnMouseClicked(e -> {
             checkStart = true;
             if (checkVolume) {
-                click.play();
+                if (!click.isPlaying()) {
+                    click.play();
+                }
             }
             if (checkAudio) {
-                musicGame.play();
+                if (!musicGame.isPlaying()) {
+                    musicGame.play();
+                }
             }
             playing = true;
             startButton.setVisible(false);
@@ -319,7 +323,6 @@ public class FunnyQuizGame extends GameController implements Game {
                             if (checkVolume) {
                                 rightAnswer.play();
                             }
-                            startButton.setVisible(true);
                             button.getStyleClass().add("correctAnswer");
                             score += DEFAULT_CORRECT_PENALTY;
                             scoreLabel.setText(String.valueOf(score));
@@ -351,6 +354,7 @@ public class FunnyQuizGame extends GameController implements Game {
                                 round = 1;
                                 score = 0;
                             } else {
+                                startButton.setVisible(true);
                                 startButton.setText("NEXT");
                             }
                         } else {
