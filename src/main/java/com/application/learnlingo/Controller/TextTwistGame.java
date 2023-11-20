@@ -29,7 +29,7 @@ import java.util.*;
 public class TextTwistGame extends GameController implements Game {
     private static final String DEFAULT_HIGHSCORE_FILE_PATH =
             "./src/main/resources/com/application/learnlingo/database/TextTwistGameHighScore.txt";
-    private static final int DEFAULT_TIME_SECOND = 5;
+    private static final int DEFAULT_TIME_SECOND = 120;
     private static final double DEFAULT_BOX_HEIGHT = 64;
     private static double maxCharacter = 0;
     private static double maxWord = 0;
@@ -479,7 +479,9 @@ public class TextTwistGame extends GameController implements Game {
     public void startGame() {
         checkStart = true;
         if (checkAudio) {
-            musicGame.play();
+            if (!musicGame.isPlaying()) {
+                musicGame.play();
+            }
         }
         init();
         start.setVisible(false);

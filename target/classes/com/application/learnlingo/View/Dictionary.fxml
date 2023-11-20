@@ -22,7 +22,7 @@
          <children>
             <JFXListView fx:id="listWords" layoutY="-2.0" onKeyReleased="#handleKeyEnterPress" onMouseClicked="#handleMouseClicked" prefHeight="551.0" prefWidth="223.0" stylesheets="@../CSS/vu.css" />
             <WebView fx:id="webView" layoutX="224.0" layoutY="44.0" prefHeight="507.0" prefWidth="585.0" />
-            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="655.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../CSS/vu.css" text="Add to word list">
+            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="686.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="80.0" stylesheets="@../CSS/vu.css" text="Add to word list">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,6 +30,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </Button>
             <Button fx:id="speakUS" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="226.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#speakWordUS" prefHeight="26.0" prefWidth="56.0" stylesheets="@../CSS/vu.css" text="US">
                <graphic>
