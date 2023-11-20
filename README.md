@@ -41,6 +41,5 @@
 
 # Cài đặt <a name="installation"></a>
 
-* Cài đặt JDK 8 tại [đây](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html), có thể sử dụng Intellij, Eclipse hoặc Netbean để chạy chương trình viết bằng Java.
-* Sau khi tải mã nguồn, cần import file lib đã có sẵn vào project. Trong lib đã có đủ các file cần thiết để có thể chạy được chương trình.
+* Cài đặt JDK 8 tại [đây](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html), có thể sử dụng Intellij để chạy chương trình viết bằng Java.
 * Tìm đến main/DictionaryApplication và chạy chương trình.
