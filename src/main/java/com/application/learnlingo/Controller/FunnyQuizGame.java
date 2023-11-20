@@ -245,7 +245,7 @@ public class FunnyQuizGame extends GameController implements Game {
             if (checkVolume) {
                 click.play();
             }
-            if (checkAudio) {
+            if (checkAudio && startButton.getText().equals("START HERE")) {
                 musicGame.play();
             }
             playing = true;

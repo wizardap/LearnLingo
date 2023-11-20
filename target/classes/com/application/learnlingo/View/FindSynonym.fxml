@@ -69,7 +69,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="625.0" layoutY="311.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="141.0" stylesheets="@../CSS/vu.css" text="Add to word list">
+            <Button fx:id="bookmark" contentDisplay="RIGHT" layoutX="686.0" layoutY="311.0" mnemonicParsing="false" onAction="#saveWordInBookMark" prefHeight="33.0" prefWidth="80.0" stylesheets="@../CSS/vu.css">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,6 +77,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </Button>
             <AnchorPane fx:id="confirmAdd" layoutX="613.0" layoutY="345.0" prefHeight="145.0" prefWidth="165.0" style="-fx-background-color: #FEC400; -fx-background-radius: 20;" visible="false">
                <children>
