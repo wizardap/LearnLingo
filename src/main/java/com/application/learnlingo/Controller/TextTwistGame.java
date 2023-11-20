@@ -479,7 +479,9 @@ public class TextTwistGame extends GameController implements Game {
     public void startGame() {
         checkStart = true;
         if (checkAudio) {
-            musicGame.play();
+            if (!musicGame.isPlaying()) {
+                musicGame.play();
+            }
         }
         init();
         start.setVisible(false);

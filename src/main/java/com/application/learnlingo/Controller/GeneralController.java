@@ -26,7 +26,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GeneralController implements Initializable {
@@ -118,7 +117,7 @@ public class GeneralController implements Initializable {
     protected ImageView checkMode4;
     protected boolean checkMenuBar = false;
 
-    protected AudioClip musicGame = new AudioClip(Objects.requireNonNull(getClass().getResource(AUDIO_PATH + "soundGame.mp3")).toString());
+    protected AudioClip musicGame = new AudioClip(getClass().getResource(AUDIO_PATH + "soundGame.mp3").toString());
 
     @FXML
     protected Label wordOfDay;
