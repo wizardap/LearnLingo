@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45d42f44-9a6a-4706-8ce3-9b5c5090fb7e" name="Changes" comment="hello">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/learnlingo/Controller/FunnyQuizGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/learnlingo/Controller/FunnyQuizGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/FunnyQuizGameHighScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/FunnyQuizGameHighScore.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/TextTwistGameHighScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/TextTwistGameHighScore.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/dict_hh.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/dict_hh.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/feedbacks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/feedbacks.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/historyAV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/historyAV.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/historyVA.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/historyVA.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/historyAV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/historyAV.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Kotlin Class" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;vuniem131104&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="c2bae6f4-d336-4033-a0b7-13a93f3fc16c" />
+        <option name="url" value="https://github.com/wizardap/LearnLingo.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/application/learnlingo/GameController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2VpGlOGgVoaQ58ATFoVPO86qGad" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;vu&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/IdeaProjects/LearnLingo/src/main/java/com/application/learnlingo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/IdeaProjects/LearnLingo&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\LearnLingo\src\main\resources\com\application\learnlingo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\LearnLingo\src\main\resources\com\application\learnlingo" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DictionaryApplication">
+    <configuration name="DictionaryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.application.learnlingo.DictionaryApplication" />
+      <module name="LearnLingo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.application.learnlingo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.application.learnlingo.Main" />
+      <module name="LearnLingo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.application.learnlingo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpeechController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.application.learnlingo.SpeechController" />
+      <module name="LearnLingo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.application.learnlingo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VideoPlayerApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.application.learnlingo.VideoPlayerApp" />
+      <module name="LearnLingo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.application.learnlingo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tts" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.application.learnlingo.tts" />
+      <module name="LearnLingo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.application.learnlingo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DictionaryApplication" />
+        <item itemvalue="Application.VideoPlayerApp" />
+        <item itemvalue="Application.tts" />
+        <item itemvalue="Application.SpeechController" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="45d42f44-9a6a-4706-8ce3-9b5c5090fb7e" name="Changes" comment="" />
+      <created>1695525760101</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695525760101</updated>
+      <workItem from="1695525762922" duration="14533000" />
+      <workItem from="1695545492414" duration="17890000" />
+      <workItem from="1695574262900" duration="378000" />
+      <workItem from="1695625557340" duration="1183000" />
+      <workItem from="1695626772696" duration="9950000" />
+      <workItem from="1695646413062" duration="503000" />
+      <workItem from="1695727565343" duration="1055000" />
+      <workItem from="1695729256471" duration="798000" />
+      <workItem from="1695732746574" duration="336000" />
+      <workItem from="1695733259470" duration="14000" />
+      <workItem from="1695748435821" duration="1346000" />
+      <workItem from="1695778800230" duration="2321000" />
+      <workItem from="1695790487113" duration="221000" />
+      <workItem from="1695790729543" duration="9000" />
+      <workItem from="1695792049123" duration="809000" />
+      <workItem from="1695797616814" duration="3433000" />
+      <workItem from="1695810848304" duration="7708000" />
+      <workItem from="1695832435288" duration="3430000" />
+      <workItem from="1695835989103" duration="6829000" />
+      <workItem from="1695876673954" duration="6463000" />
+      <workItem from="1695888090412" duration="243000" />
+      <workItem from="1695893793239" duration="6336000" />
+      <workItem from="1695901029476" duration="650000" />
+      <workItem from="1695901824851" duration="170000" />
+      <workItem from="1695915456727" duration="9885000" />
+      <workItem from="1695970946246" duration="10000" />
+      <workItem from="1695972625902" duration="1093000" />
+      <workItem from="1695979793563" duration="10986000" />
+      <workItem from="1695998361819" duration="149000" />
+      <workItem from="1696010079015" duration="4048000" />
+      <workItem from="1696047401134" duration="4049000" />
+      <workItem from="1696054033832" duration="71000" />
+      <workItem from="1696088640803" duration="174000" />
+      <workItem from="1696148263201" duration="1500000" />
+      <workItem from="1696150239297" duration="3794000" />
+      <workItem from="1696219806537" duration="240000" />
+      <workItem from="1696220717769" duration="111000" />
+      <workItem from="1696231378945" duration="615000" />
+      <workItem from="1696323411020" duration="4825000" />
+      <workItem from="1696331280445" duration="1409000" />
+      <workItem from="1696332723537" duration="1280000" />
+      <workItem from="1696334016599" duration="241000" />
+      <workItem from="1696354196728" duration="796000" />
+      <workItem from="1696355004182" duration="199000" />
+      <workItem from="1696355319442" duration="407000" />
+      <workItem from="1696355737276" duration="610000" />
+      <workItem from="1696356358954" duration="894000" />
+      <workItem from="1696357272030" duration="316000" />
+      <workItem from="1696433344224" duration="443000" />
+      <workItem from="1696433796667" duration="6128000" />
+      <workItem from="1696486104923" duration="4766000" />
+      <workItem from="1696492846355" duration="328000" />
+      <workItem from="1696498705419" duration="1040000" />
+      <workItem from="1696504265454" duration="2557000" />
+      <workItem from="1696583313139" duration="678000" />
+      <workItem from="1696645289197" duration="4310000" />
+      <workItem from="1696684259048" duration="447000" />
+      <workItem from="1696691855103" duration="16000" />
+      <workItem from="1696691881326" duration="2496000" />
+      <workItem from="1696739935724" duration="6580000" />
+      <workItem from="1696781306893" duration="6010000" />
+      <workItem from="1696906109360" duration="158000" />
+      <workItem from="1696935144443" duration="253000" />
+      <workItem from="1697035730901" duration="2183000" />
+      <workItem from="1697040693633" duration="7814000" />
+      <workItem from="1697095252538" duration="1711000" />
+      <workItem from="1697181551259" duration="3204000" />
+      <workItem from="1697215501046" duration="7928000" />
+      <workItem from="1697249912350" duration="8569000" />
+      <workItem from="1697264052984" duration="248000" />
+      <workItem from="1697266709171" duration="6215000" />
+      <workItem from="1697287235169" duration="2494000" />
+      <workItem from="1697341061180" duration="6501000" />
+      <workItem from="1697365412721" duration="6745000" />
+      <workItem from="1697379970813" duration="670000" />
+      <workItem from="1697393119067" duration="22000" />
+      <workItem from="1697393542791" duration="27000" />
+      <workItem from="1697436791651" duration="6112000" />
+      <workItem from="1697512108453" duration="14000" />
+      <workItem from="1697514045451" duration="712000" />
+      <workItem from="1697620698275" duration="3847000" />
+      <workItem from="1697625796466" duration="8071000" />
+      <workItem from="1697645742940" duration="101000" />
+      <workItem from="1697648760466" duration="1023000" />
+      <workItem from="1697706481539" duration="2273000" />
+      <workItem from="1697734372042" duration="1656000" />
+      <workItem from="1697736040137" duration="3097000" />
+      <workItem from="1697768471816" duration="5232000" />
+      <workItem from="1697885179366" duration="966000" />
+      <workItem from="1697886156220" duration="15648000" />
+      <workItem from="1697955466413" duration="241000" />
+      <workItem from="1697955719390" duration="10811000" />
+      <workItem from="1697973165687" duration="193000" />
+      <workItem from="1697973368533" duration="3180000" />
+      <workItem from="1697979928330" duration="628000" />
+      <workItem from="1697984663729" duration="6410000" />
+      <workItem from="1698048035286" duration="2723000" />
+      <workItem from="1698057098668" duration="3281000" />
+      <workItem from="1698077575431" duration="1016000" />
+      <workItem from="1698141504120" duration="689000" />
+      <workItem from="1698146288809" duration="418000" />
+      <workItem from="1698152221554" duration="4696000" />
+      <workItem from="1698157285055" duration="923000" />
+      <workItem from="1698163803052" duration="6006000" />
+      <workItem from="1698218497818" duration="4313000" />
+      <workItem from="1698245202455" duration="49000" />
+      <workItem from="1698245638203" duration="650000" />
+      <workItem from="1698304068443" duration="1556000" />
+      <workItem from="1698310535001" duration="1483000" />
+      <workItem from="1698313196008" duration="96000" />
+      <workItem from="1698316522828" duration="821000" />
+      <workItem from="1698317358501" duration="3603000" />
+      <workItem from="1698331525329" duration="2583000" />
+      <workItem from="1698336340124" duration="7000" />
+      <workItem from="1698339226283" duration="6000" />
+      <workItem from="1698380730904" duration="306000" />
+      <workItem from="1698391486217" duration="263000" />
+      <workItem from="1698391765010" duration="5821000" />
+      <workItem from="1698401117963" duration="1040000" />
+      <workItem from="1698409362156" duration="2843000" />
+      <workItem from="1698575898664" duration="3432000" />
+      <workItem from="1698580218262" duration="222000" />
+      <workItem from="1698580694642" duration="55000" />
+      <workItem from="1698580789827" duration="114000" />
+      <workItem from="1698586204633" duration="473000" />
+      <workItem from="1698680531023" duration="20000" />
+      <workItem from="1698755684077" duration="13678000" />
+      <workItem from="1698821886987" duration="6858000" />
+      <workItem from="1698856240942" duration="4553000" />
+      <workItem from="1698912475757" duration="19000" />
+      <workItem from="1698918730454" duration="211000" />
+      <workItem from="1698921587705" duration="4096000" />
+      <workItem from="1698941276704" duration="5085000" />
+      <workItem from="1698986420671" duration="3070000" />
+      <workItem from="1698994437036" duration="337000" />
+      <workItem from="1699114038723" duration="1045000" />
+      <workItem from="1699170085976" duration="1267000" />
+      <workItem from="1699191712363" duration="10516000" />
+      <workItem from="1699237591982" duration="10382000" />
+      <workItem from="1699275069736" duration="4781000" />
+      <workItem from="1699286022971" duration="429000" />
+      <workItem from="1699286629600" duration="112000" />
+      <workItem from="1699287968206" duration="667000" />
+      <workItem from="1699289072151" duration="779000" />
+      <workItem from="1699327828317" duration="5118000" />
+      <workItem from="1699349080406" duration="17000" />
+      <workItem from="1699413096366" duration="64000" />
+      <workItem from="1699516910661" duration="25000" />
+      <workItem from="1699524141109" duration="417000" />
+      <workItem from="1699595277898" duration="390000" />
+      <workItem from="1699602897117" duration="914000" />
+      <workItem from="1699678179444" duration="27000" />
+      <workItem from="1699849917338" duration="5232000" />
+      <workItem from="1699872642239" duration="4844000" />
+      <workItem from="1699934724751" duration="39000" />
+      <workItem from="1699935938483" duration="1000" />
+      <workItem from="1699935950789" duration="19000" />
+      <workItem from="1699950295768" duration="729000" />
+      <workItem from="1699977910493" duration="1871000" />
+      <workItem from="1700021376210" duration="16000" />
+      <workItem from="1700032045199" duration="5245000" />
+      <workItem from="1700037329028" duration="4256000" />
+      <workItem from="1700064723391" duration="336000" />
+      <workItem from="1700065181042" duration="594000" />
+      <workItem from="1700097015252" duration="96000" />
+      <workItem from="1700190700671" duration="621000" />
+      <workItem from="1700195365505" duration="5454000" />
+      <workItem from="1700207289683" duration="2866000" />
+      <workItem from="1700231743892" duration="5815000" />
+      <workItem from="1700238212711" duration="382000" />
+      <workItem from="1700274644045" duration="7388000" />
+      <workItem from="1700282241538" duration="1721000" />
+      <workItem from="1700293950715" duration="1017000" />
+      <workItem from="1700298754327" duration="821000" />
+      <workItem from="1700314288984" duration="1775000" />
+      <workItem from="1700375824855" duration="4106000" />
+      <workItem from="1700474960932" duration="3122000" />
+      <workItem from="1700478227877" duration="47000" />
+      <workItem from="1700493554598" duration="2924000" />
+      <workItem from="1700497166253" duration="3038000" />
+      <workItem from="1700500233399" duration="49000" />
+      <workItem from="1700500314368" duration="717000" />
+      <workItem from="1700539595541" duration="1903000" />
+    </task>
+    <task id="LOCAL-00001" summary="hello">
+      <option name="closed" value="true" />
+      <created>1696434144831</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696434144831</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hello" />
+    <option name="LAST_COMMIT_MESSAGE" value="hello" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.reflect.InvocationTargetException" package="java.lang.reflect" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LearnLingo$GameController.ic" NAME="GameController Coverage Results" MODIFIED="1696740136706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.application.learnlingo.*</FILTER>
+    </SUITE>
+  </component>
+</project>

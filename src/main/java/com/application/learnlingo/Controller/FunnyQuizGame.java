@@ -201,6 +201,7 @@ public class FunnyQuizGame extends GameController implements Game {
             AnimationChangeScene.handleButtonClick(VIEW_PATH + "game.fxml", container);
         });
         yesWin.setOnMouseClicked(e1 -> {
+            musicGame.play();
             winGame.setVisible(false);
             init();
             startButton.getOnMouseClicked().handle(e1);
@@ -293,7 +294,6 @@ public class FunnyQuizGame extends GameController implements Game {
                             if (checkVolume) {
                                 rightAnswer.play();
                             }
-                            startButton.setVisible(true);
                             button.getStyleClass().add("correctAnswer");
                             score += DEFAULT_CORRECT_PENALTY;
                             scoreLabel.setText(String.valueOf(score));
@@ -325,6 +325,7 @@ public class FunnyQuizGame extends GameController implements Game {
                                 round = 1;
                                 score = 0;
                             } else {
+                                startButton.setVisible(true);
                                 startButton.setText("NEXT");
                             }
                         } else {
@@ -338,7 +339,6 @@ public class FunnyQuizGame extends GameController implements Game {
                         }
                         playing = false;
                     }
-
                 });
             });
 
