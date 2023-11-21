@@ -1,0 +1,17 @@
+#b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #b10, #b11, #b12, #b13, #b14, #b15 {
+    -fx-min-width: 100;
+    -fx-background-color: #ddfaff;
+    -fx-background-insets: 0;
+    -fx-text-fill: #1d2a57;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.9;
+}
+
+.label {
+    -fx-cursor: hand;
+}
