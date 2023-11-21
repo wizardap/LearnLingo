@@ -172,7 +172,7 @@
                         <Insets top="1.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Button id="change" fx:id="changeModeButton" mnemonicParsing="false" onAction="#changeMode" prefHeight="27.0" prefWidth="25.0" stylesheets="@../CSS/vu.css">
+                  <Button fx:id="changeModeButton" mnemonicParsing="false" onAction="#changeMode" prefHeight="27.0" prefWidth="25.0" stylesheets="@../CSS/vu.css">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

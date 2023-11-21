@@ -3,7 +3,6 @@ package com.application.learnlingo.Controller;
 import com.application.learnlingo.Model.DatabaseManager;
 import com.application.learnlingo.Model.Game;
 import com.application.learnlingo.Model.Quiz;
-import com.jfoenix.controls.JFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
@@ -43,17 +41,7 @@ public class FunnyQuizGame extends GameController implements Game {
     private static int score = 0;
     private static int round = 1;
     @FXML
-    public Label top1;
-    @FXML
-    public Label top2;
-    @FXML
-    public Label top3;
-    @FXML
-    public Label top4;
-    @FXML
     public Button startButton;
-    @FXML
-    private Button changeDictionaryButton;
     @FXML
     private Button answerA;
     @FXML
@@ -62,26 +50,16 @@ public class FunnyQuizGame extends GameController implements Game {
     private Button answerC;
     @FXML
     private Button answerD;
-    @FXML
-    private JFXButton back;
+
     @FXML
     private Button btnmusic;
     @FXML
     private Button btnvolume;
     @FXML
-    private AnchorPane center;
-    @FXML
-    private Button changeModeButton;
-    @FXML
     private BorderPane container;
     @FXML
     private VBox credit;
-    @FXML
-    private HBox function;
-    @FXML
-    private Button gameButton;
-    @FXML
-    private Button bookmarkButton;
+
     @FXML
     private VBox htp;
     @FXML
@@ -98,14 +76,10 @@ public class FunnyQuizGame extends GameController implements Game {
     private Label roundLabel;
     @FXML
     private Label scoreLabel;
-    @FXML
-    private Button settingsButton;
-    @FXML
-    private Button start;
+
     @FXML
     private Label timerLabel;
-    @FXML
-    private HBox top;
+
     @FXML
     private VBox boxContainImage;
     @FXML
@@ -243,14 +217,10 @@ public class FunnyQuizGame extends GameController implements Game {
         startButton.setOnMouseClicked(e -> {
             checkStart = true;
             if (checkVolume) {
-                if (!click.isPlaying()) {
-                    click.play();
-                }
+                click.play();
             }
-            if (checkAudio) {
-                if (!musicGame.isPlaying()) {
-                    musicGame.play();
-                }
+            if (checkAudio && startButton.getText().equals("START HERE")) {
+                musicGame.play();
             }
             playing = true;
             startButton.setVisible(false);

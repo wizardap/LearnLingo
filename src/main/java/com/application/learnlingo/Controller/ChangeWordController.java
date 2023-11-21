@@ -25,16 +25,10 @@ public class ChangeWordController extends GeneralController {
     private static final StringBuilder DEFAULT_HTML_CONTENT_FILEPATH =
             new StringBuilder("src/main/resources/com/application/learnlingo/database/defaultHTMLEditor.txt");
     private static String defaultHTMLContent;
-    private static boolean showFoundWord;
-    @FXML
-    private Button resetButton;
-    @FXML
-    private Button searchWordButton;
     private boolean isLookedUp;
     @FXML
     private HTMLEditor contentHTMLEditor;
-    @FXML
-    private Button deleteContentButton;
+
     @FXML
     private TextField textfield1;
     @FXML
