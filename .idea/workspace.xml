@@ -5,177 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45d42f44-9a6a-4706-8ce3-9b5c5090fb7e" name="Changes" comment="hello">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/FunnyQuizGameHighScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/FunnyQuizGameHighScore.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/TextTwistGameHighScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/TextTwistGameHighScore.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/dict_hh.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/dict_hh.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/feedbacks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/feedbacks.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/CSS/changeWord.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/CSS/funnyQuiz.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/CSS/game.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/CSS/synandant.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/CSS/translation.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/CSS/vu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/AnimationChangeScene.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/AntonymController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/BookMarkController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/ChangeWordController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/DictionaryController$IconAndFontListCell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/DictionaryController$IconAndFontListCellInBookMark.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/DictionaryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/FunnyQuizGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/FunnyQuizGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/GameController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/GeneralController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/SettingsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/SynonymAndAntonym.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/SynonymController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/TextTwistGame$GameUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/TextTwistGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/TranslationController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Controller/TranslationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/DictionaryApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/Bookmark.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/DatabaseBookmark.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/DatabaseDictionary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/DatabaseManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/Dictionary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/EnglishDictionary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/HistorySearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/Quiz.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/TextToSpeech.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/Trie$TrieNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/Trie.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/VietnameseDictionary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/Word.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/Model/WordOfTheDay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/Bookmark.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/Dictionary.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/FindAntonym.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/FindSynonym.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/FunnyQuiz.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/Game.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/Settings.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/TextTwistGame.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/TranslationController.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/View/changeWordController.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/click.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/loseGame.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/nextround.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/rightAnswer.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/soundGame.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/twist.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/winAll.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/audio/wrongAnswer.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/historyAV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/application/learnlingo/database/historyAV.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/FunnyQuizGameHighScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/FunnyQuizGameHighScore.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/TextTwistGameHighScore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/TextTwistGameHighScore.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/defaultHTMLEditor.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/dict_hh.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/dict_hh.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/feedbacks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/feedbacks.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/historyAV.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/historyAV.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/historyVA.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/historyVA.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/quiz.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/database/wordOfTheDay.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/2618245.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/English.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/Vietnamese.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/addNewWord.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/bg3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/bm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/bookmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/change.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/changeLanguage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/clock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/controls.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/deleteBM.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/deleteWord.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/deleteWordBM.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/download (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/feedback.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/find.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/find1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/funnyQuiz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/game.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/game1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/game2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/gamelogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/general.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/heart.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/history.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/loseGame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/music.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/reset.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/resetDF.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/save.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/send.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/sendfb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/settings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/speak.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/speakVolume.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/stopmusic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/stopvolumegame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/tick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/translate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/volume.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/volumegame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/image/winGame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Image-20231116T143838Z-001.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q34.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/Q9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/application/learnlingo/imageFunnyQuiz/rome.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,35 +82,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging vu",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_directory_selection": "C:/IdeaProjects/LearnLingo/src/main/java/com/application/learnlingo",
-    "last_opened_file_path": "C:/IdeaProjects/LearnLingo",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;vu&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/IdeaProjects/LearnLingo/src/main/java/com/application/learnlingo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/IdeaProjects/LearnLingo&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\IdeaProjects\LearnLingo\src\main\resources\com\application\learnlingo" />
@@ -280,6 +121,8 @@
   </component>
   <component name="RunManager" selected="Application.DictionaryApplication">
     <configuration name="DictionaryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.application.learnlingo.DictionaryApplication" />
       <module name="LearnLingo" />
       <extension name="coverage">
@@ -344,6 +187,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.DictionaryApplication" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.SpeechController" />
+      <item itemvalue="Application.tts" />
+      <item itemvalue="Application.VideoPlayerApp" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DictionaryApplication" />
@@ -546,6 +396,15 @@
       <workItem from="1700500314368" duration="717000" />
       <workItem from="1700539595541" duration="1903000" />
       <workItem from="1700528832170" duration="218000" />
+      <workItem from="1700554262889" duration="117000" />
+      <workItem from="1700554388318" duration="25000" />
+      <workItem from="1700554423891" duration="824000" />
+      <workItem from="1700557006372" duration="470000" />
+      <workItem from="1700557495256" duration="52000" />
+      <workItem from="1700557552640" duration="527000" />
+      <workItem from="1700559780673" duration="726000" />
+      <workItem from="1700562501814" duration="15000" />
+      <workItem from="1700562519445" duration="1884000" />
     </task>
     <task id="LOCAL-00001" summary="hello">
       <option name="closed" value="true" />

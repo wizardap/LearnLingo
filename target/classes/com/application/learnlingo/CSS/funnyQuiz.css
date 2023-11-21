@@ -1,0 +1,26 @@
+.answerButton {
+    -fx-background-color: #0EC7FF;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+.correctAnswer {
+    -fx-background-color: #00FF00;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+.wrongAnswer{
+    -fx-background-color: #FF0000;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
