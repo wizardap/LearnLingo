@@ -1,7 +1,0 @@
-#vbox1 {
-    --fxbackground-color: #c4c9dc;
-}
-
-.button:hover {
-    -fx-cursor: hand;
-}
