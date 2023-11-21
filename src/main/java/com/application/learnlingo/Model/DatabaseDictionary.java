@@ -75,6 +75,9 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
             prefixTree.remove(opWord);
             bookmark.remove(opWord);
             historySearch.removeFromHistory(opWord);
+            if (cache.containsKey(opWord)) {
+                cache.remove(opWord);
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -113,6 +116,7 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        importWordListFromDatabase();
     }
 
     public void deleteAllData() {
@@ -124,14 +128,15 @@ public abstract class DatabaseDictionary<T extends Word> extends Dictionary<T> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        historySearch.clearHistory();
+        bookmark.clear();
+        cache.clear();
+        prefixTree = new Trie();
     }
 
     public void resetData() {
         deleteAllData();
         copyDataFromDefaultTable();
-        historySearch.clearHistory();
-        bookmark.clear();
-        cache.clear();
     }
 
     public List<String> exportHistoryList() {
