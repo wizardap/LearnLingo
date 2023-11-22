@@ -1,10 +1,20 @@
 # LEARNLINGO (Dictionary App)
 
 #### Table of contents
-1. [Giới thiệu](#introduction)
-2. [Tính năng nổi bật](#features)
-3. [Cách sử dụng](#user-guide)
-4. [Cài đặt](#installation)
+1. [Tác giả](#author)
+2. [Giới thiệu](#introduction)
+3. [Tính năng nổi bật](#features)
+4. [UML Diagram](#uml)
+5. [Cách sử dụng](#user-guide)
+6. [Phát triển tương lai](#future)
+7. [Cài đặt](#installation)
+
+# Tác giả <a name="author"></a>
+
+Group AETốt
+- Lê Hoàng Vũ 22021176
+- Vi Văn Quân 22021149
+- Nguyễn Đức Anh Tuấn 22021206
 
 # Giới thiệu <a name="introduction"></a>
 
@@ -29,8 +39,15 @@
 * Trong quá trình sử dụng, những thay đổi của người dùng liên quan tới phần cài đặt như: từ điển Anh-Việt hay Việt-Anh, giọng đọc và tốc độ đọc sẽ được lưu lại cho lần sử dụng sau.
 * Người sử dụng có thể tra cứu từ vựng trực tiếp từ dữ liệu của ứng dụng hoặc có thể sử dụng Google API để dịch từ hoặc câu như ứng dụng Google Translate.
 * LearnLingo còn sử dụng API của Datamuse để tìm từ đồng nghĩa và trái nghĩa của một từ: https://www.datamuse.com/api/
+* LearnLingo còn sử dụng API của Voicerss để phát âm 1 từ tiếng anh theo UK và US: https://www.voicerss.org/    
 * Người dùng có thể dịch từ hình ảnh có sẵn thành text trong chế độ Translation.
 * App còn có 2 game cho người dùng có thể chơi và trau dồi thêm kiến thức tiếng anh.
+
+# UML Diagram <a name="uml"></a>
+
+<p align="center">
+<img width="640" height="480" src="https://i.imgur.com/9kRnzXA.png">
+</p>
 
 # Cách sử dụng <a name="user-guide"></a>
 
@@ -39,7 +56,15 @@
 <img width="640" height="480" src="https://i.imgur.com/TmlMMm9.png">
 </p>
 
+# Phát triển tương lai <a name="future"></a>
+
+1. Thêm nhiều từ điển hơn trong app.
+2. Tích hợp nhiều game phức tạp.
+3. Phát triển thêm tiện ích người dùng.
+
 # Cài đặt <a name="installation"></a>
 
 * Cài đặt JDK 8 tại [đây](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html), có thể sử dụng Intellij để chạy chương trình viết bằng Java.
-* Tìm đến main/DictionaryApplication và chạy chương trình.
+1. Clone project từ repository
+2. Mở project trong IDE Intellij
+3. Tìm đến main/DictionaryApplication và run.

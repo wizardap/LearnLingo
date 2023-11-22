@@ -201,6 +201,7 @@ public class FunnyQuizGame extends GameController implements Game {
             AnimationChangeScene.handleButtonClick(VIEW_PATH + "game.fxml", container);
         });
         yesWin.setOnMouseClicked(e1 -> {
+            musicGame.play();
             winGame.setVisible(false);
             init();
             startButton.getOnMouseClicked().handle(e1);
@@ -338,7 +339,6 @@ public class FunnyQuizGame extends GameController implements Game {
                         }
                         playing = false;
                     }
-
                 });
             });
 

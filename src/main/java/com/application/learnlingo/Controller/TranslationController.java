@@ -66,9 +66,9 @@ public class TranslationController extends GeneralController {
     @FXML
     public void text_to_speech1() {
         if (changeModeTrans) {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(), "hl=en-us", "Mike", "0");
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(), "hl=en-us", "Mike", Integer.toString(DictionaryController.speedRate));
         } else {
-            TextToSpeech pronouce = new TextToSpeech(tx1.getText(), "hl=vi-vn", "Chi", "0");
+            TextToSpeech pronouce = new TextToSpeech(tx1.getText(), "hl=vi-vn", "Chi", Integer.toString(DictionaryController.speedRate));
         }
     }
 
@@ -76,10 +76,10 @@ public class TranslationController extends GeneralController {
     public void text_to_speech2() {
         if (changeModeTrans) {
             SettingsController set = new SettingsController();
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(), "hl=vi-vn", "Chi", "0");
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(), "hl=vi-vn", "Chi", Integer.toString(DictionaryController.speedRate));
         } else {
             SettingsController set = new SettingsController();
-            TextToSpeech pronouce = new TextToSpeech(tx2.getText(), "hl=en-us", "Mike", "0");
+            TextToSpeech pronouce = new TextToSpeech(tx2.getText(), "hl=en-us", "Mike", Integer.toString(DictionaryController.speedRate));
         }
     }
 
@@ -107,7 +107,6 @@ public class TranslationController extends GeneralController {
         String text = tx1.getText();
         if (!changeModeTrans) {
             String trans = translate("vi", "en", text).replaceAll("&#39;", "'");
-            ;
             tx2.setText(trans);
         } else {
             tx2.setText(translate("en", "vi", text));
